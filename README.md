@@ -1,2 +1,3 @@
 # quizy-smart-dating
-a
+
+Welcome to quizy smart dating! :)
