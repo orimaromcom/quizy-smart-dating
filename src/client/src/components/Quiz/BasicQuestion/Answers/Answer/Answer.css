@@ -1,0 +1,12 @@
+.answer-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.answer-btn {
+    width: 90%;
+    height: 80% !important;
+}

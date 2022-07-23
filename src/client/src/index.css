@@ -1,6 +1,4 @@
-body{
-  height: 100vh;
-}
+@import url('https://fonts.googleapis.com/css2?family=Blinker&display=swap');
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -23,8 +21,21 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+
+body{
+	height: 100vh;
+	font-family: 'Blinker', sans-serif;
+  }
+
 #root{
   height: 100%;
   display: flex;
   flex-direction: column;
 }
+
+/* :root{
+	--blue: #7ca0e5;
+	--dark-blue: #2f2342;
+	--red: #e42f45;
+	--dark-red: #b42b3f;
+} */

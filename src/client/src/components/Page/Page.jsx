@@ -1,5 +1,5 @@
 import "./Page.css";
 
 export default function Page({ children }) {
-  return <div className="container">{children}</div>;
+  return <div className="page-container">{children}</div>;
 }
