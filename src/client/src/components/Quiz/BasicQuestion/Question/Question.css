@@ -1,0 +1,10 @@
+.question-text-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-basis: 20%;
+}
+
+.question-text{
+    font-size: 1.5rem;
+}

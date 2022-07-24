@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "question": "what is the best project?",
+    "answers": ["Quizy", "some", "other", "project"]
+  },
+  {
+    "id": 2,
+    "question": "Is it the same question?",
+    "answers": ["yes", "no"]
+  }
+]

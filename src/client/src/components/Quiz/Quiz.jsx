@@ -1,3 +1,13 @@
+
+import "./Quiz.css";
+import BasicQuestion from "./BasicQuestion/BasicQuestion";
+import ProgressBar from "./ProgressBar/ProgressBar";
+
 export default function Quiz() {
-  return <h1>Quiz</h1>;
+  return (
+    <div className="quiz-container">
+      <ProgressBar />
+      <BasicQuestion />
+    </div>
+  );
 }
