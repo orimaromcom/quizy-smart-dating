@@ -1,19 +1,14 @@
-{
-    "usersQuestionIndex": [
-      {
-        "userName": "Ori",
-        "userId": "3",
-        "questionIndex": "111"
-      },
-      {
-        "userName": "Tal",
-        "userId": "2",
-        "questionIndex": "119"
-      },
-      {
-        "userName": "Anna",
-        "userId": "1",
-        "questionIndex": "115"
-      }
-    ]
+[
+  {
+    "userId": "3",
+    "questionIndex": "111"
+  },
+  {
+    "userId": "2",
+    "questionIndex": "119"
+  },
+  {
+    "userId": "1",
+    "questionIndex": "115"
   }
+]
