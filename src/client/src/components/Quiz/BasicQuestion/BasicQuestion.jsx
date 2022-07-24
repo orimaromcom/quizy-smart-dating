@@ -1,4 +1,4 @@
-import "./BasicQuestion.css";
+import "./basic-question.css";
 import Answers from "./Answers/Answers";
 import Question from "./Question/Question";
 
