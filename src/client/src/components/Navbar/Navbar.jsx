@@ -6,7 +6,7 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import PsychologyIcon from "@mui/icons-material/Psychology";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import EqualizerIcon from "@mui/icons-material/Equalizer";
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import PersonIcon from "@mui/icons-material/Person";
 
 export default function Navbar() {
@@ -27,14 +27,14 @@ export default function Navbar() {
           component={Link}
           value="quiz"
           to="/quiz"
-          label="quiz"
+          label="Quiz"
           icon={<PsychologyIcon />}
         />
         <BottomNavigationAction
           component={Link}
           value="brain-mates"
           to="/brain-mates"
-          label="brain mates"
+          label="Brainmates"
           icon={<FavoriteIcon />}
         />
         <BottomNavigationAction
@@ -42,13 +42,13 @@ export default function Navbar() {
           value="achievements"
           to="/achievements"
           label="Achievements"
-          icon={<EqualizerIcon />}
+          icon={<EmojiEventsIcon />}
         />
         <BottomNavigationAction
           component={Link}
           value="profile"
           to="/profile"
-          label="profile"
+          label="Profile"
           icon={<PersonIcon />}
         />
       </BottomNavigation>
