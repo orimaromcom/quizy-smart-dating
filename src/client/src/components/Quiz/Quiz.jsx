@@ -1,13 +1,10 @@
 import "./quiz.css";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
+import { useEffect, useState } from "react";
 
-//TEMP
-import QuestionsApiService from "../../services/questions-api-service";
-
-export default function Quiz() {
-  //will recive question as a prop when redux will be init
-  const question = QuestionsApiService.getQuestion("102");
+export default function Quiz({ questions }) {
+  // const [questions, setQuestions] = useState({});
 
   return (
     <div className="quiz-container">
