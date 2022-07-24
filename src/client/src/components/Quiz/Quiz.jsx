@@ -1,5 +1,4 @@
-
-import "./Quiz.css";
+import "./quiz.css";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
 

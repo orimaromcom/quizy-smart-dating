@@ -1,4 +1,4 @@
-import "./Answer.css";
+import "./answer.css";
 import { Button } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { Skeleton } from "@mui/material";

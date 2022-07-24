@@ -1,4 +1,4 @@
-import "./ProgressBar.css";
+import "./progress-bar.css";
 import { Box, LinearProgress } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
