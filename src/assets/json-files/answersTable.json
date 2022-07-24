@@ -1,7 +1,7 @@
 [
   {
     "userId": "1",
-    "questionId": 100,
+    "questionId": "100",
     "answer": "Sitting in the corner",
     "correctOption": null
   },
