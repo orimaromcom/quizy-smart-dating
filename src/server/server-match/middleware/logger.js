@@ -1,4 +1,6 @@
-module.exports = function logger(req, res, next) {
-    console.log(`--> New request ${req.method} ${req.path} at ${new Date()}`);
-    next();
+function requestLoggerMiddleware(req, res, next) {
+  console.log(`Request [${new Date()}]: \n  ${req.method} ${req.path} \n  Body ${JSON.stringify(req.body)}`);
+  next();
 }
+
+module.exports = requestLoggerMiddleware;
