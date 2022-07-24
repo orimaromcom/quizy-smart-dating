@@ -1,0 +1,40 @@
+.mate-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 40%;
+    margin: 2%;
+    padding: 2% ;
+    border: 1px solid gray;
+    border-radius: 8px;
+    box-shadow: 1px 1px 3px gray;
+    background-color: white;
+}
+
+.card-avatar-container{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.card-avatar-img{
+    border-radius: 50%;
+    max-width: 50%;
+}
+
+.card-content{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-around;
+}
+
+.card-content h1{
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.card-content p{
+    font-size: 1.2rem;
+}
