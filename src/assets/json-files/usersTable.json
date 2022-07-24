@@ -1,0 +1,29 @@
+[
+  {
+    "userId": "1",
+    "userName": "Tal",
+    "password": "1234",
+    "gender": "Woman",
+    "lookingFor": "Man",
+    "location": "Tel-Aviv",
+    "radius": "5Km"
+  },
+  {
+    "userId": "2",
+    "userName": "Ori",
+    "password": "5678",
+    "gender": "Man",
+    "lookingFor": "Woman",
+    "location": "Haifa",
+    "radius": "10Km"
+  },
+  {
+    "userId": "3",
+    "userName": "Anna",
+    "password": "9101",
+    "gender": "Woman",
+    "lookingFor": "Man",
+    "location": "Ramat-Gan",
+    "radius": "3Km"
+  }
+]
