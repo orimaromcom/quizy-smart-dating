@@ -7,10 +7,15 @@ export default function Answer() {
   const theme = useTheme();
   return (
     <div className="answer-container">
-      <Button className="answer-btn" variant="contained" size="large">
+      <Button className="answer-btn" variant="contained">
         Answer
       </Button>
-      {/* <Skeleton className="answer-btn" variant="rectangular" animation="wave" /> */}
+      {/* <Skeleton
+        className="answer-btn"
+        variant="rectangular"
+        animation="wave"
+        style={{ height: "80%" }}
+      /> */}
     </div>
   );
 }
