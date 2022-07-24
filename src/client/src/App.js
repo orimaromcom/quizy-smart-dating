@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import QuizPage from "./routes/QuizPage";
-import BrainMatesPage from "./routes/BrainMatesPage";
+import BrainmatesPage from "./routes/BrainmatesPage";
 import AchievementsPage from "./routes/AchievementsPage";
 import ProfilePage from "./routes/ProfilePage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -24,7 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LayoutsWithNavbar />}>
             <Route path="quiz" element={<QuizPage />} />
-            <Route path="brain-mates" element={<BrainMatesPage />} />
+            <Route path="brain-mates" element={<BrainmatesPage />} />
             <Route path="achievements" element={<AchievementsPage />} />
             <Route path="profile" element={<ProfilePage />} />
           </Route>
