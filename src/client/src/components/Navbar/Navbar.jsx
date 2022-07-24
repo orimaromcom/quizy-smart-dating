@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import "./Navbar.css";
+import "./navbar.css";
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
@@ -39,9 +39,9 @@ export default function Navbar() {
         />
         <BottomNavigationAction
           component={Link}
-          value="statistic"
-          to="/statistic"
-          label="statistic"
+          value="achievements"
+          to="/achievements"
+          label="Achievements"
           icon={<EqualizerIcon />}
         />
         <BottomNavigationAction

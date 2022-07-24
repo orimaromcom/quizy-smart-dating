@@ -1,4 +1,4 @@
-import "./Question.css";
+import "./question.css";
 import { Skeleton } from "@mui/material";
 
 export default function Question() {

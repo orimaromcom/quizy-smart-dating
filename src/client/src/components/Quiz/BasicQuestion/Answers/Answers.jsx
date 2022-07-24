@@ -1,4 +1,4 @@
-import "./Answers.css";
+import "./answers.css";
 import Answer from "./Answer/Answer";
 
 export default function Answers() {

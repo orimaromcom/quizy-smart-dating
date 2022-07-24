@@ -1,4 +1,4 @@
-import "./Page.css";
+import "./page.css";
 
 export default function Page({ children }) {
   return <div className="page-container">{children}</div>;
