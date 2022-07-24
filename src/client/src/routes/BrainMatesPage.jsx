@@ -1,10 +1,10 @@
-import BrainMates from "../components/BrainMates/BrainMates";
+import Brainmates from "../components/Brainmates/Brainmates";
 import Page from "../components/Page/Page";
 
-export default function BrainMatesPage() {
+export default function BrainmatesPage() {
   return (
     <Page>
-      <BrainMates />
+      <Brainmates />
     </Page>
   );
 }

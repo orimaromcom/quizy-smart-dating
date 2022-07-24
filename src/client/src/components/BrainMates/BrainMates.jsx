@@ -1,3 +1,3 @@
-export default function BrainMates() {
-  return <h1>BrainMates</h1>;
+export default function Brainmates() {
+  return <h1>Brainmates</h1>;
 }
