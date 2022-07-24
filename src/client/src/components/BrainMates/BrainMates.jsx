@@ -13,12 +13,6 @@ export default function BrainMates() {
       <MateCard />
       <MateCard />
       <MateCard />
-      <MateCard />
-      <MateCard />
-      <MateCard />
-      <MateCard />
-      <MateCard />
-      <MateCard />
     </div>
   );
 }

@@ -1,20 +1,27 @@
-.mate-card-container{
-   display: flex;
-   flex-direction: column;
-}
-
 .mate-card{
     display: flex;
-    flex-grow: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-basis: 40%;
+    margin: 2%;
+    padding: 2% ;
+    border: 1px solid gray;
+    border-radius: 8px;
+    box-shadow: 1px 1px 3px gray;
+    background-color: white;
 }
 
-/* .card-avatar-container{
-   border-radius: 50%;
+.card-avatar-container{
     overflow: hidden;
-} */
+    display: flex;
+    justify-content: center;
+}
+
+.card-avatar-img{
+    border-radius: 50%;
+    max-width: 50%;
+}
 
 .card-content{
     display: flex;
