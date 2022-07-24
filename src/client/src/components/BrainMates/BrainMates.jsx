@@ -1,3 +1,24 @@
+import "./BrainMates.css";
+import MateCard from "./MateCard/MateCard";
+
 export default function BrainMates() {
-  return <h1>BrainMates</h1>;
+  return (
+    <div className="brain-mates-container">
+      <MateCard />
+      <MateCard />
+      <MateCard />
+      <MateCard />
+      <MateCard />
+      <MateCard />
+      <MateCard />
+      <MateCard />
+      <MateCard />
+      <MateCard />
+      <MateCard />
+      <MateCard />
+      <MateCard />
+      <MateCard />
+      <MateCard />
+    </div>
+  );
 }

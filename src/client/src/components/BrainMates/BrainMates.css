@@ -1,0 +1,5 @@
+.brain-mates-container{
+    margin: 10px;
+    display: grid;
+    grid-template-columns: auto auto;   
+}

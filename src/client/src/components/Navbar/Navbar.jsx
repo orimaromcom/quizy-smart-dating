@@ -27,28 +27,28 @@ export default function Navbar() {
           component={Link}
           value="quiz"
           to="/quiz"
-          label="quiz"
+          label="Quiz"
           icon={<PsychologyIcon />}
         />
         <BottomNavigationAction
           component={Link}
           value="brain-mates"
           to="/brain-mates"
-          label="brain mates"
+          label="Brainmates"
           icon={<FavoriteIcon />}
         />
         <BottomNavigationAction
           component={Link}
           value="statistic"
           to="/statistic"
-          label="statistic"
+          label="Statistic"
           icon={<EqualizerIcon />}
         />
         <BottomNavigationAction
           component={Link}
           value="profile"
           to="/profile"
-          label="profile"
+          label="Profile"
           icon={<PersonIcon />}
         />
       </BottomNavigation>
