@@ -2,6 +2,8 @@ import "./quiz.css";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import { useEffect, useState } from "react";
+import { SkipIcon } from "@mui/icons-material";
+import { Button } from "@mui/material";
 
 export default function Quiz({ questions, removeQuestion }) {
   const [question, setQuestion] = useState(questions[0]);
@@ -16,13 +18,16 @@ export default function Quiz({ questions, removeQuestion }) {
     <div className="quiz-container">
       <ProgressBar progressPercentage={100 - questions.length} />
       <BasicQuestion question={question ? question : ""} />
-      <button
+      <Button
+        variant="contained"
+        endIcon={<SkipIcon />}
         onClick={() => {
           removeQuestion(question);
         }}
+        color={"secondary"}
       >
         skip
-      </button>
+      </Button>
     </div>
   );
 }

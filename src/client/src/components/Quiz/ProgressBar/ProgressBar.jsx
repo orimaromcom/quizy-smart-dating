@@ -10,7 +10,7 @@ export default function ProgressBar({ progressPercentage }) {
         variant="determinate"
         value={progressPercentage}
       />
-      <FavoriteIcon className="heart-icon" />
+      <FavoriteIcon className="heart-icon" color={"primary"} />
     </Box>
   );
 }
