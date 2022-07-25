@@ -2,8 +2,8 @@ const express = require("express");
 
 const { getQuestions } = require("../controller/itemController");
 
-const itemRouter = express.Router();
+const quizRouter = express.Router();
 
-itemRouter.get("/", getQuestions);
+quizRouter.get("/questions", getQuestions);
 
-module.exports = itemRouter;
+module.exports = quizRouter;

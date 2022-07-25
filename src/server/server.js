@@ -13,7 +13,7 @@ test();
 
 
 const logger = require("./server-quiz/middleware/logger");
-const itemRouter = require("./server-quiz/routes/itemRouter");
+const quizRouter = require("./server-quiz/routes/itemRouter");
 
 const app = express();
 
@@ -26,7 +26,7 @@ const app = express();
 
 app.use(logger);
 
-app.use("/questions", itemRouter);
+app.use("/quiz", quizRouter);
 
 const port = process.env.PORT || "8080";
 
