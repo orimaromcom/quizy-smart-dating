@@ -1,8 +1,10 @@
 const express = require("express");
 const { sequelize } = require("./db/models");
+
 const logger = require("./server-match/middleware/logger");
-const quizRouter = require("./server-quiz/routes/quizRouter");
+const quizRouter = require("./server-quiz/routes/quiz-router");
 const matchingRouter = require("./server-match/routes/matching-router");
+
 async function test() {
   try {
     await sequelize.authenticate();

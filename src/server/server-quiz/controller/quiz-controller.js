@@ -1,4 +1,4 @@
-const quizManager = require("../services/quizManager");
+const quizManager = require("../services/quiz-manager");
 
 async function getAllQuestions(req, res) {
   let questions = await quizManager.getAllQuestions();
