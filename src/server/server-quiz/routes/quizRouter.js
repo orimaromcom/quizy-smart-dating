@@ -1,9 +1,9 @@
 const express = require("express");
 
-const { getQuestions } = require("../controller/quizController");
+const { getAllQuestions } = require("../controller/quizController");
 
 const quizRouter = express.Router();
 
-quizRouter.get("/questions", getQuestions);
+quizRouter.get("/questions", getAllQuestions);
 
 module.exports = quizRouter;
