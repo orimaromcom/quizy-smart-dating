@@ -4,7 +4,11 @@ import ProgressBar from "./ProgressBar/ProgressBar";
 import { useEffect, useState } from "react";
 
 export default function Quiz({ questions }) {
-  // const [questions, setQuestions] = useState({});
+  // const [questions, setQuestions] = useState([]);
+
+  useEffect(() => {
+    console.log(questions);
+  }, [questions]);
 
   return (
     <div className="quiz-container">

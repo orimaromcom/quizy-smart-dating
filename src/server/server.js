@@ -1,13 +1,13 @@
 const express = require("express");
-const logger = require("./server/middleware/logger");
+const logger = require("./server-quiz/middleware/logger");
 
 const app = express();
 
- app.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.status(200).json({
     health: `ok`,
   });
-});  
+});
 
 app.use(logger);
 

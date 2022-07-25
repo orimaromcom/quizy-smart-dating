@@ -19,12 +19,10 @@ export const fetchNewQuestions = () => {
     dispatch(fetchQuestionsRequestAction());
     try {
       const questions = await QuestionsApiService.getQuestions();
-      debugger;
       const questionsByIds = questions.reduce((acc, quest) => {
         acc[quest.id] = quest;
         return acc;
       }, {});
-
       dispatch(fetchQuestionsSuccessAction(questionsByIds));
     } catch (e) {
       dispatch(fetchQuestionsFailureAction());

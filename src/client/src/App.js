@@ -1,10 +1,11 @@
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import QuizPage from "./routes/QuizPage";
 import BrainmatesPage from "./routes/BrainmatesPage";
 import AchievementsPage from "./routes/AchievementsPage";
 import ProfilePage from "./routes/ProfilePage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useEffect } from "react";
+import LayoutConnector from "./components/Layout/layout-connector.js";
 
 const theme = createTheme({
   palette: {
@@ -22,7 +23,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LayoutsWithNavbar />}>
+          <Route path="/" element={<LayoutConnector />}>
             <Route path="quiz" element={<QuizPage />} />
             <Route path="brain-mates" element={<BrainmatesPage />} />
             <Route path="achievements" element={<AchievementsPage />} />
@@ -35,12 +36,3 @@ function App() {
 }
 
 export default App;
-
-function LayoutsWithNavbar() {
-  return (
-    <>
-      <Outlet />
-      <Navbar />
-    </>
-  );
-}
