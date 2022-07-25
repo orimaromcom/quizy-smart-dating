@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     questionId: DataTypes.INTEGER,
     chosenOption: DataTypes.STRING,
-    correctOption: DataTypes.STRING
+    correctOption: DataTypes.STRING,
+    question: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Answer',
