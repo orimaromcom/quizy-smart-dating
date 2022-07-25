@@ -1,13 +1,12 @@
 import "./answers.css";
 import Answer from "./Answer/Answer";
 
-export default function Answers() {
+export default function Answers({ answers }) {
   return (
     <div className="Answers-container">
-      <Answer />
-      <Answer />
-      <Answer />
-      <Answer />
+      {answers.map((answer, index) => {
+        if (answer) return <Answer text={answer} key={index} />;
+      })}
     </div>
   );
 }

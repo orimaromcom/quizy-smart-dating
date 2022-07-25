@@ -9,6 +9,13 @@ const questionsEntitiesReducer = (state = initialState, action) => {
       return { ...questions };
     }
 
+    case actionTypes.REMOVE_QUESTION_REQUEST: {
+      const { question } = action;
+      const questionsEntities = { ...state };
+      delete questionsEntities[question.id];
+      return questionsEntities;
+    }
+
     default:
       return state;
   }
