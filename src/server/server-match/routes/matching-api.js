@@ -1,16 +1,13 @@
-// const ItemManager = require("../services/item-manager.js.js");
+const MatchingManager = require("../services/matching-manager.js");
 
-// const itemManager = new ItemManager();
-// const pokemonClient = new PokemonClient;
+const matchingManager = new MatchingManager();
 
-// async function createTodo(req, res) {
-//   const todoText = req.body.text
-//   const { text, status, done } = req.body;
-//   let newTodos = [];
-//   res.status(200).json(newTodos);
-// }
+async function getAllAnswers(req, res) {
+  let answers = await matchingManager.getAllAnswers();
+  if (!answers) answers = [];
+  res.status(200).json(answers);
+}
 
-// module.exports = {
-//   createTodo,
-//   getTodo,
-// };
+module.exports = {
+  getAllAnswers
+};
