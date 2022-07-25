@@ -2,20 +2,20 @@
   {
     "userId": "1",
     "questionId": "100",
-    "answer": "Sitting in the corner",
+    "chosenOption": "Sitting in the corner",
     "correctOption": null
   },
 
   {
     "userId": "1",
     "questionId": "110",
-    "answer": "True",
+    "chosenOption": "True",
     "correctOption": "True"
   },
   {
     "userId": "1",
     "questionId": "111",
-    "answer": "False",
+    "chosenOption": "False",
     "correctOption": "False"
   }
 ]

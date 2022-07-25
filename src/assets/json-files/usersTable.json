@@ -6,7 +6,7 @@
     "gender": "Woman",
     "lookingFor": "Man",
     "location": "Tel-Aviv",
-    "radius": "5Km"
+    "radius": 5
   },
   {
     "userId": "2",
@@ -15,7 +15,7 @@
     "gender": "Man",
     "lookingFor": "Woman",
     "location": "Haifa",
-    "radius": "10Km"
+    "radius": 10
   },
   {
     "userId": "3",
@@ -24,6 +24,6 @@
     "gender": "Woman",
     "lookingFor": "Man",
     "location": "Ramat-Gan",
-    "radius": "3Km"
+    "radius": 3
   }
 ]
