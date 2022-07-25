@@ -30,7 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LayoutConnector />}>
             <Route path="quiz" element={<QuizPage />} />
-            <Route path="brain-mates" element={<BrainmatesPage />} />
+            <Route path="brainmates" element={<BrainmatesPage />} />
             <Route path="achievements" element={<AchievementsPage />} />
             <Route path="profile" element={<ProfilePage />} />
           </Route>
