@@ -13,7 +13,7 @@ test();
 
 
 const logger = require("./server-quiz/middleware/logger");
-const quizRouter = require("./server-quiz/routes/itemRouter");
+const quizRouter = require("./server-quiz/routes/quizRouter");
 
 const app = express();
 
