@@ -1,5 +1,19 @@
 const express = require("express");
-const logger = require("./server-quiz/middleware/logger");
+const { sequelize } = require("./db/models");
+
+const logger = require("./middleware/logger");
+const quizRouter = require("./server-quiz/routes/quiz-router");
+const matchingRouter = require("./server-match/routes/matching-router");
+
+async function test() {
+  try {
+    await sequelize.authenticate();
+    console.log("Connection has been established successfully.");
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+  }
+}
+test();
 
 const app = express();
 
@@ -10,6 +24,9 @@ app.get("/", (req, res) => {
 });
 
 app.use(logger);
+app.use("/matching", matchingRouter);
+
+app.use("/quiz", quizRouter);
 
 const port = process.env.PORT || "8080";
 
