@@ -21,9 +21,9 @@ module.exports = (sequelize, DataTypes) => {
     radius: DataTypes.NUMBER,
     gender: DataTypes.STRING,
     lookingForGender: DataTypes.STRING,
-    relations: DataTypes.STRING,
-    minAge: DataTypes.NUMBER,
-    maxAge: DataTypes.NUMBER
+    lookingForRelationsType: DataTypes.STRING,
+    lookingForMinAge: DataTypes.NUMBER,
+    lookingForMaxAge: DataTypes.NUMBER
   }, {
     sequelize,
     modelName: 'User',
