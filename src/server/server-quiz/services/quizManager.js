@@ -1,11 +1,11 @@
 const { Question } = require("../../db/models");
 
-async function getQuestions() {
+async function getAllQuestions() {
   const questions = await Question.findAll();
 
   return questions;
 }
 
 module.exports = {
-  getQuestions,
+  getAllQuestions,
 };
