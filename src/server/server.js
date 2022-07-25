@@ -1,7 +1,7 @@
 const express = require("express");
 const { sequelize } = require("./db/models");
 
-const logger = require("./server-match/middleware/logger");
+const logger = require("./middleware/logger");
 const quizRouter = require("./server-quiz/routes/quiz-router");
 const matchingRouter = require("./server-match/routes/matching-router");
 
