@@ -1,7 +1,9 @@
 const express = require("express");
 const { sequelize } = require("./db/models");
-const logger = require("./server-quiz/middleware/logger");
+
+const logger = require("./server-match/middleware/logger");
 const quizRouter = require("./server-quiz/routes/quiz-router");
+const matchingRouter = require("./server-match/routes/matching-router");
 
 async function test() {
   try {
@@ -22,6 +24,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(logger);
+app.use('/matching', matchingRouter);
 
 app.use("/quiz", quizRouter);
 
