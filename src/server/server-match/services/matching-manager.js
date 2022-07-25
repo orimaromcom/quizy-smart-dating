@@ -1,14 +1,10 @@
 const { Answer } = require('../../db/models');
 const Sequelize = require('sequelize');
 
-class MatchingManager {
-  async getAllAnswers() {
-    return await Answer.findAll({
-      order: [
-        ['id', 'ASC'],
-      ],
-    });
-  }
+async function getAllAnswers() {
+  return await Answer.findAll();
 }
 
-module.exports = MatchingManager;
+module.exports = {
+  getAllAnswers,
+};

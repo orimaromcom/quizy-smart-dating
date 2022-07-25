@@ -1,7 +1,7 @@
 const express = require('express');
 const {
   getAllAnswers
-} = require("./matching-api.js");
+} = require("../controller/matching-controller");
 
 const matchingRouter = express.Router();
 
