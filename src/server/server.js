@@ -1,5 +1,7 @@
 const express = require("express");
 const { sequelize } = require("./db/models");
+const logger = require("./server-quiz/middleware/logger");
+const quizRouter = require("./server-quiz/routes/quizRouter");
 
 async function test() {
   try {
@@ -11,18 +13,13 @@ async function test() {
 }
 test();
 
-
-const logger = require("./server-quiz/middleware/logger");
-const quizRouter = require("./server-quiz/routes/quizRouter");
-
 const app = express();
 
- app.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.status(200).json({
     health: `ok`,
   });
-});  
-
+});
 
 app.use(logger);
 
