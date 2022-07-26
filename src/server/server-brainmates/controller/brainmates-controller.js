@@ -1,4 +1,4 @@
-const matchingManager = require("../services/matching-manager");
+const matchingManager = require("../services/brainmates-manager");
 
 async function getAllAnswers(req, res) {
   let answers = await matchingManager.getAllAnswers();

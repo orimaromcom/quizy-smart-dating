@@ -1,13 +1,13 @@
 const express = require('express');
 const {
   getAllAnswers
-} = require("../controller/matching-controller");
+} = require("../controller/brainmates-controller");
 
-const matchingRouter = express.Router();
+const brainmatesRouter = express.Router();
 
-matchingRouter.get('/answers', getAllAnswers);
+brainmatesRouter.get('/answers', getAllAnswers);
 
-module.exports = matchingRouter;
+module.exports = brainmatesRouter;
 
 // algorithm get all users statistics
 // algorithm post distances
