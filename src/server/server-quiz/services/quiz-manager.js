@@ -6,7 +6,6 @@ async function getAllQuestions() {
   const personalQuestions = await Question.findAll();
 
   const triviaQuestions = await triviaClient.fetchMultipleTopics(urlArray);
-  console.log(triviaQuestions);
 
   const quizyTriviaQuestions = changeQuestionsStructure(triviaQuestions);
 
