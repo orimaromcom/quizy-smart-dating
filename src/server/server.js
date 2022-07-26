@@ -4,6 +4,7 @@ const { sequelize } = require("./db/models");
 const logger = require("./middleware/logger");
 const quizRouter = require("./server-quiz/routes/quiz-router");
 const matchingRouter = require("./server-match/routes/matching-router");
+const bodyParser = require("body-parser");
 
 async function test() {
   try {
@@ -16,6 +17,8 @@ async function test() {
 test();
 
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   res.status(200).json({
@@ -24,7 +27,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(logger);
-app.use('/matching', matchingRouter);
+app.use("/matching", matchingRouter);
 
 app.use("/quiz", quizRouter);
 

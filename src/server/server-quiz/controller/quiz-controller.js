@@ -8,8 +8,7 @@ async function getAllQuestions(req, res) {
 }
 
 async function postAnswer(req, res) {
-
-
+  const answer = await quizManager.postAnswer(req.body);
   res.status(200).json(answer);
 }
 
