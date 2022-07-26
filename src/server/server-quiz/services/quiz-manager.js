@@ -29,18 +29,12 @@ function changeQuestionsStructure(triviaQuestions) {
     options.push(question.correct_answer);
     shuffleOptions(options);
 
-    if (question.type === "multiple") {
-      newQuestion.option1 = options[0];
-      newQuestion.option2 = options[1];
+    newQuestion.option1 = options[0];
+    newQuestion.option2 = options[1];
+    
+    if (options.length > 2) {
       newQuestion.option3 = options[2];
       newQuestion.option4 = options[3];
-    }
-
-    if (question.type === "boolean") {
-      newQuestion.option1 = options[0];
-      newQuestion.option2 = options[1];
-      delete newQuestion.option3;
-      delete newQuestion.option4;
     }
 
     newQuestion.correctOption = question.correct_answer;
