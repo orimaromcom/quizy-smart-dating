@@ -1,5 +1,5 @@
 const urlArray = require("../clients/api-constants");
-const { Question, TriviaAnswer } = require("../../db/models");
+const { Question, TriviaAnswer, PersonalAnswer } = require("../../db/models");
 const triviaClient = require("../clients/trivia-client");
 
 async function getAllQuestions() {
@@ -57,6 +57,10 @@ async function postAnswer(requestBodyFromClient) {
     postTriviaAnswer(requestBodyFromClient);
   }
 
+  if (requestBodyFromClient.type === "personal") {
+    postPersonalAnswer(requestBodyFromClient);
+  }
+
   return requestBodyFromClient;
 }
 
@@ -75,6 +79,19 @@ async function postTriviaAnswer(requestBodyFromClient) {
       where: { userId: userId },
     });
   }
+}
+
+async function postPersonalAnswer(requestBodyFromClient) {
+  const userId = requestBodyFromClient.userId;
+  const questionId = requestBodyFromClient.questionId;
+  const chosenOption = requestBodyFromClient.chosenOption;
+  await PersonalAnswer.bulkCreate([
+    {
+      userId: userId,
+      questionId: questionId,
+      chosenOption: chosenOption,
+    },
+  ]);
 }
 
 module.exports = {
