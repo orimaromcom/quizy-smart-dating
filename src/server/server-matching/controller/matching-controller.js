@@ -10,7 +10,7 @@ async function getUserPersonalAnswers(req, res) {
   let userId = Number.parseInt(req.params.id);
   ErrorIfNaN(userId);
   const userPersonalAnswers = await matchingManager.getUserPersonalAnswers(userId);
-  ErrodIfNotFound(userPersonalAnswers);
+  ErrorIfNotFound(userPersonalAnswers);
   res.status(200).json(userPersonalAnswers);
 }
 
@@ -24,7 +24,7 @@ async function getUserTriviaAnswers(req, res) {
   let userId = Number.parseInt(req.params.id);
   ErrorIfNaN(userId);
   const userTriviaAnswers = await matchingManager.getUserTriviaAnswers(userId);
-  ErrodIfNotFound(userTriviaAnswers)
+  ErrorIfNotFound(userTriviaAnswers)
   res.status(200).json(userTriviaAnswers);
 }
 
@@ -38,7 +38,15 @@ async function getUserDistances(req, res) {
   let userId = Number.parseInt(req.params.id);
   ErrorIfNaN(userId);
   const userDistances = await matchingManager.getUserDistances(userId);
-  ErrodIfNotFound(userDistances);
+  ErrorIfNotFound(userDistances);
+  res.status(200).json(userDistances);
+}
+
+async function postUserDistances(req, res) {
+  let userId = Number.parseInt(req.params.id);
+  ErrorIfNaN(userId);
+  const userDistances = await matchingManager.postUserDistances(userId);
+  ErrorIfNotFound(userDistances);
   res.status(200).json(userDistances);
 }
 
@@ -51,7 +59,7 @@ function ErrorIfNaN(id) {
   }
 }
 
-function ErrodIfNotFound(item) {
+function ErrorIfNotFound(item) {
   if (!item) {
     const error = Error()
     error.statusCode = 404;
@@ -67,4 +75,5 @@ module.exports = {
   getUserTriviaAnswers,
   getAllDistances,
   getUserDistances,
+  postUserDistances
 };

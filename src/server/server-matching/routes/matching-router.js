@@ -6,6 +6,7 @@ const {
   getUserTriviaAnswers,
   getAllDistances,
   getUserDistances,
+  postUserDistances
 } = require("../controller/matching-controller");
 
 const matchingRouter = express.Router();
@@ -17,9 +18,6 @@ matchingRouter.get('/trivia-answers/:id', getUserTriviaAnswers);
 matchingRouter.get('/distances', getAllDistances);
 matchingRouter.get('/distances/:id', getUserDistances);
 
-module.exports = matchingRouter;
+matchingRouter.post('/postdistances/:id', postUserDistances);
 
-// algorithm get all users statistics
-// algorithm post distances
-// match get distances
-// update user likes table
+module.exports = matchingRouter;

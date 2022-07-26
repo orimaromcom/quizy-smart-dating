@@ -1,4 +1,4 @@
-const { PersonalAnswer, TriviaAnswer, Distance } = require('../../db/models');
+const { PersonalAnswer, TriviaAnswer, Distance, User } = require('../../db/models');
 const Sequelize = require('sequelize');
 
 async function getAllPersonalAnswers() {
@@ -32,13 +32,56 @@ async function getAllDistances() {
 async function getUserDistances(userId) {
   return await Distance.findAll({
     where: {
-      id: userId
-    }
+      userId: userId
+    },
+    order: [
+      ['triviaDifference', 'ASC'],
+      ['personalSimilarity', 'DESC']
+    ],
   });
 }
 
+async function postUserDistances(userId) {
+  const currentUser = await User.findOne({
+    where: {
+      id: userId
+    }
+  });
+  const otherUsers = await User.findAll({
+    where: {
+      id: {[Sequelize.Op.not]:userId}
+    }
+  });
+  otherUsers.forEach(anotherUser => {
+    calculateDictance(currentUser, anotherUser);
+  });
+  return {'Distanses updated for user': userId}
+}
+
+async function calculateDictance(firstUser, secondUser) {
+  await Distance.upsert({
+    userId: firstUser.id,
+    matchToUserId: secondUser.id,
+    triviaDifference: 1/8 + Math.random(), // mock
+    personalSimilarity: secondUser.id + firstUser.id // mock
+  });
+}
+
+async function calculateTriviaDifference(firstUser, secondUser) {
+  // to be updated and used
+  const firstUserTriviaAnswers = getUserTriviaAnswers(firstUser.id)
+  const secondUserTriviaAnswers = getUserTriviaAnswers(secondUser.id)
+}
+
+async function calculatePersonalSimilarity(firstUser, secondUser) {
+  // to be updated and used
+  const firstUserPersonalAnswers = getUserPersonalAnswers(firstUser.id)
+  const secondUserPersonalAnswers = getUserPersonalAnswers(secondUser.id)
+}
+
+
 /*
-  In POST request (when answered anough questions to achieve the heart)
+  In POST request (when answered enough questions to achieve the heart)
   we calculate the distances for a userId:
   - 1) triviaDifference (ASC): Mean difference in % of right answer for each topic
       For answered Topics:
@@ -72,5 +115,6 @@ module.exports = {
   getAllTriviaAnswers,
   getUserTriviaAnswers,
   getAllDistances,
-  getUserDistances
+  getUserDistances,
+  postUserDistances
 };
