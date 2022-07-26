@@ -53,14 +53,21 @@ function shuffleOptions(optionsArray) {
 }
 
 async function postAnswer(requestBodyFromClient) {
-  
-  const topicQuestionsAnswered = requestBodyFromClient.topic + "QuestionsAnswered"
-  const topicCorrectAnswers = requestBodyFromClient.topic + "CorrectAnswers"
-  const userId = requestBodyFromClient.userId
+  const topicQuestionsAnswered = requestBodyFromClient.topic + "QuestionsAnswered";
+  const topicCorrectAnswers = requestBodyFromClient.topic + "CorrectAnswers";
+  const userId = requestBodyFromClient.userId;
 
-  console.log(requestBodyFromClient.topic)
-  await TriviaAnswer.increment(topicQuestionsAnswered , { by: 1, where: {userId : userId }})
- 
+  await TriviaAnswer.increment(topicQuestionsAnswered, {
+    by: 1,
+    where: { userId: userId },
+  });
+  if (requestBodyFromClient.isCorrect) {
+    await TriviaAnswer.increment(topicCorrectAnswers, {
+      by: 1,
+      where: { userId: userId },
+    });
+  }
+
   return requestBodyFromClient;
 }
 
