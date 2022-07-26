@@ -1,15 +1,17 @@
+const urlArray = require("../clients/api-constants");
 const { Question } = require("../../db/models");
 const triviaClient = require("../clients/trivia-client");
 
 async function getAllQuestions() {
   const personalQuestions = await Question.findAll();
 
-  const triviaQuestionsResponse = await triviaClient.fetchQuestions();
-  const quizyTriviaQuestions = changeQuestionsStructure(
-    triviaQuestionsResponse.questions
-  );
+  const triviaQuestions = await triviaClient.fetchMultipleTopics(urlArray);
+  console.log(triviaQuestions);
 
-  const questions = { ...personalQuestions, ...quizyTriviaQuestions };
+  const quizyTriviaQuestions = changeQuestionsStructure(triviaQuestions);
+
+  const questions = [...personalQuestions, ...quizyTriviaQuestions];
+  shuffleOptions(questions);
   return questions;
 }
 
@@ -18,6 +20,7 @@ function changeQuestionsStructure(triviaQuestions) {
   for (let question of triviaQuestions) {
     const newQuestion = {
       id: null,
+      question: question.question,
       type: "trivia",
       topic: `${question.category}`,
       amountOfOptions: `${question.type}`,
@@ -37,11 +40,14 @@ function changeQuestionsStructure(triviaQuestions) {
     if (question.type === "boolean") {
       newQuestion.option1 = options[0];
       newQuestion.option2 = options[1];
+      delete newQuestion.option3;
+      delete newQuestion.option4;
     }
 
     newQuestion.correctOption = question.correct_answer;
     newQuestionsArray.push(newQuestion);
   }
+  return newQuestionsArray;
 }
 
 function shuffleOptions(optionsArray) {
