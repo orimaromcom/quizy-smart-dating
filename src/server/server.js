@@ -3,7 +3,7 @@ const { sequelize } = require("./db/models");
 
 const logger = require("./middleware/logger");
 const quizRouter = require("./server-quiz/routes/quiz-router");
-const matchingRouter = require("./server-match/routes/matching-router");
+const matchingRouter = require("./server-matching/routes/matching-router");
 
 async function test() {
   try {
