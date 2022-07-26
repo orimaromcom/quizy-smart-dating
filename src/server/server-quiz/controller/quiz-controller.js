@@ -7,6 +7,13 @@ async function getAllQuestions(req, res) {
   res.status(200).json(questions);
 }
 
+async function postAnswer(req, res) {
+
+
+  res.status(200).json(answer);
+}
+
 module.exports = {
   getAllQuestions,
+  postAnswer,
 };
