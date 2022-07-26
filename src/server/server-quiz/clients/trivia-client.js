@@ -6,7 +6,7 @@ async function fetchQuestions(url) {
     description: `Error fetching questions`,
   };
   try {
-    const response = await axios.get(url).then((response) => response);
+    const response = await axios.get(url)
     const questions = response.data.results;
 
     return {
