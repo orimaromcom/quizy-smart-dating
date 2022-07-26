@@ -5,11 +5,8 @@ const {
 
 const brainmatesRouter = express.Router();
 
+// it is not done, just a mock
+
 brainmatesRouter.get('/answers', getAllAnswers);
 
 module.exports = brainmatesRouter;
-
-// algorithm get all users statistics
-// algorithm post distances
-// match get distances
-// update user likes table
