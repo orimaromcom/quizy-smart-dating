@@ -53,6 +53,14 @@ function shuffleOptions(optionsArray) {
 }
 
 async function postAnswer(requestBodyFromClient) {
+  if (requestBodyFromClient.type === "trivia") {
+    postTriviaAnswer(requestBodyFromClient);
+  }
+
+  return requestBodyFromClient;
+}
+
+async function postTriviaAnswer(requestBodyFromClient) {
   const topicQuestionsAnswered = requestBodyFromClient.topic + "QuestionsAnswered";
   const topicCorrectAnswers = requestBodyFromClient.topic + "CorrectAnswers";
   const userId = requestBodyFromClient.userId;
@@ -67,8 +75,6 @@ async function postAnswer(requestBodyFromClient) {
       where: { userId: userId },
     });
   }
-
-  return requestBodyFromClient;
 }
 
 module.exports = {
