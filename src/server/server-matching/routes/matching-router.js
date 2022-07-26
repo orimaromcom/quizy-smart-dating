@@ -1,11 +1,21 @@
 const express = require('express');
 const {
-  getAllAnswers
+  getAllPersonalAnswers,
+  getUserPersonalAnswers,
+  getAllTriviaAnswers,
+  getUserTriviaAnswers,
+  getAllDistances,
+  getUserDistances,
 } = require("../controller/matching-controller");
 
 const matchingRouter = express.Router();
 
-matchingRouter.get('/answers', getAllAnswers);
+matchingRouter.get('/personal-answers', getAllPersonalAnswers);
+matchingRouter.get('/personal-answers/:id', getUserPersonalAnswers);
+matchingRouter.get('/trivia-answers', getAllTriviaAnswers);
+matchingRouter.get('/trivia-answers/:id', getUserTriviaAnswers);
+matchingRouter.get('/distances', getAllDistances);
+matchingRouter.get('/distances/:id', getUserDistances);
 
 module.exports = matchingRouter;
 
