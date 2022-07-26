@@ -1,5 +1,5 @@
 const urlArray = require("../clients/api-constants");
-const { Question } = require("../../db/models");
+const { Question, TriviaAnswer } = require("../../db/models");
 const triviaClient = require("../clients/trivia-client");
 
 async function getAllQuestions() {
@@ -54,6 +54,13 @@ function shuffleOptions(optionsArray) {
 
 async function postAnswer(requestBodyFromClient) {
   
+  const topicQuestionsAnswered = requestBodyFromClient.topic + "QuestionsAnswered"
+  const topicCorrectAnswers = requestBodyFromClient.topic + "CorrectAnswers"
+  const userId = requestBodyFromClient.userId
+
+  console.log(requestBodyFromClient.topic)
+  await TriviaAnswer.increment(topicQuestionsAnswered , { by: 1, where: {userId : userId }})
+ 
   return requestBodyFromClient;
 }
 
