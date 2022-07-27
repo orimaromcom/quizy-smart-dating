@@ -67,24 +67,23 @@ async function postAllUsersDistances() {
 }
 
 async function postUserDistances(userId) {
-  const currentUser = await User.findOne({
-    where: {
-      id: userId
-    }
-  });
-  const otherUsers = await User.findAll({
-    where: {
-      id: {[Sequelize.Op.not]:userId}
-    }
-  });
+  const currentUser = await User.findOne({ where: { id: userId } });
+  const otherUsers = await User.findAll({ where: { id: {[Sequelize.Op.not]:userId} } });
+  const distances = []
   for (anotherUser of otherUsers) {
-    await calculateDictance(currentUser, anotherUser);
+    const {triviaDifference, personalSimilarity} = await calculateDictance(currentUser, anotherUser);
+    const distance = await Distance.upsert({
+      userId: currentUser.id,
+      matchToUserId: anotherUser.id,
+      triviaDifference: Math.round(triviaDifference * 10) / 10,
+      personalSimilarity: personalSimilarity
+    });
+    distances.push(distance);
   }
-  return {'Distanses updated for user': userId}
+  return distances;
 }
 
 async function calculateDictance(firstUser, secondUser) {
-
   let personalSimilarity;
   let triviaDifference;
   if (isBasicMatchPossible(firstUser, secondUser)) {
@@ -94,12 +93,7 @@ async function calculateDictance(firstUser, secondUser) {
     personalSimilarity = -1; // less then minimum
     triviaDifference = 1; // maximum
   }
-  await Distance.upsert({
-    userId: firstUser.id,
-    matchToUserId: secondUser.id,
-    triviaDifference: Math.round(triviaDifference * 10) / 10,
-    personalSimilarity: personalSimilarity
-  });
+  return { personalSimilarity, triviaDifference }
 }
 
 function isBasicMatchPossible(firstUser, secondUser){

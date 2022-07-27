@@ -1,14 +1,12 @@
-const matchingManager = require("../services/brainmates-manager");
+const brainmatesManager = require("../services/brainmates-manager");
 
 
-// it is not done, just a mock
-
-async function getAllAnswers(req, res) {
-  let answers = await matchingManager.getAllAnswers();
-  if (!answers) answers = [];
-  res.status(200).json(answers);
+async function postUserLike(req, res) {
+  const { firstUserId, secondUserId, firstUserLikesSecondUser } = req.body;
+  const responce = await brainmatesManager.postUserLike(firstUserId, secondUserId, firstUserLikesSecondUser);
+  res.status(200).json(responce);
 }
 
 module.exports = {
-  getAllAnswers
+  postUserLike
 };
