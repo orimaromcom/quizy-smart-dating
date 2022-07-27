@@ -3,7 +3,8 @@ const { sequelize } = require("./db/models");
 
 const logger = require("./middleware/logger");
 const quizRouter = require("./server-quiz/routes/quiz-router");
-const matchingRouter = require("./server-match/routes/matching-router");
+const matchingRouter = require("./server-matching/routes/matching-router");
+const brainmatesRouter = require("./server-brainmates/routes/brainmates-router");
 
 async function test() {
   try {
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 
 app.use(logger);
 app.use('/matching', matchingRouter);
+app.use('/brainmates', brainmatesRouter);
 
 app.use("/quiz", quizRouter);
 

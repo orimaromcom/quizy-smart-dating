@@ -10,5 +10,6 @@ module.exports = {
   async down (queryInterface, Sequelize) {
     await queryInterface.renameColumn('Users', 'lookingForRelationsType', 'relations');
     await queryInterface.renameColumn('Users', 'lookingForMinAge', 'minAge');
-    await queryInterface.renameColumn('Users', 'lookingForMaxAge', 'maxAge');  }
+    await queryInterface.renameColumn('Users', 'lookingForMaxAge', 'maxAge');
+  }
 };
