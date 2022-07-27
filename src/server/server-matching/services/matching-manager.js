@@ -68,7 +68,12 @@ async function postUserDistances(userId) {
 
 async function calculateDictance(firstUser, secondUser) {
 
-  const personalSimilarity = await calculatePersonalSimilarity(firstUser, secondUser); // mock
+  // using firstUser and secondUser we can compare here their settings as well
+  // and if settings are contradictive to leave personalSimilarity at 0
+  // or or even set it to -1 and not to check triviaDifference in this case
+  // and set triviaDifference to a fake maximum
+
+  const personalSimilarity = await calculatePersonalSimilarity(firstUser.id, secondUser.id);
   const triviaDifference = Math.round(Math.random() * 10) / 10; // mock
 
   await Distance.upsert({
@@ -79,21 +84,17 @@ async function calculateDictance(firstUser, secondUser) {
   });
 }
 
-async function calculateTriviaDifference(firstUser, secondUser) {
+async function calculateTriviaDifference(firstUserId, secondUserId) {
   // to be updated and used
-  const firstUserTriviaAnswers = getUserTriviaAnswers(firstUser.id)
-  const secondUserTriviaAnswers = getUserTriviaAnswers(secondUser.id)
+  const firstUserTriviaAnswers = getUserTriviaAnswers(firstUserId)
+  const secondUserTriviaAnswers = getUserTriviaAnswers(secondUserId)
 }
 
-async function calculatePersonalSimilarity(firstUser, secondUser) {
-  // using firstUser and secondUser we can compare here their settings as well
-  // and if settings are contradictive to leave personalSimilarity at 0
-  // or or even set it to -1 and not to check triviaDifference in this case
-  // and set triviaDifference to a fake maximum
+async function calculatePersonalSimilarity(firstUserId, secondUserId) {
   let personalSimilarity = 0;
-  const firstUserPersonalAnswers = await getUserPersonalAnswers(firstUser.id);
+  const firstUserPersonalAnswers = await getUserPersonalAnswers(firstUserId);
   for (firstUserAnswer of firstUserPersonalAnswers) {
-    const secondUserAnswer = await getUserPersonalAnswerToQuestion(secondUser.id, firstUserAnswer.questionId)
+    const secondUserAnswer = await getUserPersonalAnswerToQuestion(secondUserId, firstUserAnswer.questionId)
     if (secondUserAnswer && secondUserAnswer.dataValues.chosenOption === firstUserAnswer.chosenOption) {
       personalSimilarity += 1;
     }
