@@ -4,18 +4,21 @@ import ProgressBar from "./ProgressBar/ProgressBar";
 import { useEffect, useState } from "react";
 
 export default function Quiz({ questions, removeQuestion }) {
-  const [question, setQuestion] = useState(questions[0]);
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [question, setQuestion] = useState(questions[questionIndex]);
 
   useEffect(() => {
-    if (questions.length != 1) {
-      setQuestion(questions[0]);
-    }
-  }, [questions]);
+    setQuestion(questions[questionIndex]);
+  }, [questions, questionIndex]);
 
   return (
     <div className="quiz-container">
       <ProgressBar progressPercentage={100 - questions.length} />
-      <BasicQuestion question={question ? question : ""} />
+      <BasicQuestion
+        question={question ? question : ""}
+        questionIndex={questionIndex}
+        setQuestionIndex={setQuestionIndex}
+      />
       <button
         onClick={() => {
           removeQuestion(question);

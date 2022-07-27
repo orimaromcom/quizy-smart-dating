@@ -4,7 +4,6 @@ import { useTheme } from "@mui/material/styles";
 import { Skeleton } from "@mui/material";
 
 
-
 export default function Option({ text, onClick }) {
   const theme = useTheme();
   return (
