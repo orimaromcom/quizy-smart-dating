@@ -1,6 +1,8 @@
 const { PersonalAnswer, TriviaAnswer, Distance, User } = require('../../db/models');
 const Sequelize = require('sequelize');
 
+const TOPICS = ['Film', 'Sports', 'Computers', 'Celebrities', 'History', 'Music']
+
 async function getAllPersonalAnswers() {
   return await PersonalAnswer.findAll();
 }
@@ -68,26 +70,60 @@ async function postUserDistances(userId) {
 
 async function calculateDictance(firstUser, secondUser) {
 
+
+
   // using firstUser and secondUser we can compare here their settings as well
   // and if settings are contradictive to leave personalSimilarity at 0
   // or or even set it to -1 and not to check triviaDifference in this case
   // and set triviaDifference to a fake maximum
 
   const personalSimilarity = await calculatePersonalSimilarity(firstUser.id, secondUser.id);
-  const triviaDifference = Math.round(Math.random() * 10) / 10; // mock
+  const triviaDifference = await calculateTriviaDifference(firstUser.id, secondUser.id);
 
   await Distance.upsert({
     userId: firstUser.id,
     matchToUserId: secondUser.id,
-    triviaDifference: triviaDifference,
+    triviaDifference: Math.round(triviaDifference * 10) / 10,
     personalSimilarity: personalSimilarity
   });
 }
 
+function IsBasicMatchPossible(User1, User2){
+  // There is no info (User1->User2) in Likes table.
+  // User1Age >= User2LookingForMinAge &&
+  // User1Age <= User2LookingForMaxAge &&
+  // User2Age >= User1LookingForMinAge &&
+  // User2Age <= User1LookingForMaxAge &&
+  // User1LookingForRelationsType === User1LookingForRelationsType &&
+  // User1Gender === User2LookingForGender if User2LookingForGender !== 'any' &&
+  // User2Gender === User1LookingForGender if User1LookingForGender !== 'any'
+
+  // We ignore location and radius for now
+}
+
 async function calculateTriviaDifference(firstUserId, secondUserId) {
-  // to be updated and used
-  const firstUserTriviaAnswers = getUserTriviaAnswers(firstUserId)
-  const secondUserTriviaAnswers = getUserTriviaAnswers(secondUserId)
+  let triviaDifference = 1;
+  const firstUserTriviaAnswers = await getUserTriviaAnswers(firstUserId);
+  const firstUserTriviaAccuracy = calculateTriviaAccuracy(firstUserTriviaAnswers);
+  const secondUserTriviaAnswers = await getUserTriviaAnswers(secondUserId)
+  if (secondUserTriviaAnswers) {
+    triviaDifference = 0;
+    const secondUserTriviaAccuracy = calculateTriviaAccuracy(secondUserTriviaAnswers.dataValues);
+    for (let i = 0; i < TOPICS.length; i++) {
+      triviaDifference += Math.abs(firstUserTriviaAccuracy[i] - secondUserTriviaAccuracy[i])
+    }
+    triviaDifference = triviaDifference / TOPICS.length;
+  }
+  return Math.round(triviaDifference * 10) / 10;
+}
+
+function calculateTriviaAccuracy(UserTriviaAnswers) {
+  const accuracies = []
+  TOPICS.forEach(topic => {
+    const topicAccuracy = UserTriviaAnswers[`${topic}CorrectAnswers`] / (UserTriviaAnswers[`${topic}QuestionsAnswered`] + 1);
+    accuracies.push(Math.round(topicAccuracy * 100) / 100);
+  });
+  return accuracies;
 }
 
 async function calculatePersonalSimilarity(firstUserId, secondUserId) {
@@ -101,36 +137,6 @@ async function calculatePersonalSimilarity(firstUserId, secondUserId) {
   }
   return personalSimilarity;
 }
-
-
-/*
-  In POST request (when answered enough questions to achieve the heart)
-  we calculate the distances for a userId:
-  - 1) triviaDifference (ASC): Mean difference in % of right answer for each topic
-      For answered Topics:
-      TopicDefference = abs(User1TopicCorrect/User1TopicAnswered - User2TopicCorrect/User2TopicAnswered)
-      triviaDifference = Sum of all TopicsDefferences / Amount of Topics
-  - 2) personalSimilarity (DESK): Amount of same personal answers
-
-  In GET request (when the user presses the heart) for current user
-  we sort the users by: triviaDifference (ASC) and personalSimilarity (DESK)
-  we check IsBasicMatchPossible to TOP-3
-
-  **** For IsBasicMatchPossible We need to GET Likes and User Info *****
-
-  IsBasicMatchPossible(User1, User2)?
-  There is no info (User1->User2) in Likes table.
-  User1Age >= User2LookingForMinAge &&
-  User1Age <= User2LookingForMaxAge &&
-  User2Age >= User1LookingForMinAge &&
-  User2Age <= User1LookingForMaxAge &&
-  User1LookingForRelationsType === User1LookingForRelationsType &&
-  User1Gender === User2LookingForGender if User2LookingForGender !== 'any' &&
-  User2Gender === User1LookingForGender if User1LookingForGender !== 'any'
-
-  We ignore location and radius for now
-
- */
 
 module.exports = {
   getAllPersonalAnswers,
