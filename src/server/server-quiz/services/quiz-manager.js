@@ -31,7 +31,6 @@ function changeQuestionsStructure(triviaQuestions) {
 
     newQuestion.option1 = options[0];
     newQuestion.option2 = options[1];
-
     if (options.length > 2) {
       newQuestion.option3 = options[2];
       newQuestion.option4 = options[3];

@@ -1,10 +1,12 @@
 const express = require("express");
 const { sequelize } = require("./db/models");
+const bodyParser = require("body-parser");
 
 const logger = require("./middleware/logger");
+
 const quizRouter = require("./server-quiz/routes/quiz-router");
-const matchingRouter = require("./server-match/routes/matching-router");
-const bodyParser = require("body-parser");
+const matchingRouter = require("./server-matching/routes/matching-router");
+const brainmatesRouter = require("./server-brainmates/routes/brainmates-router");
 
 async function test() {
   try {
@@ -27,9 +29,10 @@ app.get("/", (req, res) => {
 });
 
 app.use(logger);
-app.use("/matching", matchingRouter);
 
 app.use("/quiz", quizRouter);
+app.use('/matching', matchingRouter);
+app.use('/brainmates', brainmatesRouter);
 
 const port = process.env.PORT || "8080";
 

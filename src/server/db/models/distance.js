@@ -21,7 +21,9 @@ module.exports = (sequelize, DataTypes) => {
   Distance.init({
     userId: DataTypes.INTEGER,
     matchToUserId: DataTypes.INTEGER,
-    distance: DataTypes.INTEGER
+    distance: DataTypes.INTEGER,
+    triviaDifference: DataTypes.FLOAT,
+    personalSimilarity: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Distance',

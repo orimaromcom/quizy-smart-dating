@@ -11,16 +11,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Like.belongsTo(models.User, {
-        foreignKey: 'userId'
+        foreignKey: 'firstUserId'
       });
       Like.belongsTo(models.User, {
-        foreignKey: 'likesUserId'
+        foreignKey: 'secondUserId'
       });
     }
   }
   Like.init({
-    userId: DataTypes.INTEGER,
-    likesUserId: DataTypes.INTEGER
+    firstUserId: DataTypes.INTEGER,
+    secondUserId: DataTypes.INTEGER,
+    firstUserLikesSecondUser: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Like',
