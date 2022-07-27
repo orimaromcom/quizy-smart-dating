@@ -207,5 +207,6 @@ module.exports = {
   getUserDistances,
   postUserDistances,
   postAllUsersDistances,
-  getSuggestionsForUser
+  getSuggestionsForUser,
+  getMatchingUserInfo
 };
