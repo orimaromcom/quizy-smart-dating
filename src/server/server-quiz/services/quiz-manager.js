@@ -1,5 +1,5 @@
 const urlArray = require("../clients/api-constants");
-const { Question } = require("../../db/models");
+const { Question, TriviaAnswer, PersonalAnswer } = require("../../db/models");
 const triviaClient = require("../clients/trivia-client");
 
 async function getAllQuestions() {
@@ -31,7 +31,6 @@ function changeQuestionsStructure(triviaQuestions) {
 
     newQuestion.option1 = options[0];
     newQuestion.option2 = options[1];
-    
     if (options.length > 2) {
       newQuestion.option3 = options[2];
       newQuestion.option4 = options[3];
@@ -52,6 +51,49 @@ function shuffleOptions(optionsArray) {
   }
 }
 
+async function postAnswer(requestBodyFromClient) {
+  if (requestBodyFromClient.type === "trivia") {
+    postTriviaAnswer(requestBodyFromClient);
+  }
+
+  if (requestBodyFromClient.type === "personal") {
+    postPersonalAnswer(requestBodyFromClient);
+  }
+
+  return requestBodyFromClient;
+}
+
+async function postTriviaAnswer(requestBodyFromClient) {
+  const topicQuestionsAnswered = requestBodyFromClient.topic + "QuestionsAnswered";
+  const topicCorrectAnswers = requestBodyFromClient.topic + "CorrectAnswers";
+  const userId = requestBodyFromClient.userId;
+
+  await TriviaAnswer.increment(topicQuestionsAnswered, {
+    by: 1,
+    where: { userId: userId },
+  });
+  if (requestBodyFromClient.isCorrect) {
+    await TriviaAnswer.increment(topicCorrectAnswers, {
+      by: 1,
+      where: { userId: userId },
+    });
+  }
+}
+
+async function postPersonalAnswer(requestBodyFromClient) {
+  const userId = requestBodyFromClient.userId;
+  const questionId = requestBodyFromClient.questionId;
+  const chosenOption = requestBodyFromClient.chosenOption;
+  await PersonalAnswer.bulkCreate([
+    {
+      userId: userId,
+      questionId: questionId,
+      chosenOption: chosenOption,
+    },
+  ]);
+}
+
 module.exports = {
   getAllQuestions,
+  postAnswer,
 };

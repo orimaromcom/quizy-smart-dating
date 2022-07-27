@@ -1,7 +1,9 @@
 const express = require("express");
 const { sequelize } = require("./db/models");
+const bodyParser = require("body-parser");
 
 const logger = require("./middleware/logger");
+
 const quizRouter = require("./server-quiz/routes/quiz-router");
 const matchingRouter = require("./server-matching/routes/matching-router");
 const brainmatesRouter = require("./server-brainmates/routes/brainmates-router");
@@ -17,6 +19,8 @@ async function test() {
 test();
 
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   res.status(200).json({
@@ -25,10 +29,10 @@ app.get("/", (req, res) => {
 });
 
 app.use(logger);
-app.use('/matching', matchingRouter);
-app.use('/brainmates', brainmatesRouter);
 
 app.use("/quiz", quizRouter);
+app.use('/matching', matchingRouter);
+app.use('/brainmates', brainmatesRouter);
 
 const port = process.env.PORT || "8080";
 

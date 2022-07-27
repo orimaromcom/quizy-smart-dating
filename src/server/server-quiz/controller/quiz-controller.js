@@ -7,6 +7,12 @@ async function getAllQuestions(req, res) {
   res.status(200).json(questions);
 }
 
+async function postAnswer(req, res) {
+  const answer = await quizManager.postAnswer(req.body);
+  res.status(200).json(answer);
+}
+
 module.exports = {
   getAllQuestions,
+  postAnswer,
 };
