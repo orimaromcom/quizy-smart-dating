@@ -6,7 +6,8 @@ const {
   getUserTriviaAnswers,
   getAllDistances,
   getUserDistances,
-  postUserDistances
+  postUserDistances,
+  postAllUsersDistances
 } = require("../controller/matching-controller");
 
 const matchingRouter = express.Router();
@@ -19,5 +20,6 @@ matchingRouter.get('/distances', getAllDistances);
 matchingRouter.get('/distances/:id', getUserDistances);
 
 matchingRouter.post('/postdistances/:id', postUserDistances);
+matchingRouter.post('/postdistances', postAllUsersDistances);
 
 module.exports = matchingRouter;

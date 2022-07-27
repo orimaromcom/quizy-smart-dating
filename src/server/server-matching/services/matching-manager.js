@@ -42,13 +42,28 @@ async function getAllDistances() {
 async function getUserDistances(userId) {
   return await Distance.findAll({
     where: {
-      userId: userId
+      userId: userId,
+      triviaDifference: {[Sequelize.Op.lt]: 1},
+      personalSimilarity: {[Sequelize.Op.gt]: -1},
     },
     order: [
       ['triviaDifference', 'ASC'],
       ['personalSimilarity', 'DESC']
     ],
   });
+}
+
+async function postAllUsersDistances() {
+  const allUsers = await User.findAll();
+  const responses = [];
+  for (user of allUsers) {
+    try {
+      responses.push(await postUserDistances(user.id));
+    } catch (error) {
+      console.log('This user does not have answers');
+    }
+  }
+  return responses;
 }
 
 async function postUserDistances(userId) {
@@ -70,16 +85,15 @@ async function postUserDistances(userId) {
 
 async function calculateDictance(firstUser, secondUser) {
 
-
-
-  // using firstUser and secondUser we can compare here their settings as well
-  // and if settings are contradictive to leave personalSimilarity at 0
-  // or or even set it to -1 and not to check triviaDifference in this case
-  // and set triviaDifference to a fake maximum
-
-  const personalSimilarity = await calculatePersonalSimilarity(firstUser.id, secondUser.id);
-  const triviaDifference = await calculateTriviaDifference(firstUser.id, secondUser.id);
-
+  let personalSimilarity;
+  let triviaDifference;
+  if (isBasicMatchPossible(firstUser, secondUser)) {
+    personalSimilarity = await calculatePersonalSimilarity(firstUser.id, secondUser.id);
+    triviaDifference = await calculateTriviaDifference(firstUser.id, secondUser.id);
+  } else {
+    personalSimilarity = -1; // less then minimum
+    triviaDifference = 1; // maximum
+  }
   await Distance.upsert({
     userId: firstUser.id,
     matchToUserId: secondUser.id,
@@ -88,17 +102,23 @@ async function calculateDictance(firstUser, secondUser) {
   });
 }
 
-function IsBasicMatchPossible(User1, User2){
-  // There is no info (User1->User2) in Likes table.
-  // User1Age >= User2LookingForMinAge &&
-  // User1Age <= User2LookingForMaxAge &&
-  // User2Age >= User1LookingForMinAge &&
-  // User2Age <= User1LookingForMaxAge &&
-  // User1LookingForRelationsType === User1LookingForRelationsType &&
-  // User1Gender === User2LookingForGender if User2LookingForGender !== 'any' &&
-  // User2Gender === User1LookingForGender if User1LookingForGender !== 'any'
+function isBasicMatchPossible(firstUser, secondUser){
+  const agesFit = firstUser.age >= secondUser.lookingForMinAge &&
+                  firstUser.age <= secondUser.lookingForMaxAge &&
+                  secondUser.age >= firstUser.lookingForMinAge &&
+                  secondUser.age <= firstUser.lookingForMaxAge;
 
+  const relationsTypeFit = firstUser.lookingForRelationsType === secondUser.lookingForRelationsType;
+
+  let genderFit;
+  if (secondUser.lookingForGender === 'any' && firstUser.lookingForGender === 'any') {
+    genderFit = true;
+  } else {
+    genderFit = firstUser.gender === secondUser.lookingForGender  &&
+                secondUser.gender === firstUser.lookingForGender
+  }
   // We ignore location and radius for now
+  return agesFit && relationsTypeFit && genderFit;
 }
 
 async function calculateTriviaDifference(firstUserId, secondUserId) {
@@ -145,5 +165,6 @@ module.exports = {
   getUserTriviaAnswers,
   getAllDistances,
   getUserDistances,
-  postUserDistances
+  postUserDistances,
+  postAllUsersDistances
 };

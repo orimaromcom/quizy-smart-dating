@@ -50,6 +50,12 @@ async function postUserDistances(req, res) {
   res.status(200).json(userDistances);
 }
 
+async function postAllUsersDistances(req, res) {
+  const userDistances = await matchingManager.postAllUsersDistances();
+  ErrorIfNotFound(userDistances);
+  res.status(200).json(userDistances);
+}
+
 function ErrorIfNaN(id) {
   if (isNaN(id)) {
     const error = Error()
@@ -75,5 +81,6 @@ module.exports = {
   getUserTriviaAnswers,
   getAllDistances,
   getUserDistances,
-  postUserDistances
+  postUserDistances,
+  postAllUsersDistances
 };
