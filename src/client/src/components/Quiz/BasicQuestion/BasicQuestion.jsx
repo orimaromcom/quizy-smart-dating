@@ -15,6 +15,10 @@ export default function BasicQuestion({
   setQuestionIndex,
   SOME_USER_ID,
   setAnswerObject,
+  setAnswersCounter,
+  answersCounter,
+  setAnswersArray,
+  answersArray,
 }) {
   const [options, setOptions] = useState([]);
   const [chosenOption, setChosenOption] = useState({});
@@ -41,12 +45,15 @@ export default function BasicQuestion({
       type: question.type,
       topic: question.topic,
       isCorrect: answerIsCorrect,
-      questionId: question.questionId,
+      questionId: question.id,
       chosenOption: chosenOption.chosenOption,
     };
     setAnswerObject(answerObject);
-
+    setAnswersCounter(answersCounter + 1);
     setQuestionIndex(questionIndex + 1);
+
+    const newAnswersArray = [...answersArray, answerObject];
+    setAnswersArray(newAnswersArray);
   }, [chosenOption]);
 
   return (

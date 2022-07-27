@@ -51,28 +51,44 @@ function shuffleOptions(optionsArray) {
   }
 }
 
-async function postAnswer(requestBodyFromClient) {
-  if (requestBodyFromClient.type === "trivia") {
-    postTriviaAnswer(requestBodyFromClient);
+async function postAnswer(answersArray) {
+  
+  for (const answer of answersArray) {
+    if (answer.type === "trivia") {
+      postTriviaAnswer(answer);
+    } else {
+      postPersonalAnswer(answersArray);
+    }
   }
 
-  if (requestBodyFromClient.type === "personal") {
-    postPersonalAnswer(requestBodyFromClient);
-  }
-
-  return requestBodyFromClient;
+  return answersArray;
 }
 
-async function postTriviaAnswer(requestBodyFromClient) {
-  const topicQuestionsAnswered = requestBodyFromClient.topic + "QuestionsAnswered";
-  const topicCorrectAnswers = requestBodyFromClient.topic + "CorrectAnswers";
-  const userId = requestBodyFromClient.userId;
+async function postTriviaAnswer(answer) {
+
+  if(answer.topic === "Entertainment: Music"){
+    answer.topic = "Music"
+  }
+  if(answer.topic === "Entertainment: Film"){
+    answer.topic = "Film"
+  }
+  if(answer.topic === "Science: Computers"){
+    answer.topic = "Computers"
+  }
+  if(answer.topic === "Science: Math"){
+    answer.topic = "Math"
+  }
+
+  const topicQuestionsAnswered = answer.topic + "QuestionsAnswered";
+  const topicCorrectAnswers = answer.topic + "CorrectAnswers";
+  const userId = answer.userId;
 
   await TriviaAnswer.increment(topicQuestionsAnswered, {
+   
     by: 1,
     where: { userId: userId },
   });
-  if (requestBodyFromClient.isCorrect) {
+  if (answer.isCorrect) {
     await TriviaAnswer.increment(topicCorrectAnswers, {
       by: 1,
       where: { userId: userId },
