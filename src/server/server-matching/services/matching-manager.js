@@ -73,7 +73,7 @@ async function getSuggestionsForUser(userId) {
       break;
     }
   }
-  return suggestions;
+  return suggestions; // 0 <= suggestions.length <= AMOUNT_OF_SUGGESTIONS
 }
 
 async function getMatchingUserInfo(matchingUser) {
@@ -87,7 +87,7 @@ async function getMatchingUserInfo(matchingUser) {
   const triviaAnswers = await getUserTriviaAnswers(matchingUser.id);
   triviaAccuracy = calculateTriviaAccuracy(triviaAnswers);
   TOPICS.forEach((topic, i) => {
-    triviaInfo.push([triviaAccuracy[i] * 100, topic]);
+    triviaInfo.push([Math.round(triviaAccuracy[i] * 100), topic]);
   });
   triviaInfo.sort().reverse();
   const bestResult = triviaInfo[0];
