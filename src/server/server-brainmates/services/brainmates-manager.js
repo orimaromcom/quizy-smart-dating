@@ -1,12 +1,15 @@
-const { Answer } = require('../../db/models');
+const { Like } = require('../../db/models');
 const Sequelize = require('sequelize');
 
-// it is not done, just a mock
-
-async function getAllAnswers() {
-  return await Answer.findAll();
+async function postUserLike(firstUserId, secondUserId, firstUserLikesSecondUser) {
+  result = await Like.upsert({
+    firstUserId: firstUserId,
+    secondUserId: secondUserId,
+    firstUserLikesSecondUser: firstUserLikesSecondUser
+  });
+  return result;
 }
 
 module.exports = {
-  getAllAnswers,
+  postUserLike,
 };

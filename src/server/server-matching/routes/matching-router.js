@@ -7,7 +7,8 @@ const {
   getAllDistances,
   getUserDistances,
   postUserDistances,
-  postAllUsersDistances
+  postAllUsersDistances,
+  getSuggestionsForUser
 } = require("../controller/matching-controller");
 
 const matchingRouter = express.Router();
@@ -18,6 +19,7 @@ matchingRouter.get('/trivia-answers', getAllTriviaAnswers);
 matchingRouter.get('/trivia-answers/:id', getUserTriviaAnswers);
 matchingRouter.get('/distances', getAllDistances);
 matchingRouter.get('/distances/:id', getUserDistances);
+matchingRouter.get('/suggestions/:id', getSuggestionsForUser);
 
 matchingRouter.post('/postdistances/:id', postUserDistances);
 matchingRouter.post('/postdistances', postAllUsersDistances);

@@ -1,12 +1,10 @@
 const express = require('express');
 const {
-  getAllAnswers
+  postUserLike
 } = require("../controller/brainmates-controller");
 
 const brainmatesRouter = express.Router();
 
-// it is not done, just a mock
-
-brainmatesRouter.get('/answers', getAllAnswers);
+brainmatesRouter.post('/like', postUserLike);
 
 module.exports = brainmatesRouter;
