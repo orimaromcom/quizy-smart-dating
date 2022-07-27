@@ -9,8 +9,15 @@ import { useEffect, useState } from "react";
 
 const CURRENT_NUMBER_OF_QUESTIONS = 82;
 
-export default function BasicQuestion({ question, questionIndex, setQuestionIndex }) {
+export default function BasicQuestion({
+  question,
+  questionIndex,
+  setQuestionIndex,
+  SOME_USER_ID,
+  setAnswerObject,
+}) {
   const [options, setOptions] = useState([]);
+  const [chosenOption, setChosenOption] = useState({});
 
   useEffect(() => {
     setOptions([question.option1, question.option2, question.option3, question.option4]);
@@ -19,10 +26,27 @@ export default function BasicQuestion({ question, questionIndex, setQuestionInde
     }
   }, [question]);
 
-  const [chosenOption, setChosenOption] = useState({});
   useEffect(() => {
+    let answerIsCorrect = null;
+    if (question.type === "trivia") {
+      if (question.correctOption === chosenOption.chosenOption) {
+        answerIsCorrect = true;
+      } else {
+        answerIsCorrect = false;
+      }
+    }
+
+    const answerObject = {
+      userId: SOME_USER_ID,
+      type: question.type,
+      topic: question.topic,
+      isCorrect: answerIsCorrect,
+      questionId: question.questionId,
+      chosenOption: chosenOption.chosenOption,
+    };
+    setAnswerObject(answerObject);
+
     setQuestionIndex(questionIndex + 1);
-    console.log(chosenOption)
   }, [chosenOption]);
 
   return (
