@@ -1,37 +1,31 @@
 import "./quiz.css";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
-import AnswersApiService from "../../services/answers-api-service"
+import AnswersApiService from "../../services/answers-api-service";
 import { useEffect, useState } from "react";
 
 const SOME_USER_ID = 1;
-const POST_ANSWERS_AFTER_NUMBER = 10
+const POST_ANSWERS_AFTER_NUMBER = 3;
 
 export default function Quiz({ questions, removeQuestion }) {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [question, setQuestion] = useState(questions[questionIndex]);
   const [answerObject, setAnswerObject] = useState({});
-  const [answersArray, setAnswersArray] = useState([])
-  const [answersCounter, setAnswersCounter] = useState(0)
+  const [answersArray, setAnswersArray] = useState([]);
+  const [answersCounter, setAnswersCounter] = useState(0);
 
   useEffect(() => {
     setQuestion(questions[questionIndex]);
-   // console.log("Current answer object:", answerObject);
-   // console.log("Current answers array" , answersArray)
-   console.log(answersArray)
-    if (answersCounter >= POST_ANSWERS_AFTER_NUMBER){
-      AnswersApiService.postAnswers(answersArray)
-      //send the array to the server
-      setAnswersCounter(0)
-      setAnswersArray([])
-      
-
+    if (answersCounter >= POST_ANSWERS_AFTER_NUMBER) {
+      AnswersApiService.postAnswers(answersArray);
+      setAnswersCounter(0);
+      setAnswersArray([]);
     }
   }, [questions, questionIndex, answerObject, answersCounter, answersArray]);
 
   return (
     <div className="quiz-container">
-      <ProgressBar progressPercentage={answersCounter*10} />
+      <ProgressBar progressPercentage={answersCounter * 30} />
       <BasicQuestion
         question={question ? question : ""}
         questionIndex={questionIndex}
