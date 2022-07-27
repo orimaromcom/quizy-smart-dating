@@ -30,8 +30,8 @@ export default function Navbar() {
         />
         <BottomNavigationAction
           component={Link}
-          value="brain-mates"
-          to="/brain-mates"
+          value="brainmates"
+          to="/brainmates"
           label="Brainmates"
           icon={<FavoriteIcon />}
         />

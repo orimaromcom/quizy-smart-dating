@@ -1,10 +1,10 @@
 import Page from "../components/Page/Page";
-import Quiz from "../components/Quiz/Quiz";
+import QuizConnector from "../components/Quiz/quiz-connector";
 
 export default function QuizPage() {
   return (
     <Page>
-      <Quiz />
+      <QuizConnector />
     </Page>
   );
 }
