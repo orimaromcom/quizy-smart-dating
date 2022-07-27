@@ -8,7 +8,15 @@ async function getAllPersonalAnswers() {
 async function getUserPersonalAnswers(userId) {
   return await PersonalAnswer.findAll({
     where: {
-      id: userId
+      userId: userId
+    }
+  });
+}
+async function getUserPersonalAnswerToQuestion(userId, questionId) {
+  return await PersonalAnswer.findOne({
+    where: {
+      userId: userId,
+      questionId: questionId
     }
   });
 }
@@ -20,7 +28,7 @@ async function getAllTriviaAnswers() {
 async function getUserTriviaAnswers(userId) {
   return await TriviaAnswer.findOne({
     where: {
-      id: userId
+      userId: userId
     }
   });
 }
@@ -52,18 +60,22 @@ async function postUserDistances(userId) {
       id: {[Sequelize.Op.not]:userId}
     }
   });
-  otherUsers.forEach(anotherUser => {
-    calculateDictance(currentUser, anotherUser);
-  });
+  for (anotherUser of otherUsers) {
+    await calculateDictance(currentUser, anotherUser);
+  }
   return {'Distanses updated for user': userId}
 }
 
 async function calculateDictance(firstUser, secondUser) {
+
+  const personalSimilarity = await calculatePersonalSimilarity(firstUser, secondUser); // mock
+  const triviaDifference = Math.round(Math.random() * 10) / 10; // mock
+
   await Distance.upsert({
     userId: firstUser.id,
     matchToUserId: secondUser.id,
-    triviaDifference: 1/8 + Math.random(), // mock
-    personalSimilarity: secondUser.id + firstUser.id // mock
+    triviaDifference: triviaDifference,
+    personalSimilarity: personalSimilarity
   });
 }
 
@@ -74,9 +86,19 @@ async function calculateTriviaDifference(firstUser, secondUser) {
 }
 
 async function calculatePersonalSimilarity(firstUser, secondUser) {
-  // to be updated and used
-  const firstUserPersonalAnswers = getUserPersonalAnswers(firstUser.id)
-  const secondUserPersonalAnswers = getUserPersonalAnswers(secondUser.id)
+  // using firstUser and secondUser we can compare here their settings as well
+  // and if settings are contradictive to leave personalSimilarity at 0
+  // or or even set it to -1 and not to check triviaDifference in this case
+  // and set triviaDifference to a fake maximum
+  let personalSimilarity = 0;
+  const firstUserPersonalAnswers = await getUserPersonalAnswers(firstUser.id);
+  for (firstUserAnswer of firstUserPersonalAnswers) {
+    const secondUserAnswer = await getUserPersonalAnswerToQuestion(secondUser.id, firstUserAnswer.questionId)
+    if (secondUserAnswer && secondUserAnswer.dataValues.chosenOption === firstUserAnswer.chosenOption) {
+      personalSimilarity += 1;
+    }
+  }
+  return personalSimilarity;
 }
 
 
@@ -91,7 +113,7 @@ async function calculatePersonalSimilarity(firstUser, secondUser) {
 
   In GET request (when the user presses the heart) for current user
   we sort the users by: triviaDifference (ASC) and personalSimilarity (DESK)
-  we check IsBasicMatchPossible to TOP-3 (if not, check the next one)
+  we check IsBasicMatchPossible to TOP-3
 
   **** For IsBasicMatchPossible We need to GET Likes and User Info *****
 
