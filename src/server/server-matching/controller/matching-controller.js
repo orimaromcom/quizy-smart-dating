@@ -42,6 +42,14 @@ async function getUserDistances(req, res) {
   res.status(200).json(userDistances);
 }
 
+async function getSuggestionsForUser(req, res) {
+  let userId = Number.parseInt(req.params.id);
+  ErrorIfNaN(userId);
+  const suggestions = await matchingManager.getSuggestionsForUser(userId);
+  ErrorIfNotFound(suggestions);
+  res.status(200).json(suggestions);
+}
+
 async function postUserDistances(req, res) {
   let userId = Number.parseInt(req.params.id);
   ErrorIfNaN(userId);
@@ -82,5 +90,6 @@ module.exports = {
   getAllDistances,
   getUserDistances,
   postUserDistances,
-  postAllUsersDistances
+  postAllUsersDistances,
+  getSuggestionsForUser
 };

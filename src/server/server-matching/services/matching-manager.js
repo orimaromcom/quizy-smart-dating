@@ -1,7 +1,8 @@
-const { PersonalAnswer, TriviaAnswer, Distance, User } = require('../../db/models');
+const { PersonalAnswer, TriviaAnswer, Distance, User, Like } = require('../../db/models');
 const Sequelize = require('sequelize');
 
 const TOPICS = ['Film', 'Sports', 'Computers', 'Celebrities', 'History', 'Music']
+const AMOUNT_OF_SUGGESTIONS = 3;
 
 async function getAllPersonalAnswers() {
   return await PersonalAnswer.findAll();
@@ -50,7 +51,51 @@ async function getUserDistances(userId) {
       ['triviaDifference', 'ASC'],
       ['personalSimilarity', 'DESC']
     ],
+    include: User
   });
+}
+
+async function getSuggestionsForUser(userId) {
+  const distances = await getUserDistances(userId);
+  const suggestions = [];
+  for (distance of distances) {
+    const alreadyLikedOrDisliked = await Like.findOne({
+      where: {
+        firstUserId: userId,
+        secondUserId: distance.matchToUserId
+      }
+    })
+    if (!alreadyLikedOrDisliked) {
+      const {personalInfo, bestResultDescription} = await getMatchingUserInfo(distance.User);
+      suggestions.push({
+        personalInfo: personalInfo,
+        bestResultDescription: bestResultDescription
+      });
+    }
+    if (suggestions.length === AMOUNT_OF_SUGGESTIONS) {
+      break;
+    }
+  }
+  return suggestions;
+}
+
+async function getMatchingUserInfo(matchingUser) {
+  const personalInfo = {
+    username: matchingUser.username,
+    gender: matchingUser.gender,
+    age: matchingUser.age,
+    location: matchingUser.location,
+  }
+  triviaInfo = [];
+  const triviaAnswers = await getUserTriviaAnswers(matchingUser.id);
+  triviaAccuracy = calculateTriviaAccuracy(triviaAnswers);
+  TOPICS.forEach((topic, i) => {
+    triviaInfo.push([triviaAccuracy[i] * 100, topic]);
+  });
+  triviaInfo.sort().reverse();
+  const bestResult = triviaInfo[0];
+  const bestResultDescription = `${bestResult[0]}% correct in ${bestResult[1]}`;
+  return {personalInfo, bestResultDescription};
 }
 
 async function postAllUsersDistances() {
@@ -160,5 +205,6 @@ module.exports = {
   getAllDistances,
   getUserDistances,
   postUserDistances,
-  postAllUsersDistances
+  postAllUsersDistances,
+  getSuggestionsForUser
 };
