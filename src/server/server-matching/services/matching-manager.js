@@ -66,11 +66,8 @@ async function getSuggestionsForUser(userId) {
       }
     })
     if (!alreadyLikedOrDisliked) {
-      const {personalInfo, bestResultDescription} = await getMatchingUserInfo(distance.User);
-      suggestions.push({
-        personalInfo: personalInfo,
-        bestResultDescription: bestResultDescription
-      });
+      const userInfo = await getMatchingUserInfo(distance.User);
+      suggestions.push(userInfo);
     }
     if (suggestions.length === AMOUNT_OF_SUGGESTIONS) {
       break;
@@ -95,7 +92,7 @@ async function getMatchingUserInfo(matchingUser) {
   triviaInfo.sort().reverse();
   const bestResult = triviaInfo[0];
   const bestResultDescription = `${bestResult[0]}% correct in ${bestResult[1]}`;
-  return {personalInfo, bestResultDescription};
+  return {...personalInfo, bestResultDescription};
 }
 
 async function postAllUsersDistances() {
