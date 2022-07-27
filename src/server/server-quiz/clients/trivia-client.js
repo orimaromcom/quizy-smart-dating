@@ -23,7 +23,6 @@ async function fetchMultipleTopics(urlArray) {
 
   for (let url of urlArray.urlArray) {
     let topicQuestions = await fetchQuestions(url);
-
     allQuestions = [...allQuestions, ...topicQuestions.questions];
   }
 
