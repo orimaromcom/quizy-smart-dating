@@ -19,13 +19,7 @@ export const fetchNewQuestions = () => {
     dispatch(fetchQuestionsRequestAction());
     try {
       const questions = await QuestionsApiService.getQuestions();
-      
-      //**********We need to add a loader until the questions arrive */
-      //**********Why do we need get questions by Ids?*************************
-      /*     const questionsByIds = questions.reduce((acc, quest) => {
-        acc[quest.id] = quest;
-        return acc;
-      }, {}); */
+  
       dispatch(fetchQuestionsSuccessAction(questions));
     } catch (e) {
       dispatch(fetchQuestionsFailureAction());

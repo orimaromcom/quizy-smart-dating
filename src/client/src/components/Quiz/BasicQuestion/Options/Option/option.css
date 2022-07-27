@@ -1,4 +1,4 @@
-.answer-container{
+.option-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,7 +6,7 @@
     flex-grow: 1;
 }
 
-.answer-btn {
+.option-btn {
     width: 90%;
     height: 80%;
     max-width: 90%;

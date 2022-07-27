@@ -1,13 +1,13 @@
 import "./basic-question.css";
-import Answers from "./Answers/Answers";
+import Options from "./Options/Options";
 import Question from "./Question/Question";
 import { useEffect, useState } from "react";
 
 export default function BasicQuestion({ question }) {
-  const [answers, setAnswers] = useState([]);
+  const [options, setOptions] = useState([]);
 
   useEffect(() => {
-    setAnswers([
+    setOptions([
       question.option1,
       question.option2,
       question.option3,
@@ -15,10 +15,16 @@ export default function BasicQuestion({ question }) {
     ]);
   }, [question]);
 
+  const [questionData, setQuestionData] = useState({})
+  useEffect (() => {
+    console.log(questionData)
+    console.log(question)
+  }, [questionData]) 
+
   return (
     <div className="question-container">
       <Question text={question.question} />
-      <Answers answers={answers} />
+      <Options options={options}  setQuestionData={setQuestionData} />
     </div>
   );
 }
