@@ -1,6 +1,8 @@
 const { PersonalAnswer, TriviaAnswer, Distance, User } = require('../../db/models');
 const Sequelize = require('sequelize');
 
+const TOPICS = ['Film', 'Sports', 'Computers', 'Celebrities', 'History', 'Music']
+
 async function getAllPersonalAnswers() {
   return await PersonalAnswer.findAll();
 }
@@ -8,7 +10,15 @@ async function getAllPersonalAnswers() {
 async function getUserPersonalAnswers(userId) {
   return await PersonalAnswer.findAll({
     where: {
-      id: userId
+      userId: userId
+    }
+  });
+}
+async function getUserPersonalAnswerToQuestion(userId, questionId) {
+  return await PersonalAnswer.findOne({
+    where: {
+      userId: userId,
+      questionId: questionId
     }
   });
 }
@@ -20,7 +30,7 @@ async function getAllTriviaAnswers() {
 async function getUserTriviaAnswers(userId) {
   return await TriviaAnswer.findOne({
     where: {
-      id: userId
+      userId: userId
     }
   });
 }
@@ -32,7 +42,9 @@ async function getAllDistances() {
 async function getUserDistances(userId) {
   return await Distance.findAll({
     where: {
-      userId: userId
+      userId: userId,
+      triviaDifference: {[Sequelize.Op.lt]: 1},
+      personalSimilarity: {[Sequelize.Op.gt]: -1},
     },
     order: [
       ['triviaDifference', 'ASC'],
@@ -41,73 +53,104 @@ async function getUserDistances(userId) {
   });
 }
 
+async function postAllUsersDistances() {
+  const allUsers = await User.findAll();
+  const responses = [];
+  for (user of allUsers) {
+    try {
+      responses.push(await postUserDistances(user.id));
+    } catch (error) {
+      console.log('This user does not have answers');
+    }
+  }
+  return responses;
+}
+
 async function postUserDistances(userId) {
-  const currentUser = await User.findOne({
-    where: {
-      id: userId
-    }
-  });
-  const otherUsers = await User.findAll({
-    where: {
-      id: {[Sequelize.Op.not]:userId}
-    }
-  });
-  otherUsers.forEach(anotherUser => {
-    calculateDictance(currentUser, anotherUser);
-  });
-  return {'Distanses updated for user': userId}
+  const currentUser = await User.findOne({ where: { id: userId } });
+  const otherUsers = await User.findAll({ where: { id: {[Sequelize.Op.not]:userId} } });
+  const distances = []
+  for (anotherUser of otherUsers) {
+    const {triviaDifference, personalSimilarity} = await calculateDictance(currentUser, anotherUser);
+    const distance = await Distance.upsert({
+      userId: currentUser.id,
+      matchToUserId: anotherUser.id,
+      triviaDifference: Math.round(triviaDifference * 10) / 10,
+      personalSimilarity: personalSimilarity
+    });
+    distances.push(distance);
+  }
+  return distances;
 }
 
 async function calculateDictance(firstUser, secondUser) {
-  await Distance.upsert({
-    userId: firstUser.id,
-    matchToUserId: secondUser.id,
-    triviaDifference: 1/8 + Math.random(), // mock
-    personalSimilarity: secondUser.id + firstUser.id // mock
+  let personalSimilarity;
+  let triviaDifference;
+  if (isBasicMatchPossible(firstUser, secondUser)) {
+    personalSimilarity = await calculatePersonalSimilarity(firstUser.id, secondUser.id);
+    triviaDifference = await calculateTriviaDifference(firstUser.id, secondUser.id);
+  } else {
+    personalSimilarity = -1; // less then minimum
+    triviaDifference = 1; // maximum
+  }
+  return { personalSimilarity, triviaDifference }
+}
+
+function isBasicMatchPossible(firstUser, secondUser){
+  const agesFit = firstUser.age >= secondUser.lookingForMinAge &&
+                  firstUser.age <= secondUser.lookingForMaxAge &&
+                  secondUser.age >= firstUser.lookingForMinAge &&
+                  secondUser.age <= firstUser.lookingForMaxAge;
+
+  const relationsTypeFit = firstUser.lookingForRelationsType === secondUser.lookingForRelationsType;
+
+  let genderFit;
+  if (secondUser.lookingForGender === 'any' && firstUser.lookingForGender === 'any') {
+    genderFit = true;
+  } else {
+    genderFit = firstUser.gender === secondUser.lookingForGender  &&
+                secondUser.gender === firstUser.lookingForGender
+  }
+  // We ignore location and radius for now
+  return agesFit && relationsTypeFit && genderFit;
+}
+
+async function calculateTriviaDifference(firstUserId, secondUserId) {
+  let triviaDifference = 1;
+  const firstUserTriviaAnswers = await getUserTriviaAnswers(firstUserId);
+  const firstUserTriviaAccuracy = calculateTriviaAccuracy(firstUserTriviaAnswers);
+  const secondUserTriviaAnswers = await getUserTriviaAnswers(secondUserId)
+  if (secondUserTriviaAnswers) {
+    triviaDifference = 0;
+    const secondUserTriviaAccuracy = calculateTriviaAccuracy(secondUserTriviaAnswers.dataValues);
+    for (let i = 0; i < TOPICS.length; i++) {
+      triviaDifference += Math.abs(firstUserTriviaAccuracy[i] - secondUserTriviaAccuracy[i])
+    }
+    triviaDifference = triviaDifference / TOPICS.length;
+  }
+  return Math.round(triviaDifference * 10) / 10;
+}
+
+function calculateTriviaAccuracy(UserTriviaAnswers) {
+  const accuracies = []
+  TOPICS.forEach(topic => {
+    const topicAccuracy = UserTriviaAnswers[`${topic}CorrectAnswers`] / (UserTriviaAnswers[`${topic}QuestionsAnswered`] + 1);
+    accuracies.push(Math.round(topicAccuracy * 100) / 100);
   });
+  return accuracies;
 }
 
-async function calculateTriviaDifference(firstUser, secondUser) {
-  // to be updated and used
-  const firstUserTriviaAnswers = getUserTriviaAnswers(firstUser.id)
-  const secondUserTriviaAnswers = getUserTriviaAnswers(secondUser.id)
+async function calculatePersonalSimilarity(firstUserId, secondUserId) {
+  let personalSimilarity = 0;
+  const firstUserPersonalAnswers = await getUserPersonalAnswers(firstUserId);
+  for (firstUserAnswer of firstUserPersonalAnswers) {
+    const secondUserAnswer = await getUserPersonalAnswerToQuestion(secondUserId, firstUserAnswer.questionId)
+    if (secondUserAnswer && secondUserAnswer.dataValues.chosenOption === firstUserAnswer.chosenOption) {
+      personalSimilarity += 1;
+    }
+  }
+  return personalSimilarity;
 }
-
-async function calculatePersonalSimilarity(firstUser, secondUser) {
-  // to be updated and used
-  const firstUserPersonalAnswers = getUserPersonalAnswers(firstUser.id)
-  const secondUserPersonalAnswers = getUserPersonalAnswers(secondUser.id)
-}
-
-
-/*
-  In POST request (when answered enough questions to achieve the heart)
-  we calculate the distances for a userId:
-  - 1) triviaDifference (ASC): Mean difference in % of right answer for each topic
-      For answered Topics:
-      TopicDefference = abs(User1TopicCorrect/User1TopicAnswered - User2TopicCorrect/User2TopicAnswered)
-      triviaDifference = Sum of all TopicsDefferences / Amount of Topics
-  - 2) personalSimilarity (DESK): Amount of same personal answers
-
-  In GET request (when the user presses the heart) for current user
-  we sort the users by: triviaDifference (ASC) and personalSimilarity (DESK)
-  we check IsBasicMatchPossible to TOP-3 (if not, check the next one)
-
-  **** For IsBasicMatchPossible We need to GET Likes and User Info *****
-
-  IsBasicMatchPossible(User1, User2)?
-  There is no info (User1->User2) in Likes table.
-  User1Age >= User2LookingForMinAge &&
-  User1Age <= User2LookingForMaxAge &&
-  User2Age >= User1LookingForMinAge &&
-  User2Age <= User1LookingForMaxAge &&
-  User1LookingForRelationsType === User1LookingForRelationsType &&
-  User1Gender === User2LookingForGender if User2LookingForGender !== 'any' &&
-  User2Gender === User1LookingForGender if User1LookingForGender !== 'any'
-
-  We ignore location and radius for now
-
- */
 
 module.exports = {
   getAllPersonalAnswers,
@@ -116,5 +159,6 @@ module.exports = {
   getUserTriviaAnswers,
   getAllDistances,
   getUserDistances,
-  postUserDistances
+  postUserDistances,
+  postAllUsersDistances
 };
