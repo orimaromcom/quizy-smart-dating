@@ -5,6 +5,7 @@ module.exports = {
     await queryInterface.bulkInsert('Users', [
       {
         username: "Adam",
+        phoneNumber: "+1-234-5678",
         password: "1234",
         age: 30,
         location: "Tel Aviv",
@@ -19,6 +20,7 @@ module.exports = {
       },
       {
         username: "Adi",
+        phoneNumber: "+1-234-5678",
         password: "1234",
         age: 29,
         location: "Tel Aviv",
@@ -33,6 +35,7 @@ module.exports = {
       },
       {
         username: "Abba",
+        phoneNumber: "+1-234-5678",
         password: "1234",
         age: 28,
         location: "Tel Aviv",
@@ -47,6 +50,7 @@ module.exports = {
       },
       {
         username: "Abiram",
+        phoneNumber: "+1-234-5678",
         password: "1234",
         age: 30,
         location: "Tel Aviv",
