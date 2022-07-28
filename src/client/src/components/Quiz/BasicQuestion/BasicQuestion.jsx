@@ -53,7 +53,6 @@ export default function BasicQuestion({
     };
     setAnswersCounter(answersCounter + 1);
     incrementQuestionIndex()
-    const newAnswersArray = [...answersArray, answerObject];
     addAnswer(answerObject)
   
   };

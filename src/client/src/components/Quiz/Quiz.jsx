@@ -26,7 +26,7 @@ export default function Quiz({
       fetchNewQuestions();
     }
     
-  }, [questions]);
+  }, [fetchNewQuestions,questions]);
 
   return (
     <div className="quiz-container">
