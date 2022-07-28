@@ -1,8 +1,6 @@
 import actionTypes from "../actions/constants";
 
-const initialState = {
-  
-};
+const initialState = {};
 
 const questionsEntitiesReducer = (state = initialState, action) => {
   switch (action.type) {

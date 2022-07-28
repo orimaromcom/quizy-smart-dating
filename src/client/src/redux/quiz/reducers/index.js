@@ -1,8 +1,8 @@
 import questionsEntities from "./questions-entities-reducer";
 import { combineReducers } from "redux";
 
-const allReducers = combineReducers({
+const allQuizReducers = combineReducers({
   questionsEntities,
 });
 
-export default allReducers;
+export default allQuizReducers;

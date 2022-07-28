@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Quiz from "./Quiz";
-import { getAllQuestions } from "../../redux/selectors/questions-entities-selectors";
-import { removeQuestion } from "../../redux/actions/remove-question-action";
+import { getAllQuestions } from "../../redux/quiz/selectors/questions-entities-selectors";
+import { removeQuestion } from "../../redux/quiz/actions/remove-question-action";
 
 const mapStateToProps = (state) => {
   const questions = getAllQuestions(state);
- 
+
   return { questions };
 };
 

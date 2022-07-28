@@ -1,5 +1,5 @@
 import actionTypes from "./constants";
-import QuestionsApiService from "../../services/questions-api-service";
+import QuestionsApiService from "../../../services/questions-api-service";
 
 const fetchQuestionsRequestAction = () => ({
   type: actionTypes.FETCH_QUESTIONS_REQUEST,
@@ -19,7 +19,7 @@ export const fetchNewQuestions = () => {
     dispatch(fetchQuestionsRequestAction());
     try {
       const questions = await QuestionsApiService.getQuestions();
-  
+
       dispatch(fetchQuestionsSuccessAction(questions));
     } catch (e) {
       dispatch(fetchQuestionsFailureAction());
