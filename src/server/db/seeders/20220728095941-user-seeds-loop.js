@@ -13,8 +13,11 @@ const amountOfGenders = GENDERS.length;
 const RELATIONS = ["romantic", "friends"]
 const amountOfRalations = RELATIONS.length;
 
-const usersJSON = [];
-   for(let i = 0; i < 500; i++){
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+
+    const usersJSON = [];
+    for(let i = 0; i < 500; i++){
       usersJSON.push({
         username: `${faker.name.firstName()}${randomInt(1, 100)}`,
         phoneNumber: faker.phone.phoneNumber('+972 5# ### ## ##'),
@@ -30,10 +33,7 @@ const usersJSON = [];
         createdAt: new Date(),
         updatedAt: new Date()
       });
-   }
-
-module.exports = {
-  up: async (queryInterface, Sequelize) => {
+    }
     await queryInterface.bulkDelete('Users', null, {}); // delete existing
     await queryInterface.bulkInsert('Users', usersJSON,{});
   },

@@ -2,6 +2,8 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('Questions', null, {}); // delete existing questions
+
     await queryInterface.bulkInsert('Questions', [
       {
         question: "If you and your other significant were at a club, what would the other be doing?",
