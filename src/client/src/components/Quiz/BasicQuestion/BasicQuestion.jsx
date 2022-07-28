@@ -11,7 +11,7 @@ export default function BasicQuestion({
   questionsLength,
   questionIndex,
   setQuestionIndex,
-  USER_ID,
+  MOCK_USER_ID,
   setAnswerObject,
   setAnswersCounter,
   answersCounter,
@@ -19,11 +19,11 @@ export default function BasicQuestion({
   answersArray,
 }) {
   const [options, setOptions] = useState([]);
-  const [chosenOption, setChosenOption] = useState({});
 
   useEffect(() => {
     let questionsArray = [];
-    if (question.option1 !== undefined) {
+    
+    if (question.option1 ) {
       questionsArray = [question.option1, question.option2];
       if (question.option3 && question.option4 !== null) {
         questionsArray = [...questionsArray, question.option3, question.option4];
@@ -32,10 +32,10 @@ export default function BasicQuestion({
     }
   }, [question]);
 
-  useEffect(() => {
+  const optionHandler = (chosenOption) => {
     let answerIsCorrect = null;
     if (question.type === "trivia") {
-      if (question.correctOption === chosenOption.chosenOption) {
+      if (question.correctOption === chosenOption) {
         answerIsCorrect = true;
       } else {
         answerIsCorrect = false;
@@ -43,12 +43,12 @@ export default function BasicQuestion({
     }
 
     const answerObject = {
-      userId: USER_ID,
+      userId: MOCK_USER_ID,
       type: question.type,
       topic: question.topic,
       isCorrect: answerIsCorrect,
       questionId: question.id,
-      chosenOption: chosenOption.chosenOption,
+      chosenOption: chosenOption,
     };
     setAnswerObject(answerObject);
     setAnswersCounter(answersCounter + 1);
@@ -56,12 +56,16 @@ export default function BasicQuestion({
 
     const newAnswersArray = [...answersArray, answerObject];
     setAnswersArray(newAnswersArray);
-  }, [chosenOption]);
+  };
 
   return (
     <div className="question-container">
       <Question text={question.question} />
-      <Options options={options} setChosenOption={setChosenOption} />
+      <Options
+        options={options}
+       
+        optionHandler={optionHandler}
+      />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import "./options.css";
 import Option from "./Option/Option";
 
-export default function Options({ options, setChosenOption }) {
+export default function Options({ options,  optionHandler}) {
   
   return (
     <div className="Options-container">
@@ -11,7 +11,7 @@ export default function Options({ options, setChosenOption }) {
             <Option
               text={option}
               key={index}
-              onClick={() => setChosenOption({ chosenOption: option })}
+              onClick={() => optionHandler(option)/* setChosenOption({ chosenOption: option } */}
             />
           );
       })}
