@@ -40,9 +40,9 @@
 -----
 - getBrainmatesForUser
   - `/brainmates/:id`
-  - **object of 3 arrays ("like", "dislike" or "pending")** of objects with userId, username, gender, age, location bestResultDescription .
-    - If "like" there is also a real phoneNumber.
-    - If "dislike" we can not show the failed brainmate at all.
+  - **object of 3 objects**: "likeBack", "dislikeBack" or "pending" - of objects with userId, username, gender, age, location, bestResultDescription and status.
+    - If "likeBack" there is also a real phoneNumber.
+    - If "dislikeBack" we can not show the failed brainmate at all.
     - If "pending" we can show the card blurred or with *********** instead of phoneNumber.
 -----
 ## POST
