@@ -80,6 +80,7 @@ async function getSuggestionsForUser(userId) {
 async function getMatchingUserInfo(matchingUser) {
 
   const personalInfo = {
+    id: matchingUser.id,
     username: matchingUser.username,
     gender: matchingUser.gender,
     age: matchingUser.age,
@@ -207,5 +208,6 @@ module.exports = {
   getUserDistances,
   postUserDistances,
   postAllUsersDistances,
-  getSuggestionsForUser
+  getSuggestionsForUser,
+  getMatchingUserInfo
 };
