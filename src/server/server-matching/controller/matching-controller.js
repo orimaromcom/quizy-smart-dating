@@ -91,5 +91,7 @@ module.exports = {
   getUserDistances,
   postUserDistances,
   postAllUsersDistances,
-  getSuggestionsForUser
+  getSuggestionsForUser,
+  ErrorIfNaN,
+  ErrorIfNotFound
 };

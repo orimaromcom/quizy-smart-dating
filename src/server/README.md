@@ -30,12 +30,16 @@
   - `/matching/suggestions/:id`
   - **array** of objects with userId, username, gender, age, location, bestResultDescription, amountOfSamePersonalAnswers (for one user)
 -----
+- getIsLikeFromTo
+  - `/brainmates/like/:from/:to`
+  - **true or false** -- if the user with id ":from" likes the user with id ":to" (to check back likes and animate mutual likes when the user swipes suggestions)
+-----
 - getBrainmatesForUser
   - `/brainmates/:id`
   - **array** of objects with userId, username, gender, age, location bestResultDescription, status ("like", "dislike" or "pending").
-    - If "like" there is also phoneNumber.
+    - If "like" there is also a real phoneNumber.
     - If "dislike" we can not show the failed brainmate at all.
-    - If "pending" we can show the card blurred or with \*\*\*\*\*\*\*\*\* instead of phoneNumber.
+    - If "pending" we can show the card blurred or with *********** instead of phoneNumber.
 -----
 ## POST
 ------
