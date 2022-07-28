@@ -9,11 +9,11 @@ module.exports = {
     allUsers.forEach(firstUser => {
       allUsers.forEach(secondUser => {
         if (firstUser.id !== secondUser.id) {
-          if (isBasicMatchPossible(firstUser, secondUser) && Math.random() > 0.7) {
+          if (Math.random() < 0.3 && isBasicMatchPossible(firstUser, secondUser) ) {
             likesJSON.push({
               firstUserId: firstUser.id,
               secondUserId: secondUser.id,
-              firstUserLikesSecondUser: Math.random() > 0.5,
+              firstUserLikesSecondUser: Math.random() < 0.5,
               createdAt: new Date(),
               updatedAt: new Date()
             })
