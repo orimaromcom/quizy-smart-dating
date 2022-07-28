@@ -1,22 +1,16 @@
 import actionTypes from "../actions/constants";
 
 const initialState = {
-  
+  questions: [],
 };
 
 const questionsEntitiesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.FETCH_QUESTIONS_SUCCESS: {
-      const { questions } = action;
-      return { ...questions };
-    }
-
-    case actionTypes.REMOVE_QUESTION_REQUEST: {
-      const { question } = action;
-      const questionsEntities = { ...state };
-      delete questionsEntities[question.id];
-      return questionsEntities;
-    }
+    case actionTypes.FETCH_QUESTIONS_SUCCESS:
+      return {
+        ...state,
+        questions: [...state.questions, ...action.payload],
+      };
 
     default:
       return state;
