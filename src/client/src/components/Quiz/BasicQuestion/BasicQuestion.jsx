@@ -1,6 +1,8 @@
 import "./basic-question.css";
 import Options from "./Options/Options";
 import Question from "./Question/Question";
+
+
 import { useEffect, useState } from "react";
 
 //We need to add loading state
@@ -17,13 +19,15 @@ export default function BasicQuestion({
   answersCounter,
   setAnswersArray,
   answersArray,
+  addAnswer,
+
 }) {
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
     let questionsArray = [];
-    
-    if (question.option1 ) {
+
+    if (question.option1) {
       questionsArray = [question.option1, question.option2];
       if (question.option3 && question.option4 !== null) {
         questionsArray = [...questionsArray, question.option3, question.option4];
@@ -32,7 +36,7 @@ export default function BasicQuestion({
     }
   }, [question]);
 
-  const optionHandler = (chosenOption, question) => {
+  const optionHandler = (chosenOption) => {
     let answerIsCorrect = null;
     if (question.type === "trivia") {
       if (question.correctOption === chosenOption) {
@@ -55,18 +59,15 @@ export default function BasicQuestion({
     setQuestionIndex(questionIndex + 1);
     const newAnswersArray = [...answersArray, answerObject];
     setAnswersArray(newAnswersArray);
-    console.log(answersArray)
+    console.log("in basic question", answerObject)
+    addAnswer(answerObject)
+  
   };
-
 
   return (
     <div className="question-container">
       <Question text={question.question} />
-      <Options
-        options={options}
-        optionHandler={optionHandler}
-        question={question}
-      />
+      <Options options={options} optionHandler={optionHandler}  />
     </div>
   );
 }

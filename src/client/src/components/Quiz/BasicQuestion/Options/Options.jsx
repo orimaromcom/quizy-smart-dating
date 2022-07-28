@@ -12,7 +12,7 @@ export default function Options({ options,  optionHandler,  question}) {
               text={option}
               key={index}
               question={question}
-              onClick={() => optionHandler(option, question)/* setChosenOption({ chosenOption: option } */}
+              onClick={() => optionHandler(option)}
             />
           );
       })}
