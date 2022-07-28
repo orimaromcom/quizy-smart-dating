@@ -1,8 +1,9 @@
+const URL = "http://localhost:8080";
 export default class AchievemntsApiService {
-  static async getAchievemnts(id) {
-    const response = await fetch(`/matching/trivia-answers/${id}`);
-    const questions = await response.json();
+  static async getAchievements(id) {
+    const response = await fetch(`${URL}/matching/trivia-answers/${id}`);
+    const achievements = await response.json();
 
-    return questions;
+    return achievements;
   }
 }

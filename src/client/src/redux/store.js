@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import thunkMiddleware from "redux-thunk";
+import { combineReducers } from "redux";
 import allQuizReducers from "./quiz/reducers";
+import allAchievementsReducers from "./achievements/reducers";
 
 const logger = (store) => (next) => (action) => {
   console.log("Dispatching", action);
@@ -9,8 +11,13 @@ const logger = (store) => (next) => (action) => {
   return result;
 };
 
+const allReducers = combineReducers({
+  allQuizReducers,
+  allAchievementsReducers,
+});
+
 export const store = configureStore({
-  reducer: allQuizReducers,
+  reducer: allReducers,
   middleware: [thunkMiddleware, logger],
   preloadedState: {},
 });

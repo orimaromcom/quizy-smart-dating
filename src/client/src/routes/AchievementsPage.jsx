@@ -1,10 +1,10 @@
 import Page from "../components/Page/Page";
-import Achievements from "../components/Achievements/Achievements";
+import AchievementsConnector from "../components/Achievements/achievements-connector";
 
 export default function AchievementsPage() {
   return (
     <Page>
-      <Achievements />
+      <AchievementsConnector />
     </Page>
   );
 }
