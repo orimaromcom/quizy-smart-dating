@@ -20,7 +20,7 @@
 ------
 - getUserAchievements
   - `/matching/achievements/:id`
-  - **object** with userId, Topic: {CorrectAnswers, QuestionsAnswered} for all the topics (for one user)
+  - **object** with userId, Topic: [CorrectAnswers, QuestionsAnswered] for all the topics (for one user)
 ------
 - getAllDistances
   - `/matching/distances`
