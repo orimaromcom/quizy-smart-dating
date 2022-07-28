@@ -1,7 +1,6 @@
 import "./quiz.css";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
-import AnswersApiService from "../../services/answers-api-service";
 import { useEffect, useState } from "react";
 
 export default function Quiz({

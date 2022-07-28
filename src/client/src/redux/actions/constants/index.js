@@ -3,7 +3,6 @@ const QUIZ_ACTIONS = {
   FETCH_QUESTIONS_SUCCESS: "fetch_questions_success",
   FETCH_QUESTIONS_FAILURE: "fetch_questions_failure",
 
-  REMOVE_QUESTION_REQUEST: "remove_question_request",
   INCREMENT_QUESTION_INDEX: "INCREMENT_QUESTION_INDEX",
   ADD_ANSWER: "add_answer",
 };
