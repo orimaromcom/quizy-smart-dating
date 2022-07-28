@@ -32,7 +32,7 @@ export default function BasicQuestion({
     }
   }, [question]);
 
-  const optionHandler = (chosenOption) => {
+  const optionHandler = (chosenOption, question) => {
     let answerIsCorrect = null;
     if (question.type === "trivia") {
       if (question.correctOption === chosenOption) {
@@ -53,18 +53,19 @@ export default function BasicQuestion({
     setAnswerObject(answerObject);
     setAnswersCounter(answersCounter + 1);
     setQuestionIndex(questionIndex + 1);
-
     const newAnswersArray = [...answersArray, answerObject];
     setAnswersArray(newAnswersArray);
+    console.log(answersArray)
   };
+
 
   return (
     <div className="question-container">
       <Question text={question.question} />
       <Options
         options={options}
-       
         optionHandler={optionHandler}
+        question={question}
       />
     </div>
   );

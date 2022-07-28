@@ -4,8 +4,7 @@ import BrainmatesPage from "./routes/BrainmatesPage";
 import AchievementsPage from "./routes/AchievementsPage";
 import ProfilePage from "./routes/ProfilePage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useEffect } from "react";
-import LayoutConnector from "./components/Layout/layout-connector.js";
+import Layout from "./components/Layout/Layout";
 
 const theme = createTheme({
   palette: {
@@ -28,7 +27,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LayoutConnector />}>
+          <Route path="/" element={<Layout />}>
             <Route path="quiz" element={<QuizPage />} />
             <Route path="brainmates" element={<BrainmatesPage />} />
             <Route path="achievements" element={<AchievementsPage />} />

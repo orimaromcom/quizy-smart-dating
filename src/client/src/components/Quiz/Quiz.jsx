@@ -4,7 +4,7 @@ import ProgressBar from "./ProgressBar/ProgressBar";
 import AnswersApiService from "../../services/answers-api-service";
 import { useEffect, useState } from "react";
 
-export default function Quiz({ questions, MOCK_USER_ID }) {
+export default function Quiz({ fetchNewQuestions, questions, MOCK_USER_ID }) {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [question, setQuestion] = useState(questions[0]);
   const [answerObject, setAnswerObject] = useState({});
@@ -12,28 +12,24 @@ export default function Quiz({ questions, MOCK_USER_ID }) {
   const [answersCounter, setAnswersCounter] = useState(0);
 
   useEffect(() => {
-  
-    setQuestion(questions[questionIndex]);
+    fetchNewQuestions();
 
+    // AnswersApiService.postAnswers(answersArray);
     //once progress bar is full
 
-    if (answersCounter === 10) {
-      AnswersApiService.postAnswers(answersArray);
+    //TODO post distances
+    //TODO pop up ***play again** or go to **heart button in brainmates**
+    //When pressed play again, load more questions
+  }, []);
 
-      //TODO post distances
-      //TODO pop up ***play again** or go to **heart button in brainmates**
-      //When pressed play again, load more questions
-
-      setAnswersCounter(0);
-      setAnswersArray([]);
-    }
-  }, [questions, questionIndex, answerObject, answersCounter, answersArray]);
+  
+  
 
   return (
     <div className="quiz-container">
-      <ProgressBar progressPercentage={(answersCounter / questions.length) * 100 + 10} />
+      <ProgressBar progressPercentage={(answersCounter / questions.length) * 100 } />
       <BasicQuestion
-        question={question ? question : ""}
+        question={questions[questionIndex] ? questions[questionIndex] : ""}
         questionsLength={questions.length}
         questionIndex={questionIndex}
         setQuestionIndex={setQuestionIndex}
@@ -43,6 +39,7 @@ export default function Quiz({ questions, MOCK_USER_ID }) {
         answersCounter={answersCounter}
         setAnswersArray={setAnswersArray}
         answersArray={answersArray}
+       
       />
       <button
         onClick={() => {
