@@ -1,4 +1,5 @@
 const brainmatesManager = require("../services/brainmates-manager");
+const { ErrorIfNaN, ErrorIfNotFound } = require("../../server-matching/controller/matching-controller");
 
 
 async function postUserLike(req, res) {
@@ -15,25 +16,22 @@ async function getBrainmatesForUser(req, res) {
   res.status(200).json(brainmates);
 }
 
-function ErrorIfNaN(id) {
-  if (isNaN(id)) {
-    const error = Error()
-    error.statusCode = 400;
-    error.message = 'Id should be a number';
-    throw error;
+async function getIsLikeFromTo(req, res) {
+  let likeFromUserId = Number.parseInt(req.params.from);
+  let likeToUserId = Number.parseInt(req.params.to);
+  ErrorIfNaN(likeFromUserId);
+  ErrorIfNaN(likeToUserId);
+  let isLikeFromTo;
+  try {
+    isLikeFromTo = await brainmatesManager.getIsLikeFromTo(likeFromUserId, likeToUserId);
+  } catch (error) {
+    isLikeFromTo = false;
   }
-}
-
-function ErrorIfNotFound(item) {
-  if (!item) {
-    const error = Error()
-    error.statusCode = 404;
-    error.message = 'Not found';
-    throw error;
-  }
+  res.status(200).json(isLikeFromTo);
 }
 
 module.exports = {
   postUserLike,
-  getBrainmatesForUser
+  getBrainmatesForUser,
+  getIsLikeFromTo
 };

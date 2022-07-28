@@ -23,28 +23,31 @@ async function getBrainmatesForUser(userId) {
   for (like of likes) {
     const brainmate = like.User;
     const brainmateInfo = await getMatchingUserInfo(brainmate);
-    const likeBackInfo = await Like.findOne({
-      where: {
-        firstUserId: like.secondUserId,
-        secondUserId: userId,
-      }
-    });
-    if (likeBackInfo) {
-      if (likeBackInfo.firstUserLikesSecondUser) {
-        brainmateInfo.status = 'like';
-        brainmateInfo.phoneNumber = brainmate.phoneNumber
-      } else {
-        brainmateInfo.status = 'dislike';
-      }
-    } else {
+    try {
+      const likeBack = await getIsLikeFromTo(like.secondUserId, userId)
+      brainmateInfo.status = likeBack ? 'like' : 'dislike';
+      brainmateInfo.phoneNumber = likeBack ? brainmate.phoneNumber : '*********';
+    } catch (error) {
       brainmateInfo.status = 'pending';
+      brainmateInfo.phoneNumber = '*********';
     }
     brainmates.push(brainmateInfo);
   }
   return brainmates;
 }
 
+async function getIsLikeFromTo(likeFromUserId, likeToUserId){
+  const likeInfo = await Like.findOne({
+    where: {
+      firstUserId: likeFromUserId,
+      secondUserId: likeToUserId,
+    }
+  });
+  return likeInfo.firstUserLikesSecondUser;
+}
+
 module.exports = {
   postUserLike,
-  getBrainmatesForUser
+  getBrainmatesForUser,
+  getIsLikeFromTo
 };
