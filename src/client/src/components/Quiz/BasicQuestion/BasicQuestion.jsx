@@ -11,7 +11,7 @@ export default function BasicQuestion({
   questionsLength,
   questionIndex,
   setQuestionIndex,
-  SOME_USER_ID,
+  USER_ID,
   setAnswerObject,
   setAnswersCounter,
   answersCounter,
@@ -43,7 +43,7 @@ export default function BasicQuestion({
     }
 
     const answerObject = {
-      userId: SOME_USER_ID,
+      userId: USER_ID,
       type: question.type,
       topic: question.topic,
       isCorrect: answerIsCorrect,

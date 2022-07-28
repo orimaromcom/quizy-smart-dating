@@ -4,10 +4,9 @@ import ProgressBar from "./ProgressBar/ProgressBar";
 import AnswersApiService from "../../services/answers-api-service";
 import { useEffect, useState } from "react";
 
-const SOME_USER_ID = 1;
-const POST_ANSWERS_AFTER_NUMBER = 3;
+const POST_ANSWERS_AFTER_NUMBER = 10;
 
-export default function Quiz({ questions}) {
+export default function Quiz({ questions , USER_ID}) {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [question, setQuestion] = useState(questions[0]);
   const [answerObject, setAnswerObject] = useState({});
@@ -16,23 +15,25 @@ export default function Quiz({ questions}) {
 
   useEffect(() => {
     setQuestion(questions[questionIndex]);
-   
-     if (answersCounter >= POST_ANSWERS_AFTER_NUMBER) {
+
+    if (answersCounter > POST_ANSWERS_AFTER_NUMBER) {
       AnswersApiService.postAnswers(answersArray);
       setAnswersCounter(0);
       setAnswersArray([]);
-    } 
-  }, [questions,  questionIndex, answerObject, answersCounter, answersArray ]);
+    }
+  }, [questions, questionIndex, answerObject, answersCounter, answersArray]);
 
   return (
     <div className="quiz-container">
-      <ProgressBar progressPercentage={answersCounter * 30} />
+      <ProgressBar
+        progressPercentage={(answersCounter / POST_ANSWERS_AFTER_NUMBER) * 100}
+      />
       <BasicQuestion
         question={question ? question : ""}
         questionsLength={questions.length}
         questionIndex={questionIndex}
         setQuestionIndex={setQuestionIndex}
-        SOME_USER_ID={SOME_USER_ID}
+        USER_ID={USER_ID}
         setAnswerObject={setAnswerObject}
         setAnswersCounter={setAnswersCounter}
         answersCounter={answersCounter}

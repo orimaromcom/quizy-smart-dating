@@ -2,7 +2,9 @@ import Navbar from "../Navbar/Navbar";
 import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
 
-export default function Layout({ fetchNewQuestions }) {
+const USER_ID = 1;
+
+export default function Layout({ fetchNewQuestions, USER_ID }) {
   useEffect(() => {
     fetchNewQuestions();
   }, []);
