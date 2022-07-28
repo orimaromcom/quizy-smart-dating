@@ -80,7 +80,7 @@ async function getSuggestionsForUser(userId) {
 async function getMatchingUserInfo(matchingUser) {
 
   const personalInfo = {
-    id: matchingUser.id,
+    userId: matchingUser.id,
     username: matchingUser.username,
     gender: matchingUser.gender,
     age: matchingUser.age,
