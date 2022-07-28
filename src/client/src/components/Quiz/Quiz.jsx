@@ -4,25 +4,30 @@ import ProgressBar from "./ProgressBar/ProgressBar";
 import AnswersApiService from "../../services/answers-api-service";
 import { useEffect, useState } from "react";
 
-export default function Quiz({ fetchNewQuestions, questions, MOCK_USER_ID , answers, addAnswer}) {
+export default function Quiz({
+  fetchNewQuestions,
+  questions,
+  MOCK_USER_ID,
+  answers,
+  addAnswer,
+}) {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [question, setQuestion] = useState(questions[0]);
   const [answerObject, setAnswerObject] = useState({});
   const [answersArray, setAnswersArray] = useState([]);
   const [answersCounter, setAnswersCounter] = useState(0);
 
+  // AnswersApiService.postAnswers(answersArray);
+  //once progress bar is full
 
-    // AnswersApiService.postAnswers(answersArray);
-    //once progress bar is full
-
-    //TODO post distances
-    //TODO pop up ***play again** or go to **heart button in brainmates**
-    //When pressed play again, load more questions
+  //TODO post distances
+  //TODO pop up ***play again** or go to **heart button in brainmates**
+  //When pressed play again, load more questions
 
   useEffect(() => {
     fetchNewQuestions();
   }, []);
-  console.log("In quiz",answers)
+  console.log("In quiz", answers);
 
   return (
     <div className="quiz-container">
