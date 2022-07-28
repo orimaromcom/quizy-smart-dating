@@ -8,8 +8,8 @@ module.exports = {
     const allUsers = await User.findAll();
     allUsers.forEach(firstUser => {
       allUsers.forEach(secondUser => {
-        if (firstUser.id !== secondUser.id && (firstUser.id + secondUser.id) % 3 === 0) { // for every 3rd user
-          if (isBasicMatchPossible(firstUser, secondUser)) {
+        if (firstUser.id !== secondUser.id) {
+          if (isBasicMatchPossible(firstUser, secondUser) && Math.random() > 0.7) {
             likesJSON.push({
               firstUserId: firstUser.id,
               secondUserId: secondUser.id,
