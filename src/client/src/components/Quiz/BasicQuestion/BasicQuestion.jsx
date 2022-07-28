@@ -11,15 +11,12 @@ import { useEffect, useState } from "react";
 export default function BasicQuestion({
   question,
   questionsLength,
-  questionIndex,
-  setQuestionIndex,
   MOCK_USER_ID,
-  setAnswerObject,
   setAnswersCounter,
   answersCounter,
-  setAnswersArray,
   answersArray,
   addAnswer,
+  incrementQuestionIndex,
 
 }) {
   const [options, setOptions] = useState([]);
@@ -54,12 +51,9 @@ export default function BasicQuestion({
       questionId: question.id,
       chosenOption: chosenOption,
     };
-    setAnswerObject(answerObject);
     setAnswersCounter(answersCounter + 1);
-    setQuestionIndex(questionIndex + 1);
+    incrementQuestionIndex()
     const newAnswersArray = [...answersArray, answerObject];
-    setAnswersArray(newAnswersArray);
-    console.log("in basic question", answerObject)
     addAnswer(answerObject)
   
   };

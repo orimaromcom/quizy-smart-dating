@@ -6,7 +6,6 @@ const addAnswerAction = (answer) => ({
 
 export const addAnswer = (answer) => {
   return async (dispatch) => {
-    console.log("In action")
     dispatch(addAnswerAction(answer));
   };
 };
