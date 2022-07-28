@@ -35,8 +35,6 @@ module.exports = {
         updatedAt: new Date()
       })
     });
-
-    await queryInterface.bulkDelete('TriviaAnswers', null, {}); // delete existing
     await queryInterface.bulkInsert('TriviaAnswers', triviaAnswersJSON, {});
   },
 
