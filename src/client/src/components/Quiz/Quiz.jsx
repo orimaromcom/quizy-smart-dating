@@ -29,6 +29,7 @@ export default function Quiz({ questions}) {
       <ProgressBar progressPercentage={answersCounter * 30} />
       <BasicQuestion
         question={question ? question : ""}
+        questionsLength={questions.length}
         questionIndex={questionIndex}
         setQuestionIndex={setQuestionIndex}
         SOME_USER_ID={SOME_USER_ID}

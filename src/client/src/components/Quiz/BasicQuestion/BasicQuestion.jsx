@@ -3,14 +3,12 @@ import Options from "./Options/Options";
 import Question from "./Question/Question";
 import { useEffect, useState } from "react";
 
-//We need to think here on better logic maybe bu this works
 //We need to add loading state
 //TODO decide what action to take once the index reaches the end of q array
 
-const CURRENT_NUMBER_OF_QUESTIONS = 82;
-
 export default function BasicQuestion({
   question,
+  questionsLength,
   questionIndex,
   setQuestionIndex,
   SOME_USER_ID,
@@ -24,9 +22,13 @@ export default function BasicQuestion({
   const [chosenOption, setChosenOption] = useState({});
 
   useEffect(() => {
-    setOptions([question.option1, question.option2, question.option3, question.option4]);
-    if (question.option3 == null) {
-      setOptions([question.option1, question.option2]);
+    let questionsArray = [];
+    if (question.option1 !== undefined) {
+      questionsArray = [question.option1, question.option2];
+      if (question.option3 && question.option4 !== null) {
+        questionsArray = [...questionsArray, question.option3, question.option4];
+      }
+      setOptions(questionsArray);
     }
   }, [question]);
 
