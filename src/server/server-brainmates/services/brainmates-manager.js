@@ -21,19 +21,25 @@ async function getBrainmatesForUser(userId) {
     include: User
   });
   for (like of likes) {
-    const likeBack = await Like.findOne({
+    const brainmate = like.User;
+    const brainmateInfo = await getMatchingUserInfo(brainmate);
+    const likeBackInfo = await Like.findOne({
       where: {
         firstUserId: like.secondUserId,
         secondUserId: userId,
-        firstUserLikesSecondUser: true
       }
     });
-    if (likeBack) {
-      const brainmate = like.User;
-      const brainmateInfo = await getMatchingUserInfo(brainmate);
-      brainmateInfo.phoneNumber = brainmate.phoneNumber
-      brainmates.push(brainmateInfo);
+    if (likeBackInfo) {
+      if (likeBackInfo.firstUserLikesSecondUser) {
+        brainmateInfo.status = 'like';
+        brainmateInfo.phoneNumber = brainmate.phoneNumber
+      } else {
+        brainmateInfo.status = 'dislike';
+      }
+    } else {
+      brainmateInfo.status = 'pending';
     }
+    brainmates.push(brainmateInfo);
   }
   return brainmates;
 }
