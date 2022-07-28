@@ -18,6 +18,10 @@
   - `/matching/trivia-answers/:id`
   - **object** with userId, {Topic}CorrectAnswers, {Topic}QuestionsAnswered for all the topics (for one user)
 ------
+- getUserAchievements
+  - `/matching/achievements/:id`
+  - **object** with userId, Topic: {CorrectAnswers, QuestionsAnswered} for all the topics (for one user)
+------
 - getAllDistances
   - `/matching/distances`
   - **array** of objects with userId,matchToUserId, triviaDifference, personalSimilarity (for all users)
