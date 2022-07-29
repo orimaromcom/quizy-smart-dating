@@ -6,7 +6,8 @@ import Achievement from "./Achievement/Achievement";
 export default function Achievements({ achievements, fetcAchievements }) {
   //temp: we should load globaly
   useEffect(() => {
-    if (!achievements.length) fetcAchievements(1);
+    console.log(achievements);
+    if (!achievements) fetcAchievements(1);
   }, []);
 
   return (

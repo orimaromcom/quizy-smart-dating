@@ -1,4 +1,4 @@
-const getAchievementsEntities = (state) => state.achievements;
+const getAchievementsEntities = (state) => state.achievementsEntities;
 
 export const getAllAchievements = (state) =>
-  getAchievementsEntities(state).answers;
+  getAchievementsEntities(state).achievements;

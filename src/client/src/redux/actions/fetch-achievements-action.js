@@ -7,7 +7,7 @@ const fetchAchievementsRequestAction = () => ({
 
 const fetchAchievementsSuccessAction = (achievements) => ({
   type: actionTypes.FETCH_ACHIEVEMENTS_SUCCESS,
-  achievements,
+  payload: achievements,
 });
 
 const fetchAchievementsFailureAction = () => ({
