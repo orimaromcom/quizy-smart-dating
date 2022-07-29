@@ -53,7 +53,7 @@
 ----
 - postAllUsersDistances
   - `/matching/postdistances`
-  - we do not call it from client, it is a developers' endpoint
+  - **do not call it from client**, it is a developers' endpoint. And better do not call it when there are 500 users in db. It is not a real app case.
 -----
 - postUserLike
   - `/brainmates/like`
