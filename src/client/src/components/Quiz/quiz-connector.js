@@ -5,7 +5,7 @@ import { getAllQuestions, getQuestionIndex } from "../../redux/selectors/questio
 import { fetchNewQuestions } from "../../redux/actions/fetch-questions-action";
 import {incrementQuestionIndex} from "../../redux/actions/increment-questions-index-actions"
 import { getAllAnswers } from "../../redux/selectors/answers-entities-selector"
-import { addAnswer } from "../../redux/actions/answers-actions";
+import { addAnswer } from "../../redux/actions/add-answer-action";
 
 const mapStateToProps = (state) => {
   const questions = getAllQuestions(state);
