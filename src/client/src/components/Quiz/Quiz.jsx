@@ -16,9 +16,6 @@ export default function Quiz({
   questionsLoading,
   clearAnswersArray,
 }) {
-  // AnswersApiService.postAnswers(answersArray);
-  //once progress bar is full
-
   //TODO post distances
   //TODO pop up ***play again** or go to **heart button in brainmates**
   //When pressed play again, load more questions
