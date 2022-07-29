@@ -25,6 +25,7 @@ async function getBrainmatesForUser(userId) {
   for (like of likes) {
     const brainmate = like.User;
     const brainmateInfo = await getMatchingUserInfo(brainmate);
+    brainmateInfo.picture = randomPicture();
     try {
       const likeBack = await getIsLikeFromTo(like.secondUserId, userId)
       brainmateInfo.status = likeBack ? 'likeBack' : 'dislikeBack';
@@ -62,6 +63,15 @@ async function getIsLikeFromTo(likeFromUserId, likeToUserId){
     }
   });
   return likeInfo.firstUserLikesSecondUser;
+}
+
+const PICTURES = [
+  'https://skazki.land/api/get-resized-image/slonik-586f1.jpg?width=1024&height=1024&fit=inside',
+  'https://flomaster.club/uploads/posts/2021-11/1636724510_1-flomaster-club-p-slonik-raskraska-dlya-detei-krasivie-1.png',
+  'https://w7.pngwing.com/pngs/338/277/png-transparent-elephant-joke-elephant-in-the-room-child-elephant-s-cartoon-child-mammal-carnivoran.png'
+]
+function randomPicture() {
+  return PICTURES[[Math.floor(Math.random() * PICTURES.length)]]
 }
 
 module.exports = {

@@ -224,4 +224,5 @@ module.exports = {
   postAllUsersDistances,
   getSuggestionsForUser,
   getMatchingUserInfo,
+  isBasicMatchPossible
 };
