@@ -13,6 +13,8 @@ export default function BasicQuestion({
   addAnswer,
   incrementQuestionIndex,
   incrementAnswersIndex,
+  questions,
+  answersArray,
 }) {
   const [options, setOptions] = useState([]);
 
@@ -48,7 +50,8 @@ export default function BasicQuestion({
     };
     incrementAnswersIndex();
     incrementQuestionIndex();
-    addAnswer(answerObject);
+
+    addAnswer(answerObject, answersArray, questions);
   };
 
   return (

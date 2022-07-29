@@ -19,23 +19,34 @@ export default function Quiz({
   //TODO post distances
   //TODO pop up ***play again** or go to **heart button in brainmates**
   //When pressed play again, load more questions
+  const isFinished = answersArray.length === questions.length && answersArray.length;
   useEffect(() => {
     if (!questions.length) {
       fetchNewQuestions();
     }
-  }, [fetchNewQuestions, questions]);
+    if (isFinished) {
+      console.log("you should do actions now");
+      console.log("you should send answers to backend");
+      console.log("you should remove answers once succeeded");
+      console.log("you should remove questions once succeeded");
+      console.log("you should remove pop up the heart page");
+    }
+  }, [fetchNewQuestions, questions, answersArray]);
 
   return (
     <div className="quiz-container">
-      <ProgressBar progressPercentage={((questionIndex +1) / questions.length) * 100} />
-      <BasicQuestion
-        question={questions[questionIndex] ? questions[questionIndex] : ""}
-        MOCK_USER_ID={MOCK_USER_ID}
-        incrementAnswersIndex={incrementAnswersIndex}
-        answersArray={answersArray}
-        addAnswer={addAnswer}
-        incrementQuestionIndex={incrementQuestionIndex}
-      />
+      <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
+      {!isFinished ? (
+        <BasicQuestion
+          question={questions[questionIndex] ? questions[questionIndex] : ""}
+          MOCK_USER_ID={MOCK_USER_ID}
+          incrementAnswersIndex={incrementAnswersIndex}
+          answersArray={answersArray}
+          addAnswer={addAnswer}
+          incrementQuestionIndex={incrementQuestionIndex}
+          questionIndex={questionIndex}
+        />
+      ) : null}
     </div>
   );
 }

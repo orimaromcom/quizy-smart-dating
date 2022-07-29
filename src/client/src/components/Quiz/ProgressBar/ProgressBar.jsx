@@ -8,7 +8,7 @@ export default function ProgressBar({ progressPercentage }) {
       <LinearProgress
         className="progress-bar"
         variant="determinate"
-        value={progressPercentage}
+        value={progressPercentage || 0}
       />
       <FavoriteIcon className="heart-icon" color={"primary"} />
     </Box>
