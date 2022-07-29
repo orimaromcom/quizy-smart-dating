@@ -1,8 +1,13 @@
 import "./heart.css";
+import Quote from "../Quote/Quote";
 
-export default function Heart({}) {
+export default function Heart({ quote }) {
   return (
-          <div className="heart">rtdetudeu</div>
+    <div>
+      <div className="heart"></div>
+      <div >{quote.quote}</div>
 
+      <div >{quote.author}</div>
+    </div>
   );
 }

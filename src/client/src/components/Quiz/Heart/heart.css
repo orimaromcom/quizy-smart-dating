@@ -1,7 +1,8 @@
 .heart {
   background: red;
-  position: relative;
+  position: absolute;
   top: 30%;
+  right: 45%;
   height: 100px;
   width: 100px;
   /* Animation */

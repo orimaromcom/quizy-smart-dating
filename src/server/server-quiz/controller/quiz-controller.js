@@ -7,6 +7,13 @@ async function getAllQuestions(req, res) {
   res.status(200).json(questions);
 }
 
+async function getRandomQuote(req, res) {
+  let quote = await quizManager.getRandomQuote();
+  if (!quote) quote = [];
+  res.status(200).json(quote);
+
+}
+
 async function postAnswer(req, res) {
   const answersArray = req.body.answersArray;
 
@@ -17,4 +24,5 @@ async function postAnswer(req, res) {
 module.exports = {
   getAllQuestions,
   postAnswer,
+  getRandomQuote,
 };
