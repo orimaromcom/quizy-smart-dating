@@ -1,6 +1,7 @@
 import "./quiz.css";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
+import Heart from "./Heart/Heart";
 import AnswersApiService from "../../services/answers-api-service";
 import { useEffect } from "react";
 
@@ -19,14 +20,13 @@ export default function Quiz({
   //TODO post distances
   //TODO pop up ***play again** or go to **heart button in brainmates**
   //When pressed play again, load more questions
-  const isFinished = answersArray.length && answersArray.length === questions.length;
+  const isFinished = questions.length && answersArray.length === questions.length;
   useEffect(() => {
     if (!questions.length) {
       fetchNewQuestions();
     }
     if (isFinished) {
       AnswersApiService.postAnswers(answersArray);
-      clearAnswersArray();
       console.log("you should remove questions once succeeded");
       console.log("you should remove pop up the heart page");
     }
@@ -40,7 +40,7 @@ export default function Quiz({
         : console.log("stop loader")}
       {!isFinished ? (
         <BasicQuestion
-          question={questions[questionIndex] ? questions[questionIndex] : ""}
+          question={questions[questionIndex] ? questions[questionIndex] : "aaaaa"}
           MOCK_USER_ID={MOCK_USER_ID}
           incrementAnswersIndex={incrementAnswersIndex}
           answersArray={answersArray}
@@ -48,8 +48,10 @@ export default function Quiz({
           incrementQuestionIndex={incrementQuestionIndex}
           questionIndex={questionIndex}
         />
-      ) : console.log(answersArray, answersArray)}
+      ) : (<Heart/>)}
   
+    
+      
     </div>
   );
 }
