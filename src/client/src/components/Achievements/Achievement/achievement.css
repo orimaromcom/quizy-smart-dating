@@ -1,0 +1,15 @@
+.achievement-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    width: 80%;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.achievement-chip{
+    min-width: 30%;
+}
+

@@ -1,45 +1,48 @@
 import "./quiz.css";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
-import AnswersApiService from "../../services/answers-api-service";
 import { useEffect, useState } from "react";
 
-const SOME_USER_ID = 1;
-const POST_ANSWERS_AFTER_NUMBER = 3;
-
-export default function Quiz({ questions, removeQuestion }) {
-  const [questionIndex, setQuestionIndex] = useState(0);
-  const [question, setQuestion] = useState(questions[questionIndex]);
-  const [answerObject, setAnswerObject] = useState({});
-  const [answersArray, setAnswersArray] = useState([]);
+export default function Quiz({
+  fetchNewQuestions,
+  questions,
+  MOCK_USER_ID,
+  answersArray,
+  addAnswer,
+  questionIndex,
+  incrementQuestionIndex,
+}) {
   const [answersCounter, setAnswersCounter] = useState(0);
 
+  // AnswersApiService.postAnswers(answersArray);
+  //once progress bar is full
+
+  //TODO post distances
+  //TODO pop up ***play again** or go to **heart button in brainmates**
+  //When pressed play again, load more questions
   useEffect(() => {
-    setQuestion(questions[questionIndex]);
-    if (answersCounter >= POST_ANSWERS_AFTER_NUMBER) {
-      AnswersApiService.postAnswers(answersArray);
-      setAnswersCounter(0);
-      setAnswersArray([]);
+    if (!questions.length){
+      fetchNewQuestions();
     }
-  }, [questions, questionIndex, answerObject, answersCounter, answersArray]);
+    
+  }, [fetchNewQuestions,questions]);
 
   return (
     <div className="quiz-container">
-      <ProgressBar progressPercentage={answersCounter * 30} />
+      <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
       <BasicQuestion
-        question={question ? question : ""}
-        questionIndex={questionIndex}
-        setQuestionIndex={setQuestionIndex}
-        SOME_USER_ID={SOME_USER_ID}
-        setAnswerObject={setAnswerObject}
+        question={questions[questionIndex] ? questions[questionIndex] : ""}
+        questionsLength={questions.length}
+        MOCK_USER_ID={MOCK_USER_ID}
         setAnswersCounter={setAnswersCounter}
         answersCounter={answersCounter}
-        setAnswersArray={setAnswersArray}
         answersArray={answersArray}
+        addAnswer={addAnswer}
+        incrementQuestionIndex={incrementQuestionIndex}
       />
       <button
         onClick={() => {
-          removeQuestion(question);
+          incrementQuestionIndex();
         }}
       >
         skip

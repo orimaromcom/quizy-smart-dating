@@ -7,7 +7,7 @@ const fetchQuestionsRequestAction = () => ({
 
 const fetchQuestionsSuccessAction = (questions) => ({
   type: actionTypes.FETCH_QUESTIONS_SUCCESS,
-  questions,
+  payload: questions,
 });
 
 const fetchQuestionsFailureAction = () => ({
@@ -19,7 +19,7 @@ export const fetchNewQuestions = () => {
     dispatch(fetchQuestionsRequestAction());
     try {
       const questions = await QuestionsApiService.getQuestions();
-  
+
       dispatch(fetchQuestionsSuccessAction(questions));
     } catch (e) {
       dispatch(fetchQuestionsFailureAction());

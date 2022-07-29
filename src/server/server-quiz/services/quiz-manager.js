@@ -4,12 +4,14 @@ const triviaClient = require("../clients/trivia-client");
 
 async function getAllQuestions() {
   const personalQuestions = await Question.findAll();
+  shuffleOptions(personalQuestions);
+  const slicedArray = personalQuestions.slice(0, 4)
 
   const triviaQuestions = await triviaClient.fetchMultipleTopics(urlArray);
 
   const quizyTriviaQuestions = changeQuestionsStructure(triviaQuestions);
 
-  const questions = [...personalQuestions, ...quizyTriviaQuestions];
+  const questions = [...slicedArray, ...quizyTriviaQuestions];
   shuffleOptions(questions);
   return questions;
 }

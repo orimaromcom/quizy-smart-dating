@@ -12,7 +12,9 @@ async function postUserLike(firstUserId, secondUserId, firstUserLikesSecondUser)
 }
 
 async function getBrainmatesForUser(userId) {
-  const brainmates = [];
+  const likeBack = [];
+  const pending = [];
+  const dislikeBack = [];
   const likes = await Like.findAll({
     where: {
       firstUserId: userId,
@@ -25,15 +27,31 @@ async function getBrainmatesForUser(userId) {
     const brainmateInfo = await getMatchingUserInfo(brainmate);
     try {
       const likeBack = await getIsLikeFromTo(like.secondUserId, userId)
-      brainmateInfo.status = likeBack ? 'like' : 'dislike';
-      brainmateInfo.phoneNumber = likeBack ? brainmate.phoneNumber : '*********';
+      brainmateInfo.status = likeBack ? 'likeBack' : 'dislikeBack';
     } catch (error) {
       brainmateInfo.status = 'pending';
-      brainmateInfo.phoneNumber = '*********';
     }
-    brainmates.push(brainmateInfo);
+    switch (brainmateInfo.status) {
+      case 'likeBack':
+        brainmateInfo.phoneNumber = brainmate.phoneNumber;
+        likeBack.push(brainmateInfo);
+        break;
+      case 'pending':
+        brainmateInfo.phoneNumber = '*********';
+        pending.push(brainmateInfo);
+
+        break;
+      case 'dislikeBack':
+        brainmateInfo.phoneNumber = '*********';
+        dislikeBack.push(brainmateInfo);
+        break;
+    }
   }
-  return brainmates;
+  return {
+    likeBack: likeBack,
+    pending: pending,
+    dislikeBack: dislikeBack
+  };
 }
 
 async function getIsLikeFromTo(likeFromUserId, likeToUserId){

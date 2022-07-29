@@ -1,9 +1,4 @@
-import { createSelector } from "reselect";
-
 const getQuestionsEntities = (state) => state.questionsEntities;
 
-const getQuestions = (state) => Object.values(getQuestionsEntities(state));
-
-export const getAllQuestions = createSelector(getQuestions, (questions) => {
-  return questions;
-});
+export const getAllQuestions = (state) => getQuestionsEntities(state).questions;
+export const getQuestionIndex = (state) => getQuestionsEntities(state).questionIndex;
