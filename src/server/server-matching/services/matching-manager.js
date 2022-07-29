@@ -78,19 +78,48 @@ async function getSuggestionsForUser(userId) {
 async function findSuggestion(userId, distances, index, incrementValue) {
   let continueSearch = true;
   let distance;
+  let likeBack;
   while (continueSearch && index >= 0 && index < distances.length) {
     distance = distances[index];
-    continueSearch = await Like.findOne({ // already liked or disliked this user
-      where: {
-        firstUserId: userId,
-        secondUserId: distance.secondUserId
-      }
-    })
+    const [likeOrDislikeBack, alreadyLikedOrDisliked] = await checkLikes(userId, distance.secondUserId);
+    if (likeOrDislikeBack) {
+      likeBack = likeOrDislikeBack.firstUserLikesSecondUser;
+      continueSearch = !likeBack || alreadyLikedOrDisliked
+    } else {
+      likeBack = null;
+      continueSearch = alreadyLikedOrDisliked;
+    }
     index += incrementValue;
   }
-  const suggestedUser = await getMatchingUserInfo(distance.User);
-  suggestedUser.amountOfSamePersonalAnswers = distance.personalSimilarity;
-  suggestedUser.closenessInTrivia = `${100 - distance.triviaDifference * 100}%`;
+  const suggestedUser = await setSuggestedUserInfo(distance, likeBack)
+  return suggestedUser;
+}
+
+async function checkLikes(firstUserId, secondUserId) {
+  const alreadyLikedOrDislikedPromise = Like.findOne({
+    where: {
+      firstUserId: firstUserId,
+      secondUserId: secondUserId
+    }
+  })
+  const likeOrDislikeBackPromise = Like.findOne({
+    where: {
+      firstUserId: secondUserId,
+      secondUserId: firstUserId,
+    }
+  })
+  return Promise.all([likeOrDislikeBackPromise, alreadyLikedOrDislikedPromise])
+}
+
+async function setSuggestedUserInfo(distance, likeBack) {
+  if (distance) {
+    suggestedUser = await getMatchingUserInfo(distance.User);
+    suggestedUser.amountOfSamePersonalAnswers = distance.personalSimilarity;
+    suggestedUser.closenessInTrivia = `${100 - distance.triviaDifference * 100}%`;
+    suggestedUser.likeBack = likeBack || 'pending';
+  } else {
+    suggestedUser = null;
+  }
   return suggestedUser;
 }
 
