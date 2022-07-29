@@ -21,7 +21,7 @@ export default function Quiz({
   //TODO pop up ***play again** or go to **heart button in brainmates**
   //When pressed play again, load more questions
   useEffect(() => {
-    if (questions.length < 10){
+    if (!questions.length){
       fetchNewQuestions();
     }
     

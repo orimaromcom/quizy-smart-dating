@@ -19,7 +19,7 @@ export const fetchNewQuestions = () => {
     dispatch(fetchQuestionsRequestAction());
     try {
       const questions = await QuestionsApiService.getQuestions();
-      
+
       dispatch(fetchQuestionsSuccessAction(questions));
     } catch (e) {
       dispatch(fetchQuestionsFailureAction());
