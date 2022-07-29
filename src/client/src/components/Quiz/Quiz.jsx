@@ -2,10 +2,8 @@ import "./quiz.css";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import Heart from "./Heart/Heart";
-import Quote from "./Quote/Quote"
 import AnswersApiService from "../../services/answers-api-service";
 import { useEffect } from "react";
-
 
 export default function Quiz({
   fetchNewQuestions,
@@ -28,11 +26,11 @@ export default function Quiz({
   useEffect(() => {
     if (!questions.length) {
       fetchNewQuestions();
-      updateQuote()
+      updateQuote();
     }
     if (isFinished) {
       AnswersApiService.postAnswers(answersArray);
-      console.log(quote)
+      console.log(quote);
       console.log("you should remove questions once succeeded");
       console.log("you should remove pop up the heart page");
     }
@@ -54,11 +52,10 @@ export default function Quiz({
           incrementQuestionIndex={incrementQuestionIndex}
           questionIndex={questionIndex}
         />
-      ) : (<Heart quote={quote}/> )}
+      ) : (
+        <Heart quote={quote} />
+      )}
       {/* <Quote quote={quote}/> */}
-  
-     
-      
     </div>
   );
 }

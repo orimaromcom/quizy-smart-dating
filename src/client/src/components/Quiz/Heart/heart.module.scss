@@ -1,13 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.text {
+  flex: 0 1 auto;
+  padding: 0 1em 1em;
+  font-size: larger; /* fixme */
+  text-align: center;
+  .quote {
+    font-style: italic;
+  }
+  .author {
+    font-weight: bold;
+  }
+}
+
+.heart_container {
+  flex: 1 0 auto;
+  display: flex;
+}
+
 .heart {
+  margin: auto;
   background: red;
-  position: absolute;
-  top: 30%;
-  right: 45%;
   height: 100px;
   width: 100px;
   /* Animation */
-  transform: rotate(-45deg) scale();
+  /* transform: rotate(-45deg) scale(); */
   animation: pulse 2s linear infinite;
+  cursor: pointer;
 }
 
 .heart::after {
