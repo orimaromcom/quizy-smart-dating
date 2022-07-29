@@ -9,7 +9,7 @@ The goal of this app is to match people according to their interests and knowled
     - 6 knowledge questions from different categories (Film, Sports, Computers, Celebrities, History, Music),
     - 4 personality questions.
 1. The algorithm calculates how close is this this user to another users.
-    - Mean difference of percentages of right answers for each topic. This is first priority, smaller difference means closer.
+    - Mean difference between percentages of right answers for each topic. This is first priority, smaller difference means closer.
     - Amount of equal answers to personality questions. This is second priority, greater amount means closer.
 1. The user receives two suggestions:
     - the closest user (supposed to be someone very similar),
