@@ -12,6 +12,7 @@ export default function Quiz({
   questionIndex,
   incrementQuestionIndex,
   incrementAnswersIndex,
+  questionsLoading,
 }) {
   // AnswersApiService.postAnswers(answersArray);
   //once progress bar is full
@@ -19,7 +20,7 @@ export default function Quiz({
   //TODO post distances
   //TODO pop up ***play again** or go to **heart button in brainmates**
   //When pressed play again, load more questions
-  const isFinished =  answersArray.length && answersArray.length === questions.length ;
+  const isFinished = answersArray.length && answersArray.length === questions.length;
   useEffect(() => {
     if (!questions.length) {
       fetchNewQuestions();
@@ -47,6 +48,7 @@ export default function Quiz({
           questionIndex={questionIndex}
         />
       ) : null}
+      {questionsLoading ? console.log("Questions loading put loader") : console.log("stop loader")}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import actionTypes from "../actions/constants";
 const initialState = {
   questions: [],
   questionIndex: 0,
+  questionsLoading: false,
 };
 
 const questionsEntitiesReducer = (state = initialState, action) => {
@@ -11,6 +12,13 @@ const questionsEntitiesReducer = (state = initialState, action) => {
       return {
         ...state,
         questions: [...state.questions, ...action.payload],
+        questionsLoading: false,
+      };
+
+    case actionTypes.FETCH_QUESTIONS_REQUEST:
+      return {
+        ...state,
+        questionsLoading: true,
       };
 
     case actionTypes.INCREMENT_QUESTION_INDEX:
