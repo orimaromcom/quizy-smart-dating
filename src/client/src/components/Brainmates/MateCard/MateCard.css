@@ -8,7 +8,6 @@
     padding: 2% ;
     border: 1px solid gray;
     border-radius: 8px;
-    box-shadow: 1px 1px 3px gray;
     background-color: white;
     max-width: 40%;
     max-height: 35%;
@@ -41,4 +40,8 @@
 
 .card-content p{
     font-size: 1.2rem;
+}
+
+.match{
+    box-shadow: 2px 2px 4px gray;
 }
