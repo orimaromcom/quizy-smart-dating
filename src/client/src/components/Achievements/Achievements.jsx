@@ -11,12 +11,17 @@ export default function Achievements({ achievements, fetcAchievements }) {
 
   return (
     <div className="achievements-container">
-      {/* {Object.keys(achievements).map((achievement) => (
-        <Achievement title={"movies"} score={"1/9"} />
-      ))} */}
-      {[1, 2, 3, 4, 5, 6].map((achievement, i) => (
-        <Achievement title={"movies"} key={i} score={"1/9"} />
-      ))}
+      {Object.keys(achievements).map((achievement) => {
+        const isCatagory = Array.isArray(achievements[achievement]);
+        if (isCatagory) {
+          return (
+            <Achievement
+              title={achievement}
+              score={achievements[achievement]}
+            />
+          );
+        }
+      })}
     </div>
   );
 }
