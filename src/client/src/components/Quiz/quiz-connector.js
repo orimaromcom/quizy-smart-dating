@@ -6,6 +6,7 @@ import { fetchNewQuestions } from "../../redux/actions/fetch-questions-action";
 import {incrementQuestionIndex} from "../../redux/actions/increment-questions-index-actions"
 import { getAllAnswers } from "../../redux/selectors/answers-entities-selector"
 import { addAnswer } from "../../redux/actions/add-answer-action";
+import {incrementAnswersIndex} from "../../redux/actions/increment-answers-index-action"
 
 const mapStateToProps = (state) => {
   const questions = getAllQuestions(state);
@@ -16,7 +17,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ fetchNewQuestions, addAnswer, incrementQuestionIndex }, dispatch);
+  return bindActionCreators({ fetchNewQuestions, addAnswer, incrementQuestionIndex, incrementAnswersIndex }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Quiz);

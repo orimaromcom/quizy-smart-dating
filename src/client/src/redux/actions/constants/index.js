@@ -5,9 +5,13 @@ const QUIZ_ACTIONS = {
 
   INCREMENT_QUESTION_INDEX: "increment_question_index",
 
+  INCREMENT_ANSWER_INDEX: "increment_answer_index",
+
+
   FETCH_ACHIEVEMENTS_REQUEST: "fetch_achievements_request",
   FETCH_ACHIEVEMENTS_SUCCESS: "fetch_achievements_success",
   FETCH_ACHIEVEMENTS_FAILURE: "fetch_achievements_failure",
+
 
   ADD_ANSWER: "add_answer",
 };

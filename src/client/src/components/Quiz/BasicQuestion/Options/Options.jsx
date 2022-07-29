@@ -1,21 +1,21 @@
 import "./options.css";
 import Option from "./Option/Option";
+import { decode } from "html-entities";
 
-export default function Options({ options,  optionHandler,  question}) {
-  
+export default function Options({ options, optionHandler, question }) {
   return (
     <div className="Options-container">
       {options.map((option, index) => {
         if (options)
           return (
             <Option
-              text={option}
+              text={decode(option)}
               key={index}
               question={question}
-              onClick={() => optionHandler(option)}
+              onClick={() => optionHandler(decode(option))}
             />
           );
       })}
     </div>
-  ); 
+  );
 }
