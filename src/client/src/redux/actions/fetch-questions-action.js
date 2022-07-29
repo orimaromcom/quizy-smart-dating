@@ -10,8 +10,9 @@ const fetchQuestionsSuccessAction = (questions) => ({
   payload: questions,
 });
 
-const fetchQuestionsFailureAction = () => ({
+const fetchQuestionsFailureAction = (error) => ({
   type: actionTypes.FETCH_QUESTIONS_FAILURE,
+  payload: error?.message ?? error,
 });
 
 export const fetchNewQuestions = () => {
@@ -22,7 +23,7 @@ export const fetchNewQuestions = () => {
 
       dispatch(fetchQuestionsSuccessAction(questions));
     } catch (e) {
-      dispatch(fetchQuestionsFailureAction());
+      dispatch(fetchQuestionsFailureAction(e));
     }
   };
 };
