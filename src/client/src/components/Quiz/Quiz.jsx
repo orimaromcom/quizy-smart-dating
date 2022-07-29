@@ -27,7 +27,7 @@ export default function Quiz({
 
   return (
     <div className="quiz-container">
-      <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
+      <ProgressBar progressPercentage={((questionIndex +1) / questions.length) * 100} />
       <BasicQuestion
         question={questions[questionIndex] ? questions[questionIndex] : ""}
         MOCK_USER_ID={MOCK_USER_ID}
