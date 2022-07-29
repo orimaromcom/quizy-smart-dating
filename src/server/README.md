@@ -24,11 +24,11 @@
 ------
 - getAllDistances
   - `/matching/distances`
-  - **array** of objects with userId,matchToUserId, triviaDifference, personalSimilarity (for all users)
+  - **array** of objects with firstUserId, secondUserId, triviaDifference, personalSimilarity (for all users)
 ------
 - getUserDistances
   - `/matching/distances/:id`
-  - **array** of objects with userId, matchToUserId, triviaDifference, personalSimilarity (for one user) WHERE triviaDifference < 1 and personalSimilarity > -1 (only for possible matches)
+  - **array** of objects with firstUserId, secondUserId, triviaDifference, personalSimilarity (for one user) WHERE triviaDifference < 1 and personalSimilarity > -1 (only for possible matches)
 -----
 - getSuggestionsForUser
   - `/matching/suggestions/:id`

@@ -8,11 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
+      firstUserId: {
         type: Sequelize.INTEGER
       },
-      likesUserId: {
+      secondUserId: {
         type: Sequelize.INTEGER
+      },
+      firstUserLikesSecondUser: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -22,6 +25,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
+    });
+    await queryInterface.addConstraint('Likes', {
+      fields: ['firstUserId', 'secondUserId'],
+      type: 'unique',
+      name: 'UserIdLikeToUserId'
     });
   },
   async down(queryInterface, Sequelize) {

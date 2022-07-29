@@ -8,13 +8,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
+      firstUserId: {
         type: Sequelize.INTEGER
       },
-      matchToUserId: {
+      secondUserId: {
         type: Sequelize.INTEGER
       },
-      distance: {
+      triviaDifference: {
+        type: Sequelize.FLOAT
+      },
+      personalSimilarity: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -25,6 +28,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
+    });
+    await queryInterface.addConstraint('Distances', {
+      fields: ['firstUserId', 'secondUserId'],
+      type: 'unique',
+      name: 'userIdmatchToUserId'
     });
   },
   async down(queryInterface, Sequelize) {

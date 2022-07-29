@@ -58,7 +58,7 @@ async function getAllDistances() {
 async function getUserDistances(userId) {
   return await Distance.findAll({
     where: {
-      userId: userId,
+      firstUserId: userId,
       triviaDifference: {[Sequelize.Op.lt]: 1},
       personalSimilarity: {[Sequelize.Op.gt]: -1},
     },
@@ -77,7 +77,7 @@ async function getSuggestionsForUser(userId) {
     const alreadyLikedOrDisliked = await Like.findOne({
       where: {
         firstUserId: userId,
-        secondUserId: distance.matchToUserId
+        secondUserId: distance.secondUserId
       }
     })
     if (!alreadyLikedOrDisliked) {
@@ -135,8 +135,8 @@ async function postUserDistances(userId) {
   for (anotherUser of otherUsers) {
     const {triviaDifference, personalSimilarity} = await calculateDictance(currentUser, anotherUser);
     const distance = await Distance.upsert({
-      userId: currentUser.id,
-      matchToUserId: anotherUser.id,
+      firstUserId: currentUser.id,
+      secondUserId: anotherUser.id,
       triviaDifference: Math.round(triviaDifference * 10) / 10,
       personalSimilarity: personalSimilarity
     });
