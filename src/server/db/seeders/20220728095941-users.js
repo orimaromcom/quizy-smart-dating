@@ -25,7 +25,6 @@ module.exports = {
       usersJSON.push({
         username: `${faker.name.firstName()}${randomInt(1, 100)}`,
         phoneNumber: faker.phone.phoneNumber('+972-5#-###-##-##'),
-        password: "123456",
         age: randomInt(20, 40),
         location: CITIES[randomInt(0, amountOfCities)],
         radius: randomInt(0, 50),
