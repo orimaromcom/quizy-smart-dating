@@ -33,7 +33,7 @@ export default function Quiz({
       console.log("you should remove questions once succeeded");
       console.log("you should remove pop up the heart page");
     }
-  }, [fetchNewQuestions, questions, answersArray]);
+  }, [fetchNewQuestions, questions, answersArray, clearAnswersArray, isFinished]);
 
   return (
     <div className="quiz-container">
