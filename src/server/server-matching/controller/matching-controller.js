@@ -28,6 +28,14 @@ async function getUserTriviaAnswers(req, res) {
   res.status(200).json(userTriviaAnswers);
 }
 
+async function getUserAchievements(req, res) {
+  let userId = Number.parseInt(req.params.id);
+  ErrorIfNaN(userId);
+  const userAchievements = await matchingManager.getUserAchievements(userId);
+  ErrorIfNotFound(userAchievements)
+  res.status(200).json(userAchievements);
+}
+
 async function getAllDistances(req, res) {
   let distances = await matchingManager.getAllDistances();
   if (!distances) distances = [];
@@ -87,6 +95,7 @@ module.exports = {
   getUserPersonalAnswers,
   getAllTriviaAnswers,
   getUserTriviaAnswers,
+  getUserAchievements,
   getAllDistances,
   getUserDistances,
   postUserDistances,
