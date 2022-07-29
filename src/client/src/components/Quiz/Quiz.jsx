@@ -1,7 +1,7 @@
 import "./quiz.css";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
-import { useEffect} from "react";
+import { useEffect } from "react";
 
 export default function Quiz({
   fetchNewQuestions,
@@ -36,13 +36,6 @@ export default function Quiz({
         addAnswer={addAnswer}
         incrementQuestionIndex={incrementQuestionIndex}
       />
-      <button
-        onClick={() => {
-          incrementQuestionIndex();
-        }}
-      >
-        skip
-      </button>
     </div>
   );
 }
