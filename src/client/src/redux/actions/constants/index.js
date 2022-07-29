@@ -9,6 +9,10 @@ const QUIZ_ACTIONS = {
   FETCH_ACHIEVEMENTS_SUCCESS: "fetch_achievements_success",
   FETCH_ACHIEVEMENTS_FAILURE: "fetch_achievements_failure",
 
+  FETCH_BRAINMATES_REQUEST: "fetch_brainmates_request",
+  FETCH_BRAINMATES_SUCCESS: "fetch_brainmates_success",
+  FETCH_BRAINMATES_FAILURE: "fetch_brainmates_failure",
+
   ADD_ANSWER: "add_answer",
 };
 

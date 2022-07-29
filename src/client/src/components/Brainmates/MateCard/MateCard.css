@@ -10,6 +10,8 @@
     border-radius: 8px;
     box-shadow: 1px 1px 3px gray;
     background-color: white;
+    max-width: 40%;
+    max-height: 35%;
 }
 
 .card-avatar-container{
@@ -28,6 +30,8 @@
     flex-direction: column;
     flex-grow: 1;
     justify-content: space-around;
+    max-width: 100%;
+    /* flex-wrap: wrap; */
 }
 
 .card-content h1{
