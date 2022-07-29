@@ -40,12 +40,14 @@ async function getUserTriviaAnswers(userId) {
 async function getUserAchievements(userId) {
   const userTriviaAnswers = await getUserTriviaAnswers(userId);
   const achievements = {userId: userId};
+  const achievementsByTopics = {};
   TOPICS.forEach(topic => {
-    achievements[topic] = [
-      userTriviaAnswers[`${topic}CorrectAnswers`],
-      userTriviaAnswers[`${topic}QuestionsAnswered`]
-    ]
+    achievementsByTopics[topic] = {
+      correct: userTriviaAnswers[`${topic}CorrectAnswers`],
+      answers: userTriviaAnswers[`${topic}QuestionsAnswered`]
+    }
   });
+  achievements.categories = achievementsByTopics;
   return achievements;
 }
 
