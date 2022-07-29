@@ -18,6 +18,10 @@
   - `/matching/trivia-answers/:id`
   - **object** with userId, {Topic}CorrectAnswers, {Topic}QuestionsAnswered for all the topics (for one user)
 ------
+- getUserAchievements
+  - `/matching/achievements/:id`
+  - **object** with userId, Topic: [CorrectAnswers, QuestionsAnswered] for all the topics (for one user)
+------
 - getAllDistances
   - `/matching/distances`
   - **array** of objects with userId,matchToUserId, triviaDifference, personalSimilarity (for all users)
@@ -36,9 +40,9 @@
 -----
 - getBrainmatesForUser
   - `/brainmates/:id`
-  - **array** of objects with userId, username, gender, age, location bestResultDescription, status ("like", "dislike" or "pending").
-    - If "like" there is also a real phoneNumber.
-    - If "dislike" we can not show the failed brainmate at all.
+  - **object of 3 objects**: "likeBack", "dislikeBack" or "pending" - of objects with userId, username, gender, age, location, bestResultDescription and status.
+    - If "likeBack" there is also a real phoneNumber.
+    - If "dislikeBack" we can not show the failed brainmate at all.
     - If "pending" we can show the card blurred or with *********** instead of phoneNumber.
 -----
 ## POST

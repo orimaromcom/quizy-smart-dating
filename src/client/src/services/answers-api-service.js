@@ -4,7 +4,7 @@ export default class AnswersApiService {
     const response = await fetch(`${URL}/quiz/answers`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body : JSON.stringify({ answersArray: answersArray })
+      body: JSON.stringify({ answersArray: answersArray }),
     });
     const json = await response.json();
 

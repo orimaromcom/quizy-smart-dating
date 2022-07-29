@@ -4,6 +4,7 @@ const {
   getUserPersonalAnswers,
   getAllTriviaAnswers,
   getUserTriviaAnswers,
+  getUserAchievements,
   getAllDistances,
   getUserDistances,
   postUserDistances,
@@ -17,6 +18,7 @@ matchingRouter.get('/personal-answers', getAllPersonalAnswers);
 matchingRouter.get('/personal-answers/:id', getUserPersonalAnswers);
 matchingRouter.get('/trivia-answers', getAllTriviaAnswers);
 matchingRouter.get('/trivia-answers/:id', getUserTriviaAnswers);
+matchingRouter.get('/achievements/:id', getUserAchievements);
 matchingRouter.get('/distances', getAllDistances);
 matchingRouter.get('/distances/:id', getUserDistances);
 matchingRouter.get('/suggestions/:id', getSuggestionsForUser);

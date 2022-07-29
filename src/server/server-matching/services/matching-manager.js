@@ -36,6 +36,19 @@ async function getUserTriviaAnswers(userId) {
   });
 }
 
+
+async function getUserAchievements(userId) {
+  const userTriviaAnswers = await getUserTriviaAnswers(userId);
+  const achievements = {userId: userId};
+  TOPICS.forEach(topic => {
+    achievements[topic] = [
+      userTriviaAnswers[`${topic}CorrectAnswers`],
+      userTriviaAnswers[`${topic}QuestionsAnswered`]
+    ]
+  });
+  return achievements;
+}
+
 async function getAllDistances() {
   return await Distance.findAll();
 }
@@ -178,10 +191,10 @@ async function calculateTriviaDifference(firstUserId, secondUserId) {
   return Math.round(triviaDifference * 10) / 10;
 }
 
-function calculateTriviaAccuracy(UserTriviaAnswers) {
+function calculateTriviaAccuracy(userTriviaAnswers) {
   const accuracies = []
   TOPICS.forEach(topic => {
-    const topicAccuracy = UserTriviaAnswers[`${topic}CorrectAnswers`] / (UserTriviaAnswers[`${topic}QuestionsAnswered`] + 1);
+    const topicAccuracy = userTriviaAnswers[`${topic}CorrectAnswers`] / (userTriviaAnswers[`${topic}QuestionsAnswered`] + 1);
     accuracies.push(Math.round(topicAccuracy * 100) / 100);
   });
   return accuracies;
@@ -204,6 +217,7 @@ module.exports = {
   getUserPersonalAnswers,
   getAllTriviaAnswers,
   getUserTriviaAnswers,
+  getUserAchievements,
   getAllDistances,
   getUserDistances,
   postUserDistances,
