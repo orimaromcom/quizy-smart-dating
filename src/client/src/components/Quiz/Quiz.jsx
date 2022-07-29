@@ -1,7 +1,7 @@
 import "./quiz.css";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 
 export default function Quiz({
   fetchNewQuestions,
@@ -13,8 +13,6 @@ export default function Quiz({
   incrementQuestionIndex,
   incrementAnswersIndex,
 }) {
-  const [answersCounter, setAnswersCounter] = useState(0);
-
   // AnswersApiService.postAnswers(answersArray);
   //once progress bar is full
 
@@ -32,7 +30,6 @@ export default function Quiz({
       <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
       <BasicQuestion
         question={questions[questionIndex] ? questions[questionIndex] : ""}
-        questionsLength={questions.length}
         MOCK_USER_ID={MOCK_USER_ID}
         incrementAnswersIndex={incrementAnswersIndex}
         answersArray={answersArray}
