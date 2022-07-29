@@ -2,10 +2,10 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Achievements from "./Achievements";
 import { fetcAchievements } from "../../redux/actions/fetch-achievements-action";
-import { getAchievements } from "../../redux/selectors/achievements-selector";
+import { getAllAchievements } from "../../redux/selectors/achievements-entities-selector";
 
 const mapStateToProps = (state) => {
-  let achievements = getAchievements(state);
+  let achievements = getAllAchievements(state);
   return { achievements };
 };
 
