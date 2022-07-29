@@ -4,6 +4,8 @@ const QUIZ_ACTIONS = {
   FETCH_QUESTIONS_FAILURE: "fetch_questions_failure",
 
   INCREMENT_QUESTION_INDEX: "increment_question_index",
+  INCREMENT_ANSWER_INDEX: "increment_answer_index",
+
   ADD_ANSWER: "add_answer",
 };
 

@@ -11,6 +11,7 @@ export default function Quiz({
   addAnswer,
   questionIndex,
   incrementQuestionIndex,
+  incrementAnswersIndex,
 }) {
   const [answersCounter, setAnswersCounter] = useState(0);
 
@@ -21,11 +22,10 @@ export default function Quiz({
   //TODO pop up ***play again** or go to **heart button in brainmates**
   //When pressed play again, load more questions
   useEffect(() => {
-    if (!questions.length){
+    if (!questions.length) {
       fetchNewQuestions();
     }
-    
-  }, [fetchNewQuestions,questions]);
+  }, [fetchNewQuestions, questions]);
 
   return (
     <div className="quiz-container">
@@ -34,8 +34,7 @@ export default function Quiz({
         question={questions[questionIndex] ? questions[questionIndex] : ""}
         questionsLength={questions.length}
         MOCK_USER_ID={MOCK_USER_ID}
-        setAnswersCounter={setAnswersCounter}
-        answersCounter={answersCounter}
+        incrementAnswersIndex={incrementAnswersIndex}
         answersArray={answersArray}
         addAnswer={addAnswer}
         incrementQuestionIndex={incrementQuestionIndex}
