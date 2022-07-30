@@ -1,6 +1,11 @@
 
 # API
 ## GET
+---
+- getUserInfo
+  - `/user/:email`
+  - **object** with id, email, userName, phone, location, age,picture, gender, preferences (relation_type, gender, minAge, maxAge)
+}
 ----
 - getAllPersonalAnswers
   - `/matching/personal-answers`
@@ -20,15 +25,15 @@
 ------
 - getUserAchievements
   - `/matching/achievements/:id`
-  - **object** with userId, Topic: [CorrectAnswers, QuestionsAnswered] for all the topics (for one user)
+  - **object** with userId and topics (categories) for all the topics with the amount of correct answers and all answers (for one user)
 ------
 - getAllDistances
   - `/matching/distances`
-  - **array** of objects with userId,matchToUserId, triviaDifference, personalSimilarity (for all users)
+  - **array** of objects with firstUserId, secondUserId, triviaDifference, personalSimilarity (for all users)
 ------
 - getUserDistances
   - `/matching/distances/:id`
-  - **array** of objects with userId, matchToUserId, triviaDifference, personalSimilarity (for one user) WHERE triviaDifference < 1 and personalSimilarity > -1 (only for possible matches)
+  - **array** of objects with firstUserId, secondUserId, triviaDifference, personalSimilarity (for one user) WHERE triviaDifference < 1 and personalSimilarity > -1 (only for possible matches)
 -----
 - getSuggestionsForUser
   - `/matching/suggestions/:id`
@@ -46,6 +51,27 @@
     - If "pending" we can show the card blurred or with *********** instead of phoneNumber.
 -----
 ## POST
+-----
+- postUserInfo
+  - `/user`
+  - body:
+  ```
+  {
+    "email": string,
+    "userName": string,
+    "phone": string,
+    "location": string,
+    "age": number,
+    "picture": string,
+    "gender": string (male/female/other),
+    "preferences": {
+        "relation_type": string (romantic/friends),
+        "gender": string (male/female/any),
+        "minAge": number,
+        "maxAge": number
+    }
+}
+  ```
 ------
 - postUserDistances
   - `/matching/postdistances/:id`

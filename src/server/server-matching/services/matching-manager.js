@@ -40,12 +40,14 @@ async function getUserTriviaAnswers(userId) {
 async function getUserAchievements(userId) {
   const userTriviaAnswers = await getUserTriviaAnswers(userId);
   const achievements = {userId: userId};
+  const achievementsByTopics = {};
   TOPICS.forEach(topic => {
-    achievements[topic] = [
-      userTriviaAnswers[`${topic}CorrectAnswers`],
-      userTriviaAnswers[`${topic}QuestionsAnswered`]
-    ]
+    achievementsByTopics[topic] = {
+      correct: userTriviaAnswers[`${topic}CorrectAnswers`],
+      answers: userTriviaAnswers[`${topic}QuestionsAnswered`]
+    }
   });
+  achievements.categories = achievementsByTopics;
   return achievements;
 }
 
@@ -56,7 +58,7 @@ async function getAllDistances() {
 async function getUserDistances(userId) {
   return await Distance.findAll({
     where: {
-      userId: userId,
+      firstUserId: userId,
       triviaDifference: {[Sequelize.Op.lt]: 1},
       personalSimilarity: {[Sequelize.Op.gt]: -1},
     },
@@ -75,7 +77,7 @@ async function getSuggestionsForUser(userId) {
     const alreadyLikedOrDisliked = await Like.findOne({
       where: {
         firstUserId: userId,
-        secondUserId: distance.matchToUserId
+        secondUserId: distance.secondUserId
       }
     })
     if (!alreadyLikedOrDisliked) {
@@ -95,6 +97,7 @@ async function getMatchingUserInfo(matchingUser) {
   const personalInfo = {
     userId: matchingUser.id,
     username: matchingUser.username,
+    picture: matchingUser.photo,
     gender: matchingUser.gender,
     age: matchingUser.age,
     location: matchingUser.location,
@@ -133,8 +136,8 @@ async function postUserDistances(userId) {
   for (anotherUser of otherUsers) {
     const {triviaDifference, personalSimilarity} = await calculateDictance(currentUser, anotherUser);
     const distance = await Distance.upsert({
-      userId: currentUser.id,
-      matchToUserId: anotherUser.id,
+      firstUserId: currentUser.id,
+      secondUserId: anotherUser.id,
       triviaDifference: Math.round(triviaDifference * 10) / 10,
       personalSimilarity: personalSimilarity
     });

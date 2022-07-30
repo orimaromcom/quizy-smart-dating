@@ -7,10 +7,11 @@ module.exports = {
      await queryInterface.bulkInsert('Users', [
       {
         username: "shansy93",
+        email: "shansy93@gmail.com",
         phoneNumber: faker.phone.phoneNumber('+972-5#-###-##-##'),
+        photo: "https://ca.slack-edge.com/T03DN6MRQ75-U03EFPZKYQ5-1f63933bc198-512",
         age: 28,
         location: "Tel Aviv",
-        radius: 5,
         gender: "female",
         lookingForGender: "any",
         lookingForRelationsType: "friends",
@@ -21,10 +22,11 @@ module.exports = {
       },
       {
         username: "ori.marom10",
+        email: "ori.marom10@gmail.com",
         phoneNumber: faker.phone.phoneNumber('+972-5#-###-##-##'),
+        photo: "https://ca.slack-edge.com/T03DN6MRQ75-U03EC2GAWDC-a4dab0e1f7f7-512",
         age: 33,
         location: "Tel Aviv",
-        radius: 100,
         gender: "female",
         lookingForGender: "male",
         lookingForRelationsType: "romantic",
@@ -35,10 +37,11 @@ module.exports = {
       },
       {
         username: "talivneh8",
+        email: "talivneh8@gmail.com",
         phoneNumber: faker.phone.phoneNumber('+972-5#-###-##-##'),
+        photo: "https://ca.slack-edge.com/T03DN6MRQ75-U03E43TT615-4d1e2447cf2c-512",
         age: 30,
         location: "Tel Aviv",
-        radius: 10,
         gender: "female",
         lookingForGender: "any",
         lookingForRelationsType: "friends",

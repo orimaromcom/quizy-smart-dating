@@ -4,8 +4,9 @@ const addAnswerAction = (answer) => ({
   payload: answer,
 });
 
-export const addAnswer = (answer) => {
+export const addAnswer = (answer, answersArray, questions) => {
   return async (dispatch) => {
-    dispatch(addAnswerAction(answer));
+    dispatch(addAnswerAction(answer, answersArray, questions));
+    
   };
 };

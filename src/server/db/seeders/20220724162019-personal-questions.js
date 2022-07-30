@@ -2,7 +2,7 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('Questions', [
+    await queryInterface.bulkInsert('PersonalQuestions', [
       {
         question: "If you and your other significant were at a club, what would the other be doing?",
         type: "personal",
@@ -293,6 +293,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-     await queryInterface.bulkDelete('Questions', null, {});
+     await queryInterface.bulkDelete('PersonalQuestions', null, {});
   }
 };

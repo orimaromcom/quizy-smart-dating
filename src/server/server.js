@@ -8,6 +8,7 @@ const logger = require("./middleware/logger");
 const quizRouter = require("./server-quiz/routes/quiz-router");
 const matchingRouter = require("./server-matching/routes/matching-router");
 const brainmatesRouter = require("./server-brainmates/routes/brainmates-router");
+const userRouter = require("./server-user/routes/user-router");
 
 async function test() {
   try {
@@ -20,7 +21,7 @@ async function test() {
 test();
 
 const app = express();
-app.use(cors())
+//app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -37,6 +38,7 @@ app.use("/matching", matchingRouter);
 app.use("/quiz", quizRouter);
 app.use("/matching", matchingRouter);
 app.use("/brainmates", brainmatesRouter);
+app.use("/user", userRouter);
 
 const port = process.env.PORT || "8080";
 

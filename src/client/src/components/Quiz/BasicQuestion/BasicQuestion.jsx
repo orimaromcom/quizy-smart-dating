@@ -2,7 +2,6 @@ import "./basic-question.css";
 import Options from "./Options/Options";
 import Question from "./Question/Question";
 
-
 import { useEffect, useState } from "react";
 
 //We need to add loading state
@@ -10,14 +9,12 @@ import { useEffect, useState } from "react";
 
 export default function BasicQuestion({
   question,
-  questionsLength,
   MOCK_USER_ID,
-  setAnswersCounter,
-  answersCounter,
-  answersArray,
   addAnswer,
   incrementQuestionIndex,
-
+  incrementAnswersIndex,
+  questions,
+  answersArray,
 }) {
   const [options, setOptions] = useState([]);
 
@@ -51,16 +48,16 @@ export default function BasicQuestion({
       questionId: question.id,
       chosenOption: chosenOption,
     };
-    setAnswersCounter(answersCounter + 1);
-    incrementQuestionIndex()
-    addAnswer(answerObject)
-  
+    incrementAnswersIndex();
+    incrementQuestionIndex();
+
+    addAnswer(answerObject, answersArray, questions);
   };
 
   return (
     <div className="question-container">
       <Question text={question.question} />
-      <Options options={options} optionHandler={optionHandler}  />
+      <Options options={options} optionHandler={optionHandler} />
     </div>
   );
 }
