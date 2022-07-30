@@ -3,7 +3,7 @@
 ## GET
 ---
 - getUserInfo
-  - `/user/:id`
+  - `/user/:email`
   - **object** with id, email, userName, phone, location, age,picture, gender, preferences (relation_type, gender, minAge, maxAge)
 }
 ----

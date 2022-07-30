@@ -7,6 +7,6 @@ const {
 const userRouter = express.Router();
 
 userRouter.post('/', postUserInfo);
-userRouter.get('/:id', getUserInfo);
+userRouter.get('/:email', getUserInfo);
 
 module.exports = userRouter;

@@ -18,27 +18,46 @@ async function postUserInfo(userInfo) {
   return result;
 }
 
-async function getUserInfo(id){
+async function getUserInfo(email){
   const user = await User.findOne({
     where: {
-      id: id
+      email: email
     }
   });
   const userInfo = {};
-  userInfo.id = user.id;
-  userInfo.email = user.email;
-  userInfo.userName = user.username;
-  userInfo.phone = user.phoneNumber;
-  userInfo.location = user.location;
-  userInfo.age = user.age;
-  userInfo.picture = user.photo;
-  userInfo.gender = user.gender;
-  userInfo.preferences = {
-    relation_type: user.lookingForRelationsType,
-    gender: user.lookingForGender,
-    minAge: user.lookingForMinAge,
-    maxAge: user.lookingForMaxAge
+
+  if (user) {
+    userInfo.id = user.id;
+    userInfo.email = user.email;
+    userInfo.userName = user.username;
+    userInfo.phone = user.phoneNumber;
+    userInfo.location = user.location;
+    userInfo.age = user.age;
+    userInfo.picture = user.photo;
+    userInfo.gender = user.gender;
+    userInfo.preferences = {
+      relation_type: user.lookingForRelationsType,
+      gender: user.lookingForGender,
+      minAge: user.lookingForMinAge,
+      maxAge: user.lookingForMaxAge
+    };
+  } else {
+    userInfo.id = null;
+    userInfo.email = email;
+    userInfo.userName = email.slice(0,5);
+    userInfo.phone = null;
+    userInfo.location = null;
+    userInfo.age = null;
+    userInfo.picture = null;
+    userInfo.gender = null;
+    userInfo.preferences = {
+      relation_type: null,
+      gender: null,
+      minAge: null,
+      maxAge: null
   };
+  }
+
   return userInfo;
 }
 

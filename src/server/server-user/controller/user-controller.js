@@ -1,5 +1,4 @@
 const userManager = require("../services/user-manager");
-const { ErrorIfNaN, ErrorIfNotFound } = require("../../server-matching/controller/matching-controller");
 
 async function postUserInfo(req, res) {
   const responce = await userManager.postUserInfo(req.body);
@@ -7,10 +6,8 @@ async function postUserInfo(req, res) {
 }
 
 async function getUserInfo(req, res) {
-  const id = req.params.id;
-  ErrorIfNaN(id);
-  const userInfo = await userManager.getUserInfo(id);
-  ErrorIfNotFound(userInfo);
+  const email = req.params.email;
+  const userInfo = await userManager.getUserInfo(email);
   res.status(200).json(userInfo);
 }
 
