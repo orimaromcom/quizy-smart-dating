@@ -4,11 +4,9 @@ const triviaClient = require("../clients/trivia-client");
 const iquotes = require("iquotes");
 
 async function getAllQuestions() {
-  
   const personalQuestions = await PersonalQuestion.findAll();
   shuffleOptions(personalQuestions);
   const slicedArray = personalQuestions.slice(0, 4);
-  
 
   const triviaQuestions = await triviaClient.fetchMultipleTopics(urlArray);
 
@@ -22,7 +20,7 @@ async function getAllQuestions() {
 
 async function getRandomQuote() {
   const quote = iquotes.random("love");
-  return quote
+  return quote;
 }
 
 function changeQuestionsStructure(triviaQuestions) {

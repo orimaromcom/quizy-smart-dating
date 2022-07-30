@@ -1,5 +1,4 @@
 import "./achievements.css";
-import { useState } from "react";
 import { useEffect } from "react";
 import Achievement from "./Achievement/Achievement";
 
