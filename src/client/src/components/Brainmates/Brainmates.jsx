@@ -20,6 +20,9 @@ export default function Brainmates({ brainmates, fetcBrainmates }) {
                 userName={current.username}
                 imgSrc={current.picture}
                 achievements={current.bestResultDescription}
+                phoneNumber={current.phoneNumber}
+                age={current.age}
+                location={current.location}
               />
             );
           })
