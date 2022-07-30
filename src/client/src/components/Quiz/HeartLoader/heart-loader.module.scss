@@ -1,0 +1,101 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.heart_container {
+  flex: 1 0 auto;
+  display: flex;
+}
+
+$pink-light: #ff7eb4;
+$pink: #ff2581;
+
+.icon {
+  margin: auto;
+  fill: transparent;
+  stroke: $pink;
+  stroke-width: 20;
+  cursor: pointer;
+  position: relative;
+
+  svg {
+    overflow: visible;
+    width: 10rem;
+  }
+
+  path {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 1550;
+    transform-origin: center;
+  }
+
+  .heart-background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    stroke: none;
+  }
+
+  .heart-main path {
+    animation: stroke-animation 2s ease-in-out infinite;
+  }
+
+  .heart-main.heart-background path {
+    animation: fade-animation 4s ease-in-out infinite;
+  }
+}
+
+@keyframes stroke-animation {
+  0% {
+    stroke-dashoffset: 0;
+  }
+
+  30% {
+    stroke-dashoffset: 1550;
+  }
+
+  60% {
+    stroke-dashoffset: 3100;
+    fill: transparent;
+    transform: scale(1);
+  }
+
+  80% {
+    fill: $pink;
+    transform: scale(1.1);
+  }
+
+  90% {
+    transform: scale(1);
+  }
+
+  100% {
+    stroke-dashoffset: 3100;
+    fill: $pink;
+  }
+}
+
+@keyframes fade-animation {
+  70% {
+    fill: transparent;
+    transform: scale(1);
+  }
+
+  80% {
+    fill: $pink-light;
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
