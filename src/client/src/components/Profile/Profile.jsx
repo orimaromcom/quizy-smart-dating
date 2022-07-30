@@ -62,6 +62,7 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
       <div className={style.info_container}>
         <Box className={style.info_field_container}>
           <TextField
+            type={"text"}
             disabled={!edit}
             label="User Name"
             id="userName"
@@ -69,31 +70,38 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
             onChange={handleChange}
           />
         </Box>
-        {/* <Box className={style.info_field_container}>
-          <Select
-            disabled={!edit}
-            className={style.gender_select}
-            id="gender"
-            value={profileObj.gender || ""}
-            label="Gender"
-            onChange={handleChange}
-          >
-            <MenuItem value={"male"}>Male</MenuItem>
-            <MenuItem value={"female"}>Female</MenuItem>
-            <MenuItem value={"Any"}>Any</MenuItem>
-          </Select>
-        </Box> */}
+        <div className={style.info_field_container}>
+          <Box className={style.info_field_container_small}>
+            <Select
+              disabled={!edit}
+              className={style.gender_select}
+              id="gender"
+              value={profileObj.gender || ""}
+              label="Gender"
+              onChange={handleChange}
+            >
+              <MenuItem value={"male"}>Male</MenuItem>
+              <MenuItem value={"female"}>Female</MenuItem>
+              <MenuItem value={"Any"}>Any</MenuItem>
+            </Select>
+          </Box>
+          <Box className={style.info_field_container_small}>
+            <TextField
+              type={"number"}
+              max={100}
+              min={18}
+              disabled={!edit}
+              label="Age"
+              id="age"
+              value={profileObj.age || ""}
+              onChange={handleChange}
+            />
+          </Box>
+        </div>
+
         <Box className={style.info_field_container}>
           <TextField
-            disabled={!edit}
-            label="Age"
-            id="age"
-            value={profileObj.age || ""}
-            onChange={handleChange}
-          />
-        </Box>
-        <Box className={style.info_field_container}>
-          <TextField
+            inputProps={{ inputMode: "tel" }}
             disabled={!edit}
             label="Phone Number"
             id="phone"

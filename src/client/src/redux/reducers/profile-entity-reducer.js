@@ -8,8 +8,8 @@ const initialState = {
     phone: null,
     location: null,
     picture: null,
-    birthday: null,
-    prefrences: {
+    gender: null,
+    preferences: {
       gender: null,
       minAge: null,
       maxAge: null,
