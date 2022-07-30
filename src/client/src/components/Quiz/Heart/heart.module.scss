@@ -6,8 +6,8 @@
 
 .text {
   flex: 0 1 auto;
-  padding: 0 1em 1em;
-  font-size: larger;
+  padding: 0 5em 5em;
+  font-size: 20px;
   /* fixme */
   text-align: center;
 
@@ -16,6 +16,7 @@
   }
 
   .author {
+    padding-top: 5px;
     font-weight: bold;
   }
 }
