@@ -10,11 +10,13 @@ const QUIZ_ACTIONS = {
   INCREMENT_ANSWER_INDEX: "increment_answer_index",
   CLEAR_ANSWERS_ARRAY: "clear_answers_array",
 
-
   FETCH_ACHIEVEMENTS_REQUEST: "fetch_achievements_request",
   FETCH_ACHIEVEMENTS_SUCCESS: "fetch_achievements_success",
   FETCH_ACHIEVEMENTS_FAILURE: "fetch_achievements_failure",
 
+  FETCH_BRAINMATES_REQUEST: "fetch_brainmates_request",
+  FETCH_BRAINMATES_SUCCESS: "fetch_brainmates_success",
+  FETCH_BRAINMATES_FAILURE: "fetch_brainmates_failure",
 
   ADD_ANSWER: "add_answer",
 };
