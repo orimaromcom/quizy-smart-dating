@@ -12,6 +12,14 @@ module.exports = {
         type: Sequelize.STRING,
         unique: true
       },
+      photo: {
+        type: Sequelize.STRING,
+        unique: true
+      },
+      phoneNumber: {
+        type: Sequelize.STRING,
+        unique: true
+      },
       age: {
         type: Sequelize.INTEGER
       },
@@ -27,13 +35,13 @@ module.exports = {
       lookingForGender: {
         type: Sequelize.STRING
       },
-      relations: {
+      lookingForRelationsType: {
         type: Sequelize.STRING
       },
-      minAge: {
+      lookingForMinAge: {
         type: Sequelize.INTEGER
       },
-      maxAge: {
+      lookingForMaxAge: {
         type: Sequelize.INTEGER
       },
       createdAt: {

@@ -2,7 +2,6 @@ const { PersonalAnswer, TriviaAnswer, Distance, User, Like } = require('../../db
 const Sequelize = require('sequelize');
 
 const TOPICS = ['Film', 'Sports', 'Computers', 'Celebrities', 'History', 'Music']
-const AMOUNT_OF_SUGGESTIONS = 3;
 
 async function getAllPersonalAnswers() {
   return await PersonalAnswer.findAll();
@@ -36,7 +35,6 @@ async function getUserTriviaAnswers(userId) {
   });
 }
 
-
 async function getUserAchievements(userId) {
   const userTriviaAnswers = await getUserTriviaAnswers(userId);
   const achievements = {userId: userId};
@@ -58,7 +56,7 @@ async function getAllDistances() {
 async function getUserDistances(userId) {
   return await Distance.findAll({
     where: {
-      userId: userId,
+      firstUserId: userId,
       triviaDifference: {[Sequelize.Op.lt]: 1},
       personalSimilarity: {[Sequelize.Op.gt]: -1},
     },
@@ -72,24 +70,57 @@ async function getUserDistances(userId) {
 
 async function getSuggestionsForUser(userId) {
   const distances = await getUserDistances(userId);
-  const suggestions = [];
-  for (distance of distances) {
-    const alreadyLikedOrDisliked = await Like.findOne({
-      where: {
-        firstUserId: userId,
-        secondUserId: distance.matchToUserId
-      }
-    })
-    if (!alreadyLikedOrDisliked) {
-      const userInfo = await getMatchingUserInfo(distance.User);
-      userInfo.amountOfSamePersonalAnswers = distance.personalSimilarity;
-      suggestions.push(userInfo);
+  closestUser = await findSuggestion(userId, distances, 0, 1);
+  farthestUser = await findSuggestion(userId, distances, distances.length - 1, -1);
+  return {closest: closestUser, farthest: farthestUser};
+}
+
+async function findSuggestion(userId, distances, index, incrementValue) {
+  let continueSearch = true;
+  let distance;
+  let likeBack;
+  while (continueSearch && index >= 0 && index < distances.length) {
+    distance = distances[index];
+    const [likeOrDislikeBack, alreadyLikedOrDisliked] = await checkLikes(userId, distance.secondUserId);
+    if (likeOrDislikeBack) {
+      likeBack = likeOrDislikeBack.firstUserLikesSecondUser;
+      continueSearch = !likeBack || alreadyLikedOrDisliked
+    } else {
+      likeBack = null;
+      continueSearch = alreadyLikedOrDisliked;
     }
-    if (suggestions.length === AMOUNT_OF_SUGGESTIONS) {
-      break;
-    }
+    index += incrementValue;
   }
-  return suggestions; // 0 <= suggestions.length <= AMOUNT_OF_SUGGESTIONS
+  const suggestedUser = await setSuggestedUserInfo(distance, likeBack)
+  return suggestedUser;
+}
+
+async function checkLikes(firstUserId, secondUserId) {
+  const alreadyLikedOrDislikedPromise = Like.findOne({
+    where: {
+      firstUserId: firstUserId,
+      secondUserId: secondUserId
+    }
+  })
+  const likeOrDislikeBackPromise = Like.findOne({
+    where: {
+      firstUserId: secondUserId,
+      secondUserId: firstUserId,
+    }
+  })
+  return Promise.all([likeOrDislikeBackPromise, alreadyLikedOrDislikedPromise])
+}
+
+async function setSuggestedUserInfo(distance, likeBack) {
+  if (distance) {
+    suggestedUser = await getMatchingUserInfo(distance.User);
+    suggestedUser.amountOfSamePersonalAnswers = distance.personalSimilarity;
+    suggestedUser.closenessInTrivia = `${100 - distance.triviaDifference * 100}%`;
+    suggestedUser.likeBack = likeBack || 'pending';
+  } else {
+    suggestedUser = null;
+  }
+  return suggestedUser;
 }
 
 async function getMatchingUserInfo(matchingUser) {
@@ -135,8 +166,8 @@ async function postUserDistances(userId) {
   for (anotherUser of otherUsers) {
     const {triviaDifference, personalSimilarity} = await calculateDictance(currentUser, anotherUser);
     const distance = await Distance.upsert({
-      userId: currentUser.id,
-      matchToUserId: anotherUser.id,
+      firstUserId: currentUser.id,
+      secondUserId: anotherUser.id,
       triviaDifference: Math.round(triviaDifference * 10) / 10,
       personalSimilarity: personalSimilarity
     });

@@ -11,17 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // Distance.belongsTo(models.User, {
-      //   foreignKey: 'userId'
+      //   foreignKey: 'firstUserId'
       // });
       Distance.belongsTo(models.User, {
-        foreignKey: 'matchToUserId'
+        foreignKey: 'secondUserId'
       });
     }
   }
   Distance.init({
-    userId: DataTypes.INTEGER,
-    matchToUserId: DataTypes.INTEGER,
-    distance: DataTypes.INTEGER,
+    firstUserId: DataTypes.INTEGER,
+    secondUserId: DataTypes.INTEGER,
     triviaDifference: DataTypes.FLOAT,
     personalSimilarity: DataTypes.INTEGER
   }, {

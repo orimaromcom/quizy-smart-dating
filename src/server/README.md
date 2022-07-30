@@ -1,4 +1,3 @@
-
 # API
 ## GET
 ----
@@ -24,15 +23,15 @@
 ------
 - getAllDistances
   - `/matching/distances`
-  - **array** of objects with userId,matchToUserId, triviaDifference, personalSimilarity (for all users)
+  - **array** of objects with firstUserId, secondUserId, triviaDifference, personalSimilarity (for all users)
 ------
 - getUserDistances
   - `/matching/distances/:id`
-  - **array** of objects with userId, matchToUserId, triviaDifference, personalSimilarity (for one user) WHERE triviaDifference < 1 and personalSimilarity > -1 (only for possible matches)
+  - **array** of objects with firstUserId, secondUserId, triviaDifference, personalSimilarity (for one user) WHERE triviaDifference < 1 and personalSimilarity > -1 (only for possible matches)
 -----
 - getSuggestionsForUser
   - `/matching/suggestions/:id`
-  - **array** of objects with userId, username, gender, age, location, bestResultDescription, amountOfSamePersonalAnswers (for one user)
+  - **array** of 2 objects (closest and farthest by distance) with userId, username, gender, age, location, bestResultDescription, amountOfSamePersonalAnswers (for one user)
 -----
 - getIsLikeFromTo
   - `/brainmates/like/:from/:to`
