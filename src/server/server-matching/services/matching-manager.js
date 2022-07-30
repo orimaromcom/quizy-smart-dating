@@ -97,6 +97,7 @@ async function getMatchingUserInfo(matchingUser) {
   const personalInfo = {
     userId: matchingUser.id,
     username: matchingUser.username,
+    picture: matchingUser.photo,
     gender: matchingUser.gender,
     age: matchingUser.age,
     location: matchingUser.location,

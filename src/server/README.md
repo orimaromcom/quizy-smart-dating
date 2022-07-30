@@ -1,6 +1,11 @@
 
 # API
 ## GET
+---
+- getUserInfo
+  - `/user/:id`
+  - **object** with id, email, userName, phone, location, age,picture, gender, preferences (relation_type, gender, minAge, maxAge)
+}
 ----
 - getAllPersonalAnswers
   - `/matching/personal-answers`
@@ -46,6 +51,27 @@
     - If "pending" we can show the card blurred or with *********** instead of phoneNumber.
 -----
 ## POST
+-----
+- postUserInfo
+  - `/user`
+  - body:
+  ```
+  {
+    "email": string,
+    "userName": string,
+    "phone": string,
+    "location": string,
+    "age": number,
+    "picture": string,
+    "gender": string (male/female/other),
+    "preferences": {
+        "relation_type": string (romantic/friends),
+        "gender": string (male/female/any),
+        "minAge": number,
+        "maxAge": number
+    }
+}
+  ```
 ------
 - postUserDistances
   - `/matching/postdistances/:id`
