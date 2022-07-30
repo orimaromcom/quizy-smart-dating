@@ -1,3 +1,5 @@
-export default function Profile() {
-  return <h1>Profile</h1>;
+import "./profile.css";
+
+export default function Profile({ profile, fetcProfile, updateProfile }) {
+  return <h1>{profile.toString()}</h1>;
 }
