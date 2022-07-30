@@ -1,5 +1,4 @@
 import style from "./heart.module.scss";
-import heart_v2_style from "./heart-v2.module.scss";
 
 export default function Heart({ quote }) {
   return (
