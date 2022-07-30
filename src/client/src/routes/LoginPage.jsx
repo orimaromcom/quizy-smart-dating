@@ -1,10 +1,10 @@
 import Page from "../components/Page/Page";
-import Login from "../components/Login/Login";
+import LoginConnector from "../components/Login/login-connector";
 
 export default function LoginPage() {
   return (
     <Page>
-      <Login />
+      <LoginConnector />
     </Page>
   );
 }

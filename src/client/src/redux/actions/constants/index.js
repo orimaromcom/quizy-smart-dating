@@ -19,6 +19,9 @@ const QUIZ_ACTIONS = {
   FETCH_BRAINMATES_FAILURE: "fetch_brainmates_failure",
 
   ADD_ANSWER: "add_answer",
+
+  SET_USER: "set_user",
+  RESET_USER: "reset_user",
 };
 
 export default QUIZ_ACTIONS;
