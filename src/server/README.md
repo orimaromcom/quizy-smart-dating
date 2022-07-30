@@ -1,4 +1,3 @@
-
 # API
 ## GET
 ---
@@ -37,7 +36,7 @@
 -----
 - getSuggestionsForUser
   - `/matching/suggestions/:id`
-  - **array** of objects with userId, username, gender, age, location, bestResultDescription, amountOfSamePersonalAnswers (for one user)
+  - **array** of 2 objects (closest and farthest by distance) with userId, username, gender, age, location, bestResultDescription, amountOfSamePersonalAnswers (for one user)
 -----
 - getIsLikeFromTo
   - `/brainmates/like/:from/:to`
