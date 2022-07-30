@@ -1,6 +1,8 @@
 import "./quiz.css";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
+import Heart from "./Heart/Heart";
+import AnswersApiService from "../../services/answers-api-service";
 import { useEffect } from "react";
 
 export default function Quiz({
@@ -12,33 +14,37 @@ export default function Quiz({
   questionIndex,
   incrementQuestionIndex,
   incrementAnswersIndex,
+  questionsLoading,
+  clearAnswersArray,
+  updateQuote,
+  quote,
 }) {
-  // AnswersApiService.postAnswers(answersArray);
-  //once progress bar is full
-
   //TODO post distances
   //TODO pop up ***play again** or go to **heart button in brainmates**
   //When pressed play again, load more questions
-  const isFinished =  answersArray.length && answersArray.length === questions.length ;
+  const isFinished = questions.length && answersArray.length === questions.length;
   useEffect(() => {
     if (!questions.length) {
       fetchNewQuestions();
+      updateQuote();
     }
     if (isFinished) {
-      console.log("you should do actions now");
-      console.log("you should send answers to backend");
-      console.log("you should remove answers once succeeded");
+      AnswersApiService.postAnswers(answersArray);
+      console.log(quote);
       console.log("you should remove questions once succeeded");
       console.log("you should remove pop up the heart page");
     }
-  }, [fetchNewQuestions, questions, answersArray]);
+  }, [fetchNewQuestions, questions, answersArray, clearAnswersArray, isFinished]);
 
   return (
     <div className="quiz-container">
       <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
+      {questionsLoading
+        ? console.log("Questions loading put loader")
+        : console.log("stop loader")}
       {!isFinished ? (
         <BasicQuestion
-          question={questions[questionIndex] ? questions[questionIndex] : ""}
+          question={questions[questionIndex] ? questions[questionIndex] : "aaaaa"}
           MOCK_USER_ID={MOCK_USER_ID}
           incrementAnswersIndex={incrementAnswersIndex}
           answersArray={answersArray}
@@ -46,7 +52,10 @@ export default function Quiz({
           incrementQuestionIndex={incrementQuestionIndex}
           questionIndex={questionIndex}
         />
-      ) : null}
+      ) : (
+        <Heart quote={quote} />
+      )}
+      {/* <Quote quote={quote}/> */}
     </div>
   );
 }

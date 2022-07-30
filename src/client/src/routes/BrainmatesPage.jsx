@@ -1,10 +1,10 @@
-import Brainmates from "../components/Brainmates/Brainmates";
+import BrainmatesConnector from "../components/Brainmates/brainmates-connector";
 import Page from "../components/Page/Page";
 
 export default function BrainmatesPage() {
   return (
     <Page>
-      <Brainmates />
+      <BrainmatesConnector />
     </Page>
   );
 }
