@@ -19,10 +19,12 @@ const mapStateToProps = (state) => {
   const questions = getAllQuestions(state);
   const questionIndex = getQuestionIndex(state);
   const answersArray = getAllAnswers(state);
+
   const questionsLoading = getQuestionsLoading(state);
   const quote = getQuote(state)
   const MOCK_USER_ID = 1;
   return { questions, MOCK_USER_ID, answersArray, questionIndex, questionsLoading, quote };
+
 };
 
 const mapDispatchToProps = (dispatch) => {
