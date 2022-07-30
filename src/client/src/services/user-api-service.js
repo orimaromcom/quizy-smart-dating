@@ -1,25 +1,21 @@
-//***delete when server is ready***
-import user from "../temp/mock-user";
+import axios from "axios";
 
 export default class UserApiService {
   static async getUser(id) {
-    //***uncomment when server is ready***
-    // const response = await fetch(`/users/${id}`);
-    // const user = await response.json();
-    // return user;
-
-    //***delete when server is ready***
+    const response = await axios.get(`/users/${id}`);
+    console.log(response);
+    const user = response.data;
     return user;
   }
 
   static async updateUser(data) {
-    console.log("update", data);
-    //***uncomment when server is ready***
-    // const response = await fetch(`/users/${data.id}`);
-    // const user = await response.json();
-    // return user;
+    const response = await fetch(`/users/${data.id}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const user = await response.json();
 
-    //***delete when server is ready***
     return user;
   }
 }

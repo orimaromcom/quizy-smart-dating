@@ -70,6 +70,20 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
           />
         </Box>
         <Box className={style.info_field_container}>
+          <Select
+            disabled={!edit}
+            className={style.gender_select}
+            id="gender"
+            value={profileObj.gender || ""}
+            label="Gender"
+            onChange={handleChange}
+          >
+            <MenuItem value={"male"}>Male</MenuItem>
+            <MenuItem value={"female"}>Female</MenuItem>
+            <MenuItem value={"Any"}>Any</MenuItem>
+          </Select>
+        </Box>
+        <Box className={style.info_field_container}>
           <TextField
             disabled={!edit}
             label="Age"
@@ -141,7 +155,7 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
           >
             <MenuItem value={"male"}>Male</MenuItem>
             <MenuItem value={"female"}>Female</MenuItem>
-            <MenuItem value={"all"}>All</MenuItem>
+            <MenuItem value={"Any"}>Any</MenuItem>
           </Select>
         </Box>
       </div>
