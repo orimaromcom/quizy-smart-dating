@@ -15,7 +15,7 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
   const [profileObj, setProfileObj] = useState(profile);
 
   useEffect(() => {
-    if (!profile.id) fetcProfile(1);
+    if (!profile.id) fetcProfile("Eryn15@gmail.com");
   }, []);
 
   useEffect(() => {
@@ -26,11 +26,11 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
     setProfileObj({ ...profileObj, [event.target.id]: event.target.value });
   };
 
-  const handlePrefrencesAgeRangeChange = (event) => {
+  const handlePreferencesAgeRangeChange = (event) => {
     setProfileObj({
       ...profileObj,
-      ["prefrences"]: {
-        ...profileObj.prefrences,
+      ["preferences"]: {
+        ...profileObj.preferences,
         minAge: event.target.value[0],
         maxAge: event.target.value[1],
       },
@@ -40,8 +40,8 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
   const handleGenderChange = (event) => {
     setProfileObj({
       ...profileObj,
-      ["prefrences"]: {
-        ...profileObj.prefrences,
+      ["preferences"]: {
+        ...profileObj.preferences,
         gender: event.target.value,
       },
     });
@@ -69,7 +69,7 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
             onChange={handleChange}
           />
         </Box>
-        <Box className={style.info_field_container}>
+        {/* <Box className={style.info_field_container}>
           <Select
             disabled={!edit}
             className={style.gender_select}
@@ -82,7 +82,7 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
             <MenuItem value={"female"}>Female</MenuItem>
             <MenuItem value={"Any"}>Any</MenuItem>
           </Select>
-        </Box>
+        </Box> */}
         <Box className={style.info_field_container}>
           <TextField
             disabled={!edit}
@@ -111,7 +111,7 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
           />
         </Box>
       </div>
-      <div className={style.prefrences_container}>
+      <div className={style.preferences_container}>
         <Box className={style.pref_field_container}>
           <h1>Mate type</h1>
           <span className={style.rel_pref}>
@@ -123,7 +123,9 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
         <Box className={style.pref_field_container}>
           <h1>Mate Age</h1>
           <span className={style.pref_age_label}>
-            {profileObj.prefrences.minAge + "-" + profileObj.prefrences.maxAge}
+            {profileObj.preferences.minAge +
+              "-" +
+              profileObj.preferences.maxAge}
           </span>
           <span className={style.pref_age_slider_container}>
             <h2>{18}</h2>
@@ -132,11 +134,11 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
               className={style.pref_age_slider}
               value={
                 [
-                  profileObj.prefrences.minAge,
-                  profileObj.prefrences.maxAge,
+                  profileObj.preferences.minAge,
+                  profileObj.preferences.maxAge,
                 ] || [20, 45]
               }
-              onChange={handlePrefrencesAgeRangeChange}
+              onChange={handlePreferencesAgeRangeChange}
               valueLabelDisplay="auto"
               min={18}
             />
@@ -149,7 +151,7 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
             disabled={!edit}
             className={style.pref_gender_select}
             id="gender"
-            value={profileObj.prefrences.gender || ""}
+            value={profileObj.preferences.gender || ""}
             label="Gender"
             onChange={handleGenderChange}
           >
