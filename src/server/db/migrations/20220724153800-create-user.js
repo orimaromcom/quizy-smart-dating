@@ -8,9 +8,18 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      username: {
+      email: {
         type: Sequelize.STRING,
         unique: true
+      },
+      username: {
+        type: Sequelize.STRING,
+      },
+      photo: {
+        type: Sequelize.STRING,
+      },
+      phoneNumber: {
+        type: Sequelize.STRING,
       },
       age: {
         type: Sequelize.INTEGER
@@ -18,22 +27,19 @@ module.exports = {
       location: {
         type: Sequelize.STRING
       },
-      radius: {
-        type: Sequelize.INTEGER
-      },
       gender: {
         type: Sequelize.STRING
       },
       lookingForGender: {
         type: Sequelize.STRING
       },
-      relations: {
+      lookingForRelationsType: {
         type: Sequelize.STRING
       },
-      minAge: {
+      lookingForMinAge: {
         type: Sequelize.INTEGER
       },
-      maxAge: {
+      lookingForMaxAge: {
         type: Sequelize.INTEGER
       },
       createdAt: {
