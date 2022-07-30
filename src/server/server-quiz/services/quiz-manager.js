@@ -1,19 +1,26 @@
 const urlArray = require("../clients/api-constants");
 const { Question, TriviaAnswer, PersonalAnswer } = require("../../db/models");
 const triviaClient = require("../clients/trivia-client");
+const iquotes = require("iquotes");
 
 async function getAllQuestions() {
   const personalQuestions = await Question.findAll();
   shuffleOptions(personalQuestions);
-  const slicedArray = personalQuestions.slice(0, 4)
+  const slicedArray = personalQuestions.slice(0, 4);
 
   const triviaQuestions = await triviaClient.fetchMultipleTopics(urlArray);
 
   const quizyTriviaQuestions = changeQuestionsStructure(triviaQuestions);
 
   const questions = [...slicedArray, ...quizyTriviaQuestions];
+
   shuffleOptions(questions);
   return questions;
+}
+
+async function getRandomQuote() {
+  const quote = iquotes.random("love");
+  return quote
 }
 
 function changeQuestionsStructure(triviaQuestions) {
@@ -54,7 +61,6 @@ function shuffleOptions(optionsArray) {
 }
 
 async function postAnswer(answersArray) {
-  
   for (const answer of answersArray) {
     if (answer.type === "trivia") {
       postTriviaAnswer(answer);
@@ -67,18 +73,17 @@ async function postAnswer(answersArray) {
 }
 
 async function postTriviaAnswer(answer) {
-
-  if(answer.topic === "Entertainment: Music"){
-    answer.topic = "Music"
+  if (answer.topic === "Entertainment: Music") {
+    answer.topic = "Music";
   }
-  if(answer.topic === "Entertainment: Film"){
-    answer.topic = "Film"
+  if (answer.topic === "Entertainment: Film") {
+    answer.topic = "Film";
   }
-  if(answer.topic === "Science: Computers"){
-    answer.topic = "Computers"
+  if (answer.topic === "Science: Computers") {
+    answer.topic = "Computers";
   }
-  if(answer.topic === "Science: Math"){
-    answer.topic = "Math"
+  if (answer.topic === "Science: Math") {
+    answer.topic = "Math";
   }
 
   const topicQuestionsAnswered = answer.topic + "QuestionsAnswered";
@@ -86,7 +91,6 @@ async function postTriviaAnswer(answer) {
   const userId = answer.userId;
 
   await TriviaAnswer.increment(topicQuestionsAnswered, {
-   
     by: 1,
     where: { userId: userId },
   });
@@ -114,4 +118,5 @@ async function postPersonalAnswer(requestBodyFromClient) {
 module.exports = {
   getAllQuestions,
   postAnswer,
+  getRandomQuote,
 };
