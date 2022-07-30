@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.text {
+  flex: 0 1 auto;
+  padding: 0 1em 1em;
+  font-size: larger; /* fixme */
+  text-align: center;
+  .quote {
+    font-style: italic;
+  }
+  .author {
+    font-weight: bold;
+  }
+}
+
+.heart_container {
+  flex: 1 0 auto;
+  display: flex;
+}
+
+.heart {
+  margin: auto;
+  background: red;
+  height: 100px;
+  width: 100px;
+  /* Animation */
+  /* transform: rotate(-45deg) scale(); */
+  animation: pulse 2s linear infinite;
+  cursor: pointer;
+}
+
+.heart::after {
+  /* background:blue; */
+  background: inherit;
+  border-radius: 50%; /* To make circle */
+  content: "";
+  position: absolute;
+  /*     top: -100px; */
+  top: -50%; /* Inherit properties of parent */
+  /* left: -100px; */
+  left: 0;
+  height: 100px;
+  width: 100px;
+}
+.heart::before {
+  /*  background:green; */
+  background: inherit;
+  border-radius: 50%; /* To make circle */
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -50%; /* Inherit properties of parent */
+  height: 100px;
+  width: 100px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: rotate(-45deg) scale(1);
+    opacity: 0;
+  } /*
+    10% {
+        transform: rotate(-45deg) scale(1.3);
+    }
+    20% {
+        transform: rotate(-45deg) scale(0.9);
+    }
+    30% {
+        transform: rotate(-45deg) scale(1.2);
+    }
+    40% {
+        transform: rotate(-45deg) scale(0.9);
+    }*/
+  50% {
+    transform: rotate(-45deg) scale(1.3);
+    opacity: 1;
+  } /*
+    60% {
+        transform: rotate(-45deg) scale(0.95);
+    }
+    70% {
+        transform: rotate(-45deg) scale(1);
+    } */
+  100% {
+    transform: rotate(-45deg) scale(1);
+    opacity: 1;
+  }
+}

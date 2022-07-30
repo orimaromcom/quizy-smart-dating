@@ -5,8 +5,12 @@
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "faker": "^5.5.3",
+    "install": "^0.13.0",
+    "iquotes": "^1.0.5",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.19",
+    "npm": "^8.15.1",
+    "quotes": "^0.2.0",
     "sequelize": "^6.21.3"
   },
   "scripts": {

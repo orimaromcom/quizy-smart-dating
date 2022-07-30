@@ -19,6 +19,12 @@ const answersEntitiesReducer = (state = initialState, action) => {
         answerIndex: state.answerIndex + 1,
       };
 
+      case actionTypes.CLEAR_ANSWERS_ARRAY:
+      return {
+        ...state,
+        answers: [],
+      };
+
     default:
       return state;
   }
