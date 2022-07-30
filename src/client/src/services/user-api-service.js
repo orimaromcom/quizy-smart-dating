@@ -12,10 +12,10 @@ export default class UserApiService {
     return user;
   }
 
-  static async updateUser(id, data) {
+  static async updateUser(data) {
     console.log("update", data);
     //***uncomment when server is ready***
-    // const response = await fetch(`/users/${id}`);
+    // const response = await fetch(`/users/${data.id}`);
     // const user = await response.json();
     // return user;
 

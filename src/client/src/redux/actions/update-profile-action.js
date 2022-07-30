@@ -14,11 +14,11 @@ const updateProfileFailureAction = () => ({
   type: actionTypes.UPDATE_PROFILE_FAILURE,
 });
 
-export const updateProfile = (id, data) => {
+export const updateProfile = (data) => {
   return async (dispatch) => {
     dispatch(updatehProfileRequestAction());
     try {
-      const Profile = await UserApiService.updateUser(id, data);
+      const Profile = await UserApiService.updateUser(data);
       dispatch(updateProfileSuccessAction(Profile));
     } catch (e) {
       dispatch(updateProfileFailureAction());

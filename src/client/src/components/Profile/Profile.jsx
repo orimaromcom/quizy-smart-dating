@@ -26,14 +26,23 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
     setProfileObj({ ...profileObj, [event.target.id]: event.target.value });
   };
 
-  const handlePrefrencesRangeChange = (event) => {
-    console.log(event.target.value);
+  const handlePrefrencesAgeRangeChange = (event) => {
     setProfileObj({
       ...profileObj,
       ["prefrences"]: {
         ...profileObj.prefrences,
         minAge: event.target.value[0],
         maxAge: event.target.value[1],
+      },
+    });
+  };
+
+  const handleGenderChange = (event) => {
+    setProfileObj({
+      ...profileObj,
+      ["prefrences"]: {
+        ...profileObj.prefrences,
+        gender: event.target.value,
       },
     });
   };
@@ -113,7 +122,7 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
                   profileObj.prefrences.maxAge,
                 ] || [20, 45]
               }
-              onChange={handlePrefrencesRangeChange}
+              onChange={handlePrefrencesAgeRangeChange}
               valueLabelDisplay="auto"
               min={18}
             />
@@ -128,7 +137,7 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
             id="gender"
             value={profileObj.prefrences.gender || ""}
             label="Gender"
-            onChange={handleChange}
+            onChange={handleGenderChange}
           >
             <MenuItem value={"male"}>Male</MenuItem>
             <MenuItem value={"female"}>Female</MenuItem>
@@ -141,7 +150,8 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
           <Button
             variant="contained"
             onClick={() => {
-              //todo: send new info
+              //todo- only if changed
+              updateProfile(profileObj);
               setEdit(false);
             }}
           >
