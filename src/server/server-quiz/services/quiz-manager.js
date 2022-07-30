@@ -20,7 +20,7 @@ async function getAllQuestions() {
 
 async function getRandomQuote() {
   const quote = iquotes.random("love");
-  return quote
+  return quote;
 }
 
 function changeQuestionsStructure(triviaQuestions) {
