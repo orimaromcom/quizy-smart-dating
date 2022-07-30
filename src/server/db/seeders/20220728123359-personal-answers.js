@@ -1,5 +1,5 @@
 'use strict';
-const { Question, User } = require('../models');
+const { PersonalQuestion, User } = require('../models');
 
 const OPTIONS = ["option1", "option2", "option3", "option4"]
 
@@ -8,7 +8,7 @@ module.exports = {
 
     const personalAnswersJSON = [];
     const allUsers = await User.findAll();
-    const allQuestions = await Question.findAll();
+    const allQuestions = await PersonalQuestion.findAll();
     allUsers.forEach(user => {
       allQuestions.forEach(question => {
         let chosenOption;

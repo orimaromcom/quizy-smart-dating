@@ -1,10 +1,10 @@
 const urlArray = require("../clients/api-constants");
-const { Question, TriviaAnswer, PersonalAnswer } = require("../../db/models");
+const { PersonalQuestion, TriviaAnswer, PersonalAnswer } = require("../../db/models");
 const triviaClient = require("../clients/trivia-client");
 const iquotes = require("iquotes");
 
 async function getAllQuestions() {
-  const personalQuestions = await Question.findAll();
+  const personalQuestions = await PersonalQuestion.findAll();
   shuffleOptions(personalQuestions);
   const slicedArray = personalQuestions.slice(0, 4);
 
