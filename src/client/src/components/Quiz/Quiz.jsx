@@ -1,6 +1,7 @@
 import "./quiz.css";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
+import HeartLoader from "./HeartLoader/HeartLoader";
 import Heart from "./Heart/Heart";
 import AnswersApiService from "../../services/answers-api-service";
 import { useEffect } from "react";
@@ -40,11 +41,11 @@ export default function Quiz({
     <div className="quiz-container">
       <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
       {questionsLoading
-        ? console.log("Questions loading put loader")
+        ? (<HeartLoader />)
         : console.log("stop loader")}
       {!isFinished ? (
         <BasicQuestion
-          question={questions[questionIndex] ? questions[questionIndex] : "aaaaa"}
+          question={questions[questionIndex] ? questions[questionIndex] : ""}
           MOCK_USER_ID={MOCK_USER_ID}
           incrementAnswersIndex={incrementAnswersIndex}
           answersArray={answersArray}
@@ -55,7 +56,6 @@ export default function Quiz({
       ) : (
         <Heart quote={quote} />
       )}
-      {/* <Quote quote={quote}/> */}
     </div>
   );
 }
