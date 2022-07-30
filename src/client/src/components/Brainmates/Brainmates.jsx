@@ -5,7 +5,7 @@ import MateCard from "./MateCard/MateCard";
 export default function Brainmates({ brainmates, fetcBrainmates }) {
   //temp: we should load globaly
   useEffect(() => {
-    if (!brainmates.length) fetcBrainmates(2);
+    if (!!brainmates.length) fetcBrainmates(2);
   }, []);
 
   return (
