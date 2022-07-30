@@ -1,7 +1,7 @@
 import "./quiz.css";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
-import HeartLoader from "./Heart/Heart";
+import HeartLoader from "./HeartLoader/HeartLoader";
 import Heart from "./Heart/Heart";
 import AnswersApiService from "../../services/answers-api-service";
 import { useEffect } from "react";
