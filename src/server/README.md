@@ -1,10 +1,3 @@
-# The suggestions flow:
-1. User answers a new batch of questions.
-2. New distances to another users are calculated.
-3. The array of distances is sorted
-4.
-5. Liked suggestions go to brainmates
-    - if the suggestion likes User back, the brainmate became active.
 # API
 ## GET
 ----
