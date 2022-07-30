@@ -1,7 +1,21 @@
 import actionTypes from "../actions/constants";
 
 const initialState = {
-  profile: {},
+  profile: {
+    id: null,
+    email: null,
+    userName: null,
+    phone: null,
+    location: null,
+    picture: null,
+    birthday: null,
+    prefrences: {
+      gender: null,
+      minAge: null,
+      maxAge: null,
+      distance: null,
+    },
+  },
 };
 
 const brainmatesEntitiesReducer = (state = initialState, action) => {
