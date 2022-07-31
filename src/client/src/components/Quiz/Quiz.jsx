@@ -44,7 +44,7 @@ export default function Quiz({
         // AnswersApiService.postAnswers(answersArray);
         //DistancesApiService.postDistances(MOCK_USER_ID)
         fetchNewSuggestionsAction(MOCK_USER_ID)
-        // clearAnswersArray()
+         clearAnswersArray()
       }
      console.log(suggestions)
 
