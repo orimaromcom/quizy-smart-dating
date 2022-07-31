@@ -1,7 +1,7 @@
 import style from "./heart.module.scss";
-
+import { Button } from "@mui/material";
 import ReactDOM from "react-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import brainmatesConnector from "../../Brainmates/brainmates-connector";
 
 export default function Heart({
@@ -11,17 +11,16 @@ export default function Heart({
   setHeartClicked,
   heartClicked,
 }) {
-  let history = useNavigate();
-  const heatCLickHandler = () => {
+  const navigate = useNavigate();
+  const HeartCLickHandler = () => {
     fetchNewSuggestionsAction(MOCK_USER_ID);
     setHeartClicked(true);
-
-    history.push("/brainmates");
+    navigate("/brainmates");
   };
 
-  return !heartClicked ? (
+  return (
     <div className={style.container}>
-      <div className={style.heart_container} onClick={() => heatCLickHandler()}>
+      <div className={style.heart_container} onClick={() => HeartCLickHandler()}>
         {<div className={style.heart} />}
       </div>
 
@@ -30,5 +29,7 @@ export default function Heart({
         <div className={style.author}>{quote?.author}</div>
       </div>
     </div>
-  ) : null;
+  );
+  /* </Link> */
+  /* <Link to="/brainmates" > */
 }
