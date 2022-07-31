@@ -5,7 +5,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import { styled } from "@mui/material/styles";
 
-import React, { useState } from "react";
+import React from "react";
 
 const BorderLinearProgress = styled(LinearProgress)(() => ({
   height: 15,

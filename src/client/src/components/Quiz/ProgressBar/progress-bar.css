@@ -1,16 +1,17 @@
-.progress-bar-container{
-    width: 100%;
-    padding: 2%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    justify-self: flex-start;
+.progress-bar-container {
+  width: 95%;
+  padding-left: 2%;
+  padding-top: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: flex-start;
 }
 
-.MuiLinearProgress-root{
-    width: 90%;
+.MuiLinearProgress-root {
+  width: 90%;
 }
 
-.heart-icon{
-    font-size: 5rem;
+.heart-icon {
+  font-size: 5rem;
 }
