@@ -44,7 +44,7 @@ async function getUserInfo(email){
   } else {
     userInfo.id = null;
     userInfo.email = email;
-    userInfo.userName = email.slice(0,5);
+    userInfo.userName = null;
     userInfo.phone = null;
     userInfo.location = null;
     userInfo.age = null;
