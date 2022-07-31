@@ -18,6 +18,14 @@ const QUIZ_ACTIONS = {
   FETCH_BRAINMATES_SUCCESS: "fetch_brainmates_success",
   FETCH_BRAINMATES_FAILURE: "fetch_brainmates_failure",
 
+  FETCH_PROFILE_REQUEST: "fetch_profile_request",
+  FETCH_PROFILE_SUCCESS: "fetch_profile_success",
+  FETCH_PROFILE_FAILURE: "fetch_profile_failure",
+
+  UPDATE_PROFILE_REQUEST: "update_profile_request",
+  UPDATE_PROFILE_SUCCESS: "update_profile_success",
+  UPDATE_PROFILE_FAILURE: "update_profile_failure",
+
   ADD_ANSWER: "add_answer",
 
   SET_USER: "set_user",
