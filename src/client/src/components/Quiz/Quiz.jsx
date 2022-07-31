@@ -24,7 +24,7 @@ export default function Quiz({
   //TODO post distances ******
   //TODO pop up ***play again** or go to **heart button in brainmates**
   //When pressed play again, load more questions
-  const isFinished = questions.length && answersArray.length === questions.length;
+  const isFinished = questions.length && questionIndex === questions.length;
   useEffect(() => {
     if (!questions.length) {
       fetchNewQuestions();
@@ -32,8 +32,11 @@ export default function Quiz({
     }
     if (isFinished) {
       confetti()
-      AnswersApiService.postAnswers(answersArray);
-      console.log(quote);
+      if (answersArray.length){
+        AnswersApiService.postAnswers(answersArray);
+        clearAnswersArray()
+      }
+ 
       console.log("you should remove questions once succeeded");
       console.log("you should remove pop up the heart page");
     }
