@@ -1,4 +1,6 @@
 import "./quiz.css";
+import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 import confetti from "canvas-confetti";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
@@ -6,8 +8,9 @@ import HeartLoader from "./HeartLoader/HeartLoader";
 import Heart from "./Heart/Heart";
 import AnswersApiService from "../../services/answers-api-service";
 import DistancesApiService from "../../services/distances-api-service";
-import SuggestionsApiService from "../../services/suggestions-api-service";
-import { useEffect } from "react";
+import BrainmatesConnector from "../Brainmates/brainmates-connector";
+import Page from "../Page/Page";
+import { useEffect, useState } from "react";
 
 export default function Quiz({
   fetchNewQuestions,
@@ -29,12 +32,10 @@ export default function Quiz({
   //TODO pop up ***play again** or go to **heart button in brainmates**
   //When pressed play again, load more questions
   const isFinished = questions.length && questionIndex === questions.length;
-
-
+  const [heartClicked, setHeartClicked] = useState(false);
 
   useEffect(() => {
     if (!questions.length) {
- 
       fetchNewQuestions();
       updateQuote();
     }
@@ -43,10 +44,9 @@ export default function Quiz({
       if (answersArray.length) {
         // AnswersApiService.postAnswers(answersArray);
         //DistancesApiService.postDistances(MOCK_USER_ID)
-      
-         clearAnswersArray()
+
+        clearAnswersArray();
       }
-     console.log(suggestions)
 
       console.log("you should remove questions once succeeded");
       console.log("you should remove pop up the heart page");
@@ -68,7 +68,20 @@ export default function Quiz({
           questionIndex={questionIndex}
         />
       ) : (
-        <Heart quote={quote} fetchNewSuggestionsAction={fetchNewSuggestionsAction} MOCK_USER_ID={MOCK_USER_ID} />
+        <>
+         
+        <Heart
+          quote={quote}
+          fetchNewSuggestionsAction={fetchNewSuggestionsAction}
+          MOCK_USER_ID={MOCK_USER_ID}
+          heartClicked={heartClicked}
+          setHeartClicked={setHeartClicked}
+        />
+      
+
+        <Button variant="text">Continue Playing</Button>
+      
+        </>
       )}
     </div>
   );
