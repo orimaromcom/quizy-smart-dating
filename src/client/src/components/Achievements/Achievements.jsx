@@ -3,19 +3,15 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Achievement from "./Achievement/Achievement";
 
-export default function Achievements({ achievements, fetchAchievementsAction, userId, userEmail }) {
+export default function Achievements({ achievements, fetchAchievementsAction, userId }) {
 
   const navigate = useNavigate();
-  if (!userEmail) {
-    navigate("/login");
-  } else if (!userId) {
-    navigate("/profile");
-  }
 
-  console.log('----------');
-  console.log('userId', userId);
-  console.log('----------');
-
+  useEffect(() => {
+    if (!userId) {
+      navigate("/login");
+    }
+  }, [navigate, userId]);
 
   //temp: we should load globaly
   useEffect(() => {

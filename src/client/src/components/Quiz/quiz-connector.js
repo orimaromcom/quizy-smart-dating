@@ -7,7 +7,7 @@ import {
   getQuestionsLoading,
   getQuote,
 } from "../../redux/selectors/questions-entities-selectors";
-import { getUserId } from "../../redux/selectors/user-selector";
+import { getProfile } from "../../redux/selectors/profile-entity-selector";
 import { fetchNewQuestionsAction } from "../../redux/actions/fetch-questions-action";
 import { updateQuoteAction } from "../../redux/actions/update-quote-actions";
 import { clearAnswersArray } from "../../redux/actions/clear-answers-array";
@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
 
   const questionsLoading = getQuestionsLoading(state);
   const quote = getQuote(state)
-  const userId = getUserId(state);
+  const userId = getProfile(state).id;
   return { questions, userId, answersArray, questionIndex, questionsLoading, quote };
 
 };

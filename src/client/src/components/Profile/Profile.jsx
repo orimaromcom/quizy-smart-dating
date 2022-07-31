@@ -12,28 +12,23 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-export default function Profile({ profile, fetchProfileAction, updateProfileAction,
-                                  userId, userEmail, userName, userPicture }) {
+export default function Profile({ profile, updateProfileAction, resetProfileAction }) {
 
-  console.log('start');
   const navigate = useNavigate();
-
   useEffect(() => {
-    if (!userEmail) {
+    if (!profile.email) {
       navigate("/login");
-    } else if (!userId) {
-      console.log('NO USER ID');
     }
-  }, [userEmail, userId, navigate]);
+  }, [profile, navigate]);
 
   const [edit, setEdit] = useState(false);
   const [profileObj, setProfileObj] = useState(profile);
 
-  useEffect(() => {
-    if (userEmail) {
-      if (!profile.id) fetchProfileAction(userEmail);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (userEmail) {
+  //     if (!profile.id) fetchProfileAction(userEmail);
+  //   }
+  // }, []);
 
   useEffect(() => {
     setProfileObj(profile);
@@ -55,6 +50,16 @@ export default function Profile({ profile, fetchProfileAction, updateProfileActi
   };
 
   const handleGenderChange = (event) => {
+    setProfileObj({
+      ...profileObj,
+      ["preferences"]: {
+        ...profileObj.preferences,
+        relation_type: event.target.value,
+      },
+    });
+  };
+
+  const handleRelationsChange = (event) => {
     setProfileObj({
       ...profileObj,
       ["preferences"]: {
@@ -86,6 +91,9 @@ export default function Profile({ profile, fetchProfileAction, updateProfileActi
             value={profileObj.userName || ""}
             onChange={handleChange}
           />
+          <Button onClick={() => resetProfileAction({})}>
+            Logout
+          </Button>
         </Box>
         <div className={style.info_field_container}>
           <Box className={style.info_field_container_small}>
@@ -137,13 +145,27 @@ export default function Profile({ profile, fetchProfileAction, updateProfileActi
         </Box>
       </div>
       <div className={style.preferences_container}>
-        <Box className={style.pref_field_container}>
+        {/* <Box className={style.pref_field_container}>
           <h1>Mate type</h1>
           <span className={style.rel_pref}>
             <h2>Friendly</h2>
             <Switch color="primary" defaultChecked disabled={!edit} />
             <h2>Romantic</h2>
           </span>
+        </Box> */}
+        <Box className={style.pref_field_container}>
+          <h1>Relations</h1>
+          <Select
+            disabled={!edit}
+            className={style.pref_gender_select}
+            id="Relations"
+            value={profileObj.preferences.relation_type || "romantic"}
+            label="Relations"
+            onChange={handleRelationsChange}
+          >
+            <MenuItem value={"romantic"}>Romantic</MenuItem>
+            <MenuItem value={"friends"}>Friends</MenuItem>
+          </Select>
         </Box>
         <Box className={style.pref_field_container}>
           <h1>Mate Age</h1>
@@ -206,7 +228,7 @@ export default function Profile({ profile, fetchProfileAction, updateProfileActi
               setEdit(false);
             }}
           >
-            Cencel
+            Cancel
           </Button>
         </div>
       ) : (

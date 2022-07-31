@@ -14,11 +14,11 @@ const fetchProfileFailure = () => ({
   type: actionTypes.FETCH_PROFILE_FAILURE,
 });
 
-export const fetchProfileAction = (id) => {
+export const fetchProfileAction = (email) => {
   return async (dispatch) => {
     dispatch(fetchProfileRequest());
     try {
-      const Profile = await UserApiService.getUserById(id);
+      const Profile = await UserApiService.getUserByEmail(email);
       dispatch(fetchProfileSuccess(Profile));
     } catch (e) {
       dispatch(fetchProfileFailure());
