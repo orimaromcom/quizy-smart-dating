@@ -21,7 +21,7 @@ export default function Quiz({
   updateQuote,
   quote,
 }) {
-  //TODO post distances
+  //TODO post distances ******
   //TODO pop up ***play again** or go to **heart button in brainmates**
   //When pressed play again, load more questions
   const isFinished = questions.length && answersArray.length === questions.length;
