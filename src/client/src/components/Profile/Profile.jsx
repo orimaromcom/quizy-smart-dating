@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-export default function Profile({ profile, fetcProfile, updateProfile,
+export default function Profile({ profile, fetchProfileAction, updateProfileAction,
                                   userId, userEmail, userName, userPicture }) {
 
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ export default function Profile({ profile, fetcProfile, updateProfile,
   const [profileObj, setProfileObj] = useState(profile);
 
   useEffect(() => {
-    if (!profile.id) fetcProfile(userEmail);
+    if (!profile.id) fetchProfileAction(userEmail);
   }, []);
 
   useEffect(() => {
@@ -191,7 +191,7 @@ export default function Profile({ profile, fetcProfile, updateProfile,
             variant="contained"
             onClick={() => {
               //todo- only if changed
-              updateProfile(profileObj);
+              updateProfileAction(profileObj);
               setEdit(false);
             }}
           >

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Achievement from "./Achievement/Achievement";
 
-export default function Achievements({ achievements, fetcAchievements, userId, userEmail }) {
+export default function Achievements({ achievements, fetchAchievementsAction, userId, userEmail }) {
 
   const navigate = useNavigate();
   if (!userEmail) {
@@ -19,9 +19,9 @@ export default function Achievements({ achievements, fetcAchievements, userId, u
 
   //temp: we should load globaly
   useEffect(() => {
-    fetcAchievements(userId);
+    fetchAchievementsAction(userId);
     // if (!achievements.length)
-  }, [fetcAchievements, userId]);
+  }, [fetchAchievementsAction, userId]);
 
   const categories = Object.keys(achievements);
   if (Object.keys(achievements).length > 0) {
@@ -48,7 +48,7 @@ export default function Achievements({ achievements, fetcAchievements, userId, u
 // import { useNavigate } from "react-router-dom";
 // import Achievement from "./Achievement/Achievement";
 
-// export default function Achievements({ achievements, fetcAchievements, userId, userEmail }) {
+// export default function Achievements({ achievements, fetchAchievementsAction, userId, userEmail }) {
 
 //   const navigate = useNavigate();
 //   if (!userEmail) {
@@ -60,9 +60,9 @@ export default function Achievements({ achievements, fetcAchievements, userId, u
 
 //   //temp: we should load globaly
 //   useEffect(() => {
-//     fetcAchievements(userId);
+//     fetchAchievementsAction(userId);
 //     // if (!achievements.length)
-//   }, [fetcAchievements, userId]);
+//   }, [fetchAchievementsAction, userId]);
 
 //   const categories = Object.keys(achievements);
 //   if (categories.length > 0) {
@@ -90,10 +90,10 @@ export default function Achievements({ achievements, fetcAchievements, userId, u
 // import { useEffect } from "react";
 // import Achievement from "./Achievement/Achievement";
 
-// export default function Achievements({ achievements, fetcAchievements }) {
+// export default function Achievements({ achievements, fetchAchievementsAction }) {
 //   //temp: we should load globaly
 //   useEffect(() => {
-//     if (!achievements.length) fetcAchievements(1);
+//     if (!achievements.length) fetchAchievementsAction(1);
 //   }, []);
 
 //   return (

@@ -11,8 +11,8 @@ export default function BasicQuestion({
   question,
   userId,
   addAnswer,
-  incrementQuestionIndex,
-  incrementAnswersIndex,
+  incrementQuestionIndexAction,
+  incrementAnswersIndexAction,
   questions,
   answersArray,
 }) {
@@ -48,8 +48,8 @@ export default function BasicQuestion({
       questionId: question.id,
       chosenOption: chosenOption,
     };
-    incrementAnswersIndex();
-    incrementQuestionIndex();
+    incrementAnswersIndexAction();
+    incrementQuestionIndexAction();
 
     addAnswer(answerObject, answersArray, questions);
   };

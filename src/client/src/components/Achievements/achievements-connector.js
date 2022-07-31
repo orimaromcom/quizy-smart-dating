@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Achievements from "./Achievements";
-import { fetcAchievements } from "../../redux/actions/fetch-achievements-action";
+import { fetchAchievementsAction } from "../../redux/actions/fetch-achievements-action";
 import { getAllAchievements } from "../../redux/selectors/achievements-entities-selector";
 import { getUserId, getUserEmail } from "../../redux/selectors/user-selector";
 const mapStateToProps = (state) => {
@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ fetcAchievements }, dispatch);
+  return bindActionCreators({ fetchAchievementsAction }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Achievements);

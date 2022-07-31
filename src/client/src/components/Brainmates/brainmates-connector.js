@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Brainmates from "./Brainmates";
 import { getUserId } from "../../redux/selectors/user-selector";
-import { fetcBrainmates } from "../../redux/actions/fetch-brainmates-action";
+import { fetchBrainmatesAction } from "../../redux/actions/fetch-brainmates-action";
 import { getAllBrainmates } from "../../redux/selectors/brainmates-entities-selector";
 
 const mapStateToProps = (state) => {
@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ fetcBrainmates }, dispatch);
+  return bindActionCreators({ fetchBrainmatesAction }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Brainmates);

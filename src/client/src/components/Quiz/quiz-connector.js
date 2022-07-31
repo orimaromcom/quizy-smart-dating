@@ -8,13 +8,13 @@ import {
   getQuote,
 } from "../../redux/selectors/questions-entities-selectors";
 import { getUserId } from "../../redux/selectors/user-selector";
-import { fetchNewQuestions } from "../../redux/actions/fetch-questions-action";
-import { updateQuote } from "../../redux/actions/update-quote-actions";
+import { fetchNewQuestionsAction } from "../../redux/actions/fetch-questions-action";
+import { updateQuoteAction } from "../../redux/actions/update-quote-actions";
 import { clearAnswersArray } from "../../redux/actions/clear-answers-array";
-import { incrementQuestionIndex } from "../../redux/actions/increment-questions-index-actions";
+import { incrementQuestionIndexAction } from "../../redux/actions/increment-questions-index-actions";
 import { getAllAnswers } from "../../redux/selectors/answers-entities-selector";
 import { addAnswer } from "../../redux/actions/add-answer-action";
-import { incrementAnswersIndex } from "../../redux/actions/increment-answers-index-action";
+import { incrementAnswersIndexAction } from "../../redux/actions/increment-answers-index-action";
 
 const mapStateToProps = (state) => {
   const questions = getAllQuestions(state);
@@ -31,12 +31,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      fetchNewQuestions,
+      fetchNewQuestionsAction,
       addAnswer,
-      incrementQuestionIndex,
-      incrementAnswersIndex,
+      incrementQuestionIndexAction,
+      incrementAnswersIndexAction,
       clearAnswersArray,
-      updateQuote,
+      updateQuoteAction,
     },
     dispatch
   );

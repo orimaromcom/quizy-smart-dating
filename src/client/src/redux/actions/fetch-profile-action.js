@@ -1,27 +1,27 @@
 import actionTypes from "./constants";
 import UserApiService from "../../services/user-api-service";
 
-const fetchProfileRequestAction = () => ({
+const fetchProfileRequest = () => ({
   type: actionTypes.FETCH_PROFILE_REQUEST,
 });
 
-const fetchProfileSuccessAction = (Profile) => ({
+const fetchProfileSuccess = (Profile) => ({
   type: actionTypes.FETCH_PROFILE_SUCCESS,
   payload: Profile,
 });
 
-const fetchProfileFailureAction = () => ({
+const fetchProfileFailure = () => ({
   type: actionTypes.FETCH_PROFILE_FAILURE,
 });
 
-export const fetcProfile = (id) => {
+export const fetchProfileAction = (id) => {
   return async (dispatch) => {
-    dispatch(fetchProfileRequestAction());
+    dispatch(fetchProfileRequest());
     try {
       const Profile = await UserApiService.getUser(id);
-      dispatch(fetchProfileSuccessAction(Profile));
+      dispatch(fetchProfileSuccess(Profile));
     } catch (e) {
-      dispatch(fetchProfileFailureAction());
+      dispatch(fetchProfileFailure());
     }
   };
 };
