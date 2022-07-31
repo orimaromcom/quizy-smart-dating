@@ -14,16 +14,19 @@ import { incrementQuestionIndex } from "../../redux/actions/increment-questions-
 import { getAllAnswers } from "../../redux/selectors/answers-entities-selector";
 import { addAnswer } from "../../redux/actions/add-answer-action";
 import { incrementAnswersIndex } from "../../redux/actions/increment-answers-index-action";
+import {fetchNewSuggestionsAction} from "../../redux/actions/fetch-suggestions-action"
+import {getSuggestions} from "../../redux/selectors/suggestions-entities-selector"
 
 const mapStateToProps = (state) => {
   const questions = getAllQuestions(state);
   const questionIndex = getQuestionIndex(state);
   const answersArray = getAllAnswers(state);
+  const suggestions = getSuggestions(state)
 
   const questionsLoading = getQuestionsLoading(state);
   const quote = getQuote(state)
   const MOCK_USER_ID = 1;
-  return { questions, MOCK_USER_ID, answersArray, questionIndex, questionsLoading, quote };
+  return { questions, MOCK_USER_ID, answersArray, questionIndex, questionsLoading, quote, suggestions };
 
 };
 
@@ -36,6 +39,7 @@ const mapDispatchToProps = (dispatch) => {
       incrementAnswersIndex,
       clearAnswersArray,
       updateQuote,
+      fetchNewSuggestionsAction,
     },
     dispatch
   );

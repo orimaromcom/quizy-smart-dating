@@ -1,5 +1,5 @@
 import actionTypes from "./constants";
-import SuggestionsApiService from "../../services/questions-api-service";
+import SuggestionsApiService from "../../services/suggestions-api-service";
 
 const fetchSuggestionsRequest = () => ({
   type: actionTypes.FETCH_SUGGESTIONS_REQUEST,
@@ -15,11 +15,14 @@ const fetchSuggestionsFailure = (error) => ({
   payload: error?.message ?? error,
 });
 
-export const fetchNewSuggestionsAction = () => {
+export const fetchNewSuggestionsAction = (userId) => {
+  console.log("In suggestions action")
   return async (dispatch) => {
     dispatch(fetchSuggestionsRequest());
     try {
-      const suggestions = await SuggestionsApiService.getSuggestions();
+      const suggestions = await SuggestionsApiService.getSuggestions(userId);
+      console.log("checking for suggestions")
+      console.log(suggestions)
 
       dispatch(fetchSuggestionsSuccess(suggestions));
     } catch (e) {

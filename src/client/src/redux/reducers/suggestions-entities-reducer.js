@@ -1,7 +1,7 @@
 import actionTypes from "../actions/constants";
 
 const initialState = {
-  suggestions: [],
+  suggestions: {},
 };
 
 const suggestionsEntitiesReducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const suggestionsEntitiesReducer = (state = initialState, action) => {
     case actionTypes.FETCH_SUGGESTIONS_SUCCESS:
       return {
         ...state,
-        suggestions: [...state.suggestions, ...action.payload],
+        suggestions: action.payload,
       };
 
     default:

@@ -22,6 +22,8 @@ export default function Quiz({
   clearAnswersArray,
   updateQuote,
   quote,
+  suggestions,
+  fetchNewSuggestionsAction,
 }) {
   //TODO post distances ******
   //TODO pop up ***play again** or go to **heart button in brainmates**
@@ -32,7 +34,7 @@ export default function Quiz({
 
   useEffect(() => {
     if (!questions.length) {
-     // getSuggestions();
+ 
       fetchNewQuestions();
       updateQuote();
     }
@@ -40,9 +42,11 @@ export default function Quiz({
       confetti();
       if (answersArray.length) {
         // AnswersApiService.postAnswers(answersArray);
-        // DistancesApiService.postDistances(MOCK_USER_ID)
+        //DistancesApiService.postDistances(MOCK_USER_ID)
+        fetchNewSuggestionsAction(MOCK_USER_ID)
         // clearAnswersArray()
       }
+     console.log(suggestions)
 
       console.log("you should remove questions once succeeded");
       console.log("you should remove pop up the heart page");

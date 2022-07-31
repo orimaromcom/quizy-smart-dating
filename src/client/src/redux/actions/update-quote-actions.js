@@ -7,11 +7,9 @@ const updateQuoteAction = (quote) => ({
 });
 
 export const updateQuote = () => {
-    console.log("in action quote");
   return async (dispatch) => {
     try {
       const quote = await QuoteApiService.getRandomQuote();
-   console.log(quote)
       dispatch(updateQuoteAction(quote));
     } catch (e) {}
   };
