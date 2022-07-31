@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./navbar.css";
 import { Box, BottomNavigation, BottomNavigationAction } from "@mui/material";
-import PsychologyIcon from "@mui/icons-material/Psychology";
+import PsychologyIcon from '@mui/icons-material/InterestsTwoTone';
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import PersonIcon from "@mui/icons-material/Person";
