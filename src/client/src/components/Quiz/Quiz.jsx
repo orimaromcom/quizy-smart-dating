@@ -25,12 +25,8 @@ export default function Quiz({
   clearAnswersArray,
   updateQuote,
   quote,
-  suggestions,
   fetchNewSuggestionsAction,
 }) {
-  //TODO post distances ******
-  //TODO pop up ***play again** or go to **heart button in brainmates**
-  //When pressed play again, load more questions
   const isFinished = questions.length && questionIndex === questions.length;
   const [heartClicked, setHeartClicked] = useState(false);
 
@@ -69,18 +65,14 @@ export default function Quiz({
         />
       ) : (
         <>
-         
-        <Heart
-          quote={quote}
-          fetchNewSuggestionsAction={fetchNewSuggestionsAction}
-          MOCK_USER_ID={MOCK_USER_ID}
-          heartClicked={heartClicked}
-          setHeartClicked={setHeartClicked}
-        />
-      
-
-        <Button variant="text">Continue Playing</Button>
-      
+          <Heart
+            quote={quote}
+            fetchNewSuggestionsAction={fetchNewSuggestionsAction}
+            MOCK_USER_ID={MOCK_USER_ID}
+            heartClicked={heartClicked}
+            setHeartClicked={setHeartClicked}
+          />
+          <Button variant="text">Continue Playing</Button>
         </>
       )}
     </div>
