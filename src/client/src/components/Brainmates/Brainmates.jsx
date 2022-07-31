@@ -4,12 +4,14 @@ import { useNavigate } from "react-router-dom";
 import MateCard from "./MateCard/MateCard";
 
 export default function Brainmates({ brainmates, fetchBrainmatesAction, userId }) {
-  const navigate = useNavigate();
-  console.log('userId', userId);
-  if (!userId) {
-    navigate("/profile");
-  }
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!userId) {
+      navigate("/profile");
+    }
+  }, [navigate, userId]);
 
   //temp: we should load globaly
   useEffect(() => {
