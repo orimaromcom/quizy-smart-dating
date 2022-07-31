@@ -4,7 +4,7 @@ import MateCard from "./MateCard/MateCard";
 
 export default function Brainmates({ brainmates, fetcBrainmates }) {
   useEffect(() => {
-    if (!brainmates.length || (!brainmates.dislikeBack.length && !brainmates.likeBack))
+    if (!Object.keys(brainmates).length)
       fetcBrainmates(2);
   }, []);
 

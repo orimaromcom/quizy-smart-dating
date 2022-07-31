@@ -56,7 +56,7 @@ export default function Quiz({
   return (
     <div className="quiz-container">
       <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
-      {questionsLoading ? <HeartLoader /> : console.log("stop loader")}
+      {questionsLoading ? <HeartLoader /> : null}
       {!isFinished ? (
         <BasicQuestion
           question={questions[questionIndex] ? questions[questionIndex] : ""}
