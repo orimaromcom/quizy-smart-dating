@@ -18,7 +18,7 @@ export const fetchProfileAction = (id) => {
   return async (dispatch) => {
     dispatch(fetchProfileRequest());
     try {
-      const Profile = await UserApiService.getUser(id);
+      const Profile = await UserApiService.getUserById(id);
       dispatch(fetchProfileSuccess(Profile));
     } catch (e) {
       dispatch(fetchProfileFailure());

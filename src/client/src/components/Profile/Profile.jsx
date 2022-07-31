@@ -15,27 +15,29 @@ import { useNavigate } from "react-router-dom";
 export default function Profile({ profile, fetchProfileAction, updateProfileAction,
                                   userId, userEmail, userName, userPicture }) {
 
+  console.log('start');
   const navigate = useNavigate();
-  if (!userEmail) {
-    navigate("/login");
-  } else if (!userId) {
-    console.log('NO USER ID');
-  }
+
+  useEffect(() => {
+    if (!userEmail) {
+      navigate("/login");
+    } else if (!userId) {
+      console.log('NO USER ID');
+    }
+  }, [userEmail, userId, navigate]);
 
   const [edit, setEdit] = useState(false);
   const [profileObj, setProfileObj] = useState(profile);
 
   useEffect(() => {
-    if (!profile.id) fetchProfileAction(userEmail);
+    if (userEmail) {
+      if (!profile.id) fetchProfileAction(userEmail);
+    }
   }, []);
 
   useEffect(() => {
     setProfileObj(profile);
   }, [profile]);
-
-  console.log('---------');
-  console.log('profile', profile);
-  console.log('---------');
 
   const handleChange = (event) => {
     setProfileObj({ ...profileObj, [event.target.id]: event.target.value });

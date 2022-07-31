@@ -10,8 +10,9 @@ export default function Login({
                                 setUserAction, resetUserAction
                               }) {
   const navigate = useNavigate();
-  async function getGoogleLoginData(credentialResponse) {
+  const getGoogleLoginData = async (credentialResponse) => {
     const {email, picture, name} = jwt_decode(credentialResponse.credential);
+    console.log('email ', email);
     const userInfo = await UserApiService.getUserByEmail(email);
     if (userInfo.id === null) {
       userInfo.picture = picture;
@@ -21,12 +22,12 @@ export default function Login({
   }
 
 
-  function goToProfilePage() {
+  const goToProfilePage = () => {
     navigate("/profile");
   }
 
   const GoogleLogIn = <GoogleLogin
-                        onSuccess={getGoogleLoginData}
+                        onSuccess={(credentialResponse) => getGoogleLoginData(credentialResponse)}
                         onError={() => {
                           console.log('Login failed');
                         }}
@@ -41,6 +42,7 @@ export default function Login({
     setTestEmail("");
     const secretPass = pass;
     setPass("");
+    console.log('testUserEmail', testUserEmail);
     const userInfo = await UserApiService.getUserByEmail(testUserEmail);
     if (userInfo.id === null || secretPass !== process.env.REACT_APP_TESTING_PASSWORD) {
       console.log('Error, invalid data');
