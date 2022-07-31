@@ -11,7 +11,7 @@ const allReducers = combineReducers({
   answersEntities,
   achievementsEntities,
   brainmatesEntities,
-  user
+  user,
   profileEntity,
 });
 

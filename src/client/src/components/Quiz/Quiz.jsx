@@ -1,4 +1,6 @@
 import "./quiz.css";
+import { useNavigate } from "react-router-dom";
+
 import confetti from "canvas-confetti"
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
@@ -10,7 +12,7 @@ import { useEffect } from "react";
 export default function Quiz({
   fetchNewQuestions,
   questions,
-  MOCK_USER_ID,
+  userId,
   answersArray,
   addAnswer,
   questionIndex,
@@ -21,6 +23,12 @@ export default function Quiz({
   updateQuote,
   quote,
 }) {
+
+  const navigate = useNavigate();
+  if (!userId) {
+    navigate("/profile");
+  }
+
   //TODO post distances
   //TODO pop up ***play again** or go to **heart button in brainmates**
   //When pressed play again, load more questions
@@ -48,7 +56,7 @@ export default function Quiz({
       {!isFinished ? (
         <BasicQuestion
           question={questions[questionIndex] ? questions[questionIndex] : ""}
-          MOCK_USER_ID={MOCK_USER_ID}
+          userId={userId}
           incrementAnswersIndex={incrementAnswersIndex}
           answersArray={answersArray}
           addAnswer={addAnswer}

@@ -1,11 +1,19 @@
 import "./brainmates.css";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import MateCard from "./MateCard/MateCard";
 
-export default function Brainmates({ brainmates, fetcBrainmates }) {
+export default function Brainmates({ brainmates, fetcBrainmates, userId }) {
+  const navigate = useNavigate();
+  console.log('userId', userId);
+  if (!userId) {
+    navigate("/profile");
+  }
+
+
   //temp: we should load globaly
   useEffect(() => {
-    if (!brainmates.length) fetcBrainmates(2);
+    if (!brainmates.length) fetcBrainmates(userId);
   }, []);
 
   return (

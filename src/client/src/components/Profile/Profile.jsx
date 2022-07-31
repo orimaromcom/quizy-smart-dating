@@ -9,18 +9,33 @@ import {
   MenuItem,
 } from "@mui/material";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Profile({ profile, fetcProfile, updateProfile }) {
+
+export default function Profile({ profile, fetcProfile, updateProfile,
+                                  userId, userEmail, userName, userPicture }) {
+
+  const navigate = useNavigate();
+  if (!userEmail) {
+    navigate("/login");
+  } else if (!userId) {
+    console.log('NO USER ID');
+  }
+
   const [edit, setEdit] = useState(false);
   const [profileObj, setProfileObj] = useState(profile);
 
   useEffect(() => {
-    if (!profile.id) fetcProfile("Eryn15@gmail.com");
+    if (!profile.id) fetcProfile(userEmail);
   }, []);
 
   useEffect(() => {
     setProfileObj(profile);
   }, [profile]);
+
+  console.log('---------');
+  console.log('profile', profile);
+  console.log('---------');
 
   const handleChange = (event) => {
     setProfileObj({ ...profileObj, [event.target.id]: event.target.value });
@@ -82,13 +97,13 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
             >
               <MenuItem value={"male"}>Male</MenuItem>
               <MenuItem value={"female"}>Female</MenuItem>
-              <MenuItem value={"Any"}>Any</MenuItem>
+              <MenuItem value={"other"}>Other</MenuItem>
             </Select>
           </Box>
           <Box className={style.info_field_container_small}>
             <TextField
               type={"number"}
-              max={100}
+              max={55}
               min={18}
               disabled={!edit}
               label="Age"
@@ -149,8 +164,9 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
               onChange={handlePreferencesAgeRangeChange}
               valueLabelDisplay="auto"
               min={18}
+              max={55}
             />
-            <h2>100</h2>
+            <h2>55</h2>
           </span>
         </Box>
         <Box className={style.pref_field_container}>
@@ -159,13 +175,13 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
             disabled={!edit}
             className={style.pref_gender_select}
             id="gender"
-            value={profileObj.preferences.gender || ""}
+            value={profileObj.preferences.gender || "any"}
             label="Gender"
             onChange={handleGenderChange}
           >
             <MenuItem value={"male"}>Male</MenuItem>
             <MenuItem value={"female"}>Female</MenuItem>
-            <MenuItem value={"Any"}>Any</MenuItem>
+            <MenuItem value={"any"}>Any</MenuItem>
           </Select>
         </Box>
       </div>

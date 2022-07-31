@@ -19,7 +19,7 @@ export const fetcAchievements = (id) => {
     dispatch(fetchAchievementsRequestAction());
     try {
       const achievements = await AchievementsApiService.getAchievements(id);
-      dispatch(fetchAchievementsSuccessAction(achievements));
+      dispatch(fetchAchievementsSuccessAction(achievements.categories));
     } catch (e) {
       dispatch(fetchAchievementsFailureAction());
     }

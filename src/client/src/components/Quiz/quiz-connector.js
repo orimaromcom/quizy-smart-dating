@@ -7,6 +7,7 @@ import {
   getQuestionsLoading,
   getQuote,
 } from "../../redux/selectors/questions-entities-selectors";
+import { getUserId } from "../../redux/selectors/user-selector";
 import { fetchNewQuestions } from "../../redux/actions/fetch-questions-action";
 import { updateQuote } from "../../redux/actions/update-quote-actions";
 import { clearAnswersArray } from "../../redux/actions/clear-answers-array";
@@ -22,8 +23,8 @@ const mapStateToProps = (state) => {
 
   const questionsLoading = getQuestionsLoading(state);
   const quote = getQuote(state)
-  const MOCK_USER_ID = 1;
-  return { questions, MOCK_USER_ID, answersArray, questionIndex, questionsLoading, quote };
+  const userId = getUserId(state);
+  return { questions, userId, answersArray, questionIndex, questionsLoading, quote };
 
 };
 

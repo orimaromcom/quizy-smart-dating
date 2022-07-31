@@ -1,4 +1,4 @@
-import { user } from "../temp/mock-user";
+// import { user } from "../temp/mock-user";
 import axios from "axios";
 
 export default class UserApiService {

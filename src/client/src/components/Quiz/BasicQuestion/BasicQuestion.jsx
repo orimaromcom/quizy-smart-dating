@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 export default function BasicQuestion({
   question,
-  MOCK_USER_ID,
+  userId,
   addAnswer,
   incrementQuestionIndex,
   incrementAnswersIndex,
@@ -41,7 +41,7 @@ export default function BasicQuestion({
     }
 
     const answerObject = {
-      userId: MOCK_USER_ID,
+      userId: userId,
       type: question.type,
       topic: question.topic,
       isCorrect: answerIsCorrect,
