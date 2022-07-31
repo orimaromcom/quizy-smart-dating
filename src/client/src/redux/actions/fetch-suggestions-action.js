@@ -1,29 +1,29 @@
 import actionTypes from "./constants";
 import SuggestionsApiService from "../../services/questions-api-service";
 
-const fetchSuggestionsRequestAction = () => ({
+const fetchSuggestionsRequest = () => ({
   type: actionTypes.FETCH_SUGGESTIONS_REQUEST,
 });
 
-const fetchSuggestionsSuccessAction = (suggestions) => ({
+const fetchSuggestionsSuccess = (suggestions) => ({
   type: actionTypes.FETCH_SUGGESTIONS_SUCCESS,
   payload: suggestions,
 });
 
-const fetchSuggestionsFailureAction = (error) => ({
+const fetchSuggestionsFailure = (error) => ({
   type: actionTypes.FETCH_SUGGESTIONS_FAILURE,
   payload: error?.message ?? error,
 });
 
-export const fetchNewSuggestions = () => {
+export const fetchNewSuggestionsAction = () => {
   return async (dispatch) => {
-    dispatch(fetchQuestionsRequestAction());
+    dispatch(fetchSuggestionsRequest());
     try {
       const suggestions = await SuggestionsApiService.getSuggestions();
 
-      dispatch(fetchSuggestionsSuccessAction(suggestions));
+      dispatch(fetchSuggestionsSuccess(suggestions));
     } catch (e) {
-      dispatch(fetchSuggestionsFailureAction(e));
+      dispatch(fetchSuggestionsFailure(e));
     }
   };
 };

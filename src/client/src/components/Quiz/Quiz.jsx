@@ -28,14 +28,11 @@ export default function Quiz({
   //When pressed play again, load more questions
   const isFinished = questions.length && questionIndex === questions.length;
 
-  async function getSuggestions() {
-    const suggestionsResponse = await SuggestionsApiService.getSuggestions(MOCK_USER_ID);
-    return suggestionsResponse;
-  }
-  
+
+
   useEffect(() => {
     if (!questions.length) {
-      getSuggestions();
+     // getSuggestions();
       fetchNewQuestions();
       updateQuote();
     }
