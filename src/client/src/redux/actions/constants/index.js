@@ -27,6 +27,9 @@ const QUIZ_ACTIONS = {
   UPDATE_PROFILE_FAILURE: "update_profile_failure",
 
   ADD_ANSWER: "add_answer",
+
+  SET_USER: "set_user",
+  RESET_USER: "reset_user",
 };
 
 export default QUIZ_ACTIONS;
