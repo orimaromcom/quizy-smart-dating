@@ -43,7 +43,7 @@ export default function Quiz({
       if (answersArray.length) {
         // AnswersApiService.postAnswers(answersArray);
         //DistancesApiService.postDistances(MOCK_USER_ID)
-        fetchNewSuggestionsAction(MOCK_USER_ID)
+      
          clearAnswersArray()
       }
      console.log(suggestions)
@@ -68,7 +68,7 @@ export default function Quiz({
           questionIndex={questionIndex}
         />
       ) : (
-        <Heart quote={quote} />
+        <Heart quote={quote} fetchNewSuggestionsAction={fetchNewSuggestionsAction} MOCK_USER_ID={MOCK_USER_ID} />
       )}
     </div>
   );
