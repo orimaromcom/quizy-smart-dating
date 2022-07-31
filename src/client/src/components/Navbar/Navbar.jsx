@@ -26,21 +26,21 @@ export default function Navbar() {
           value="quiz"
           to="/quiz"
           label="Quiz"
-          icon={<PsychologyIcon sx={{ fontSize: 40 }}/>}
+          icon={<PsychologyIcon sx={{ fontSize: 40 }} />}
         />
         <BottomNavigationAction
           component={Link}
           value="brainmates"
           to="/brainmates"
           label="Brainmates"
-          icon={<FavoriteIcon sx={{ fontSize: 40 }}/>}
+          icon={<FavoriteIcon sx={{ fontSize: 40 }} />}
         />
         <BottomNavigationAction
           component={Link}
           value="achievements"
           to="/achievements"
           label="Achievements"
-          icon={<EmojiEventsIcon sx={{ fontSize: 40 }}/>}
+          icon={<EmojiEventsIcon sx={{ fontSize: 40 }} />}
         />
         <BottomNavigationAction
           component={Link}

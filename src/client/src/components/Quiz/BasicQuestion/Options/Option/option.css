@@ -1,14 +1,19 @@
-.option-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
+.option-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .option-btn {
-    width: 90%;
-    height: 80%;
-    max-width: 90%;
-    max-height: 80%;
+  width: 90%;
+  height: 80%;
+  max-width: 90%;
+  max-height: 80%;
+}
+
+#option-button-id {
+  font-size: 18px;
+  font-family: "Blinker", sans-serif;
 }
