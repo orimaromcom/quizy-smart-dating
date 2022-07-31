@@ -7,6 +7,6 @@ export default class QuestionsApiService {
       return response.data;
     }
 
-    throw new Error(response?.data?.msg)
+    throw new Error(response?.data?.msg);
   }
 }

@@ -18,6 +18,10 @@ const QUIZ_ACTIONS = {
   FETCH_BRAINMATES_SUCCESS: "fetch_brainmates_success",
   FETCH_BRAINMATES_FAILURE: "fetch_brainmates_failure",
 
+  FETCH_SUGGESTIONS_REQUEST: "fetch_suggestions_request",
+  FETCH_SUGGESTIONS_SUCCESS: "fetch_suggestions_success",
+  FETCH_SUGGESTIONS_FAILURE: "fetch_suggestions_failure",
+
   ADD_ANSWER: "add_answer",
 };
 
