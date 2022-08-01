@@ -20,7 +20,7 @@ export default function Quiz({
   questions,
   userId,
   answersArray,
-  addAnswer,
+  addAnswerAction,
   questionIndex,
   incrementQuestionIndexAction,
   incrementAnswersIndexAction,
@@ -73,7 +73,7 @@ export default function Quiz({
           userId={userId}
           incrementAnswersIndexAction={incrementAnswersIndexAction}
           answersArray={answersArray}
-          addAnswer={addAnswer}
+          addAnswer={addAnswerAction}
           incrementQuestionIndexAction={incrementQuestionIndexAction}
           questionIndex={questionIndex}
         />

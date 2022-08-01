@@ -1,12 +1,11 @@
 import actionTypes from "./constants";
-const addAnswerAction = (answer) => ({
+const addAnswer = (answer) => ({
   type: actionTypes.ADD_ANSWER,
   payload: answer,
 });
 
-export const addAnswer = (answer, answersArray, questions) => {
+export const addAnswerAction = (answer, answersArray, questions) => {
   return async (dispatch) => {
-    dispatch(addAnswerAction(answer, answersArray, questions));
-    
+    dispatch(addAnswer(answer, answersArray, questions));
   };
 };
