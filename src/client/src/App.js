@@ -5,7 +5,7 @@ import BrainmatesPage from "./routes/BrainmatesPage";
 import AchievementsPage from "./routes/AchievementsPage";
 import ProfilePage from "./routes/ProfilePage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import Layout from "./components/Layout/Layout";
 
 const theme = createTheme({

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import "./navbar.css";
 import { Box, BottomNavigation, BottomNavigationAction } from "@mui/material";
 import PsychologyIcon from "@mui/icons-material/InterestsTwoTone";
@@ -7,45 +6,45 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import PersonIcon from "@mui/icons-material/Person";
 
-export default function Navbar() {
-  //takes the navbar firs value from current window location
+export default function Navbar({ pageButtonValue, updatePageButtonAction }) {
   const currentPage = window.location.href.split("/").pop();
-  const [value, setValue] = useState(currentPage);
+  updatePageButtonAction(currentPage);
+  console.log(pageButtonValue === "login")
 
   return (
-    <Box>
+    (pageButtonValue === "login" ? null : (<Box>
       <BottomNavigation
         showLabels
-        value={value}
+        value={pageButtonValue}
         onChange={(event, newValue) => {
-          setValue(newValue);
+          updatePageButtonAction(newValue);
         }}
       >
         <BottomNavigationAction
           component={Link}
           value="quiz"
           to="/quiz"
-          icon={<PsychologyIcon sx={{ fontSize: 40 }} />}
+          icon={<PsychologyIcon sx={{ fontSize: 45 }} />}
         />
         <BottomNavigationAction
           component={Link}
           value="brainmates"
           to="/brainmates"
-          icon={<FavoriteIcon sx={{ fontSize: 40 }} />}
+          icon={<FavoriteIcon sx={{ fontSize: 45 }} />}
         />
         <BottomNavigationAction
           component={Link}
           value="achievements"
           to="/achievements"
-          icon={<EmojiEventsIcon sx={{ fontSize: 40 }} />}
+          icon={<EmojiEventsIcon sx={{ fontSize: 45 }} />}
         />
         <BottomNavigationAction
           component={Link}
           value="profile"
           to="/profile"
-          icon={<PersonIcon sx={{ fontSize: 40 }} />}
+          icon={<PersonIcon sx={{ fontSize: 45 }} />}
         />
       </BottomNavigation>
-    </Box>
+    </Box>) )
   );
 }
