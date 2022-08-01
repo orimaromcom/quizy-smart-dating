@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-export default function Profile({ profile, updateProfileAction, resetProfileAction }) {
+export default function Profile({ profile, updateProfileAction, userLogoutAction }) {
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -91,7 +91,7 @@ export default function Profile({ profile, updateProfileAction, resetProfileActi
             value={profileObj.userName || ""}
             onChange={handleChange}
           />
-          <Button onClick={() => resetProfileAction({})}>
+          <Button onClick={() => userLogoutAction({})}>
             Logout
           </Button>
         </Box>

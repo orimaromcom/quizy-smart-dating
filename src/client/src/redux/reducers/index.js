@@ -4,6 +4,7 @@ import achievementsEntities from "./achievement-entities-reducer";
 import brainmatesEntities from "./brainmates-entities-reducer";
 import suggestionsEntities from "./suggestions-entities-reducer"
 import profileEntity from "./profile-entity-reducer";
+import actionTypes from "../actions/constants";
 import { combineReducers } from "redux";
 
 const allReducers = combineReducers({
@@ -14,5 +15,11 @@ const allReducers = combineReducers({
   suggestionsEntities,
   profileEntity,
 });
-
-export default allReducers;
+// https://stackoverflow.com/questions/35622588/how-to-reset-the-state-of-a-redux-store
+const rootReducer = (state, action) => {
+  if (action.type === actionTypes.USER_LOGOUT) {
+    return allReducers(undefined, action)
+  }
+  return allReducers(state, action)
+}
+export default rootReducer;

@@ -18,18 +18,15 @@ const initialState = {
   },
 };
 
-const brainmatesEntitiesReducer = (state = initialState, action) => {
+const profileEntitiesReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_PROFILE_SUCCESS:
     case actionTypes.UPDATE_PROFILE_SUCCESS: {
       return { ...state, profile: action.payload };
-    }
-    case actionTypes.RESET_PROFILE_SUCCESS: {
-      return { ...initialState, profile: action.payload }
     }
     default:
       return state;
   }
 };
 
-export default brainmatesEntitiesReducer;
+export default profileEntitiesReducer;
