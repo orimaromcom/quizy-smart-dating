@@ -12,7 +12,6 @@ import HeartLoader from "./HeartLoader/HeartLoader";
 import HeartConnector from "./Heart/HeartConnector.js";
 import AnswersApiService from "../../services/answers-api-service";
 import DistancesApiService from "../../services/distances-api-service";
-import Page from "../Page/Page";
 import { useEffect, useState } from "react";
 
 export default function Quiz({
@@ -31,9 +30,13 @@ export default function Quiz({
   fetchNewSuggestionsAction,
 }) {
   const navigate = useNavigate();
-  if (!userId) {
-    navigate("/profile");
-  }
+  useEffect(() => {
+    if (!userId) {
+      navigate("/login");
+      return;
+    }
+  }, [navigate, userId]);
+
   const isFinished = questions.length && questionIndex === questions.length;
   const [heartClicked, setHeartClicked] = useState(false);
 
@@ -45,27 +48,19 @@ export default function Quiz({
     if (isFinished) {
       confetti();
       if (answersArray.length) {
-        // AnswersApiService.postAnswers(answersArray);
-        //DistancesApiService.postDistances(MOCK_USER_ID)
+        AnswersApiService.postAnswers(answersArray);
+        DistancesApiService.postDistances(userId);
 
         clearAnswersArray();
       }
 
-      console.log("you should remove questions once succeeded");
+      console.log("you should remove questions once play again");
     }
-  }, [
-    fetchNewQuestionsAction,
-    questions,
-    answersArray,
-    clearAnswersArray,
-    isFinished,
-  ]);
+  }, [fetchNewQuestionsAction, questions, answersArray, clearAnswersArray, isFinished]);
 
   return (
     <div className="quiz-container">
-      <ProgressBar
-        progressPercentage={(questionIndex / questions.length) * 100}
-      />
+      <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
       {questionsLoading ? <HeartLoader /> : null}
       {!isFinished ? (
         <BasicQuestion

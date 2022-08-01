@@ -22,6 +22,7 @@ export default function Profile({
   useEffect(() => {
     if (!profile.email) {
       navigate("/login");
+      return;
     }
   }, [profile, navigate]);
 
@@ -30,7 +31,7 @@ export default function Profile({
 
   useEffect(() => {
     setProfileObj(profile);
-    if (profile.phone === "your phone") {
+    if (profile.gender === "choose") {
       UserApiService.setTriviaStatistics(profile.id);
     }
   }, [profile]);
@@ -96,12 +97,12 @@ export default function Profile({
 
   return profile.id ? (
     <div className={style.profile_container}>
-      {/* <Button
+      <Button
         className={style.logaout_btn}
         onClick={() => userLogoutAction({})}
       >
         Logout
-      </Button> */}
+      </Button>
       <div className={style.profile_top_container}>
         <div className={style.profile_picture_container}>
           <img

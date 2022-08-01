@@ -9,18 +9,18 @@ export default function Achievements({
   userId,
 }) {
   const navigate = useNavigate();
-
   useEffect(() => {
     if (!userId) {
       navigate("/login");
+      return;
     }
   }, [navigate, userId]);
 
   useEffect(() => {
+    if (userId)
     fetchAchievementsAction(userId);
   }, [fetchAchievementsAction, userId]);
 
-  const categories = Object.keys(achievements);
   if (Object.keys(achievements).length > 0) {
     return (
       <div className="achievements-container">

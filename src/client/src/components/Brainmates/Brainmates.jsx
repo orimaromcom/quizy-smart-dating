@@ -13,15 +13,16 @@ export default function Brainmates({
   useEffect(() => {
     if (!userId) {
       navigate("/profile");
+      return;
     }
   }, [navigate, userId]);
 
   //temp: we should load globaly
   useEffect(() => {
-    if (!Object.keys(brainmates).length) fetchBrainmatesAction(userId);
+    if (userId && !Object.keys(brainmates).length) fetchBrainmatesAction(userId);
   }, []);
 
-  return (
+  return ( brainmates &&
     <div className="brain-mates-container">
       {brainmates.likeBack
         ? Object.keys(brainmates.likeBack).map((brainmate, i) => {

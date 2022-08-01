@@ -15,9 +15,10 @@ export default function Login({
   const navigate = useNavigate();
   useEffect(() => {
     console.log('profile', profile);
-    if (profile.id) {
+    if (profile && profile.id) {
       updatePageButtonAction("profile")
       navigate("/profile");
+      return;
     }
   }, [navigate, profile]);
 
@@ -26,7 +27,7 @@ export default function Login({
   const [name, setName] = useState("");
 
   useEffect(() => {
-    if (profile.email && !profile.id) {
+    if (profile && profile.email && !profile.id) {
       console.log('updateProfileActions');
       console.log('email', email, 'picture', picture, 'name', name);
       updateProfileAction({
@@ -37,7 +38,7 @@ export default function Login({
           phone: "your phone",
           location: "your location",
           picture: picture,
-          gender: "other",
+          gender: "choose",
           preferences: {
             relation_type: "friends",
             gender: "any",
@@ -125,7 +126,7 @@ export default function Login({
     <div className="login-container">
       <h1>Welcome to Quizy Smart Dating</h1>
       <img src="/favicon.png" width="200px" alt="heart" />
-      {!profile.email && loginOptions}
+      {profile && !profile.email && loginOptions}
     </div>
   );
 }
