@@ -91,12 +91,12 @@ export default function Profile({
 
   return profile.id ? (
     <div className={style.profile_container}>
-      <Button
+      {/* <Button
         className={style.logaout_btn}
         onClick={() => resetProfileAction({})}
       >
         Logout
-      </Button>
+      </Button> */}
       <div className={style.profile_top_container}>
         <div className={style.profile_picture_container}>
           <img
@@ -221,7 +221,6 @@ export default function Profile({
           <Button
             variant="contained"
             onClick={() => {
-              //todo- only if changed
               handleSave();
             }}
           >

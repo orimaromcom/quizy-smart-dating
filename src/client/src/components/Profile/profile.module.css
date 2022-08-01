@@ -17,7 +17,7 @@
     justify-content: center;
     align-items: center;
     height: 20%;
-    margin-bottom: 5%;
+    margin: 2% 0;
 }
 
 .profile_picture_container{
@@ -109,16 +109,12 @@
 }
 
 .pref_gender_select{
-    width: 50%;
+    width: 40%;
 }
 
 .pref_gender_select div{
-    padding: 8% 20% 8% 12%;
+    padding: 8%;
  }
-
-/* .pref_gender_select input{
-    padding: 0;
-} */
 
 .save_cancel_btn_container{
     margin: 5%;
