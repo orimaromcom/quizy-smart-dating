@@ -5,15 +5,16 @@ const initialState = {
     id: null,
     email: null,
     userName: null,
+    age: null,
     phone: null,
     location: null,
     picture: null,
     gender: null,
     preferences: {
+      relation_type: null,
       gender: null,
       minAge: null,
       maxAge: null,
-      distance: null,
     },
   },
 };

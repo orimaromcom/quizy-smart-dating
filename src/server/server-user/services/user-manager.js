@@ -1,4 +1,4 @@
-const { User } = require("../../db/models");
+const { User TriviaAnswer} = require("../../db/models");
 const Sequelize = require("sequelize");
 
 async function postUserInfo(userInfo) {
@@ -57,11 +57,30 @@ async function getUserInfo(email) {
       maxAge: null,
     };
   }
-
   return userInfo;
+}
+
+async function setTriviaStatistics(id) {
+  result = await TriviaAnswer.create({
+    userId: id,
+    FilmCorrectAnswers: 0,
+    FilmQuestionsAnswered: 0,
+    SportsCorrectAnswers: 0,
+    SportsQuestionsAnswered: 0,
+    ComputersCorrectAnswers: 0,
+    ComputersQuestionsAnswered: 0,
+    CelebritiesCorrectAnswers: 0,
+    CelebritiesQuestionsAnswered: 0,
+    HistoryCorrectAnswers: 0,
+    HistoryQuestionsAnswered: 0,
+    MusicCorrectAnswers: 0,
+    MusicQuestionsAnswered: 0
+  });
+  return result;
 }
 
 module.exports = {
   postUserInfo,
   getUserInfo,
+  setTriviaStatistics
 };
