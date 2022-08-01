@@ -77,7 +77,7 @@ export default function Profile({
       .every((field) => !!field);
     if (isDetailsFull) {
       console.log(profileObj);
-      updateProfile(profileObj);
+      updateProfileAction(profileObj);
       setEdit(false);
     } else {
       console.log("no");
@@ -87,6 +87,12 @@ export default function Profile({
 
   return profile.id ? (
     <div className={style.profile_container}>
+      <Button
+        className={style.logaout_btn}
+        onClick={() => resetProfileAction({})}
+      >
+        Logout
+      </Button>
       <div className={style.profile_top_container}>
         <div className={style.profile_picture_container}>
           <img
@@ -107,7 +113,6 @@ export default function Profile({
             value={profileObj.userName || ""}
             onChange={handleChange}
           />
-          <Button onClick={() => resetProfileAction({})}>Logout</Button>
         </Box>
         <div className={style.info_field_container}>
           <Box className={style.info_field_container_small}>
