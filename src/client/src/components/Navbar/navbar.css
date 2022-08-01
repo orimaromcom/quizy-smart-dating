@@ -4,3 +4,19 @@
     justify-content: center;
     text-align: center;
 }
+
+#Mui-selected-profile{
+    color: blue
+}
+
+#Mui-selected-quiz{
+    color: red
+}
+
+#Mui-selected-achievements{
+    color: green
+}
+
+#Mui-selected-brainmates{
+    color: green
+}
