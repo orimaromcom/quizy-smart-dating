@@ -1,28 +1,27 @@
 import actionTypes from "./constants";
 import UserApiService from "../../services/user-api-service";
 
-const updatehProfileRequestAction = () => ({
+const updatehProfileRequest = () => ({
   type: actionTypes.UPDATE_PROFILE_REQUEST,
 });
 
-const updateProfileSuccessAction = (Profile) => ({
+const updateProfileSuccess = (Profile) => ({
   type: actionTypes.UPDATE_PROFILE_SUCCESS,
   payload: Profile,
 });
 
-const updateProfileFailureAction = () => ({
+const updateProfileFailure = () => ({
   type: actionTypes.UPDATE_PROFILE_FAILURE,
 });
 
-export const updateProfile = (data) => {
+export const updateProfileAction = (data) => {
   return async (dispatch) => {
-    dispatch(updatehProfileRequestAction());
+    dispatch(updatehProfileRequest());
     try {
       const Profile = await UserApiService.updateUser(data);
-      console.log(Profile);
-      dispatch(updateProfileSuccessAction(Profile));
+      dispatch(updateProfileSuccess(Profile));
     } catch (e) {
-      dispatch(updateProfileFailureAction());
+      dispatch(updateProfileFailure());
     }
   };
 };

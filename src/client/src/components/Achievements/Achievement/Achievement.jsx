@@ -3,20 +3,14 @@ import { Chip, Avatar } from "@mui/material";
 import Movies from "../../../images/movies.png";
 
 export default function Achievement({ title, score }) {
-  const getScoreFromArray = () => {
-    const scored = Math.min(...score);
-    const answerdTotal = Math.max(...score);
-    return `scored ${scored} out of ${answerdTotal}`;
-  };
-
   return (
     <div className="achievement-container">
       <Chip
         className="achievement-chip"
         label={title}
-        avatar={<Avatar alt="Natacha" src={Movies} />}
+        avatar={<Avatar alt="film" src={Movies} />}
       />
-      <p>{getScoreFromArray()}</p>
+      <p>{score.correct} out of {score.answers}</p>
     </div>
   );
 }

@@ -1,18 +1,18 @@
 import actionTypes from "./constants";
 import QuoteApiService from "../../services/quote-api-service";
 
-const updateQuoteAction = (quote) => ({
+const updateQuote = (quote) => ({
   type: actionTypes.UPDATE_QUOTE,
   payload: quote,
 });
 
-export const updateQuote = () => {
+export const updateQuoteAction = () => {
     console.log("in action quote");
   return async (dispatch) => {
     try {
       const quote = await QuoteApiService.getRandomQuote();
    console.log(quote)
-      dispatch(updateQuoteAction(quote));
+      dispatch(updateQuote(quote));
     } catch (e) {}
   };
 };
