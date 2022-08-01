@@ -31,7 +31,7 @@ export default function Profile({
 
   useEffect(() => {
     setProfileObj(profile);
-    if (profile.phone === "your phone") {
+    if (profile.gender === "choose") {
       UserApiService.setTriviaStatistics(profile.id);
     }
   }, [profile]);

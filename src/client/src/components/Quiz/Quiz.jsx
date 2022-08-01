@@ -50,8 +50,8 @@ export default function Quiz({
     if (isFinished) {
       confetti();
       if (answersArray.length) {
-        // AnswersApiService.postAnswers(answersArray);
-        //DistancesApiService.postDistances(MOCK_USER_ID)
+        AnswersApiService.postAnswers(answersArray);
+        DistancesApiService.postDistances(userId)
 
         clearAnswersArray();
       }

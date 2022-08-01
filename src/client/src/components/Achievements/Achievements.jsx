@@ -17,10 +17,10 @@ export default function Achievements({
   }, [navigate, userId]);
 
   useEffect(() => {
+    if (userId)
     fetchAchievementsAction(userId);
   }, [fetchAchievementsAction, userId]);
 
-  const categories = Object.keys(achievements);
   if (Object.keys(achievements).length > 0) {
     return (
       <div className="achievements-container">
