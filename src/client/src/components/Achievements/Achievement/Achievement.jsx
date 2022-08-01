@@ -34,8 +34,8 @@ export default function Achievement({ title, score }) {
     <div className="achievement-container">
       <Chip className="achievement-chip" label={title} icon={renderIcon()} />
       <div className="achievement-text">
-        <p>{Math.round(score.correct/score.answers * 100)}%</p>
-        <p>{score.correct} out of {score.answers}</p>
+        <p>{Math.round(score.correct/score.answers * 100)}% correct</p>
+        <p>({score.correct} out of {score.answers})</p>
       </div>
       <div className="achievement-pie">
         <PieChart
