@@ -31,7 +31,6 @@ export default function Profile({
   }, [profile]);
 
   const handleChange = (event) => {
-    console.log(event.target);
     setProfileObj({
       ...profileObj,
       [event.target.id || event.target.name]: event.target.value,
