@@ -7,6 +7,7 @@ import ProfilePage from "./routes/ProfilePage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Layout from "./components/Layout/Layout";
+import "monday-ui-react-core/dist/main.css";
 
 const theme = createTheme({
   palette: {

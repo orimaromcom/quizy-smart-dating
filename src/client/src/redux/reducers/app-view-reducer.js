@@ -3,11 +3,17 @@ import actionTypes from "../actions/constants";
 const initialState = {
   isLoading: false,
   isError: false,
+  errorMessage: "error",
   pageButtonValue: "login",
+  isSuccess: false,
+  successMessage: "Sucsses!",
 };
 
 const appViewReducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.HIDE_TOASTER:
+      return { ...state, isError: false, isSuccess: false };
+
     case actionTypes.FETCH_QUESTIONS_REQUEST:
     case actionTypes.FETCH_ACHIEVEMENTS_REQUEST:
     case actionTypes.FETCH_BRAINMATES_REQUEST:
@@ -29,15 +35,37 @@ const appViewReducer = (state = initialState, action) => {
     case actionTypes.FETCH_BRAINMATES_FAILURE:
     case actionTypes.FETCH_ACHIEVEMENTS_FAILURE:
     case actionTypes.FETCH_QUESTIONS_FAILURE: {
-      return { ...state, isError: true, isLoading: false };
+      return {
+        ...state,
+        isError: true,
+        errorMessage: action.payload,
+        isLoading: false,
+      };
+    }
+
+    case actionTypes.SHOW_ERROR: {
+      return {
+        ...state,
+        isError: true,
+        isSuccess: false,
+        errorMessage: action.payload,
+      };
+    }
+
+    case actionTypes.SHOW_SUCCESS: {
+      return {
+        ...state,
+        isSuccess: true,
+        isError: false,
+        successMessage: action.payload,
+      };
     }
 
     case actionTypes.UPDATE_PAGE_BUTTON:
-
-    return {
+      return {
         ...state,
-        pageButtonValue: action.payload
-    }
+        pageButtonValue: action.payload,
+      };
 
     default:
       return state;
