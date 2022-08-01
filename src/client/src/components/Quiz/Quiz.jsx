@@ -8,7 +8,6 @@ import HeartLoader from "./HeartLoader/HeartLoader";
 import Heart from "./Heart/Heart";
 import AnswersApiService from "../../services/answers-api-service";
 import DistancesApiService from "../../services/distances-api-service";
-import BrainmatesConnector from "../Brainmates/brainmates-connector";
 import Page from "../Page/Page";
 import { useEffect, useState } from "react";
 
@@ -45,7 +44,6 @@ export default function Quiz({
       }
 
       console.log("you should remove questions once succeeded");
-      console.log("you should remove pop up the heart page");
     }
   }, [fetchNewQuestions, questions, answersArray, clearAnswersArray, isFinished]);
 

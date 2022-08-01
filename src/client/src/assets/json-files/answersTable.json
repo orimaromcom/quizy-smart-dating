@@ -1,0 +1,21 @@
+[
+  {
+    "userId": "1",
+    "questionId": "100",
+    "chosenOption": "Sitting in the corner",
+    "correctOption": null
+  },
+
+  {
+    "userId": "1",
+    "questionId": "110",
+    "chosenOption": "True",
+    "correctOption": "True"
+  },
+  {
+    "userId": "1",
+    "questionId": "111",
+    "chosenOption": "False",
+    "correctOption": "False"
+  }
+]
