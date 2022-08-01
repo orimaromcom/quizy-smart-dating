@@ -65,7 +65,7 @@ async function postAnswer(answersArray) {
     if (answer.type === "trivia") {
       postTriviaAnswer(answer);
     } else {
-      postPersonalAnswer(answersArray);
+      postPersonalAnswer(answer);
     }
   }
 
@@ -106,13 +106,13 @@ async function postPersonalAnswer(requestBodyFromClient) {
   const userId = requestBodyFromClient.userId;
   const questionId = requestBodyFromClient.questionId;
   const chosenOption = requestBodyFromClient.chosenOption;
-  await PersonalAnswer.bulkCreate([
+  await PersonalAnswer.upsert(
     {
       userId: userId,
       questionId: questionId,
       chosenOption: chosenOption,
     },
-  ]);
+  );
 }
 
 module.exports = {

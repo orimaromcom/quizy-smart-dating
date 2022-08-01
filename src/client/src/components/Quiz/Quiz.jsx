@@ -51,9 +51,9 @@ export default function Quiz({
       confetti();
       if (answersArray.length) {
         AnswersApiService.postAnswers(answersArray);
-        DistancesApiService.postDistances(userId)
+        //DistancesApiService.postDistances(userId)
 
-        clearAnswersArray();
+        //clearAnswersArray();
       }
 
       console.log("you should remove questions once succeeded");
