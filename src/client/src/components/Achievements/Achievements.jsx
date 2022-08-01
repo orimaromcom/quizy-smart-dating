@@ -9,10 +9,10 @@ export default function Achievements({
   userId,
 }) {
   const navigate = useNavigate();
-
   useEffect(() => {
     if (!userId) {
       navigate("/login");
+      return;
     }
   }, [navigate, userId]);
 
