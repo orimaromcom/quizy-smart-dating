@@ -26,12 +26,6 @@ export default function Profile({
   const [edit, setEdit] = useState(false);
   const [profileObj, setProfileObj] = useState(profile);
 
-  // useEffect(() => {
-  //   if (userEmail) {
-  //     if (!profile.id) fetchProfileAction(userEmail);
-  //   }
-  // }, []);
-
   useEffect(() => {
     setProfileObj(profile);
   }, [profile]);
@@ -56,17 +50,17 @@ export default function Profile({
       ...profileObj,
       ["preferences"]: {
         ...profileObj.preferences,
-        relation_type: event.target.value,
+        gender: event.target.value,
       },
     });
   };
 
-  const handleRelationsChange = (event) => {
+  const handleRelationsChange = (value) => {
     setProfileObj({
       ...profileObj,
       ["preferences"]: {
         ...profileObj.preferences,
-        gender: event.target.value,
+        relation_type: value,
       },
     });
   };
@@ -121,16 +115,14 @@ export default function Profile({
               className={style.gender_select}
               id="gender"
               value={profileObj.gender || ""}
-              label="Gender"
               onChange={handleChange}
             >
               <MenuItem value={"male"}>Male</MenuItem>
               <MenuItem value={"female"}>Female</MenuItem>
               <MenuItem value={"other"}>Other</MenuItem>
             </Select>
-          </Box>
-          <Box className={style.info_field_container_small}>
             <TextField
+              className={style.age_select}
               type={"number"}
               max={55}
               min={18}
@@ -141,8 +133,10 @@ export default function Profile({
               onChange={handleChange}
             />
           </Box>
-        </div>
+          {/* <Box className={style.info_field_container_small_age}>
 
+          </Box> */}
+        </div>
         <Box className={style.info_field_container}>
           <TextField
             inputProps={{ inputMode: "tel" }}
@@ -164,35 +158,24 @@ export default function Profile({
         </Box>
       </div>
       <div className={style.preferences_container}>
-        {/* <Box className={style.pref_field_container}>
-          <h1>Mate type</h1>
-          <span className={style.rel_pref}>
-            <h2>Friendly</h2>
-            <Switch color="primary" defaultChecked disabled={!edit} />
-            <h2>Romantic</h2>
-          </span>
-        </Box> */}
         <Box className={style.pref_field_container}>
           <h1>Relations</h1>
-          <Select
-            disabled={!edit}
-            className={style.pref_gender_select}
-            id="Relations"
-            value={profileObj.preferences.relation_type || "romantic"}
-            label="Relations"
-            onChange={handleRelationsChange}
-          >
-            <MenuItem value={"romantic"}>Romantic</MenuItem>
-            <MenuItem value={"friends"}>Friends</MenuItem>
-          </Select>
+          <span className={style.rel_pref}>
+            <h1>Friendly</h1>
+            <Switch
+              color="primary"
+              disabled={!edit}
+              onChange={(e) => {
+                handleRelationsChange(
+                  e.target.checked ? "romantic" : "friendly"
+                );
+              }}
+            />
+            <h2>Romantic</h2>
+          </span>
         </Box>
         <Box className={style.pref_field_container}>
           <h1>Mate Age</h1>
-          <span className={style.pref_age_label}>
-            {profileObj.preferences.minAge +
-              "-" +
-              profileObj.preferences.maxAge}
-          </span>
           <span className={style.pref_age_slider_container}>
             <h2>{18}</h2>
             <Slider
@@ -209,7 +192,7 @@ export default function Profile({
               min={18}
               max={55}
             />
-            <h2>55</h2>
+            <h2>{55}</h2>
           </span>
         </Box>
         <Box className={style.pref_field_container}>

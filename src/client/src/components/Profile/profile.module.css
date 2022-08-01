@@ -18,7 +18,6 @@
     justify-content: center;
     align-items: center;
     height: 20%;
-    margin-top: 15px;
 }
 
 .profile_picture_container{
@@ -36,21 +35,36 @@
 }
 
 .info_field_container{
-    margin: 5% 0;
+    margin: 3% 0;
     display:flex;
     align-items: center;
+    width: fit-content;
 }
 
-.info_field_container_small{
-    width: 50%;
-    height: 70%;
+.info_field_container input{
+    padding: 5%;
+}
+
+.info_field_container_small {
     display: flex;
     justify-content: center;
 }
 
+.gender_select{
+    flex-basis:40% ;
+}
 
-.info_field_container input{
-    padding: 5%;
+.gender_select > div{
+    padding: 5% 10% 5% 5%;
+}
+
+.age_select{
+   flex-basis: 25%;
+   margin-left: 5%;
+}
+
+.age_select > div{
+    padding: 8%;
 }
 
 .profile_picture{
@@ -82,11 +96,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    min-width: 60%;
+    min-width: 65%;
 }
 
 .pref_age_slider{
    width: 60%;
+   margin: 0 15px;
 }
 
 .pref_age_label{
@@ -101,6 +116,10 @@
     width: 50%;
 }
 
+.pref_gender_select div{
+    padding: 8% 20% 8% 12%;
+ }
+
 /* .pref_gender_select input{
     padding: 0;
 } */
@@ -110,4 +129,8 @@
     width: 50%;
     display: flex;
     justify-content: space-around;
+}
+
+#age{
+    border-color: red;
 }
