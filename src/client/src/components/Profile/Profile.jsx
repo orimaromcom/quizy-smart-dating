@@ -10,12 +10,14 @@ import {
 } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import UserApiService from "../../services/user-api-service";
 
 export default function Profile({
   profile,
   updateProfileAction,
-  resetProfileAction,
+  userLogoutAction,
 }) {
+
   const navigate = useNavigate();
   useEffect(() => {
     if (!profile.email) {
@@ -28,6 +30,9 @@ export default function Profile({
 
   useEffect(() => {
     setProfileObj(profile);
+    if (profile.phone === "your phone") {
+      UserApiService.setTriviaStatistics(profile.id);
+    }
   }, [profile]);
 
   const handleChange = (event) => {
@@ -93,7 +98,7 @@ export default function Profile({
     <div className={style.profile_container}>
       {/* <Button
         className={style.logaout_btn}
-        onClick={() => resetProfileAction({})}
+        onClick={() => userLogoutAction({})}
       >
         Logout
       </Button> */}

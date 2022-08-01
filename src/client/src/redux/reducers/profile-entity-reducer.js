@@ -5,31 +5,29 @@ const initialState = {
     id: null,
     email: null,
     userName: null,
+    age: null,
     phone: null,
     location: null,
     picture: null,
     gender: null,
     preferences: {
+      relation_type: null,
       gender: null,
       minAge: null,
       maxAge: null,
-      distance: null,
     },
   },
 };
 
-const brainmatesEntitiesReducer = (state = initialState, action) => {
+const profileEntitiesReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_PROFILE_SUCCESS:
     case actionTypes.UPDATE_PROFILE_SUCCESS: {
       return { ...state, profile: action.payload };
-    }
-    case actionTypes.RESET_PROFILE_SUCCESS: {
-      return { ...initialState, profile: action.payload }
     }
     default:
       return state;
   }
 };
 
-export default brainmatesEntitiesReducer;
+export default profileEntitiesReducer;

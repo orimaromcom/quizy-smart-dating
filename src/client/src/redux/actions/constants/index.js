@@ -33,9 +33,7 @@ const QUIZ_ACTIONS = {
 
   UPDATE_PAGE_BUTTON: "update_page_button",
 
-  RESET_PROFILE_REQUEST: "reset_profile_request",
-  RESET_PROFILE_SUCCESS: "reset_profile_success",
-  RESET_PROFILE_FAILURE: "reset_profile_failure",
+  USER_LOGOUT: "user_logout",
 
   ADD_ANSWER: "add_answer",
 };
