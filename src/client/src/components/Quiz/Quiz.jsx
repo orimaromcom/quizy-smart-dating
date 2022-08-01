@@ -1,4 +1,6 @@
 import "./quiz.css";
+import { useNavigate } from "react-router-dom";
+
 import confetti from "canvas-confetti"
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
@@ -8,27 +10,33 @@ import AnswersApiService from "../../services/answers-api-service";
 import { useEffect } from "react";
 
 export default function Quiz({
-  fetchNewQuestions,
+  fetchNewQuestionsAction,
   questions,
-  MOCK_USER_ID,
+  userId,
   answersArray,
   addAnswer,
   questionIndex,
-  incrementQuestionIndex,
-  incrementAnswersIndex,
+  incrementQuestionIndexAction,
+  incrementAnswersIndexAction,
   questionsLoading,
   clearAnswersArray,
-  updateQuote,
+  updateQuoteAction,
   quote,
 }) {
-  //TODO post distances ******
+
+
+  const navigate = useNavigate();
+  if (!userId) {
+    navigate("/profile");
+  }
+
   //TODO pop up ***play again** or go to **heart button in brainmates**
   //When pressed play again, load more questions
   const isFinished = questions.length && answersArray.length === questions.length;
   useEffect(() => {
     if (!questions.length) {
-      fetchNewQuestions();
-      updateQuote();
+      fetchNewQuestionsAction();
+      updateQuoteAction();
     }
     if (isFinished) {
       confetti()
@@ -37,7 +45,7 @@ export default function Quiz({
       console.log("you should remove questions once succeeded");
       console.log("you should remove pop up the heart page");
     }
-  }, [fetchNewQuestions, questions, answersArray, clearAnswersArray, isFinished]);
+  }, [fetchNewQuestionsAction, questions, answersArray, clearAnswersArray, isFinished]);
 
   return (
     <div className="quiz-container">
@@ -48,11 +56,11 @@ export default function Quiz({
       {!isFinished ? (
         <BasicQuestion
           question={questions[questionIndex] ? questions[questionIndex] : ""}
-          MOCK_USER_ID={MOCK_USER_ID}
-          incrementAnswersIndex={incrementAnswersIndex}
+          userId={userId}
+          incrementAnswersIndexAction={incrementAnswersIndexAction}
           answersArray={answersArray}
           addAnswer={addAnswer}
-          incrementQuestionIndex={incrementQuestionIndex}
+          incrementQuestionIndexAction={incrementQuestionIndexAction}
           questionIndex={questionIndex}
         />
       ) : (

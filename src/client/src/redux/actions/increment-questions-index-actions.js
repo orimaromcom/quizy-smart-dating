@@ -1,15 +1,15 @@
 import actionTypes from "./constants";
-import {
-  getAllQuestions,
-  getQuestionIndex,
-} from "../selectors/questions-entities-selectors";
+// import {
+//   getAllQuestions,
+//   getQuestionIndex,
+// } from "../selectors/questions-entities-selectors";
 
-const incrementQuestionIndexAction = () => ({
+const incrementQuestionIndex = () => ({
   type: actionTypes.INCREMENT_QUESTION_INDEX,
 });
 
-export const incrementQuestionIndex = () => {
+export const incrementQuestionIndexAction = () => {
   return async (dispatch) => {
-    dispatch(incrementQuestionIndexAction());
+    dispatch(incrementQuestionIndex());
   };
 };
