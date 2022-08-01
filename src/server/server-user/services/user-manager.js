@@ -1,4 +1,4 @@
-const { User TriviaAnswer} = require("../../db/models");
+const { User, TriviaAnswer} = require("../../db/models");
 const Sequelize = require("sequelize");
 
 async function postUserInfo(userInfo) {
