@@ -24,7 +24,9 @@ const brainmatesEntitiesReducer = (state = initialState, action) => {
     case actionTypes.UPDATE_PROFILE_SUCCESS: {
       return { ...state, profile: action.payload };
     }
-
+    case actionTypes.RESET_PROFILE_SUCCESS: {
+      return { ...initialState, profile: action.payload }
+    }
     default:
       return state;
   }

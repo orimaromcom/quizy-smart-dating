@@ -1,29 +1,21 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Login from "./Login";
-import {
-  getUserId,
-  getUserEmail,
-  getUserName,
-  getUserPicture
-} from "../../redux/selectors/user-selector";
+import { getProfile } from "../../redux/selectors/profile-entity-selector";
 
-import { setUserAction, resetUserAction } from "../../redux/actions/user-actions";
+import { fetchProfileAction } from "../../redux/actions/fetch-profile-action";
+import { updateProfileAction } from "../../redux/actions/update-profile-action";
 
 const mapStateToProps = (state) => {
-  const userId = getUserId(state);
-  const userEmail = getUserEmail(state);
-  const userName = getUserName(state);
-  const userPicture = getUserPicture(state);
-  return { userId, userEmail, userName, userPicture};
-
+   let profile = getProfile(state);
+   return { profile };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      setUserAction,
-      resetUserAction
+      fetchProfileAction,
+      updateProfileAction
     },
     dispatch
   );

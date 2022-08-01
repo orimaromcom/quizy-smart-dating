@@ -1,34 +1,37 @@
 import { GoogleLogin } from '@react-oauth/google';
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useCallback, useState } from "react";
-import UserApiService from "../../services/user-api-service";
 import jwt_decode from "jwt-decode";
+import "./Login.css";
 
 
 export default function Login({
-                                userId, userEmail, userName, userPicture,
-                                setUserAction, resetUserAction
+                                profile,
+                                fetchProfileAction, updateProfileAction
                               }) {
   const navigate = useNavigate();
-  async function getGoogleLoginData(credentialResponse) {
-    const {email, picture, name} = jwt_decode(credentialResponse.credential);
-    const userInfo = await UserApiService.getUserByEmail(email);
-    if (userInfo.id === null) {
-      userInfo.picture = picture;
-      userInfo.userName = name;
+  useEffect(() => {
+    if (profile.id) {
+      navigate("/profile");
     }
-    setUserAction(userInfo);
-  }
+  }, [navigate, profile]);
 
+  const getGoogleLoginData = useCallback(async (credentialResponse) => {
+    // const {email, picture, name} = jwt_decode(credentialResponse.credential);
+    const { email } = jwt_decode(credentialResponse.credential);
+    await fetchProfileAction(email);
+    // if (profile.id === null) {
+    //   profile.picture = picture;
+    //   profile.userName = name;
+    // }
+    // await updateProfileAction(profile);
+  },[fetchProfileAction,]);
 
-  function goToProfilePage() {
-    navigate("/profile");
-  }
-
-  const GoogleLogIn = <GoogleLogin
-                        onSuccess={getGoogleLoginData}
+  const googleLogIn = <GoogleLogin
+                        onSuccess={(credentialResponse) => getGoogleLoginData(credentialResponse)}
                         onError={() => {
-                          console.log('Login failed');
+                          console.log('Google login failed');
                         }}
                       />
 
@@ -38,18 +41,17 @@ export default function Login({
   const getTesterLoginData = useCallback(async (event) => {
     event.preventDefault();
     const testUserEmail = testEmail;
-    setTestEmail("");
+    // setTestEmail("");
     const secretPass = pass;
     setPass("");
-    const userInfo = await UserApiService.getUserByEmail(testUserEmail);
-    if (userInfo.id === null || secretPass !== process.env.REACT_APP_TESTING_PASSWORD) {
-      console.log('Error, invalid data');
+    if (secretPass !== process.env.REACT_APP_TESTING_PASSWORD) {
+      console.log('Invalid password');
     } else {
-      setUserAction(userInfo);
+      await fetchProfileAction(testUserEmail);
     }
-  },[testEmail, pass, setUserAction]);
+  },[testEmail, pass, fetchProfileAction]);
 
-  const TesterLogin = <form onSubmit={getTesterLoginData}>
+  const testerLogin = <form onSubmit={(e) => getTesterLoginData(e)}>
                         <label>
                           User email
                           <input type="text" name="email"
@@ -64,49 +66,26 @@ export default function Login({
                         <br />
                         <input type="submit" value="Log in" />
                       </form>
-
-
+  let loginOptions;
+  loginOptions = <div>
+                    <h1>Google Login</h1>
+                    { googleLogIn }
+                    <br /><br /><br />
+                    <h1>Tester Login</h1>
+                    { testerLogin }
+                  </div>
+  // useEffect(() => {
+  //   console.log('profile', profile)
+  //   if (profile) {
+  //     navigate("/profile");
+  //   }
+  // }, [navigate, profile]);
   return (
-    <div>
-      { !userEmail &&
-        <div>
-          <h1>Google Login</h1>
-          { GoogleLogIn }
-          <br /><br /><br />
-          <h1>Tester Login</h1>
-          { TesterLogin }
-        </div>
-      }
-      {
-        userEmail && userId &&
-        <div>
-          <h1>You are authorized</h1>
-          <p>email: {userEmail}</p>
-          <p>userName: {userName}</p>
-          <p>id: {userId}</p>
-        </div>
-      }
-      {
-        userEmail && !userId &&
-        <div>
-          <h1>You are signing up</h1>
-          <br />
-          <p>You already have email: {userEmail}</p>
-          <p>But your user id is not defined: null {userId}</p>
-          <br />
-          <button onClick={goToProfilePage}>Go to profile page</button>
-          <br /> <br />
-          <p>There will be shown your</p>
-          <p>email: {userEmail}</p>
-          <p>userName: {userName}</p>
-          <p>userPicture: {userPicture.slice(0,20)}</p>
-          <p>(From the server they will come like null, but we can replace them with the info from the state)</p>
-          <p>(And we also need to create a raw for Trivia answers!)</p>
-          <br /> <br />
-        </div>
-      }{
-        userEmail &&
-        <button onClick={resetUserAction}>Log out</button>
+    <div className="login-container">
+      <h1>Welcome to Quizy Smart Dating</h1>
+      <img src="/favicon.png" width="200px" alt="heart"/>
+      { !profile.email &&
+        loginOptions
       }
     </div>
   )

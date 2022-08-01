@@ -26,10 +26,11 @@ const QUIZ_ACTIONS = {
   UPDATE_PROFILE_SUCCESS: "update_profile_success",
   UPDATE_PROFILE_FAILURE: "update_profile_failure",
 
-  ADD_ANSWER: "add_answer",
+  RESET_PROFILE_REQUEST: "reset_profile_request",
+  RESET_PROFILE_SUCCESS: "reset_profile_success",
+  RESET_PROFILE_FAILURE: "reset_profile_failure",
 
-  SET_USER: "set_user",
-  RESET_USER: "reset_user",
+  ADD_ANSWER: "add_answer",
 };
 
 export default QUIZ_ACTIONS;
