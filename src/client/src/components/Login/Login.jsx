@@ -12,20 +12,45 @@ export default function Login({
                               }) {
   const navigate = useNavigate();
   useEffect(() => {
+    console.log('profile', profile);
     if (profile.id) {
       navigate("/profile");
     }
   }, [navigate, profile]);
 
+  const [email, setEmail] = useState("");
+  const [picture, setPicture] = useState("");
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    if (profile.email && !profile.id) {
+      console.log('updateProfileActions');
+      console.log('email', email, 'picture', picture, 'name', name);
+      updateProfileAction({
+        // ...profile, email: email, picture: picture, userName: name
+          email: email,
+          userName: name,
+          age: 18,
+          phone: "your phone",
+          location: "your location",
+          picture: picture,
+          gender: "other",
+          preferences: {
+            relation_type: "friends",
+            gender: "any",
+            minAge: 0,
+            maxAge: 55,
+        },
+      });
+    }
+  })
+
   const getGoogleLoginData = useCallback(async (credentialResponse) => {
-    // const {email, picture, name} = jwt_decode(credentialResponse.credential);
-    const { email } = jwt_decode(credentialResponse.credential);
+    const { email, picture, name } = jwt_decode(credentialResponse.credential);
+    setEmail(email);
+    setPicture(picture);
+    setName(name);
     await fetchProfileAction(email);
-    // if (profile.id === null) {
-    //   profile.picture = picture;
-    //   profile.userName = name;
-    // }
-    // await updateProfileAction(profile);
   },[fetchProfileAction,]);
 
   const googleLogIn = <GoogleLogin
@@ -74,12 +99,6 @@ export default function Login({
                     <h1>Tester Login</h1>
                     { testerLogin }
                   </div>
-  // useEffect(() => {
-  //   console.log('profile', profile)
-  //   if (profile) {
-  //     navigate("/profile");
-  //   }
-  // }, [navigate, profile]);
   return (
     <div className="login-container">
       <h1>Welcome to Quizy Smart Dating</h1>
