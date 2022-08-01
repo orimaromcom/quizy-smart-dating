@@ -3,7 +3,7 @@ import actionTypes from "../actions/constants";
 const initialState = {
   isLoading: false,
   isError: false,
-  pageButtonValue: "quiz",
+  pageButtonValue: "",
 };
 
 const appViewReducer = (state = initialState, action) => {

@@ -2,23 +2,22 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./navbar.css";
 import { Box, BottomNavigation, BottomNavigationAction } from "@mui/material";
-import PsychologyIcon from '@mui/icons-material/InterestsTwoTone';
+import PsychologyIcon from "@mui/icons-material/InterestsTwoTone";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import PersonIcon from "@mui/icons-material/Person";
 
-export default function Navbar() {
-  //takes the navbar firs value from current window location
+export default function Navbar({ pageButtonValue, updatePageButtonAction }) {
   const currentPage = window.location.href.split("/").pop();
-  const [value, setValue] = useState(currentPage);
+  updatePageButtonAction(currentPage);
 
   return (
     <Box>
       <BottomNavigation
         showLabels
-        value={value}
+        value={pageButtonValue}
         onChange={(event, newValue) => {
-          setValue(newValue);
+          updatePageButtonAction(newValue);
         }}
       >
         <BottomNavigationAction
