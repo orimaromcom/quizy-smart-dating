@@ -15,12 +15,11 @@ export default class UserApiService {
     }
   }
 
-  static async getUserByEmail(email){
+  static async getUserByEmail(email) {
     try {
       const response = await axios.get(`/user/${email}`);
       return response.data;
-    }
-    catch (error) {
+    } catch (error) {
       console.log("Error:", error.message);
       // throw new Error(error.message);
     }

@@ -6,11 +6,10 @@ import confetti from "canvas-confetti";
 
 import { useNavigate } from "react-router-dom";
 
-
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import HeartLoader from "./HeartLoader/HeartLoader";
-import Heart from "./Heart/Heart";
+import HeartConnector from "./Heart/HeartConnector.js";
 import AnswersApiService from "../../services/answers-api-service";
 import DistancesApiService from "../../services/distances-api-service";
 import Page from "../Page/Page";
@@ -31,8 +30,7 @@ export default function Quiz({
   quote,
   fetchNewSuggestionsAction,
 }) {
-
- const navigate = useNavigate();
+  const navigate = useNavigate();
   if (!userId) {
     navigate("/profile");
   }
@@ -55,11 +53,19 @@ export default function Quiz({
 
       console.log("you should remove questions once succeeded");
     }
-  }, [fetchNewQuestionsAction, questions, answersArray, clearAnswersArray, isFinished]);
+  }, [
+    fetchNewQuestionsAction,
+    questions,
+    answersArray,
+    clearAnswersArray,
+    isFinished,
+  ]);
 
   return (
     <div className="quiz-container">
-      <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
+      <ProgressBar
+        progressPercentage={(questionIndex / questions.length) * 100}
+      />
       {questionsLoading ? <HeartLoader /> : null}
       {!isFinished ? (
         <BasicQuestion
@@ -73,7 +79,7 @@ export default function Quiz({
         />
       ) : (
         <>
-          <Heart
+          <HeartConnector
             quote={quote}
             fetchNewSuggestionsAction={fetchNewSuggestionsAction}
             userId={userId}

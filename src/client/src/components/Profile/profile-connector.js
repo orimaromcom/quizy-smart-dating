@@ -7,12 +7,16 @@ import { userLogoutAction } from "../../redux/actions/user-logout-action";
 import { getProfile } from "../../redux/selectors/profile-entity-selector";
 
 const mapStateToProps = (state) => {
-  let profile = getProfile(state);
+  const profile = getProfile(state);
   return { profile };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ fetchProfileAction, updateProfileAction, userLogoutAction }, dispatch);
+
+  return bindActionCreators(
+    { fetchProfileAction, updateProfileAction, userLogoutAction },
+    dispatch
+  );
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

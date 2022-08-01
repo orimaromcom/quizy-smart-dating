@@ -1,11 +1,11 @@
 import NavbarConnector from "../Navbar/navbar-connector";
-import ResponsiveAppBar from "../Userbar/Userbar"
+import ResponsiveAppBar from "../Userbar/Userbar";
 import { Outlet } from "react-router-dom";
 
-export default function Layout() {
+export default function Layout( ) {
   return (
     <>
-     <ResponsiveAppBar/>
+      <ResponsiveAppBar />
       <Outlet />
       <NavbarConnector />
     </>

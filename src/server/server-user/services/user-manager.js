@@ -1,5 +1,5 @@
-const { User, TriviaAnswer } = require('../../db/models');
-const Sequelize = require('sequelize');
+const { User TriviaAnswer} = require("../../db/models");
+const Sequelize = require("sequelize");
 
 async function postUserInfo(userInfo) {
   result = await User.upsert({
@@ -13,16 +13,16 @@ async function postUserInfo(userInfo) {
     lookingForGender: userInfo.preferences.gender,
     lookingForRelationsType: userInfo.preferences.relation_type,
     lookingForMinAge: userInfo.preferences.minAge,
-    lookingForMaxAge: userInfo.preferences.maxAge
+    lookingForMaxAge: userInfo.preferences.maxAge,
   });
   return result;
 }
 
-async function getUserInfo(email){
+async function getUserInfo(email) {
   const user = await User.findOne({
     where: {
-      email: email
-    }
+      email: email,
+    },
   });
   const userInfo = {};
 
@@ -39,7 +39,7 @@ async function getUserInfo(email){
       relation_type: user.lookingForRelationsType,
       gender: user.lookingForGender,
       minAge: user.lookingForMinAge,
-      maxAge: user.lookingForMaxAge
+      maxAge: user.lookingForMaxAge,
     };
   } else {
     userInfo.id = null;
@@ -54,8 +54,8 @@ async function getUserInfo(email){
       relation_type: null,
       gender: null,
       minAge: null,
-      maxAge: null
-  };
+      maxAge: null,
+    };
   }
   return userInfo;
 }

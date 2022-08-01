@@ -9,6 +9,7 @@
   padding: 0 5em 5em;
   font-size: 20px;
   text-align: center;
+  font-weight: bold;
 
   .quote {
     font-style: italic;
@@ -16,7 +17,7 @@
 
   .author {
     padding-top: 5px;
-    font-weight: bold;
+    font-weight: normal;
   }
 }
 

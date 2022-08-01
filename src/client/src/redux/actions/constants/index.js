@@ -23,13 +23,15 @@ const QUIZ_ACTIONS = {
   FETCH_SUGGESTIONS_SUCCESS: "fetch_suggestions_success",
   FETCH_SUGGESTIONS_FAILURE: "fetch_suggestions_failure",
 
+  UPDATE_PROFILE_REQUEST: "update_profile_request",
+  UPDATE_PROFILE_SUCCESS: "update_profile_success",
+  UPDATE_PROFILE_FAILURE: "update_profile_failure",
+
   FETCH_PROFILE_REQUEST: "fetch_profile_request",
   FETCH_PROFILE_SUCCESS: "fetch_profile_success",
   FETCH_PROFILE_FAILURE: "fetch_profile_failure",
 
-  UPDATE_PROFILE_REQUEST: "update_profile_request",
-  UPDATE_PROFILE_SUCCESS: "update_profile_success",
-  UPDATE_PROFILE_FAILURE: "update_profile_failure",
+  UPDATE_PAGE_BUTTON: "update_page_button",
 
   USER_LOGOUT: "user_logout",
 
