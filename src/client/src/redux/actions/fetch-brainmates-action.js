@@ -1,27 +1,27 @@
 import actionTypes from "./constants";
 import BrainmatesApiService from "../../services/brainmates-api-service";
 
-const fetchBrainmatesRequestAction = () => ({
+const fetchBrainmatesRequest = () => ({
   type: actionTypes.FETCH_BRAINMATES_REQUEST,
 });
 
-const fetchBrainmatesSuccessAction = (brainmates) => ({
+const fetchBrainmatesSuccess = (brainmates) => ({
   type: actionTypes.FETCH_BRAINMATES_SUCCESS,
   payload: brainmates,
 });
 
-const fetchBrainmatesFailureAction = () => ({
+const fetchBrainmatesFailure = () => ({
   type: actionTypes.FETCH_BRAINMATES_FAILURE,
 });
 
-export const fetcBrainmates = (id) => {
+export const fetchBrainmatesAction = (id) => {
   return async (dispatch) => {
-    dispatch(fetchBrainmatesRequestAction());
+    dispatch(fetchBrainmatesRequest());
     try {
       const Brainmates = await BrainmatesApiService.getBrainmates(id);
-      dispatch(fetchBrainmatesSuccessAction(Brainmates));
+      dispatch(fetchBrainmatesSuccess(Brainmates));
     } catch (e) {
-      dispatch(fetchBrainmatesFailureAction());
+      dispatch(fetchBrainmatesFailure());
     }
   };
 };

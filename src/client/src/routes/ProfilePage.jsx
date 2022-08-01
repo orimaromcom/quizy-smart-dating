@@ -1,10 +1,10 @@
 import Page from "../components/Page/Page";
-import Profile from "../components/Profile/Profile";
+import ProfileConnector from "../components/Profile/profile-connector";
 
 export default function ProfilePage() {
   return (
     <Page>
-      <Profile />
+      <ProfileConnector />
     </Page>
   );
 }

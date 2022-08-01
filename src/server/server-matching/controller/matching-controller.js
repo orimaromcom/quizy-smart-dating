@@ -74,19 +74,21 @@ async function postAllUsersDistances(req, res) {
 
 function ErrorIfNaN(id) {
   if (isNaN(id)) {
-    const error = Error()
-    error.statusCode = 400;
-    error.message = 'Id should be a number';
-    throw error;
+    // const error = Error()
+    // error.statusCode = 400;
+    // error.message = 'Id should be a number';
+    // throw error;
+    console.log("Not found: Id should be a number");
   }
 }
 
 function ErrorIfNotFound(item) {
   if (!item) {
-    const error = Error()
-    error.statusCode = 404;
-    error.message = 'Not found';
-    throw error;
+    // const error = Error()
+    // error.statusCode = 404;
+    // error.message = 'Not found';
+    // throw error;
+    console.log("Item is not found in database");
   }
 }
 

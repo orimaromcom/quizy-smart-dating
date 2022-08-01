@@ -1,11 +1,11 @@
 import actionTypes from "./constants";
 
-const incrementQuestionIndexAction = () => ({
+const incrementQuestionIndex = () => ({
   type: actionTypes.INCREMENT_QUESTION_INDEX,
 });
 
-export const incrementQuestionIndex = () => {
+export const incrementQuestionIndexAction = () => {
   return async (dispatch) => {
-    dispatch(incrementQuestionIndexAction());
+    dispatch(incrementQuestionIndex());
   };
 };
