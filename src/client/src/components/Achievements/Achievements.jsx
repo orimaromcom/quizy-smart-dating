@@ -27,6 +27,7 @@ export default function Achievements({
         {Object.keys(achievements).map((achievement) => {
           return (
             <Achievement
+              key={achievement}
               title={achievement}
               score={achievements[achievement]}
             />
