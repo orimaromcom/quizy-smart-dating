@@ -19,6 +19,7 @@ export const updateProfile = (data) => {
     dispatch(updatehProfileRequestAction());
     try {
       const Profile = await UserApiService.updateUser(data);
+      console.log(Profile);
       dispatch(updateProfileSuccessAction(Profile));
     } catch (e) {
       dispatch(updateProfileFailureAction());

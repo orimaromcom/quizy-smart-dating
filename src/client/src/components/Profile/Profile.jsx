@@ -47,6 +47,20 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
     });
   };
 
+  const handleSave = () => {
+    const isDetailsFull = Object.keys(profileObj)
+      .map((key) => !!profileObj[key])
+      .every((field) => !!field);
+    if (isDetailsFull) {
+      console.log(profileObj);
+      updateProfile(profileObj);
+      setEdit(false);
+    } else {
+      console.log("no");
+      //todo: show error
+    }
+  };
+
   return profile.id ? (
     <div className={style.profile_container}>
       <div className={style.profile_top_container}>
@@ -82,7 +96,7 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
             >
               <MenuItem value={"male"}>Male</MenuItem>
               <MenuItem value={"female"}>Female</MenuItem>
-              <MenuItem value={"Any"}>Any</MenuItem>
+              <MenuItem value={"Other"}>Other</MenuItem>
             </Select>
           </Box>
           <Box className={style.info_field_container_small}>
@@ -175,8 +189,7 @@ export default function Profile({ profile, fetcProfile, updateProfile }) {
             variant="contained"
             onClick={() => {
               //todo- only if changed
-              updateProfile(profileObj);
-              setEdit(false);
+              handleSave();
             }}
           >
             Save
