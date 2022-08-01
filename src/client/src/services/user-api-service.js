@@ -25,4 +25,15 @@ export default class UserApiService {
       // throw new Error(error.message);
     }
   }
+
+  static async setTriviaStatistics(id){
+    try {
+      const response = await axios.post(`/user/set-trivia/${id}`);
+      return response.data;
+    }
+    catch (error) {
+      console.log("Error:", error.message);
+      // throw new Error(error.message);
+    }
+  }
 }

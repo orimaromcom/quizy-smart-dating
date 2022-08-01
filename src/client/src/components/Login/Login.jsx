@@ -2,6 +2,7 @@ import { GoogleLogin } from '@react-oauth/google';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useCallback, useState } from "react";
+// import UserApiService from "../../services/user-api-service";
 import jwt_decode from "jwt-decode";
 import "./Login.css";
 
@@ -38,10 +39,12 @@ export default function Login({
           preferences: {
             relation_type: "friends",
             gender: "any",
-            minAge: 0,
+            minAge: 25,
             maxAge: 55,
         },
       });
+      console.log('UserApiService.setTriviaStatistics(email)');
+//      UserApiService.setTriviaStatistics(email);
     }
   })
 
