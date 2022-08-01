@@ -1,3 +1,4 @@
+import { user } from "../temp/mock-user";
 import axios from "axios";
 
 export default class UserApiService {
@@ -15,5 +16,16 @@ export default class UserApiService {
     });
     const user = await response.json();
     return user;
+  }
+
+  static async getUserByEmail(email){
+    try {
+      const response = await axios.get(`/user/${email}`);
+      return response.data;
+    }
+    catch (error) {
+      // throw new Error(error.message);
+      console.log(error.message);
+    }
   }
 }

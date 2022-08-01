@@ -1,4 +1,5 @@
 import "./quiz.css";
+import confetti from "canvas-confetti"
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import HeartLoader from "./HeartLoader/HeartLoader";
@@ -30,6 +31,7 @@ export default function Quiz({
       updateQuote();
     }
     if (isFinished) {
+      confetti()
       AnswersApiService.postAnswers(answersArray);
       console.log(quote);
       console.log("you should remove questions once succeeded");
