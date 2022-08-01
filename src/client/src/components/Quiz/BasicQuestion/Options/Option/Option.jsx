@@ -8,7 +8,7 @@ export default function Option({ text, onClick }) {
   const theme = useTheme();
   return (
     <div className="option-container">
-      <Button className="option-btn" variant="contained" onClick={onClick} > 
+      <Button id ="option-button-id" className="option-btn" variant="contained" onClick={onClick}  > 
         {text}
       </Button >
       {/* <Skeleton
