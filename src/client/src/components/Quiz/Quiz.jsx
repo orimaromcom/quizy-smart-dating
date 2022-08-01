@@ -24,12 +24,12 @@ export default function Quiz({
   quote,
 }) {
 
+
   const navigate = useNavigate();
   if (!userId) {
     navigate("/profile");
   }
 
-  //TODO post distances
   //TODO pop up ***play again** or go to **heart button in brainmates**
   //When pressed play again, load more questions
   const isFinished = questions.length && answersArray.length === questions.length;
