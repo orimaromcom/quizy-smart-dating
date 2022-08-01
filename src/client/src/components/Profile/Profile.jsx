@@ -16,8 +16,9 @@ export default function Profile({
   profile,
   updateProfileAction,
   userLogoutAction,
+  showErrorAction,
+  showSuccessAction,
 }) {
-
   const navigate = useNavigate();
   useEffect(() => {
     if (!profile.email) {
@@ -86,12 +87,11 @@ export default function Profile({
       .map((key) => !!profileObj[key])
       .every((field) => !!field);
     if (isDetailsFull) {
-      console.log(profileObj);
       updateProfileAction(profileObj);
+      showSuccessAction("Details updated successfuly!");
       setEdit(false);
     } else {
-      console.log("no");
-      //todo: show error
+      showErrorAction("You miss some details");
     }
   };
 
