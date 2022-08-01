@@ -24,29 +24,25 @@ export default function Navbar({ pageButtonValue, updatePageButtonAction }) {
           component={Link}
           value="quiz"
           to="/quiz"
-          label="Quiz"
-          icon={<PsychologyIcon sx={{ fontSize: 40 }} />}
+          icon={<PsychologyIcon sx={{ fontSize: 45 }} />}
         />
         <BottomNavigationAction
           component={Link}
           value="brainmates"
           to="/brainmates"
-          label="Brainmates"
-          icon={<FavoriteIcon sx={{ fontSize: 40 }} />}
+          icon={<FavoriteIcon sx={{ fontSize: 45 }} />}
         />
         <BottomNavigationAction
           component={Link}
           value="achievements"
           to="/achievements"
-          label="Achievements"
-          icon={<EmojiEventsIcon sx={{ fontSize: 40 }} />}
+          icon={<EmojiEventsIcon sx={{ fontSize: 45 }} />}
         />
         <BottomNavigationAction
           component={Link}
           value="profile"
           to="/profile"
-          label="Profile"
-          icon={<PersonIcon sx={{ fontSize: 40 }} />}
+          icon={<PersonIcon sx={{ fontSize: 45 }} />}
         />
       </BottomNavigation>
     </Box>
