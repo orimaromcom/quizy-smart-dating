@@ -1,14 +1,16 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import HeartIcon from '@mui/icons-material/FavoriteTwoTone';
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Container,
+  Avatar,
+  Button,
+  Tooltip,
+} from "@mui/material";
+import HeartIcon from "@mui/icons-material/FavoriteTwoTone";
 
 const pages = ["USERSCORE"];
 
@@ -35,7 +37,6 @@ const ResponsiveAppBar = () => {
           >
             Quizy
           </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -43,10 +44,7 @@ const ResponsiveAppBar = () => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               color="inherit"
-            >
-          
-            </IconButton>
-   
+            ></IconButton>
           </Box>
           <HeartIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
@@ -71,7 +69,14 @@ const ResponsiveAppBar = () => {
             {pages.map((page) => (
               <Button
                 key={page}
-                sx={{ my: 2, color: "white", display: "block" ,  fontFamily: "monospace",  fontWeight: 700, fontSize: "1.5rem"  }}
+                sx={{
+                  my: 2,
+                  color: "white",
+                  display: "block",
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  fontSize: "1.5rem",
+                }}
               >
                 {page}
               </Button>
@@ -81,10 +86,11 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton /* onClick={ handleOpenUserMenu } */ sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" /* src= "../../assets/images/avatar.png" */ />
+                <Avatar
+                  alt="Remy Sharp" /* src= "../../assets/images/avatar.png" */
+                />
               </IconButton>
             </Tooltip>
-         
           </Box>
         </Toolbar>
       </Container>

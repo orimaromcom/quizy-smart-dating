@@ -7,13 +7,17 @@
     justify-content: space-around;
 }
 
+.logout_btn{
+    display: absolute;
+}
+
 .profile_top_container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 20%;
-    margin-top: 15px;
+    margin: 2% 0;
 }
 
 .profile_picture_container{
@@ -31,21 +35,32 @@
 }
 
 .info_field_container{
-    margin: 5% 0;
+    margin: 3% 0;
     display:flex;
     align-items: center;
-}
-
-.info_field_container_small{
-    width: 50%;
-    height: 70%;
-    display: flex;
     justify-content: center;
+    width: 70%;
 }
-
 
 .info_field_container input{
     padding: 5%;
+}
+
+.gender_select{
+    flex-basis:60%;
+    margin-right: 3%;
+}
+
+.gender_select div {
+    padding: 10%;
+}
+
+.age_select {
+    width: 50%;
+}
+
+.age_select > div{
+    padding: 8%;
 }
 
 .profile_picture{
@@ -77,11 +92,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    min-width: 60%;
+    min-width: 65%;
 }
 
 .pref_age_slider{
    width: 60%;
+   margin: 0 15px;
 }
 
 .pref_age_label{
@@ -93,16 +109,20 @@
 }
 
 .pref_gender_select{
-    width: 50%;
+    width: 40%;
 }
 
-/* .pref_gender_select input{
-    padding: 0;
-} */
+.pref_gender_select div{
+    padding: 8%;
+ }
 
 .save_cancel_btn_container{
     margin: 5%;
     width: 50%;
     display: flex;
     justify-content: space-around;
+}
+
+#age{
+    border-color: red;
 }
