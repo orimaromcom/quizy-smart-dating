@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import "./navbar.css";
 import { Box, BottomNavigation, BottomNavigationAction } from "@mui/material";
 import PsychologyIcon from "@mui/icons-material/InterestsTwoTone";
