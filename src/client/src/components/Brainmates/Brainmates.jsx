@@ -17,7 +17,7 @@ export default function Brainmates({ brainmates, fetchBrainmatesAction, userId }
   //temp: we should load globaly
   useEffect(() => {
     if (!Object.keys(brainmates).length)
-      fetcBrainmates(2);
+    fetchBrainmatesAction(userId);
   }, []);
 
   return (

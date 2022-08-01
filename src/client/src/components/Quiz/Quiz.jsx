@@ -76,7 +76,7 @@ export default function Quiz({
           <Heart
             quote={quote}
             fetchNewSuggestionsAction={fetchNewSuggestionsAction}
-            MOCK_USER_ID={MOCK_USER_ID}
+            userId={userId}
             heartClicked={heartClicked}
             setHeartClicked={setHeartClicked}
           />
