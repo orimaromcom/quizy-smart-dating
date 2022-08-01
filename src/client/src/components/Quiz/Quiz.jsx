@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import HeartLoader from "./HeartLoader/HeartLoader";
-import Heart from "./Heart/Heart";
+import HeartConnector from "./Heart/HeartConnector.js";
 import AnswersApiService from "../../services/answers-api-service";
 import DistancesApiService from "../../services/distances-api-service";
 import Page from "../Page/Page";
@@ -79,7 +79,7 @@ export default function Quiz({
         />
       ) : (
         <>
-          <Heart
+          <HeartConnector
             quote={quote}
             fetchNewSuggestionsAction={fetchNewSuggestionsAction}
             userId={userId}

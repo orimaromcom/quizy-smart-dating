@@ -7,12 +7,15 @@ import { resetProfileAction } from "../../redux/actions/reset-profile-action";
 import { getProfile } from "../../redux/selectors/profile-entity-selector";
 
 const mapStateToProps = (state) => {
-  let profile = getProfile(state);
+  const profile = getProfile(state);
   return { profile };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ fetchProfileAction, updateProfileAction, resetProfileAction }, dispatch);
+  return bindActionCreators(
+    { fetchProfileAction, updateProfileAction, resetProfileAction },
+    dispatch
+  );
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
