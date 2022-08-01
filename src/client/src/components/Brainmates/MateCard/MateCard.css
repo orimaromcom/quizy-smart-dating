@@ -9,8 +9,8 @@
     border: 1px solid gray;
     border-radius: 8px;
     background-color: white;
-    max-width: 40%;
-    max-height: 35%;
+    width: 40%;
+    height: 35%;
 }
 
 .card-avatar-container{
