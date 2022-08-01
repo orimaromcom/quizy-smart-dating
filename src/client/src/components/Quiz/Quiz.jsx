@@ -12,7 +12,6 @@ import HeartLoader from "./HeartLoader/HeartLoader";
 import HeartConnector from "./Heart/HeartConnector.js";
 import AnswersApiService from "../../services/answers-api-service";
 import DistancesApiService from "../../services/distances-api-service";
-import Page from "../Page/Page";
 import { useEffect, useState } from "react";
 
 export default function Quiz({
@@ -30,7 +29,6 @@ export default function Quiz({
   quote,
   fetchNewSuggestionsAction,
 }) {
-
   const navigate = useNavigate();
   useEffect(() => {
     if (!userId) {
@@ -51,26 +49,18 @@ export default function Quiz({
       confetti();
       if (answersArray.length) {
         AnswersApiService.postAnswers(answersArray);
-        //DistancesApiService.postDistances(userId)
+        DistancesApiService.postDistances(userId);
 
-        //clearAnswersArray();
+        clearAnswersArray();
       }
 
-      console.log("you should remove questions once succeeded");
+      console.log("you should remove questions once play again");
     }
-  }, [
-    fetchNewQuestionsAction,
-    questions,
-    answersArray,
-    clearAnswersArray,
-    isFinished,
-  ]);
+  }, [fetchNewQuestionsAction, questions, answersArray, clearAnswersArray, isFinished]);
 
   return (
     <div className="quiz-container">
-      <ProgressBar
-        progressPercentage={(questionIndex / questions.length) * 100}
-      />
+      <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
       {questionsLoading ? <HeartLoader /> : null}
       {!isFinished ? (
         <BasicQuestion
