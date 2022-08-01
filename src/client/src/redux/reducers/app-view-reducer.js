@@ -3,7 +3,7 @@ import actionTypes from "../actions/constants";
 const initialState = {
   isLoading: false,
   isError: false,
-  page: "quiz"
+  pageButtonValue: "quiz",
 };
 
 const appViewReducer = (state = initialState, action) => {
@@ -30,6 +30,13 @@ const appViewReducer = (state = initialState, action) => {
     case actionTypes.FETCH_ACHIEVEMENTS_FAILURE:
     case actionTypes.FETCH_QUESTIONS_FAILURE: {
       return { ...state, isError: true, isLoading: false };
+    }
+
+    case actionTypes.UPDATE_PAGE_BUTTON:
+
+    return {
+        ...state,
+        pageButtonValue: action.payload
     }
 
     default:

@@ -30,6 +30,8 @@ const QUIZ_ACTIONS = {
   FETCH_PROFILE_SUCCESS: "fetch_profile_success",
   FETCH_PROFILE_FAILURE: "fetch_profile_failure",
 
+  UPDATE_PAGE_BUTTON: "update_page_button",
+
   ADD_ANSWER: "add_answer",
 };
 
