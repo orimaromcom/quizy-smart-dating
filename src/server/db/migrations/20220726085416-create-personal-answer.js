@@ -26,6 +26,11 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+    await queryInterface.addConstraint('Likes', {
+      fields: ['userId', 'questionId'],
+      type: 'unique',
+      name: 'userAnsweredPersonalQuestion'
+    });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('PersonalAnswers');
