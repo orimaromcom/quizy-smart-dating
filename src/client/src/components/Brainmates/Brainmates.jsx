@@ -13,6 +13,7 @@ export default function Brainmates({
   useEffect(() => {
     if (!userId) {
       navigate("/profile");
+      return;
     }
   }, [navigate, userId]);
 

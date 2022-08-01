@@ -30,10 +30,15 @@ export default function Quiz({
   quote,
   fetchNewSuggestionsAction,
 }) {
+
   const navigate = useNavigate();
-  if (!userId) {
-    navigate("/profile");
-  }
+  useEffect(() => {
+    if (!userId) {
+      navigate("/login");
+      return;
+    }
+  }, [navigate, userId]);
+
   const isFinished = questions.length && questionIndex === questions.length;
   const [heartClicked, setHeartClicked] = useState(false);
 

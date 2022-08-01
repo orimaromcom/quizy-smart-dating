@@ -6,10 +6,10 @@ import Achievement from "./Achievement/Achievement";
 export default function Achievements({ achievements, fetchAchievementsAction, userId }) {
 
   const navigate = useNavigate();
-
   useEffect(() => {
     if (!userId) {
       navigate("/login");
+      return;
     }
   }, [navigate, userId]);
 
