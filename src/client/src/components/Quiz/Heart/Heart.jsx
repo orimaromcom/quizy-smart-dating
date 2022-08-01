@@ -6,12 +6,14 @@ export default function Heart({
   fetchNewSuggestionsAction,
   MOCK_USER_ID,
   setHeartClicked,
+  updatePageButtonAction,
 }) {
   const navigate = useNavigate();
   const HeartCLickHandler = () => {
     fetchNewSuggestionsAction(MOCK_USER_ID);
     setHeartClicked(true);
     navigate("/brainmates");
+    updatePageButtonAction("brainmates")
   };
 
   return (
