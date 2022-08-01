@@ -11,5 +11,8 @@ export default class QuestionsApiService {
       console.log("Error:", error.message);
       // throw new Error(error.message);
     }
+    // LOOOOOOK
+
+    throw new Error(response?.data?.msg);
   }
 }
