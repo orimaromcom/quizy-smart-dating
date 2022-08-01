@@ -1,15 +1,11 @@
 import style from "./heart.module.scss";
-import { Button } from "@mui/material";
-import ReactDOM from "react-dom";
-import { Link, useNavigate } from "react-router-dom";
-import brainmatesConnector from "../../Brainmates/brainmates-connector";
+import { useNavigate } from "react-router-dom";
 
 export default function Heart({
   quote,
   fetchNewSuggestionsAction,
   MOCK_USER_ID,
   setHeartClicked,
-  heartClicked,
 }) {
   const navigate = useNavigate();
   const HeartCLickHandler = () => {
@@ -30,6 +26,4 @@ export default function Heart({
       </div>
     </div>
   );
-  /* </Link> */
-  /* <Link to="/brainmates" > */
 }
