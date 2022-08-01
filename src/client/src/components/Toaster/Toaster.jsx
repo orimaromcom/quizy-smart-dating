@@ -6,7 +6,7 @@ export default function Toaster({
   message,
   isSuccess,
 }) {
-  return isError ? (
+  return isError || isSuccess ? (
     <Toast
       id="toaster"
       type={isError ? Toast.types.NEGATIVE : Toast.types.POSITIVE}

@@ -18,6 +18,7 @@ const mapStateToProps = (state) => {
   } else if (isSuccess) {
     message = getSuccessMessage(state);
   }
+  console.log(isError, isSuccess);
   return { isError, message, isSuccess };
 };
 

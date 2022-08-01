@@ -90,7 +90,7 @@ export default function Profile({
       showSuccessAction("Details updated successfuly!");
       setEdit(false);
     } else {
-      showErrorAction("Profile Error Message");
+      showErrorAction("You miss some details");
     }
   };
 
