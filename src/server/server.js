@@ -1,7 +1,7 @@
 const express = require("express");
 const { sequelize } = require("./db/models");
 const bodyParser = require("body-parser");
-const cors = require("cors")
+const cors = require("cors");
 
 const logger = require("./middleware/logger");
 

@@ -11,8 +11,11 @@ import {
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
-export default function Profile({ profile, updateProfileAction, userLogoutAction }) {
+export default function Profile({
+  profile,
+  updateProfileAction,
+  userLogoutAction,
+}) {
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -24,18 +27,15 @@ export default function Profile({ profile, updateProfileAction, userLogoutAction
   const [edit, setEdit] = useState(false);
   const [profileObj, setProfileObj] = useState(profile);
 
-  // useEffect(() => {
-  //   if (userEmail) {
-  //     if (!profile.id) fetchProfileAction(userEmail);
-  //   }
-  // }, []);
-
   useEffect(() => {
     setProfileObj(profile);
   }, [profile]);
 
   const handleChange = (event) => {
-    setProfileObj({ ...profileObj, [event.target.id]: event.target.value });
+    setProfileObj({
+      ...profileObj,
+      [event.target.id || event.target.name]: event.target.value,
+    });
   };
 
   const handlePreferencesAgeRangeChange = (event) => {
@@ -49,17 +49,14 @@ export default function Profile({ profile, updateProfileAction, userLogoutAction
     });
   };
 
-  const handleGenderChange = (event) => {
+  const handlGenderChange = (event) => {
     setProfileObj({
       ...profileObj,
-      ["preferences"]: {
-        ...profileObj.preferences,
-        relation_type: event.target.value,
-      },
+      gender: event.target.value,
     });
   };
 
-  const handleRelationsChange = (event) => {
+  const handlePrefGenderChange = (event) => {
     setProfileObj({
       ...profileObj,
       ["preferences"]: {
@@ -69,8 +66,38 @@ export default function Profile({ profile, updateProfileAction, userLogoutAction
     });
   };
 
+  const handleRelationsChange = (value) => {
+    setProfileObj({
+      ...profileObj,
+      ["preferences"]: {
+        ...profileObj.preferences,
+        relation_type: value,
+      },
+    });
+  };
+
+  const handleSave = () => {
+    const isDetailsFull = Object.keys(profileObj)
+      .map((key) => !!profileObj[key])
+      .every((field) => !!field);
+    if (isDetailsFull) {
+      console.log(profileObj);
+      updateProfileAction(profileObj);
+      setEdit(false);
+    } else {
+      console.log("no");
+      //todo: show error
+    }
+  };
+
   return profile.id ? (
     <div className={style.profile_container}>
+      {/* <Button
+        className={style.logaout_btn}
+        onClick={() => userLogoutAction({})}
+      >
+        Logout
+      </Button> */}
       <div className={style.profile_top_container}>
         <div className={style.profile_picture_container}>
           <img
@@ -91,39 +118,31 @@ export default function Profile({ profile, updateProfileAction, userLogoutAction
             value={profileObj.userName || ""}
             onChange={handleChange}
           />
-          <Button onClick={() => userLogoutAction({})}>
-            Logout
-          </Button>
         </Box>
-        <div className={style.info_field_container}>
-          <Box className={style.info_field_container_small}>
-            <Select
-              disabled={!edit}
-              className={style.gender_select}
-              id="gender"
-              value={profileObj.gender || ""}
-              label="Gender"
-              onChange={handleChange}
-            >
-              <MenuItem value={"male"}>Male</MenuItem>
-              <MenuItem value={"female"}>Female</MenuItem>
-              <MenuItem value={"other"}>Other</MenuItem>
-            </Select>
-          </Box>
-          <Box className={style.info_field_container_small}>
-            <TextField
-              type={"number"}
-              max={55}
-              min={18}
-              disabled={!edit}
-              label="Age"
-              id="age"
-              value={profileObj.age || ""}
-              onChange={handleChange}
-            />
-          </Box>
-        </div>
-
+        <Box className={style.info_field_container}>
+          <Select
+            disabled={!edit}
+            className={style.gender_select}
+            id="gender"
+            value={profileObj.gender || ""}
+            onChange={handlGenderChange}
+          >
+            <MenuItem value={"male"}>Male</MenuItem>
+            <MenuItem value={"female"}>Female</MenuItem>
+            <MenuItem value={"other"}>Other</MenuItem>
+          </Select>
+          <TextField
+            className={style.age_select}
+            type={"number"}
+            max={55}
+            min={18}
+            disabled={!edit}
+            label="Age"
+            id="age"
+            value={profileObj.age || ""}
+            onChange={handleChange}
+          />
+        </Box>
         <Box className={style.info_field_container}>
           <TextField
             inputProps={{ inputMode: "tel" }}
@@ -145,35 +164,24 @@ export default function Profile({ profile, updateProfileAction, userLogoutAction
         </Box>
       </div>
       <div className={style.preferences_container}>
-        {/* <Box className={style.pref_field_container}>
-          <h1>Mate type</h1>
-          <span className={style.rel_pref}>
-            <h2>Friendly</h2>
-            <Switch color="primary" defaultChecked disabled={!edit} />
-            <h2>Romantic</h2>
-          </span>
-        </Box> */}
         <Box className={style.pref_field_container}>
           <h1>Relations</h1>
-          <Select
-            disabled={!edit}
-            className={style.pref_gender_select}
-            id="Relations"
-            value={profileObj.preferences.relation_type || "romantic"}
-            label="Relations"
-            onChange={handleRelationsChange}
-          >
-            <MenuItem value={"romantic"}>Romantic</MenuItem>
-            <MenuItem value={"friends"}>Friends</MenuItem>
-          </Select>
+          <span className={style.rel_pref}>
+            <h1>Friendly</h1>
+            <Switch
+              color="primary"
+              disabled={!edit}
+              onChange={(e) => {
+                handleRelationsChange(
+                  e.target.checked ? "romantic" : "friendly"
+                );
+              }}
+            />
+            <h2>Romantic</h2>
+          </span>
         </Box>
         <Box className={style.pref_field_container}>
           <h1>Mate Age</h1>
-          <span className={style.pref_age_label}>
-            {profileObj.preferences.minAge +
-              "-" +
-              profileObj.preferences.maxAge}
-          </span>
           <span className={style.pref_age_slider_container}>
             <h2>{18}</h2>
             <Slider
@@ -190,7 +198,7 @@ export default function Profile({ profile, updateProfileAction, userLogoutAction
               min={18}
               max={55}
             />
-            <h2>55</h2>
+            <h2>{55}</h2>
           </span>
         </Box>
         <Box className={style.pref_field_container}>
@@ -201,7 +209,7 @@ export default function Profile({ profile, updateProfileAction, userLogoutAction
             id="gender"
             value={profileObj.preferences.gender || "any"}
             label="Gender"
-            onChange={handleGenderChange}
+            onChange={handlePrefGenderChange}
           >
             <MenuItem value={"male"}>Male</MenuItem>
             <MenuItem value={"female"}>Female</MenuItem>
@@ -214,9 +222,7 @@ export default function Profile({ profile, updateProfileAction, userLogoutAction
           <Button
             variant="contained"
             onClick={() => {
-              //todo- only if changed
-              updateProfileAction(profileObj);
-              setEdit(false);
+              handleSave();
             }}
           >
             Save
