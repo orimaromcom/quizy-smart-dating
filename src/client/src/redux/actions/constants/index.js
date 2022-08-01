@@ -18,6 +18,11 @@ const QUIZ_ACTIONS = {
   FETCH_BRAINMATES_SUCCESS: "fetch_brainmates_success",
   FETCH_BRAINMATES_FAILURE: "fetch_brainmates_failure",
 
+
+  FETCH_SUGGESTIONS_REQUEST: "fetch_suggestions_request",
+  FETCH_SUGGESTIONS_SUCCESS: "fetch_suggestions_success",
+  FETCH_SUGGESTIONS_FAILURE: "fetch_suggestions_failure",
+
   FETCH_PROFILE_REQUEST: "fetch_profile_request",
   FETCH_PROFILE_SUCCESS: "fetch_profile_success",
   FETCH_PROFILE_FAILURE: "fetch_profile_failure",
@@ -29,6 +34,7 @@ const QUIZ_ACTIONS = {
   RESET_PROFILE_REQUEST: "reset_profile_request",
   RESET_PROFILE_SUCCESS: "reset_profile_success",
   RESET_PROFILE_FAILURE: "reset_profile_failure",
+
 
   ADD_ANSWER: "add_answer",
 };

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MateCard from "./MateCard/MateCard";
 
+
 export default function Brainmates({ brainmates, fetchBrainmatesAction, userId }) {
 
   const navigate = useNavigate();
@@ -15,7 +16,8 @@ export default function Brainmates({ brainmates, fetchBrainmatesAction, userId }
 
   //temp: we should load globaly
   useEffect(() => {
-    if (!brainmates.length) fetchBrainmatesAction(userId);
+    if (!Object.keys(brainmates).length)
+      fetcBrainmates(2);
   }, []);
 
   return (

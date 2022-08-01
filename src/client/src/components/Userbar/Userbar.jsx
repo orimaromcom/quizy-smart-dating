@@ -11,7 +11,6 @@ import Tooltip from "@mui/material/Tooltip";
 import HeartIcon from '@mui/icons-material/FavoriteTwoTone';
 
 const pages = ["USERSCORE"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = () => {
   return (
@@ -72,7 +71,7 @@ const ResponsiveAppBar = () => {
             {pages.map((page) => (
               <Button
                 key={page}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "white", display: "block" ,  fontFamily: "monospace",  fontWeight: 700, fontSize: "1.5rem"  }}
               >
                 {page}
               </Button>
@@ -82,7 +81,7 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton /* onClick={ handleOpenUserMenu } */ sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" /* src= "../../assets/images/avatar.png" */ />
               </IconButton>
             </Tooltip>
          
