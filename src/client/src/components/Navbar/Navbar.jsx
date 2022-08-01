@@ -9,9 +9,10 @@ import PersonIcon from "@mui/icons-material/Person";
 export default function Navbar({ pageButtonValue, updatePageButtonAction }) {
   const currentPage = window.location.href.split("/").pop();
   updatePageButtonAction(currentPage);
+  console.log(pageButtonValue === "login")
 
   return (
-    <Box>
+    (pageButtonValue === "login" ? null : (<Box>
       <BottomNavigation
         showLabels
         value={pageButtonValue}
@@ -44,6 +45,6 @@ export default function Navbar({ pageButtonValue, updatePageButtonAction }) {
           icon={<PersonIcon sx={{ fontSize: 45 }} />}
         />
       </BottomNavigation>
-    </Box>
+    </Box>) )
   );
 }
