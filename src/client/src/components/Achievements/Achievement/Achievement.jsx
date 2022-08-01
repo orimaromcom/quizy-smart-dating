@@ -41,7 +41,7 @@ export default function Achievement({ title, score }) {
         <PieChart
             data={[
               { title: 'Correct', value: score.correct, color: '#e42f45' },
-              { title: 'Incorrect', value: score.answers - score.correct, color: '#7ca0e5' },
+              { title: 'Incorrect', value: score.answers - score.correct, color: '#CCCCCC' },
             ]}
             viewBoxSize={[200, 100]}
             center = {[100, 50]}
