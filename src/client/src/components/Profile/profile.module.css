@@ -9,7 +9,6 @@
 
 .logaout_btn{
     display: absolute;
-    top: 10;
 }
 
 .profile_top_container{
@@ -18,6 +17,7 @@
     justify-content: center;
     align-items: center;
     height: 20%;
+    margin-bottom: 5%;
 }
 
 .profile_picture_container{
@@ -38,29 +38,25 @@
     margin: 3% 0;
     display:flex;
     align-items: center;
-    width: fit-content;
+    justify-content: center;
+    width: 70%;
 }
 
 .info_field_container input{
     padding: 5%;
 }
 
-.info_field_container_small {
-    display: flex;
-    justify-content: center;
-}
-
 .gender_select{
-    flex-basis:40% ;
+    flex-basis:60%;
+    margin-right: 3%;
 }
 
-.gender_select > div{
-    padding: 5% 10% 5% 5%;
+.gender_select div {
+    padding: 10%;
 }
 
-.age_select{
-   flex-basis: 25%;
-   margin-left: 5%;
+.age_select {
+    width: 50%;
 }
 
 .age_select > div{

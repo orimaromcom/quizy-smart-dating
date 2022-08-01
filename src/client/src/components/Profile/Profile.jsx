@@ -31,7 +31,11 @@ export default function Profile({
   }, [profile]);
 
   const handleChange = (event) => {
-    setProfileObj({ ...profileObj, [event.target.id]: event.target.value });
+    console.log(event.target);
+    setProfileObj({
+      ...profileObj,
+      [event.target.id || event.target.name]: event.target.value,
+    });
   };
 
   const handlePreferencesAgeRangeChange = (event) => {
@@ -45,7 +49,14 @@ export default function Profile({
     });
   };
 
-  const handleGenderChange = (event) => {
+  const handlGenderChange = (event) => {
+    setProfileObj({
+      ...profileObj,
+      gender: event.target.value,
+    });
+  };
+
+  const handlePrefGenderChange = (event) => {
     setProfileObj({
       ...profileObj,
       ["preferences"]: {
@@ -108,35 +119,30 @@ export default function Profile({
             onChange={handleChange}
           />
         </Box>
-        <div className={style.info_field_container}>
-          <Box className={style.info_field_container_small}>
-            <Select
-              disabled={!edit}
-              className={style.gender_select}
-              id="gender"
-              value={profileObj.gender || ""}
-              onChange={handleChange}
-            >
-              <MenuItem value={"male"}>Male</MenuItem>
-              <MenuItem value={"female"}>Female</MenuItem>
-              <MenuItem value={"other"}>Other</MenuItem>
-            </Select>
-            <TextField
-              className={style.age_select}
-              type={"number"}
-              max={55}
-              min={18}
-              disabled={!edit}
-              label="Age"
-              id="age"
-              value={profileObj.age || ""}
-              onChange={handleChange}
-            />
-          </Box>
-          {/* <Box className={style.info_field_container_small_age}>
-
-          </Box> */}
-        </div>
+        <Box className={style.info_field_container}>
+          <Select
+            disabled={!edit}
+            className={style.gender_select}
+            id="gender"
+            value={profileObj.gender || ""}
+            onChange={handlGenderChange}
+          >
+            <MenuItem value={"male"}>Male</MenuItem>
+            <MenuItem value={"female"}>Female</MenuItem>
+            <MenuItem value={"other"}>Other</MenuItem>
+          </Select>
+          <TextField
+            className={style.age_select}
+            type={"number"}
+            max={55}
+            min={18}
+            disabled={!edit}
+            label="Age"
+            id="age"
+            value={profileObj.age || ""}
+            onChange={handleChange}
+          />
+        </Box>
         <Box className={style.info_field_container}>
           <TextField
             inputProps={{ inputMode: "tel" }}
@@ -203,7 +209,7 @@ export default function Profile({
             id="gender"
             value={profileObj.preferences.gender || "any"}
             label="Gender"
-            onChange={handleGenderChange}
+            onChange={handlePrefGenderChange}
           >
             <MenuItem value={"male"}>Male</MenuItem>
             <MenuItem value={"female"}>Female</MenuItem>
