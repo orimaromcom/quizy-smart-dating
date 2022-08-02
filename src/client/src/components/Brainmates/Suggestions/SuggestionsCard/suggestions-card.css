@@ -1,0 +1,66 @@
+.mate-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 40%;
+    margin: 2%;
+    padding: 2% ;
+    border: 1px solid gray;
+    border-radius: 8px;
+    background-color: white;
+    width: 80%;
+    height: 50%;
+}
+
+.card-avatar-container{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    flex-basis: 30%;
+}
+
+.card-avatar-img{
+    border-radius: 50%;
+    max-width: 50%;
+}
+
+.card-content{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    /* justify-content: space-between; */
+    max-width: 100%;
+    /* flex-wrap: wrap; */
+}
+
+.card-content h1{
+    font-size: 1.5rem;
+    margin-top: 10%;
+}
+
+.card-content h1, .card-content h2, .card-content h3, .card-content p{
+    text-align: center;
+}
+
+.card-content p{
+    font-size: 1.1rem;
+}
+
+.match{
+    box-shadow: 2px 2px 4px gray;
+}
+
+.match:active{
+    box-shadow: none;
+}
+
+/* .open .flip{
+    animation: flipOutY;
+    animation-duration: 2s;
+}
+
+.open{
+    animation: flipInY;
+    animation-duration: 2s;
+} */

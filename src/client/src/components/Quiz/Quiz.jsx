@@ -31,7 +31,8 @@ export default function Quiz({
   clearQuestionsArrayAction,
   clearQuestionsIndexAction,
 }) {
-  let playAgainClicked = false
+  const [playAgainClicked, setPlayAgainClicked] = useState(false);
+
   const navigate = useNavigate();
   useEffect(() => {
     if (!userId) {
@@ -41,9 +42,9 @@ export default function Quiz({
   }, [navigate, userId]);
 
   const playAgainHandler = () => {
-    playAgainClicked = true
-    clearQuestionsArrayAction()
-    clearQuestionsIndexAction()
+    setPlayAgainClicked(true);
+    clearQuestionsArrayAction();
+    clearQuestionsIndexAction();
     fetchNewQuestionsAction();
     updateQuoteAction();
   };
@@ -52,7 +53,7 @@ export default function Quiz({
   const [heartClicked, setHeartClicked] = useState(false);
 
   useEffect(() => {
-    if (!questions.length) {
+    if (!questions.length && !playAgainClicked) {
       fetchNewQuestionsAction();
       updateQuoteAction();
     }
@@ -83,7 +84,7 @@ export default function Quiz({
           incrementQuestionIndexAction={incrementQuestionIndexAction}
           questionIndex={questionIndex}
         />
-      ) : !playAgainClicked ? (
+      ) : (
         <>
           <HeartConnector
             quote={quote}
@@ -96,7 +97,7 @@ export default function Quiz({
             Continue Playing to get better matches
           </Button>
         </>
-      ) : null}
+      )}
     </div>
   );
 }

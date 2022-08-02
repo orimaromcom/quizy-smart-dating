@@ -36,7 +36,7 @@ function createParticle(x, y, type) {
   let rotation = Math.random() * 520;
   let delay = Math.random() * 200;
 
-  particle.innerHTML = ["❤", "🧡", "💛", "💚", "💙", "💜", "🤎"][
+  particle.innerHTML = ["❤️", "💖", "💛", "💚", "💙", "💜", "💘","❤️"][
     Math.floor(Math.random() * 7)
   ];
   particle.style.fontSize = `${Math.random() * 24 + 10}px`;

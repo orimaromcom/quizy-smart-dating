@@ -2,6 +2,7 @@ import "./brainmates.css";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MateCard from "./MateCard/MateCard";
+import Suggestions from "./Suggestions/Suggestions";
 
 export default function Brainmates({
   brainmates,
@@ -24,7 +25,7 @@ export default function Brainmates({
   }, []);
 
   return ( brainmates &&
-   (Object.keys(suggestions).length ? <div>I should put suggestions cards here</div> : (<div className="brain-mates-container">
+   (Object.keys(suggestions).length ? <Suggestions suggestions={suggestions}/> : (<div className="brain-mates-container">
       {brainmates.likeBack
         ? Object.keys(brainmates.likeBack).map((brainmate, i) => {
             const current = brainmates.likeBack[brainmate];
