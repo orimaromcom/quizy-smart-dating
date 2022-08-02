@@ -16,8 +16,8 @@ export default function Login({
   useEffect(() => {
     console.log('profile', profile);
     if (profile && profile.id) {
-      updatePageButtonAction("profile")
-      navigate("/profile");
+      updatePageButtonAction("quiz")
+      navigate("/quiz");
       return;
     }
   }, [navigate, profile]);
