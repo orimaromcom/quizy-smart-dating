@@ -13,16 +13,12 @@ export default function Heart({
     fetchNewSuggestionsAction(userId);
     setHeartClicked(true);
     navigate("/brainmates");
-    updatePageButtonAction("brainmates")
+    updatePageButtonAction("brainmates");
   };
 
   return (
-    // <div></div>
     <div className={style.container}>
-      <div
-        className={style.heart_container}
-        onClick={() => HeartCLickHandler()}
-      >
+      <div className={style.heart_container} onClick={() => HeartCLickHandler()}>
         {<div className={style.heart} />}
       </div>
       <div className={style.text}>

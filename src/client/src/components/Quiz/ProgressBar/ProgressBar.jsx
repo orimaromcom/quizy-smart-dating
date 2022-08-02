@@ -2,6 +2,7 @@ import "./progress-bar.css";
 import { Box } from "@mui/material";
 import LinearProgress, { linearProgressClasses } from "@mui/material/LinearProgress";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import HeartParticles from "../HeartParticlesAnimation/HeartParticles";
 
 import { styled } from "@mui/material/styles";
 
@@ -16,6 +17,8 @@ const BorderLinearProgress = styled(LinearProgress)(() => ({
   },
 }));
 
+
+
 export default function ProgressBar({ progressPercentage }) {
   return (
     <Box className="progress-bar-container">
@@ -25,7 +28,8 @@ export default function ProgressBar({ progressPercentage }) {
         value={progressPercentage || 0}
         height={10}
       />
-      <FavoriteIcon className="heart-icon" color={"primary"} sx={{ fontSize: 70 }} />
+    {/*   <FavoriteIcon className="heart-icon" color={"primary"} sx={{ fontSize: 70 }} /> */}
+      <HeartParticles>/</HeartParticles>
     </Box>
   );
 }
