@@ -26,7 +26,7 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
-    await queryInterface.addConstraint('Likes', {
+    await queryInterface.addConstraint('PersonalAnswers', {
       fields: ['userId', 'questionId'],
       type: 'unique',
       name: 'userAnsweredPersonalQuestion'
