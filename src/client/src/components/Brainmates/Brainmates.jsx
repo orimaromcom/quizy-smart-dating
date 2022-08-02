@@ -7,6 +7,7 @@ export default function Brainmates({
   brainmates,
   fetchBrainmatesAction,
   userId,
+  suggestions,
 }) {
   const navigate = useNavigate();
 
@@ -22,10 +23,8 @@ export default function Brainmates({
     if (userId && !Object.keys(brainmates).length) fetchBrainmatesAction(userId);
   }, []);
 
-  console.log('brainmates', brainmates);
-
   return ( brainmates &&
-    <div className="brain-mates-container">
+   (Object.keys(suggestions).length ? <div>I should put suggestions cards here</div> : (<div className="brain-mates-container">
       {brainmates.likeBack
         ? Object.keys(brainmates.likeBack).map((brainmate, i) => {
             const current = brainmates.likeBack[brainmate];
@@ -63,6 +62,6 @@ export default function Brainmates({
       { brainmates.pending &&
         <p>You see more info about your brainmates when they like you back</p>
       }
-    </div>
+    </div>))
   );
 }

@@ -37,6 +37,10 @@ export default function Quiz({
     }
   }, [navigate, userId]);
 
+  const playAgainHandler = ()=> {
+    
+  }
+
   const isFinished = questions.length && questionIndex === questions.length;
   const [heartClicked, setHeartClicked] = useState(false);
 
@@ -81,7 +85,7 @@ export default function Quiz({
             heartClicked={heartClicked}
             setHeartClicked={setHeartClicked}
           />
-          <Button variant="text">Continue Playing</Button>
+          <Button variant="text" onClick={() => playAgainHandler()}>Continue Playing to get better matches</Button>
         </>
       )}
     </div>

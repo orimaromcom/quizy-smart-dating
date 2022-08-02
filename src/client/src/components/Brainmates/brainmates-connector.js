@@ -4,11 +4,13 @@ import Brainmates from "./Brainmates";
 import { getProfile } from "../../redux/selectors/profile-entity-selector";
 import { fetchBrainmatesAction } from "../../redux/actions/fetch-brainmates-action";
 import { getAllBrainmates } from "../../redux/selectors/brainmates-entities-selector";
+import { getSuggestions } from "../../redux/selectors/suggestions-entities-selector"
 
 const mapStateToProps = (state) => {
   let brainmates = getAllBrainmates(state);
   const userId = getProfile(state).id;
-  return { brainmates, userId };
+  const suggestions = getSuggestions(state)
+  return { brainmates, userId, suggestions };
 };
 
 const mapDispatchToProps = (dispatch) => {
