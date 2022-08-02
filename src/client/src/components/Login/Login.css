@@ -6,3 +6,33 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.login-container p {
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.login-container h1 {
+  font-size: 25px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.test-login-container, .test-form {
+  background-color: #DDDDDD;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-radius: 24px;
+}
+
+.test-login-container p {
+  margin-top: 10px;
+  font-size: 20px;
+}

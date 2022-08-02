@@ -1,9 +1,15 @@
 .brain-mates-container{
-    flex-grow: 1; 
+    flex-grow: 1;
     width: 100%;
     max-height: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.brain-mates-container p{
+  font-size: 25px;
+  text-align: center;
+  margin: auto;
 }

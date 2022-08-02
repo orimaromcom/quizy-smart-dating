@@ -31,20 +31,20 @@ export default function Login({
       console.log('updateProfileActions');
       console.log('email', email, 'picture', picture, 'name', name);
       updateProfileAction({
-        // ...profile, email: email, picture: picture, userName: name
-          email: email,
-          userName: name,
-          age: 18,
-          phone: "your phone",
-          location: "your location",
-          picture: picture,
-          gender: "choose",
-          preferences: {
-            relation_type: "friends",
-            gender: "any",
-            minAge: 25,
-            maxAge: 55,
-        },
+        ...profile, email: email, picture: picture, userName: name
+        //   email: email,
+        //   userName: name,
+        //   age: null,
+        //   phone: null,
+        //   location: null,
+        //   picture: picture,
+        //   gender: "choose",
+        //   preferences: {
+        //     relation_type: "friends",
+        //     gender: "any",
+        //     minAge: 25,
+        //     maxAge: 55,
+        // },
       });
       console.log('UserApiService.setTriviaStatistics(email)');
 //      UserApiService.setTriviaStatistics(email);
@@ -75,12 +75,12 @@ export default function Login({
     async (event) => {
       event.preventDefault();
       const testUserEmail = testEmail;
-      // setTestEmail("");
       const secretPass = pass;
-      setPass("");
       if (secretPass !== process.env.REACT_APP_TESTING_PASSWORD) {
         console.log("Invalid password");
+        setPass("");
       } else {
+        setTestEmail("");
         await fetchProfileAction(testUserEmail);
       }
     },
@@ -88,9 +88,9 @@ export default function Login({
   );
 
   const testerLogin = (
-    <form onSubmit={(e) => getTesterLoginData(e)}>
+    <form className="test-form" onSubmit={(e) => getTesterLoginData(e)}>
+      User email
       <label>
-        User email
         <input
           type="text"
           name="email"
@@ -98,9 +98,8 @@ export default function Login({
           onChange={(e) => setTestEmail(e.target.value)}
         />
       </label>
-      <br />
+      Password
       <label>
-        Password
         <input
           type="password"
           name="password"
@@ -115,18 +114,21 @@ export default function Login({
   let loginOptions;
 
   loginOptions = <div>
-                    <h1>Google Login</h1>
+                    <h1>Login with google</h1>
                     { googleLogIn }
                     <br /><br /><br />
-                    <h1>Tester Login</h1>
-                    { testerLogin }
+                    <div className="test-login-container">
+                      <p>Test Login</p>
+                      { testerLogin }
+                    </div>
                   </div>
 
   return (
     <div className="login-container">
       <h1>Welcome to Quizy Smart Dating</h1>
+      <p>Find your brainmate according to your interests and knowledge</p>
       <img src="/favicon.png" width="200px" alt="heart" />
-      {profile && !profile.email && loginOptions}
+      {loginOptions}
     </div>
   );
 }
