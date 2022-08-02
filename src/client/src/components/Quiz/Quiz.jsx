@@ -28,6 +28,8 @@ export default function Quiz({
   updateQuoteAction,
   quote,
   fetchNewSuggestionsAction,
+  clearQuestionsArrayAction,
+  clearQuestionsIndexAction,
 }) {
   let playAgainClicked = false
   const navigate = useNavigate();
@@ -40,8 +42,8 @@ export default function Quiz({
 
   const playAgainHandler = () => {
     playAgainClicked = true
-    questions = [];
-    questionIndex = 0;
+    clearQuestionsArrayAction()
+    clearQuestionsIndexAction()
     fetchNewQuestionsAction();
     updateQuoteAction();
   };
