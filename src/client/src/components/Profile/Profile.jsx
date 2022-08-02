@@ -32,7 +32,7 @@ export default function Profile({
 
   useEffect(() => {
     setProfileObj(profile);
-    if (profile.gender === "choose") {
+    if (profile && profile.id && !profile.gender) {
       UserApiService.setTriviaStatistics(profile.id);
     }
   }, [profile]);
