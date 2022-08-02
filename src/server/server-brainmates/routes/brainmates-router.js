@@ -8,7 +8,7 @@ const {
 
 const brainmatesRouter = express.Router();
 
-brainmatesRouter.post('/like', auth, postUserLike);
+brainmatesRouter.post('/like', postUserLike);
 brainmatesRouter.get('/like/:from/:to', auth, getIsLikeFromTo);
 brainmatesRouter.get('/:id', auth, getBrainmatesForUser);
 
