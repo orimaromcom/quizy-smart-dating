@@ -3,18 +3,19 @@ import { useState } from "react";
 import SuggestionsCard from "./SuggestionsCard/SuggestionsCard";
 import { Button } from "@mui/material";
 
-export default function Suggestions({ suggestions }) {
-  const [suggestionDistance, setSuggestionDistance] = useState("closest");
+export default function Suggestions({ suggestions,suggestionDistance,setSuggestionDistance}) {
+
   const decisionHandler = (decision) => {
     console.log(decision);
-    if (suggestionDistance === "closest"){
-      setSuggestionDistance("farthest")
 
+    if (suggestionDistance === "closest") {
+      setSuggestionDistance("farthest");
+    } else {
+      setSuggestionDistance("brainmates")
     }
-    //setSuggestionsIndex(setSuggestionsIndex + 1)
   };
   return (
-    <div>
+    <div className={style.page_container}>
       {suggestionDistance === "closest" ? (
         <SuggestionsCard
           userName={suggestions.closest.username}
@@ -35,7 +36,7 @@ export default function Suggestions({ suggestions }) {
           picture={suggestions.farthest.picture}
         />
       ) : null}
-      <div className={style.suggestions_container}>
+      <div className={style.buttons_container}>
         <div className={style.yes_no_btn_container}>
           <Button variant="contained" onClick={() => decisionHandler("Yes")}>
             Yes

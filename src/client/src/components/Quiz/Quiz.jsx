@@ -93,11 +93,18 @@ export default function Quiz({
             heartClicked={heartClicked}
             setHeartClicked={setHeartClicked}
           />
-          <Button variant="text" onClick={() => playAgainHandler()}>
-            Continue Playing to get better matches
+         <div className="play_again_btn">
+          <Button variant="contained" onClick={() => playAgainHandler()}>
+            Play again
+            🏹 💑 
           </Button>
+          </div>
+        
+       
         </>
       )}
     </div>
   );
 }
+
+

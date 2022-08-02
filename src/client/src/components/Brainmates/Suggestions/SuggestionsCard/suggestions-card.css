@@ -3,9 +3,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-basis: 40%;
-  margin: 2%;
-  padding: 2%;
   border: 1px solid gray;
   border-radius: 8px;
   background-color: white;
@@ -19,7 +16,7 @@
 
 .card-avatar-img {
   border-radius: 50%;
-  height: 80%;
+  height: 70%;
 }
 
 .card-content {
