@@ -26,8 +26,6 @@ module.exports = {
         })
       });
     });
-    await queryInterface.bulkDelete('PersonalAnswers', null, {});
-
     await queryInterface.bulkInsert('PersonalAnswers', personalAnswersJSON, {});
   },
 
