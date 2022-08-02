@@ -11,8 +11,8 @@ const mapStateToProps = (state) => {
   let brainmates = getAllBrainmates(state);
   const userId = getProfile(state).id;
   const suggestions = getSuggestions(state)
-  const suggestionsDistanceState = getSuggestionsDistance(state)
-  return { brainmates, userId, suggestions,suggestionsDistanceState};
+  const suggestionDistance = getSuggestionsDistance(state)
+  return { brainmates, userId, suggestions,suggestionDistance};
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -2,13 +2,14 @@ import "./brainmates.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MateCard from "./MateCard/MateCard";
-import SuggestionsConnector from "./Suggestions/Suggestions";
+import SuggestionsConnector from "./Suggestions/SuggestionsConnector";
 
 export default function Brainmates({
   brainmates,
   fetchBrainmatesAction,
   userId,
-  suggestionsDistanceState,
+  suggestionDistance,
+  suggestions,
 }) {
   const navigate = useNavigate();
 
@@ -23,10 +24,9 @@ export default function Brainmates({
   useEffect(() => {
     if (userId && !Object.keys(brainmates).length) fetchBrainmatesAction(userId);
   }, []);
-
+console.log(suggestions)
   return (
-    brainmates &&
-    (suggestionsDistanceState === "brainmates" ? (
+    (!Object.keys(suggestions).length ? (
       <div className="brain-mates-container">
         {brainmates.likeBack
           ? Object.keys(brainmates.likeBack).map((brainmate, i) => {
@@ -69,7 +69,7 @@ export default function Brainmates({
         )}
       </div>
     ) : (
-      <SuggestionsConnector suggestionsDistanceState={suggestionsDistanceState}/>
+      <SuggestionsConnector />
     ))
   );
 }

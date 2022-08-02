@@ -1,8 +1,11 @@
-import { getSuggestions } from "../../redux/selectors/suggestions-entities-selector"
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import Suggestions from "./Suggestions"
+import { getSuggestions } from "../../../redux/selectors/suggestions-entities-selector"
 import {clearSuggestionsAction} from "../../../redux/actions/clear-suggestions-action"
 import {updateSuggestionDistanceAction} from "../../../redux/actions/update-suggestions-distance-value-action"
 import {getSuggestionsDistance} from "../../../redux/selectors/suggestions-entities-selector"
-import Suggestions from "./Suggestions"
+
 
 const mapStateToProps = (state) => {
 

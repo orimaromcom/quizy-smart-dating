@@ -7,13 +7,13 @@ export default function Suggestions({
   suggestionDistance,
 
   updateSuggestionDistanceAction,
-  suggestionsDistanceState,
 }) {
-  const decisionHandler = () => {
-    console.log(suggestionsDistanceState);
-    if (suggestionsDistanceState === "closest") {
+  console.log(suggestions)
+  const DecisionHandler = () => {
+    updateSuggestionDistanceAction("brainmates");
+    console.log(suggestionDistance);
+    if (suggestionDistance === "closest") {
       updateSuggestionDistanceAction("farthest");
- 
     } else {
       //clearSuggestionsAction();
       //updateSuggestionDistanceAction("brainmates");
@@ -42,15 +42,13 @@ export default function Suggestions({
         />
       ) : null}
       <div className={style.buttons_container}>
-        <div className={style.yes_no_btn_container}>
-          <Button variant="contained" onClick={() => decisionHandler()}>
-            Yes
-          </Button>
+        <div className={style.yes_no_btn_container} onClick={() => DecisionHandler()}>
+          <Button variant="contained">Yes</Button>
         </div>
         <div
           className={style.yes_no_btn_container}
           onClick={() => {
-            decisionHandler("No");
+            DecisionHandler("No");
           }}
         >
           <Button variant="contained">No</Button>
