@@ -8,9 +8,9 @@ const PHOTOS = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlKi-dTKs
 const amountOfPhotos = PHOTOS.length;
 const CITIES = ["Bat Yam", "Givatayim", "Haifa", "Herzliya", "Holon", "Nes Ziona", "Netanya", "Petah Tikva", "Raanana", "Ramat-Gan", "Ramla", "Rehovot", "Rishon Lezion", "Tel Aviv", "Yavne"];
 const amountOfCities = CITIES.length;
-const GENDERS = ["male", "female", "other"];
-const LOOK_FOR_GENDER = ["female", "male", "any"];
+const GENDERS = ["male", "female", "male", "female", "male", "female", "other"];
 const amountOfGenders = GENDERS.length;
+// const LOOK_FOR_GENDER = ["female", "male", "any"];
 const RELATIONS = ["romantic", "friends"];
 const amountOfRalations = RELATIONS.length;
 
@@ -23,7 +23,6 @@ module.exports = {
 
     const usersJSON = [];
     for(let i = 0; i < AMOUNT_OF_USERS; i++){
-      const genderIndex = [randomInt(0, amountOfGenders)];
       const username = `${faker.name.firstName()}${randomInt(1, 100)}`;
       usersJSON.push({
         username: username,
@@ -32,8 +31,8 @@ module.exports = {
         photo: PHOTOS[randomInt(0, amountOfPhotos)],
         age: randomInt(20, 40),
         location: CITIES[randomInt(0, amountOfCities)],
-        gender: GENDERS[genderIndex],
-        lookingForGender: LOOK_FOR_GENDER[genderIndex],
+        gender: GENDERS[randomInt(0, amountOfGenders)],
+        lookingForGender: "any",
         lookingForRelationsType: RELATIONS[randomInt(0, amountOfRalations)],
         lookingForMinAge: randomInt(18, 22),
         lookingForMaxAge: randomInt(38, 45),

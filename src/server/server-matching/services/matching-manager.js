@@ -202,11 +202,14 @@ function isBasicMatchPossible(firstUser, secondUser){
   let genderFit;
   if (secondUser.lookingForGender === 'any' && firstUser.lookingForGender === 'any') {
     genderFit = true;
+  } else if (secondUser.lookingForGender === 'any') {
+    genderFit = firstUser.lookingForGender === secondUser.gender;
+  } else if (firstUser.lookingForGender === 'any') {
+    genderFit = secondUser.lookingForGender === firstUser.gender;
   } else {
-    genderFit = firstUser.gender === secondUser.lookingForGender  &&
-                secondUser.gender === firstUser.lookingForGender
+    genderFit = ( firstUser.gender === secondUser.lookingForGender  &&
+                secondUser.gender === firstUser.lookingForGender )
   }
-  // We ignore location and radius for now
   return agesFit && relationsTypeFit && genderFit;
 }
 
