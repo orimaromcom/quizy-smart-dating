@@ -5,10 +5,6 @@ module.exports = function auth(req, res, next) {
   error.statusCode = 403;
   error.message = "Not authorized";
 
-  console.log("******");
-  console.log(req.headers.authorization);
-  console.log("******");
-
   if (req.headers.size === 0) {
     throw error;
   }
