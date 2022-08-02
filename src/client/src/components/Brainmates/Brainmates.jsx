@@ -22,6 +22,8 @@ export default function Brainmates({
     if (userId && !Object.keys(brainmates).length) fetchBrainmatesAction(userId);
   }, []);
 
+  console.log('brainmates', brainmates);
+
   return ( brainmates &&
     <div className="brain-mates-container">
       {brainmates.likeBack
@@ -54,6 +56,13 @@ export default function Brainmates({
             );
           })
         : null}
+      { brainmates.likeBack && brainmates.likeBack.length === 0 &&
+        brainmates.pending && brainmates.pending.length === 0 &&
+        <p>You do not have any brainmates yet. Play the quiz first!</p>
+      }
+      { brainmates.pending &&
+        <p>You see more info about your brainmates when they like you back</p>
+      }
     </div>
   );
 }
