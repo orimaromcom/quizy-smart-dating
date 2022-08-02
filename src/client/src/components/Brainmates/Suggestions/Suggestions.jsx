@@ -2,16 +2,22 @@ import style from "./suggestions.module.scss";
 import { useState } from "react";
 import SuggestionsCard from "./SuggestionsCard/SuggestionsCard";
 import { Button } from "@mui/material";
+import {clearSuggestionsAction} from "../../../redux/actions/clear-suggestions-action"
+
 
 export default function Suggestions({ suggestions,suggestionDistance,setSuggestionDistance}) {
-
+console.log(suggestions)
   const decisionHandler = (decision) => {
     console.log(decision);
 
     if (suggestionDistance === "closest") {
       setSuggestionDistance("farthest");
     } else {
+      console.log("here")
+      clearSuggestionsAction()
+  
       setSuggestionDistance("brainmates")
+
     }
   };
   return (

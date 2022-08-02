@@ -1,0 +1,449 @@
+{
+  "response_code": 0,
+  "results": [
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which one of these was not a beach landing site in the Invasion of Normandy?",
+      "correct_answer": "Silver",
+      "incorrect_answers": ["Gold", "Juno", "Sword"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "When did the French Revolution begin?",
+      "correct_answer": "1789",
+      "incorrect_answers": ["1823", "1756", "1799"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "During what war did the &quot;Cuban Missile Crisis&quot; occur?",
+      "correct_answer": "Cold War",
+      "incorrect_answers": ["World War I", "World War II", "Revolutionary War"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "How many manned moon landings have there been?",
+      "correct_answer": "6",
+      "incorrect_answers": ["1", "3", "7"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "The Spitfire L.F. Mk IX had what engine?",
+      "correct_answer": "Merlin 66",
+      "incorrect_answers": ["Griffon 65", "Merlin 50", "Merlin X"]
+    },
+    {
+      "category": "History",
+      "type": "boolean",
+      "difficulty": "medium",
+      "question": "The two atomic bombs dropped on Japan by the United States in August 1945 were named &#039;Little Man&#039; and &#039;Fat Boy&#039;.",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Who was the first explorer to sail to North America?",
+      "correct_answer": "Leif Erikson",
+      "incorrect_answers": [
+        "Christopher Columbus",
+        "Amerigo Vespucci",
+        "Ferdinand Magellan"
+      ]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "In what year was the famous 45 foot tall Hollywood sign first erected?",
+      "correct_answer": "1923",
+      "incorrect_answers": ["1903", "1913", "1933"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "The crown of the Empire State Building was originally built for what purpose?",
+      "correct_answer": "Airship Dock",
+      "incorrect_answers": ["Lightning Rod", "Antennae", "Flag Pole"]
+    },
+    {
+      "category": "History",
+      "type": "boolean",
+      "difficulty": "medium",
+      "question": "The M41 Walker Bulldog remains in service in some countries to this day.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "When did Spanish Peninsular War start?",
+      "correct_answer": "1808",
+      "incorrect_answers": ["1806", "1810", "1809"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Which dictator killed the most people?",
+      "correct_answer": "Mao Zedong",
+      "incorrect_answers": ["Joseph Stalin", "Adolf Hitler", "Kim Il Sung"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which of the following African countries was most successful in resisting colonization?",
+      "correct_answer": "Ethiopia",
+      "incorrect_answers": ["C&ocirc;te d&rsquo;Ivoire", "Congo", "Namibia"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "All of the following are names of the Seven Warring States EXCEPT:",
+      "correct_answer": "Zhai (翟)",
+      "incorrect_answers": ["Zhao (趙)", "Qin (秦)", "Qi (齊)"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "When was &quot;The Gadget&quot;, the first nuclear device to be detonated, tested?",
+      "correct_answer": "July 16, 1945",
+      "incorrect_answers": ["June 22, 1945", "August 6, 1945", "April 5, 1945"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "What year did the Battle of Agincourt take place?",
+      "correct_answer": "1415",
+      "incorrect_answers": ["1463", "1401", "1422"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "When did the Battle of the Somme begin?",
+      "correct_answer": "July 1st, 1916",
+      "incorrect_answers": ["August 1st, 1916", "July 2nd, 1916", "June 30th, 1916"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "In what year did the North American Video Game Crash occur?",
+      "correct_answer": "1983",
+      "incorrect_answers": ["1982", "1993", "1970"]
+    },
+    {
+      "category": "History",
+      "type": "boolean",
+      "difficulty": "medium",
+      "question": "If you grab the bladed end of a longsword in a specific way, you will not cut yourself.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "Which one of these rulers did not belong to the Habsburg dynasty?",
+      "correct_answer": "Philip V",
+      "incorrect_answers": ["Charles V", "Philip II", "Francis Joseph"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "When was Google founded?",
+      "correct_answer": "September 4, 1998",
+      "incorrect_answers": ["October 9, 1997", "December 12, 1989", "Feburary 7th, 2000"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Which WWII tank ace is credited with having destroyed the most tanks?",
+      "correct_answer": "Kurt Knispel",
+      "incorrect_answers": ["Michael Wittmann", "Walter Kniep", "Otto Carius"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "What is the oldest US state?",
+      "correct_answer": "Delaware",
+      "incorrect_answers": ["Rhode Island", "Maine", "Virginia"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "What were the first states to break away from Yugoslavia?",
+      "correct_answer": "Slovenia, Croatia",
+      "incorrect_answers": [
+        "Macedonia, Montenegro",
+        "Slovenia, Macedonia",
+        "Montenegro, Slovenia"
+      ]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "What year was the United States Declaration of Independence signed?",
+      "correct_answer": "1776",
+      "incorrect_answers": ["1775", "1774", "1777"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "What is the bloodiest event in United States history, in terms of casualties?",
+      "correct_answer": "Battle of Antietam",
+      "incorrect_answers": ["Pearl Harbor", "September 11th", "D-Day"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "What was found in 1946 by two young shepards near a cave?",
+      "correct_answer": "Dead Sea Scrolls",
+      "incorrect_answers": [
+        "The Blackbeard Chest",
+        "Sheep",
+        "The First Oaxaca Cave Sleeper"
+      ]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "When did Norway get its constitution?",
+      "correct_answer": "1814",
+      "incorrect_answers": ["1932", "1905", "1854"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "When Christopher Columbus sailed to America, what was the first region he arrived in?",
+      "correct_answer": "The Bahamas Archipelago",
+      "incorrect_answers": ["Florida", "Isthmus of Panama", "Nicaragua"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Who was the first prime minister of Canada?",
+      "correct_answer": "John Macdonald",
+      "incorrect_answers": ["John Abbott", "Alexander Mackenzie", "Robert Borden"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "What was the bloodiest single-day battle during the American Civil War?",
+      "correct_answer": "The Battle of Antietam",
+      "incorrect_answers": [
+        "The Siege of Vicksburg",
+        "The Battle of Gettysburg",
+        "The Battles of Chancellorsville"
+      ]
+    },
+    {
+      "category": "History",
+      "type": "boolean",
+      "difficulty": "medium",
+      "question": "Martin Luther King Jr. and Anne Frank were born the same year. ",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "category": "History",
+      "type": "boolean",
+      "difficulty": "easy",
+      "question": "Adolf Hitler was tried at the Nuremberg trials.",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "How many women joined the United States Armed Services during World War II?",
+      "correct_answer": "350,000",
+      "incorrect_answers": ["225,000", "100,000", "500,000"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "What was the code name for the Allied invasion of Southern France on August 15th, 1944?",
+      "correct_answer": "Operation Dragoon",
+      "incorrect_answers": [
+        "Operation Overlord",
+        "Operation Market Garden",
+        "Operation Torch"
+      ]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "What was the name of one of the surviving palaces of Henry VIII located near Richmond, London?",
+      "correct_answer": "Hampton Court",
+      "incorrect_answers": [
+        "St James&#039;s Palace",
+        "Buckingham Palace",
+        "Coughton Court"
+      ]
+    },
+    {
+      "category": "History",
+      "type": "boolean",
+      "difficulty": "hard",
+      "question": "The USS Missouri (BB-63) last served in the Korean War.",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "In which year was Constantinople conquered by the Turks?",
+      "correct_answer": "1453",
+      "incorrect_answers": ["1435", "1454", "1440"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "When was the &quot;Siege of Leningrad&quot; lifted during World War II?",
+      "correct_answer": "January 1944",
+      "incorrect_answers": ["September 1943", "November 1943", "March 1944"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "In 1961, an American B-52 aircraft crashed and nearly detonated two 4mt nuclear bombs over which US city?",
+      "correct_answer": "Goldsboro, North Carolina",
+      "incorrect_answers": [
+        "Hicksville, New York",
+        "Jacksonville, Florida",
+        "Conway, Arkansas"
+      ]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "How old was Adolf Hitler when he died?",
+      "correct_answer": "56",
+      "incorrect_answers": ["43", "65", "47"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which country was Josef Stalin born in?",
+      "correct_answer": "Georgia",
+      "incorrect_answers": ["Russia", "Germany", "Poland"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "When did construction of the Suez Canal finish?",
+      "correct_answer": "1869",
+      "incorrect_answers": ["1859", "1860", "1850"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "When was the Grand Patriotic War in the USSR concluded?",
+      "correct_answer": "May 9th, 1945",
+      "incorrect_answers": [
+        "September 2nd, 1945",
+        "August 9th, 1945",
+        "December 11th, 1945"
+      ]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "What year did the Vietnam War end?",
+      "correct_answer": "1975",
+      "incorrect_answers": ["1978", "1967", "1969"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "In 1845, a series of wars named after which indigenous people began in New Zealand?",
+      "correct_answer": "Māori",
+      "incorrect_answers": ["Papuans", "Aborigines", "Polynesians"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "On what street did the 1666 Great Fire of London start?",
+      "correct_answer": "Pudding Lane",
+      "incorrect_answers": [
+        "Baker Street",
+        "Houses of Parliament",
+        "St Paul&#039;s Cathedral"
+      ]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "What was the name of the planned invasion of Japan towards the end of World War II?",
+      "correct_answer": "Operation Downfall",
+      "incorrect_answers": [
+        "Operation Boarding Party",
+        "Operation Ironclad",
+        "Operation Aflame"
+      ]
+    },
+    {
+      "category": "History",
+      "type": "boolean",
+      "difficulty": "hard",
+      "question": "The man that shot Alexander Hamilton was named Aaron Burr.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "category": "History",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "What happened on June 6, 1944?",
+      "correct_answer": "D-Day",
+      "incorrect_answers": [
+        "Atomic bombings of Hiroshima and Nagasaki",
+        "Attack on Pearl Harbor",
+        "The Liberation of Paris"
+      ]
+    }
+  ]
+}

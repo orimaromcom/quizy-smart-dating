@@ -9,6 +9,7 @@ export default function Brainmates({
   fetchBrainmatesAction,
   userId,
   suggestions,
+
 }) {
   const navigate = useNavigate();
 
@@ -26,7 +27,7 @@ export default function Brainmates({
   const [suggestionDistance, setSuggestionDistance] = useState("closest");
 console.log(suggestionDistance)
   return ( brainmates &&
-   (suggestionDistance === "brainmates" ?  (<div className="brain-mates-container">
+   (!Object.keys(suggestions).length  ?  (<div className="brain-mates-container">
       {brainmates.likeBack
         ? Object.keys(brainmates.likeBack).map((brainmate, i) => {
             const current = brainmates.likeBack[brainmate];
@@ -64,6 +65,6 @@ console.log(suggestionDistance)
       { brainmates.pending &&
         <p>You see more info about your brainmates when they like you back</p>
       }
-    </div>) : (<Suggestions suggestions={suggestions} setSuggestionDistance={setSuggestionDistance} suggestionDistance={suggestionDistance}/> ))
+    </div>) : (<Suggestions suggestions={suggestions} setSuggestionDistance={setSuggestionDistance} suggestionDistance={suggestionDistance} /> ))
   );
 }
