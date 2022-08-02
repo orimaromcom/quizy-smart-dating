@@ -31,7 +31,7 @@ module.exports = {
         lookingForGender: "female",
         lookingForRelationsType: "romantic",
         lookingForMinAge: 18,
-        lookingForMaxAge: 33,
+        lookingForMaxAge: 40,
         createdAt: new Date(),
         updatedAt: new Date()
       },
