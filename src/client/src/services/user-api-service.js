@@ -17,8 +17,8 @@ export default class UserApiService {
 
   static async getUserByEmail(email) {
     try {
-      const response = await axios.get(`/user/${email}`,{
-        headers: headers,
+      const response = await axios.get(`/user/${email}`, {
+        headers: headers
       });
       return response.data;
     } catch (error) {
@@ -29,9 +29,7 @@ export default class UserApiService {
 
   static async setTriviaStatistics(id){
     try {
-      const response = await axios.post(`/user/set-trivia/${id}`,{
-        headers: headers,
-      });
+      const response = await axios.post(`/user/set-trivia/${id}`);
       return response.data;
     }
     catch (error) {

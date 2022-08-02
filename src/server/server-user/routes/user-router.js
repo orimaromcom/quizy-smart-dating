@@ -8,7 +8,7 @@ const {
 
 const userRouter = express.Router();
 
-userRouter.post('/', postUserInfo);
+userRouter.post('/', auth, postUserInfo);
 userRouter.get('/:email', auth, getUserInfo);
 userRouter.post('/set-trivia/:id', setTriviaStatistics);
 
