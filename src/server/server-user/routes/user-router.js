@@ -10,6 +10,6 @@ const userRouter = express.Router();
 
 userRouter.post('/', auth, postUserInfo);
 userRouter.get('/:email', auth, getUserInfo);
-userRouter.post('/set-trivia/:id', setTriviaStatistics);
+userRouter.post('/set-trivia/:id', auth, setTriviaStatistics);
 
 module.exports = userRouter;

@@ -7,8 +7,7 @@ export default class BrainmatesApiService {
       const response = await axios.get(`/brainmates/${id}`,{
         headers: headers
       });
-      const brainmates = await response.data;
-      return brainmates;
+      return response.data;
     } catch (error) {
       console.log("Error:", error.message);
       // throw new Error(error.message);

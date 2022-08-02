@@ -5,19 +5,23 @@ module.exports = function auth(req, res, next) {
   error.statusCode = 403;
   error.message = "Not authorized";
 
+  console.log("******");
+  console.log(req.headers.authorization);
+  console.log("******");
+
   if (req.headers.size === 0) {
-      throw error;
+    throw error;
   }
   if (!req.headers.authorization) {
-      throw error;
+    throw error;
   }
   if (req.headers.authorization.indexOf("Bearer") === -1) {
-      throw error;
+    throw error;
   }
 
   let token = req.headers.authorization.split("Bearer ");
   if (token[1] !== process.env.REACT_APP_AUTH_TOKEN) {
-      throw error;
+    throw error;
   }
   next();
 };

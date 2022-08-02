@@ -13,6 +13,6 @@ quizRouter.get("/questions", auth, getAllQuestions);
 
 quizRouter.get("/quote", auth, getRandomQuote);
 
-quizRouter.post("/answers", postAnswer);
+quizRouter.post("/answers", auth, postAnswer);
 
 module.exports = quizRouter;

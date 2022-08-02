@@ -5,12 +5,12 @@ export default class UserApiService {
   static async updateUser(userData) {
     try {
       await axios.post(`/user`, {
+        ...userData,
+      }, {
         headers: headers,
-        body: JSON.stringify(userData),
       });
       return await this.getUserByEmail(userData.email);
     } catch (error) {
-      console.log("Error:", error.message);
       // throw new Error(error.message);
     }
   }
@@ -29,7 +29,9 @@ export default class UserApiService {
 
   static async setTriviaStatistics(id){
     try {
-      const response = await axios.post(`/user/set-trivia/${id}`);
+      const response = await axios.post(`/user/set-trivia/${id}`, {}, {
+        headers: headers
+      });
       return response.data;
     }
     catch (error) {
