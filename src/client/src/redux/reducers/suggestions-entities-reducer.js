@@ -2,6 +2,7 @@ import actionTypes from "../actions/constants";
 
 const initialState = {
   suggestions: {},
+  suggestionDistance: "brainmates",
 };
 const suggestionsEntitiesReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -13,10 +14,16 @@ const suggestionsEntitiesReducer = (state = initialState, action) => {
 
     case actionTypes.CLEAR_SUGGESTIONS:
       return {
-  ...state,
-      suggestions: (Object.keys(state.suggestions).forEach(key => {
+        ...state,
+        suggestions: Object.keys(state.suggestions).forEach((key) => {
           delete state.suggestions[key];
-        }))
+        }),
+      };
+
+    case actionTypes.UPDATE_SUGGESTION_DISTANCE:
+      return {
+        ...state,
+        suggestionDistance: action.payload,
       };
 
     default:

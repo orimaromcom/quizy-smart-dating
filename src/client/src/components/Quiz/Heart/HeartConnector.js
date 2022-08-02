@@ -4,7 +4,8 @@ import Heart from "./Heart";
 import { getQuote } from "../../../redux/selectors/questions-entities-selectors";
 
 import { fetchNewSuggestionsAction } from "../../../redux/actions/fetch-suggestions-action";
-import {updatePageButtonAction} from "../../../redux/actions/update-page-button-action"
+import { updatePageButtonAction } from "../../../redux/actions/update-page-button-action";
+import { updateSuggestionDistanceAction } from "../../../redux/actions/update-suggestions-distance-value-action";
 
 const mapStateToProps = (state) => {
   const quote = getQuote(state);
@@ -18,7 +19,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      fetchNewSuggestionsAction, updatePageButtonAction,
+      fetchNewSuggestionsAction,
+      updatePageButtonAction,
+      updateSuggestionDistanceAction,
     },
     dispatch
   );

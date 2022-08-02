@@ -1,23 +1,22 @@
 import style from "./suggestions.module.scss";
-import { useState } from "react";
 import SuggestionsCard from "./SuggestionsCard/SuggestionsCard";
 import { Button } from "@mui/material";
-import {clearSuggestionsAction} from "../../../redux/actions/clear-suggestions-action"
 
+export default function Suggestions({
+  suggestions,
+  suggestionDistance,
 
-export default function Suggestions({ suggestions,suggestionDistance,setSuggestionDistance}) {
-console.log(suggestions)
-  const decisionHandler = (decision) => {
-    console.log(decision);
-
-    if (suggestionDistance === "closest") {
-      setSuggestionDistance("farthest");
+  updateSuggestionDistanceAction,
+  suggestionsDistanceState,
+}) {
+  const decisionHandler = () => {
+    console.log(suggestionsDistanceState);
+    if (suggestionsDistanceState === "closest") {
+      updateSuggestionDistanceAction("farthest");
+ 
     } else {
-      console.log("here")
-      clearSuggestionsAction()
-  
-      setSuggestionDistance("brainmates")
-
+      //clearSuggestionsAction();
+      //updateSuggestionDistanceAction("brainmates");
     }
   };
   return (
@@ -44,14 +43,17 @@ console.log(suggestions)
       ) : null}
       <div className={style.buttons_container}>
         <div className={style.yes_no_btn_container}>
-          <Button variant="contained" onClick={() => decisionHandler("Yes")}>
+          <Button variant="contained" onClick={() => decisionHandler()}>
             Yes
           </Button>
         </div>
-        <div className={style.yes_no_btn_container}>
-          <Button variant="contained" onClick={() => decisionHandler("No")}>
-            No
-          </Button>
+        <div
+          className={style.yes_no_btn_container}
+          onClick={() => {
+            decisionHandler("No");
+          }}
+        >
+          <Button variant="contained">No</Button>
         </div>
       </div>
     </div>

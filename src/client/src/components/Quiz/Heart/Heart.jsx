@@ -7,6 +7,7 @@ export default function Heart({
   userId,
   setHeartClicked,
   updatePageButtonAction,
+  updateSuggestionDistanceAction,
 }) {
   const navigate = useNavigate();
   const HeartCLickHandler = () => {
@@ -14,6 +15,7 @@ export default function Heart({
     setHeartClicked(true);
     navigate("/brainmates");
     updatePageButtonAction("brainmates");
+    updateSuggestionDistanceAction("closest")
   };
 
   return (
