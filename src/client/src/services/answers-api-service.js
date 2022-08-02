@@ -6,7 +6,7 @@ export default class AnswersApiService {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ answersArray: answersArray }),
       });
-      return response.data;
+      return response;
     } catch (error) {
       console.log("Error:", error.message);
       // throw new Error(error.message);

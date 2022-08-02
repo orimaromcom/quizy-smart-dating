@@ -1,4 +1,5 @@
 const express = require("express");
+const auth = require('../../middleware/auth');
 
 const {
   getAllQuestions,
@@ -8,9 +9,9 @@ const {
 
 const quizRouter = express.Router();
 
-quizRouter.get("/questions", getAllQuestions);
+quizRouter.get("/questions", auth, getAllQuestions);
 
-quizRouter.get("/quote", getRandomQuote);
+quizRouter.get("/quote", auth, getRandomQuote);
 
 quizRouter.post("/answers", postAnswer);
 
