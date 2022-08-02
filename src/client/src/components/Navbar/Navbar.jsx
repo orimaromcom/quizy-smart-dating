@@ -11,7 +11,7 @@ export default function Navbar({ pageButtonValue, updatePageButtonAction }) {
   updatePageButtonAction(currentPage);
 
   return (
-    /* pageButtonValue === "login" ? null : */ <Box>
+    (pageButtonValue === "login" ? null :(<Box>
       <BottomNavigation
         showLabels
         value={pageButtonValue}
@@ -48,6 +48,6 @@ export default function Navbar({ pageButtonValue, updatePageButtonAction }) {
           icon={<PersonIcon sx={{ fontSize: 45 }} />}
         />
       </BottomNavigation>
-    </Box>
+    </Box>))
   );
 }
