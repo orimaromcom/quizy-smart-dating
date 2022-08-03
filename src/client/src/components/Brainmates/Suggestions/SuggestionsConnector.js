@@ -9,6 +9,7 @@ import { fetchNewSuggestionsAction } from "../../../redux/actions/fetch-suggesti
 import {getIsLoading} from "../../../redux/selectors/app-view-selector"
 import { getProfile } from "../../../redux/selectors/profile-entity-selector";
 import {postUserLikeAction} from "../../../redux/actions/post-user-like-action"
+import { fetchBrainmatesAction } from "../../../redux/actions/fetch-brainmates-action";
 
 
 
@@ -22,7 +23,7 @@ const mapStateToProps = (state) => {
   };
   
   const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ updateSuggestionDistanceAction,clearSuggestionsAction ,fetchNewSuggestionsAction,postUserLikeAction}, dispatch);
+    return bindActionCreators({ updateSuggestionDistanceAction,clearSuggestionsAction ,fetchNewSuggestionsAction,postUserLikeAction,fetchBrainmatesAction}, dispatch);
   };
   
   export default connect(mapStateToProps, mapDispatchToProps)(Suggestions);

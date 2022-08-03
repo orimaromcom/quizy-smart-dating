@@ -14,6 +14,7 @@ export default function Suggestions({
   userId,
   fetchNewSuggestionsAction,
   postUserLikeAction,
+  fetchBrainmatesAction,
 }) {
   const audio = new Audio(loveMomentSound);
   audio.loop = true;
@@ -25,40 +26,44 @@ export default function Suggestions({
   }, [fetchNewSuggestionsAction, suggestions]);
 
   const DecisionHandler = (decision) => {
-   
+    let currentUserLikeSuggestedUser = null;
+    if (decision === "✔️") {
+      currentUserLikeSuggestedUser = true;
+    } else {
+      currentUserLikeSuggestedUser = false;
+    }
 
     if (suggestionDistance === "closest") {
-      console.log(`${suggestions.closest} decided: ${decision}`);
-      console.log(suggestions)
-      if(decision === "✔️" && suggestions.closest.likeBack){
-       // audio.play()
+      console.log(suggestions);
+      if (currentUserLikeSuggestedUser && suggestions.closest.likeBack) {
+        // audio.play()
         //audio.pause()
-        console.log("We have a match!!!!!!!!")
-        postUserLikeAction(userId,suggestions.closest.userId,suggestions.closest.likeBack)
-      } 
-      
-     /*  postUserLikeAction = (
-        currentUserId,
-        suggestedUserId,
-        currentUserDecision
-      ) */
-      //postUserLikeAction
-     
-       //fetch new brainmates
-      updateSuggestionDistanceAction("farthest");
-      return 
-    } else {
-      console.log(`${suggestions.farthest} decided: ${decision}`);
-      if(decision === "✔️" && suggestions.farthest.likeBack){
-       // audio.play()
-      //audio.pause()
-      postUserLikeAction(userId,suggestions.farthest.userId,suggestions.farthest.likeBack)
-        console.log("We have a match!!!!!!!!")
-      } 
-      
-      //fetch new brainmates
-      //play again
+        console.log("We have a match!!!!!!!!");
+      }
+      postUserLikeAction(
+        userId,
+        suggestions.closest.userId,
+        currentUserLikeSuggestedUser
+      );
 
+      fetchBrainmatesAction(userId);
+      updateSuggestionDistanceAction("farthest");
+      return;
+    } else {
+      if (currentUserLikeSuggestedUser && suggestions.farthest.likeBack) {
+        // audio.play()
+        //audio.pause()
+
+        console.log("We have a match!!!!!!!!");
+      }
+      postUserLikeAction(
+        userId,
+        suggestions.farthest.userId,
+        currentUserLikeSuggestedUser
+      );
+     
+      //play again
+      fetchBrainmatesAction(userId);
       updateSuggestionDistanceAction("brainmates");
     }
   };
@@ -90,11 +95,10 @@ export default function Suggestions({
         />
       ) : null}
       <div className={style.buttons_container}>
-        <div
-          className={style.yes_no_btn_container}
-          onClick={() => DecisionHandler("✔️")}
-        >
-          <Button variant="contained" style={{backgroundColor: "lightBlue"}}>✔️</Button>
+        <div className={style.yes_no_btn_container} onClick={() => DecisionHandler("✔️")}>
+          <Button variant="contained" style={{ backgroundColor: "lightBlue" }}>
+            ✔️
+          </Button>
         </div>
         <div
           className={style.yes_no_btn_container}
@@ -102,7 +106,9 @@ export default function Suggestions({
             DecisionHandler("❌");
           }}
         >
-          <Button variant="contained" style={{backgroundColor: "lightBlue"}}>❌</Button>
+          <Button variant="contained" style={{ backgroundColor: "lightBlue" }}>
+            ❌
+          </Button>
         </div>
       </div>
     </div>
