@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useCallback, useState } from "react";
 // import UserApiService from "../../services/user-api-service";
-import jwt_decode from "jwt-decode";
+
+// this npm library can be deleted
+//import jwt_decode from "jwt-decode";
 import "./Login.css";
 
 export default function Login({
@@ -14,9 +16,9 @@ export default function Login({
 }) {
   const navigate = useNavigate();
   useEffect(() => {
-    console.log('profile', profile);
+    console.log("profile", profile);
     if (profile && profile.id) {
-      updatePageButtonAction("quiz")
+      updatePageButtonAction("quiz");
       navigate("/quiz");
       return;
     }
@@ -26,12 +28,19 @@ export default function Login({
   const [picture, setPicture] = useState("");
   const [name, setName] = useState("");
 
+  function parseJwt(token) {
+    return JSON.parse(Buffer.from(token.split(".")[1], "base64").toString());
+  }
+
   useEffect(() => {
     if (profile && profile.email && !profile.id) {
-      console.log('updateProfileActions');
-      console.log('email', email, 'picture', picture, 'name', name);
+      console.log("updateProfileActions");
+      console.log("email", email, "picture", picture, "name", name);
       updateProfileAction({
-        ...profile, email: email, picture: picture, userName: name
+        ...profile,
+        email: email,
+        picture: picture,
+        userName: name,
         //   email: email,
         //   userName: name,
         //   age: null,
@@ -46,18 +55,21 @@ export default function Login({
         //     maxAge: 55,
         // },
       });
-      console.log('UserApiService.setTriviaStatistics(email)');
-//      UserApiService.setTriviaStatistics(email);
+      console.log("UserApiService.setTriviaStatistics(email)");
+      //      UserApiService.setTriviaStatistics(email);
     }
-  })
+  });
 
-  const getGoogleLoginData = useCallback(async (credentialResponse) => {
-    const { email, picture, name } = jwt_decode(credentialResponse.credential);
-    setEmail(email);
-    setPicture(picture);
-    setName(name);
-    await fetchProfileAction(email);
-  },[fetchProfileAction,]);
+  const getGoogleLoginData = useCallback(
+    async (credentialResponse) => {
+      const { email, picture, name } = parseJwt(credentialResponse.credential);
+      setEmail(email);
+      setPicture(picture);
+      setName(name);
+      await fetchProfileAction(email);
+    },
+    [fetchProfileAction]
+  );
 
   const googleLogIn = (
     <GoogleLogin
@@ -113,15 +125,19 @@ export default function Login({
   );
   let loginOptions;
 
-  loginOptions = <div>
-                    <h1>Login with google</h1>
-                    { googleLogIn }
-                    <br /><br /><br />
-                    <div className="test-login-container">
-                      <p>Test Login</p>
-                      { testerLogin }
-                    </div>
-                  </div>
+  loginOptions = (
+    <div>
+      <h1>Login with google</h1>
+      {/* <div>{googleLogIn}</div>   */}
+      <br />
+      <br />
+      <br />
+      <div className="test-login-container">
+        <p>Test Login</p>
+        {testerLogin}
+      </div>
+    </div>
+  );
 
   return (
     <div className="login-container">
