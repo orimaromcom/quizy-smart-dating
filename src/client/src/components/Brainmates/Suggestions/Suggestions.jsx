@@ -1,26 +1,31 @@
 import style from "./suggestions.module.scss";
 import SuggestionsCard from "./SuggestionsCard/SuggestionsCard";
 import { Button } from "@mui/material";
+import { useEffect } from "react";
 
 export default function Suggestions({
   suggestions,
   suggestionDistance,
-
+  clearSuggestionsAction,
   updateSuggestionDistanceAction,
 }) {
-  console.log(suggestions)
+
   const DecisionHandler = () => {
-    updateSuggestionDistanceAction("brainmates");
-    console.log(suggestionDistance);
     if (suggestionDistance === "closest") {
       updateSuggestionDistanceAction("farthest");
     } else {
-      //clearSuggestionsAction();
-      //updateSuggestionDistanceAction("brainmates");
+      clearSuggestionsAction();
+      updateSuggestionDistanceAction("brainmates");
     }
   };
+
+  useEffect(() => {
+    
+  }, [suggestions]);
+
+console.log(suggestions)
   return (
-    <div className={style.page_container}>
+    (Object.keys(suggestions).length > 0 ?  (<div className={style.page_container}>
       {suggestionDistance === "closest" ? (
         <SuggestionsCard
           userName={suggestions.closest.username}
@@ -54,6 +59,6 @@ export default function Suggestions({
           <Button variant="contained">No</Button>
         </div>
       </div>
-    </div>
+    </div>) : null)
   );
 }

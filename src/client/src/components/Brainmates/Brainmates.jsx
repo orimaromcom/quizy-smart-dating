@@ -24,7 +24,7 @@ export default function Brainmates({
   useEffect(() => {
     if (userId && !Object.keys(brainmates).length) fetchBrainmatesAction(userId);
   }, []);
-console.log(suggestions)
+
   return (
     (!Object.keys(suggestions).length ? (
       <div className="brain-mates-container">

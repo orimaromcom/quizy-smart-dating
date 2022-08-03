@@ -6,13 +6,18 @@ import { getQuote } from "../../../redux/selectors/questions-entities-selectors"
 import { fetchNewSuggestionsAction } from "../../../redux/actions/fetch-suggestions-action";
 import { updatePageButtonAction } from "../../../redux/actions/update-page-button-action";
 import { updateSuggestionDistanceAction } from "../../../redux/actions/update-suggestions-distance-value-action";
+import { getSuggestionsDistance } from "../../../redux/selectors/suggestions-entities-selector";
+import { getSuggestions } from "../../../redux/selectors/suggestions-entities-selector";
 
 const mapStateToProps = (state) => {
   const quote = getQuote(state);
-  const MOCK_USER_ID = 1;
+  const suggestionDistance = getSuggestionsDistance(state);
+  const suggestions = getSuggestions(state);
+
   return {
-    MOCK_USER_ID,
     quote,
+    suggestionDistance,
+    suggestions,
   };
 };
 

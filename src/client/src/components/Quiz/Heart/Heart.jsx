@@ -6,16 +6,24 @@ export default function Heart({
   fetchNewSuggestionsAction,
   userId,
   setHeartClicked,
+  suggestionDistance,
   updatePageButtonAction,
   updateSuggestionDistanceAction,
+  suggestions,
 }) {
   const navigate = useNavigate();
   const HeartCLickHandler = () => {
     fetchNewSuggestionsAction(userId);
     setHeartClicked(true);
+    
+   
+    //updatePageButtonAction("brainmates");
+    if (Object.keys(suggestions).length > 0 && suggestionDistance === "brainmates"  ){
+      updateSuggestionDistanceAction("closest")
+    }
+    
     navigate("/brainmates");
-    updatePageButtonAction("brainmates");
-    updateSuggestionDistanceAction("closest")
+   
   };
 
   return (

@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
   };
   
   const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ updateSuggestionDistanceAction }, dispatch);
+    return bindActionCreators({ updateSuggestionDistanceAction,clearSuggestionsAction }, dispatch);
   };
   
   export default connect(mapStateToProps, mapDispatchToProps)(Suggestions);
