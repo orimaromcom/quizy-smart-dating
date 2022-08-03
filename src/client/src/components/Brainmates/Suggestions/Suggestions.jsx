@@ -19,11 +19,13 @@ export default function Suggestions({
     }
   }, [fetchNewSuggestionsAction, suggestions]);
 
-  const DecisionHandler = () => {
-    console.log();
+  const DecisionHandler = (decision) => {
+    console.log(`${suggestionDistance} decided: ${decision}`);
     if (suggestionDistance === "closest") {
       updateSuggestionDistanceAction("farthest");
+      return 
     } else {
+     
       //post likes
       //fetch new brainmates
       //play again
