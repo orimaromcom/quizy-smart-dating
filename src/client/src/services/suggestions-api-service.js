@@ -3,13 +3,13 @@ import { headers } from "./headers";
 
 export default class SuggestionsApiService {
   static async getSuggestions(userId) {
-    const response = await axios.get(`/matching/suggestions/${userId}`,{
-      headers: headers,
-    });
-    if (response.status === 200) {
+    try {
+      const response = await axios.get(`/matching/suggestions/${userId}`,{
+        headers: headers,
+      });
       return response.data;
+    } catch (error) {
+      throw new Error(error.message);
     }
-
-    throw new Error(response?.data?.msg);
   }
 }

@@ -6,7 +6,7 @@ const initialState = {
   errorMessage: "error",
   pageButtonValue: "login",
   isSuccess: false,
-  successMessage: "Sucsses!",
+  successMessage: "Success!",
 };
 
 const appViewReducer = (state = initialState, action) => {
@@ -34,11 +34,18 @@ const appViewReducer = (state = initialState, action) => {
     case actionTypes.FETCH_PROFILE_FAILURE:
     case actionTypes.FETCH_BRAINMATES_FAILURE:
     case actionTypes.FETCH_ACHIEVEMENTS_FAILURE:
+    case actionTypes.FETCH_SUGGESTIONS_FAILURE:
     case actionTypes.FETCH_QUESTIONS_FAILURE: {
+      let errorMessage = action.payload;
+      if (action.payload === "Request failed with status code 404") {
+        errorMessage = "Not found"
+      } else if (action.payload === "Request failed with status code 500") {
+        errorMessage = "Server problems"
+      }
       return {
         ...state,
         isError: true,
-        errorMessage: action.payload,
+        errorMessage: errorMessage,
         isLoading: false,
       };
     }

@@ -9,8 +9,7 @@ export default class BrainmatesApiService {
       });
       return response.data;
     } catch (error) {
-      console.log("Error:", error.message);
-      // throw new Error(error.message);
+      throw new Error(error.message);
     }
   }
 }

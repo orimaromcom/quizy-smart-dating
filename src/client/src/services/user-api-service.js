@@ -11,7 +11,7 @@ export default class UserApiService {
       });
       return await this.getUserByEmail(userData.email);
     } catch (error) {
-      // throw new Error(error.message);
+      throw new Error(error.message);
     }
   }
 
@@ -22,8 +22,7 @@ export default class UserApiService {
       });
       return response.data;
     } catch (error) {
-      console.log("Error:", error.message);
-      // throw new Error(error.message);
+      throw new Error(error.message);
     }
   }
 
@@ -35,8 +34,7 @@ export default class UserApiService {
       return response.data;
     }
     catch (error) {
-      console.log("Error:", error.message);
-      // throw new Error(error.message);
+      throw new Error(error.message);
     }
   }
 }

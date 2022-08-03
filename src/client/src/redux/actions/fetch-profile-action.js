@@ -10,8 +10,9 @@ const fetchProfileSuccess = (Profile) => ({
   payload: Profile,
 });
 
-const fetchProfileFailure = () => ({
+const fetchProfileFailure = (errorMessage) => ({
   type: actionTypes.FETCH_PROFILE_FAILURE,
+  payload: errorMessage,
 });
 
 export const fetchProfileAction = (email) => {
@@ -21,7 +22,7 @@ export const fetchProfileAction = (email) => {
       const Profile = await UserApiService.getUserByEmail(email);
       dispatch(fetchProfileSuccess(Profile));
     } catch (e) {
-      dispatch(fetchProfileFailure());
+      dispatch(fetchProfileFailure(e.message));
     }
   };
 };

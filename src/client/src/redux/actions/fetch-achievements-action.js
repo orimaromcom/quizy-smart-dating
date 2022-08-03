@@ -10,8 +10,9 @@ const fetchAchievementsSuccess = (achievements) => ({
   payload: achievements,
 });
 
-const fetchAchievementsFailure = () => ({
+const fetchAchievementsFailure = (errorMessage) => ({
   type: actionTypes.FETCH_ACHIEVEMENTS_FAILURE,
+  payload: errorMessage,
 });
 
 export const fetchAchievementsAction = (id) => {
@@ -21,7 +22,7 @@ export const fetchAchievementsAction = (id) => {
       const achievements = await AchievementsApiService.getAchievements(id);
       dispatch(fetchAchievementsSuccess(achievements.categories));
     } catch (e) {
-      dispatch(fetchAchievementsFailure());
+      dispatch(fetchAchievementsFailure(e.message));
     }
   };
 };

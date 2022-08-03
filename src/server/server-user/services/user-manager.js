@@ -60,7 +60,7 @@ async function getUserInfo(email) {
 }
 
 async function setTriviaStatistics(id) {
-  result = await TriviaAnswer.create({
+  result = await TriviaAnswer.upsert({
     userId: id,
     FilmCorrectAnswers: 0,
     FilmQuestionsAnswered: 0,
