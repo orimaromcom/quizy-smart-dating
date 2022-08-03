@@ -1,5 +1,4 @@
 import "./suggestions-card.css";
-import { useState } from "react";
 
 export default function SuggestionsCard({
   userName,
@@ -10,10 +9,10 @@ export default function SuggestionsCard({
   picture,
 }) {
   return (
-    <div className={`mate-card `}>
-      <div className="card-content">
-        <div className="card-avatar-container">
-          <img className="card-avatar-img" src={picture} alt="mate" />
+    <div className={`suggestion-card `}>
+      <div className="suggestion-card-content">
+        <div className="suggestion-card-avatar-container">
+          <img className="suggestion-card-avatar-img" src={picture} alt="mate" />
         </div>
         <h1>{`Name : ${userName}`}</h1>
         <h1>{`Age : ${age}`}</h1>

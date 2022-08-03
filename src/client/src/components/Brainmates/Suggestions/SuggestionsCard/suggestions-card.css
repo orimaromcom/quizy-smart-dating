@@ -1,4 +1,4 @@
-.mate-card {
+.suggestion-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,57 +7,47 @@
   border-radius: 8px;
   background-color: white;
   width: 80%;
-  height: 90%;
+
 }
 
-.card-avatar-container {
+.suggestion-card-avatar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+ 
+}
+
+.suggestion-card-avatar-img {
+  border-radius: 50%;
+  max-width: 30%;
   justify-content: center;
 }
 
-.card-avatar-img {
-  border-radius: 50%;
-  height: 70%;
-}
-
-.card-content {
+.suggestion-card-content {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   /* justify-content: space-between; */
-  max-width: 100%;
+ 
   /* flex-wrap: wrap; */
 }
 
-.card-content h1 {
+.suggestion-card-content h1 {
   font-size: 1.5rem;
-  margin-top: 10%;
+ 
 }
 
-.card-content h1,
-.card-content h2,
-.card-content h3,
-.card-content p {
+.suggestion-card-content h1,
+.suggestion-card-content h2,
+.suggestion-card-content h3,
+.suggestion-card-content p {
   text-align: center;
 }
 
-.card-content p {
+.suggestion-card-content p {
   font-size: 1.1rem;
 }
 
-.match {
-  box-shadow: 2px 2px 4px gray;
-}
 
-.match:active {
-  box-shadow: none;
-}
 
-/* .open .flip{
-    animation: flipOutY;
-    animation-duration: 2s;
-}
-
-.open{
-    animation: flipInY;
-    animation-duration: 2s;
-} */

@@ -9,6 +9,10 @@ const QUIZ_ACTIONS = {
   CLEAR_QUESTION_INDEX: "clear_question_index",
   CLEAR_QUESTIONS_ARRAY: "clear_questions_array",
 
+  QUIZ_ONGOING: "quiz_ongoing",
+  QUIZ_FINISHED: "quiz_finished",
+
+
   INCREMENT_ANSWER_INDEX: "increment_answer_index",
   CLEAR_ANSWERS_ARRAY: "clear_answers_array",
 

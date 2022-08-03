@@ -6,13 +6,15 @@ import { fetchBrainmatesAction } from "../../redux/actions/fetch-brainmates-acti
 import { getAllBrainmates } from "../../redux/selectors/brainmates-entities-selector";
 import { getSuggestions } from "../../redux/selectors/suggestions-entities-selector"
 import {getSuggestionsDistance} from "../../redux/selectors/suggestions-entities-selector"
+import {getIsLoading} from "../../redux/selectors/app-view-selector"
 
 const mapStateToProps = (state) => {
   let brainmates = getAllBrainmates(state);
   const userId = getProfile(state).id;
   const suggestions = getSuggestions(state)
   const suggestionDistance = getSuggestionsDistance(state)
-  return { brainmates, userId, suggestions,suggestionDistance};
+  const isLoading = getIsLoading(state)
+  return { brainmates, userId, suggestions,suggestionDistance,isLoading};
 };
 
 const mapDispatchToProps = (dispatch) => {

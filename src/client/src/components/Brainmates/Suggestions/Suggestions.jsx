@@ -2,38 +2,44 @@ import style from "./suggestions.module.scss";
 import SuggestionsCard from "./SuggestionsCard/SuggestionsCard";
 import { Button } from "@mui/material";
 import { useEffect } from "react";
+import HeartLoader from "../../HeartLoader/HeartLoader";
 
 export default function Suggestions({
   suggestions,
   suggestionDistance,
   clearSuggestionsAction,
   updateSuggestionDistanceAction,
+  isLoading,
+  userId,
+  fetchNewSuggestionsAction,
 }) {
+  useEffect(() => {
+    if (!Object.keys(suggestions).length) {
+      fetchNewSuggestionsAction(userId);
+    }
+  }, [fetchNewSuggestionsAction, suggestions]);
 
   const DecisionHandler = () => {
     if (suggestionDistance === "closest") {
       updateSuggestionDistanceAction("farthest");
     } else {
-      clearSuggestionsAction();
+      // clearSuggestionsAction();
       updateSuggestionDistanceAction("brainmates");
     }
   };
 
-  useEffect(() => {
-    
-  }, [suggestions]);
-
-console.log(suggestions)
-  return (
-    (Object.keys(suggestions).length > 0 ?  (<div className={style.page_container}>
+  return isLoading ? (
+    <HeartLoader />
+  ) : (
+    <div className={style.page_container}>
       {suggestionDistance === "closest" ? (
         <SuggestionsCard
-          userName={suggestions.closest.username}
+          userName={suggestions?.closest?.username}
           suggestions={suggestions}
-          age={suggestions.closest.age}
-          bestResult={suggestions.closest.bestResultDescription}
-          amountOfSamePersonalAnswers={suggestions.closest.amountOfSamePersonalAnswers}
-          picture={suggestions.closest.picture}
+          age={suggestions?.closest?.age}
+          bestResult={suggestions?.closest?.bestResultDescription}
+          amountOfSamePersonalAnswers={suggestions?.closest?.amountOfSamePersonalAnswers}
+          picture={suggestions?.closest?.picture}
         />
       ) : null}
       {suggestionDistance === "farthest" ? (
@@ -59,6 +65,8 @@ console.log(suggestions)
           <Button variant="contained">No</Button>
         </div>
       </div>
-    </div>) : null)
+    </div>
   );
 }
+
+/* (isLoading ? <HeartLoader/> : */

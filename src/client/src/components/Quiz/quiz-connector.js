@@ -16,7 +16,7 @@ import {clearQuestionsIndexAction} from "../../redux/actions/clear-questions-ind
 import { incrementQuestionIndexAction } from "../../redux/actions/increment-questions-index-actions";
 import { getAllAnswers } from "../../redux/selectors/answers-entities-selector";
 import { addAnswerAction } from "../../redux/actions/add-answer-action";
-
+import {postDistancesAction} from "../../redux/actions/post-distances-action"
 import { incrementAnswersIndexAction } from "../../redux/actions/increment-answers-index-action";
 import { fetchNewSuggestionsAction } from "../../redux/actions/fetch-suggestions-action";
 import { getSuggestions } from "../../redux/selectors/suggestions-entities-selector";
@@ -54,6 +54,7 @@ const mapDispatchToProps = (dispatch) => {
       fetchNewSuggestionsAction,
       clearQuestionsArrayAction,
       clearQuestionsIndexAction,
+      postDistancesAction,
     },
     dispatch
   );

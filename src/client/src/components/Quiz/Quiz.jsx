@@ -8,10 +8,11 @@ import { useNavigate } from "react-router-dom";
 
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
-import HeartLoader from "./HeartLoader/HeartLoader";
+import HeartLoader from "../HeartLoader/HeartLoader";
 import HeartConnector from "./Heart/HeartConnector.js";
 import AnswersApiService from "../../services/answers-api-service";
 import DistancesApiService from "../../services/distances-api-service";
+
 import { useEffect, useState } from "react";
 
 export default function Quiz({
@@ -30,6 +31,7 @@ export default function Quiz({
   clearQuestionsArrayAction,
   clearQuestionsIndexAction,
   isLoading,
+  postDistancesAction,
 }) {
   const [playAgainClicked, setPlayAgainClicked] = useState(false);
 
@@ -46,12 +48,11 @@ export default function Quiz({
     clearQuestionsArrayAction();
     clearQuestionsIndexAction();
     fetchNewQuestionsAction();
-   
+
     updateQuoteAction();
   };
 
   const isFinished = questions.length && questionIndex === questions.length;
-  const [heartClicked, setHeartClicked] = useState(false);
 
   useEffect(() => {
     if (!questions.length && !playAgainClicked) {
@@ -62,7 +63,8 @@ export default function Quiz({
       confetti();
       if (answersArray.length) {
         AnswersApiService.postAnswers(answersArray);
-        DistancesApiService.postDistances(userId);
+        postDistancesAction(userId);
+        fetchNewSuggestionsAction(userId);
 
         clearAnswersArray();
       }
@@ -85,27 +87,20 @@ export default function Quiz({
           incrementQuestionIndexAction={incrementQuestionIndexAction}
           questionIndex={questionIndex}
         />
-      ) : ((
+      ) : isLoading ? null : (
         <>
           <HeartConnector
             quote={quote}
             fetchNewSuggestionsAction={fetchNewSuggestionsAction}
             userId={userId}
-            heartClicked={heartClicked}
-            setHeartClicked={setHeartClicked}
           />
-         <div className="play_again_btn">
-          <Button variant="contained" onClick={() => playAgainHandler()}>
-            Play again
-            🏹 💑 
-          </Button>
+          <div className="play_again_btn">
+            <Button variant="contained" onClick={() => playAgainHandler()}>
+              Play again 🏹 💑
+            </Button>
           </div>
-        
-       
         </>
-      ))}
+      )}
     </div>
   );
 }
-
-

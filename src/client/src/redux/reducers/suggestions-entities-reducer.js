@@ -2,7 +2,7 @@ import actionTypes from "../actions/constants";
 
 const initialState = {
   suggestions: {},
-  suggestionDistance: "closest",
+  suggestionDistance: "brainmates",
 };
 const suggestionsEntitiesReducer = (state = initialState, action) => {
   switch (action.type) {

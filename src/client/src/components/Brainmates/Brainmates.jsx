@@ -9,7 +9,7 @@ export default function Brainmates({
   fetchBrainmatesAction,
   userId,
   suggestionDistance,
-  suggestions,
+  isLoading,
 }) {
   const navigate = useNavigate();
 
@@ -20,13 +20,13 @@ export default function Brainmates({
     }
   }, [navigate, userId]);
 
-  //temp: we should load globaly
+  
   useEffect(() => {
     if (userId && !Object.keys(brainmates).length) fetchBrainmatesAction(userId);
   }, []);
 
   return (
-    (suggestionDistance === "brainmates" /*loader*/ ? (
+    (suggestionDistance === "brainmates"  ? (
       <div className="brain-mates-container">
         {brainmates.likeBack
           ? Object.keys(brainmates.likeBack).map((brainmate, i) => {
