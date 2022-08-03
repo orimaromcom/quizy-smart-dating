@@ -85,7 +85,7 @@ export default function Quiz({
           incrementQuestionIndexAction={incrementQuestionIndexAction}
           questionIndex={questionIndex}
         />
-      ) : (
+      ) : ((
         <>
           <HeartConnector
             quote={quote}
@@ -103,7 +103,7 @@ export default function Quiz({
         
        
         </>
-      )}
+      ))}
     </div>
   );
 }

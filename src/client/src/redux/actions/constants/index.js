@@ -35,6 +35,10 @@ const QUIZ_ACTIONS = {
   FETCH_PROFILE_SUCCESS: "fetch_profile_success",
   FETCH_PROFILE_FAILURE: "fetch_profile_failure",
 
+  POST_DISTANCES_REQUEST: "post_distances_request",
+  POST_DISTANCES_SUCCESS: "post_distances_success",
+  POST_DISTANCES_FAILURE: "post_distances_failure",
+
   UPDATE_PAGE_BUTTON: "update_page_button",
 
   USER_LOGOUT: "user_logout",
