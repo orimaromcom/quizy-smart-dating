@@ -6,7 +6,6 @@ const updateSuggestionDistance = (distance) => ({
 });
 
 export const updateSuggestionDistanceAction = (distance) => {
-    console.log("in action")
   return async (dispatch) => {
     dispatch(updateSuggestionDistance(distance));
   };
