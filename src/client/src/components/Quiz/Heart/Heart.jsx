@@ -16,11 +16,10 @@ export default function Heart({
 }) {
   const navigate = useNavigate();
   const HeartCLickHandler = () => {
-    setPlayAgainClicked(true)
+    setPlayAgainClicked(true);
     clearQuestionsArrayAction();
     clearQuestionsIndexAction();
     updateQuoteAction();
-
 
     updatePageButtonAction("brainmates");
 

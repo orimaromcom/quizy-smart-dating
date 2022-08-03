@@ -20,16 +20,22 @@ export default function Suggestions({
   }, [fetchNewSuggestionsAction, suggestions]);
 
   const DecisionHandler = () => {
+    console.log();
     if (suggestionDistance === "closest") {
       updateSuggestionDistanceAction("farthest");
     } else {
-      // clearSuggestionsAction();
+      //post likes
+      //fetch new brainmates
+      //play again
+
       updateSuggestionDistanceAction("brainmates");
     }
   };
 
   return isLoading ? (
-    <HeartLoader />
+    <>
+      <HeartLoader /> <div>Loading suggestions</div>
+    </>
   ) : (
     <div className={style.page_container}>
       {suggestionDistance === "closest" ? (
@@ -53,16 +59,19 @@ export default function Suggestions({
         />
       ) : null}
       <div className={style.buttons_container}>
-        <div className={style.yes_no_btn_container} onClick={() => DecisionHandler()}>
-          <Button variant="contained">Yes</Button>
+        <div
+          className={style.yes_no_btn_container}
+          onClick={() => DecisionHandler("✔️")}
+        >
+          <Button variant="contained" style={{backgroundColor: "lightBlue"}}>✔️</Button>
         </div>
         <div
           className={style.yes_no_btn_container}
           onClick={() => {
-            DecisionHandler("No");
+            DecisionHandler("❌");
           }}
         >
-          <Button variant="contained">No</Button>
+          <Button variant="contained" style={{backgroundColor: "lightBlue"}}>❌</Button>
         </div>
       </div>
     </div>
