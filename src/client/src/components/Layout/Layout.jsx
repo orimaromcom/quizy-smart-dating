@@ -1,13 +1,13 @@
 import NavbarConnector from "../Navbar/navbar-connector";
-import ResponsiveAppBar from "../Userbar/Userbar";
+import AppBar from "../AppBarComponent/AppBarConnector";
 import { Outlet } from "react-router-dom";
-import ToasterConnsector from "../Toaster/toaster-connsector";
+import ToasterConnector from "../Toaster/toaster-connector";
 
 export default function Layout() {
   return (
     <>
-      <ResponsiveAppBar />
-     {/*  <ToasterConnsector /> */}
+       <AppBar /> 
+       <ToasterConnector /> 
       <Outlet />
       <NavbarConnector />
     </>
