@@ -4,6 +4,7 @@ const { ErrorIfNaN, ErrorIfNotFound } = require("../../server-matching/controlle
 
 async function postUserLike(req, res) {
   const { firstUserId, secondUserId, firstUserLikesSecondUser } = req.body;
+  console.log(req.body)
   const responce = await brainmatesManager.postUserLike(firstUserId, secondUserId, firstUserLikesSecondUser);
   res.status(200).json(responce);
 }

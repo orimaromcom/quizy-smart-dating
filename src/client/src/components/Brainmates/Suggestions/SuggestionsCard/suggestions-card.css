@@ -1,0 +1,53 @@
+.suggestion-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid gray;
+  border-radius: 8px;
+  background-color: white;
+  width: 80%;
+
+}
+
+.suggestion-card-avatar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+ 
+}
+
+.suggestion-card-avatar-img {
+  border-radius: 50%;
+  max-width: 30%;
+  justify-content: center;
+}
+
+.suggestion-card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* justify-content: space-between; */
+ 
+  /* flex-wrap: wrap; */
+}
+
+.suggestion-card-content h1 {
+  font-size: 1.5rem;
+ 
+}
+
+.suggestion-card-content h1,
+.suggestion-card-content h2,
+.suggestion-card-content h3,
+.suggestion-card-content p {
+  text-align: center;
+}
+
+.suggestion-card-content p {
+  font-size: 1.1rem;
+}
+
+
+

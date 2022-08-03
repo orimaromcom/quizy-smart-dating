@@ -1,0 +1,73 @@
+.progress-bar-container {
+  width: 95%;
+  padding-left: 2%;
+  padding-top: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: flex-start;
+}
+
+.MuiLinearProgress-root {
+  width: 90%;
+}
+
+svg.heart-icon {
+  height: 1em;
+}
+
+.heart-icon {
+  path.heart {
+    fill: #e42f45;
+  }
+
+  path.stroke {
+    stroke: white;
+    stroke-dasharray: 600, 600, 600;
+    stroke-dashoffset: 600;
+    animation: 4s strokeAnim ease-in forwards;
+  }
+
+  font-size: 5rem;
+  border-radius: 50%;
+  margin: 10px;
+
+  box-shadow: 0 0 0 0 rgba(245, 0, 87, 0.4);
+  transform: scale(10);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes strokeAnim {
+  0% {
+    stroke-dashoffset: 600;
+  }
+
+  33% {
+    stroke-dashoffset: 400;
+  }
+
+  66% {
+    stroke-dashoffset: 200;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 #f50057(0, 0, 0, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}

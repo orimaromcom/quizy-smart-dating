@@ -16,13 +16,10 @@ const fetchSuggestionsFailure = (error) => ({
 });
 
 export const fetchNewSuggestionsAction = (userId) => {
-  console.log("In suggestions action")
   return async (dispatch) => {
     dispatch(fetchSuggestionsRequest());
     try {
       const suggestions = await SuggestionsApiService.getSuggestions(userId);
-      console.log("checking for suggestions")
-      console.log(suggestions)
 
       dispatch(fetchSuggestionsSuccess(suggestions));
     } catch (e) {
