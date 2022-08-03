@@ -7,8 +7,7 @@ import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import PersonIcon from "@mui/icons-material/Person";
 
 export default function Navbar({ pageButtonValue, updatePageButtonAction }) {
-  const currentPage = window.location.href.split("/").pop();
-  updatePageButtonAction(currentPage);
+
   console.log(pageButtonValue === "login")
 
   return (
