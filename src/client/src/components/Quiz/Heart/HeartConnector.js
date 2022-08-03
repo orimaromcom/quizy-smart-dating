@@ -2,6 +2,9 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Heart from "./Heart";
 import { getQuote } from "../../../redux/selectors/questions-entities-selectors";
+import { clearQuestionsArrayAction } from "../../../redux/actions/clear-questions-array";
+import {clearQuestionsIndexAction} from "../../../redux/actions/clear-questions-index";
+import { updateQuoteAction } from "../../../redux/actions/update-quote-actions";
 
 import { fetchNewSuggestionsAction } from "../../../redux/actions/fetch-suggestions-action";
 import { updatePageButtonAction } from "../../../redux/actions/update-page-button-action";
@@ -27,6 +30,9 @@ const mapDispatchToProps = (dispatch) => {
       fetchNewSuggestionsAction,
       updatePageButtonAction,
       updateSuggestionDistanceAction,
+      clearQuestionsArrayAction,
+      clearQuestionsIndexAction,
+      updateQuoteAction,
     },
     dispatch
   );

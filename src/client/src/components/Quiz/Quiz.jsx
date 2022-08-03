@@ -47,15 +47,17 @@ export default function Quiz({
     setPlayAgainClicked(true);
     clearQuestionsArrayAction();
     clearQuestionsIndexAction();
+    updateQuoteAction();
+    
     fetchNewQuestionsAction();
 
-    updateQuoteAction();
+    
   };
 
   const isFinished = questions.length && questionIndex === questions.length;
 
   useEffect(() => {
-    if (!questions.length && !playAgainClicked) {
+    if (!questions.length && !playAgainClicked && !isLoading) {
       fetchNewQuestionsAction();
       updateQuoteAction();
     }
@@ -75,8 +77,8 @@ export default function Quiz({
 
   return (
     <div className="quiz-container">
-      <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
-      {isLoading ? <HeartLoader /> : null}
+      
+      {isLoading ? <HeartLoader /> : (<ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />)}
       {!isFinished ? (
         <BasicQuestion
           question={questions[questionIndex] ? questions[questionIndex] : ""}
@@ -93,6 +95,8 @@ export default function Quiz({
             quote={quote}
             fetchNewSuggestionsAction={fetchNewSuggestionsAction}
             userId={userId}
+            setPlayAgainClicked={setPlayAgainClicked}
+            
           />
           <div className="play_again_btn">
             <Button variant="contained" onClick={() => playAgainHandler()}>

@@ -9,9 +9,19 @@ export default function Heart({
   updatePageButtonAction,
   updateSuggestionDistanceAction,
   suggestions,
+  setPlayAgainClicked,
+  clearQuestionsArrayAction,
+  clearQuestionsIndexAction,
+  updateQuoteAction,
 }) {
   const navigate = useNavigate();
   const HeartCLickHandler = () => {
+    setPlayAgainClicked(true)
+    clearQuestionsArrayAction();
+    clearQuestionsIndexAction();
+    updateQuoteAction();
+
+
     updatePageButtonAction("brainmates");
 
     updateSuggestionDistanceAction("closest");
