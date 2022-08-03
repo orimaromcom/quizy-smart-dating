@@ -75,21 +75,6 @@ const createUserSchema = {
     },
     in: ['body.preferences'],
   },
-  phone: {
-    isString: {
-      errorMessage: "Phone should be a string"
-    },
-    isLength: {
-      errorMessage: 'Phone should be at least 10 characters long',
-      options: { min: 10 },
-    },
-    optional: {
-      options: {
-        nullable: true
-      }
-    },
-    in: ['body']
-  },
   gender: {
     isString: {
       errorMessage: "Gender should be a string",
