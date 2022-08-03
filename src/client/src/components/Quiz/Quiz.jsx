@@ -23,13 +23,13 @@ export default function Quiz({
   questionIndex,
   incrementQuestionIndexAction,
   incrementAnswersIndexAction,
-  questionsLoading,
   clearAnswersArray,
   updateQuoteAction,
   quote,
   fetchNewSuggestionsAction,
   clearQuestionsArrayAction,
   clearQuestionsIndexAction,
+  isLoading,
 }) {
   const [playAgainClicked, setPlayAgainClicked] = useState(false);
 
@@ -46,6 +46,7 @@ export default function Quiz({
     clearQuestionsArrayAction();
     clearQuestionsIndexAction();
     fetchNewQuestionsAction();
+   
     updateQuoteAction();
   };
 
@@ -73,7 +74,7 @@ export default function Quiz({
   return (
     <div className="quiz-container">
       <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
-      {questionsLoading ? <HeartLoader /> : null}
+      {isLoading ? <HeartLoader /> : null}
       {!isFinished ? (
         <BasicQuestion
           question={questions[questionIndex] ? questions[questionIndex] : ""}

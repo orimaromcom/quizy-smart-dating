@@ -26,7 +26,7 @@ export default function Brainmates({
   }, []);
 
   return (
-    (!Object.keys(suggestions).length ? (
+    (suggestionDistance === "brainmates" /*loader*/ ? (
       <div className="brain-mates-container">
         {brainmates.likeBack
           ? Object.keys(brainmates.likeBack).map((brainmate, i) => {
