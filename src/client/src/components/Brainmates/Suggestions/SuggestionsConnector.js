@@ -8,6 +8,7 @@ import {getSuggestionsDistance} from "../../../redux/selectors/suggestions-entit
 import { fetchNewSuggestionsAction } from "../../../redux/actions/fetch-suggestions-action";
 import {getIsLoading} from "../../../redux/selectors/app-view-selector"
 import { getProfile } from "../../../redux/selectors/profile-entity-selector";
+import {postUserLikeAction} from "../../../redux/actions/post-user-like-action"
 
 
 
@@ -21,7 +22,7 @@ const mapStateToProps = (state) => {
   };
   
   const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ updateSuggestionDistanceAction,clearSuggestionsAction ,fetchNewSuggestionsAction}, dispatch);
+    return bindActionCreators({ updateSuggestionDistanceAction,clearSuggestionsAction ,fetchNewSuggestionsAction,postUserLikeAction}, dispatch);
   };
   
   export default connect(mapStateToProps, mapDispatchToProps)(Suggestions);

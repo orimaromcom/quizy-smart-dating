@@ -12,7 +12,6 @@ const QUIZ_ACTIONS = {
   QUIZ_ONGOING: "quiz_ongoing",
   QUIZ_FINISHED: "quiz_finished",
 
-
   INCREMENT_ANSWER_INDEX: "increment_answer_index",
   CLEAR_ANSWERS_ARRAY: "clear_answers_array",
 
@@ -42,6 +41,10 @@ const QUIZ_ACTIONS = {
   POST_DISTANCES_REQUEST: "post_distances_request",
   POST_DISTANCES_SUCCESS: "post_distances_success",
   POST_DISTANCES_FAILURE: "post_distances_failure",
+
+  POST_USER_LIKE_REQUEST: "post_user_like_request",
+  POST_USER_LIKE_SUCCESS: "post_user_like_success",
+  POST_USER_LIKE_FAILURE: "post_user_like_failure",
 
   UPDATE_PAGE_BUTTON: "update_page_button",
 
