@@ -5,7 +5,7 @@ import { useCallback, useState } from "react";
 // import UserApiService from "../../services/user-api-service";
 
 // this npm library can be deleted
-//import jwt_decode from "jwt-decode";
+import jwt_decode from "jwt-decode";
 import "./Login.css";
 
 export default function Login({
@@ -62,7 +62,7 @@ export default function Login({
 
   const getGoogleLoginData = useCallback(
     async (credentialResponse) => {
-      const { email, picture, name } = parseJwt(credentialResponse.credential);
+      const { email, picture, name } = jwt_decode(credentialResponse.credential);
       setEmail(email);
       setPicture(picture);
       setName(name);
@@ -128,7 +128,7 @@ export default function Login({
   loginOptions = (
     <div>
       <h1>Login with google</h1>
-      {/* <div>{googleLogIn}</div>   */}
+     {/*  {googleLogIn} */}
       <br />
       <br />
       <br />

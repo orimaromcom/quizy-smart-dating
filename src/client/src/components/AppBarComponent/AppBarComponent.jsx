@@ -106,7 +106,9 @@ const AppBarComponent = ({ profile }) => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton /* onClick={ handleOpenUserMenu } */ sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src={profile.picture} />
+                <Avatar alt="Remy Sharp" src={profile.picture}    style={{
+             border: '3px solid white'
+          }}/>
               </IconButton>
             </Tooltip>
           </Box>
