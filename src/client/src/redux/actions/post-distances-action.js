@@ -9,9 +9,9 @@ const postDistancesSuccess = () => ({
   type: actionTypes.POST_DISTANCES_SUCCESS,
 });
 
-const postDistancesFailure = (error) => ({
+const postDistancesFailure = (errorMessage) => ({
   type: actionTypes.POST_DISTANCES_FAILURE,
-  payload: error?.message ?? error,
+  payload: errorMessage,
 });
 
 export const postDistancesAction = (userId) => {
@@ -19,10 +19,9 @@ export const postDistancesAction = (userId) => {
     dispatch(postDistancesRequest());
     try {
      await DistancesApiService.postDistances(userId);
-
       dispatch(postDistancesSuccess());
     } catch (e) {
-      dispatch(postDistancesFailure(e));
+      dispatch(postDistancesFailure(e.message));
     }
   };
 };

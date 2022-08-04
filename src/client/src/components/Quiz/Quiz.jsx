@@ -65,7 +65,7 @@ export default function Quiz({
         clearAnswersArray();
       }
     }
-  }, [answersArray, clearAnswersArray, fetchNewQuestionsAction, fetchNewSuggestionsAction, isFinished, isLoading, playAgainClicked, postDistancesAction, questions.length, updateQuoteAction, userId]);
+  }, []);
 
   return (
     <div className="quiz-container">

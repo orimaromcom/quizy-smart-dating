@@ -41,6 +41,7 @@ const appViewReducer = (state = initialState, action) => {
     case actionTypes.POST_USER_LIKE_FAILURE:
     case actionTypes.FETCH_QUESTIONS_FAILURE: {
       let errorMessage = action.payload;
+      console.log(`Error with ${action.type}`);
       if (action.payload === "Request failed with status code 404") {
         errorMessage = "Not found"
       } else if (action.payload === "Request failed with status code 500") {
