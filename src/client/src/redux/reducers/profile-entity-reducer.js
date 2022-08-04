@@ -21,9 +21,11 @@ const initialState = {
 
 const profileEntitiesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.FETCH_PROFILE_SUCCESS:
-    case actionTypes.UPDATE_PROFILE_SUCCESS: {
+    case actionTypes.FETCH_PROFILE_SUCCESS: {
       return { ...state, profile: action.payload };
+    }
+    case actionTypes.UPDATE_PROFILE_SUCCESS: {
+      return { ...state, profile: action.payload.Profile };
     }
     default:
       return state;
