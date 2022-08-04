@@ -10,7 +10,6 @@ import { PieChart } from 'react-minimal-pie-chart';
 
 export default function Achievement({ title, score }) {
   const renderIcon = () => {
-    console.log(title);
     switch (title) {
       case "Film":
         return <MovieCreationIcon />;

@@ -1,19 +1,13 @@
-import "./quiz.css";
-
-import { Button } from "@mui/material";
-import { Link } from "react-router-dom";
-import confetti from "canvas-confetti";
-
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { Button } from "@mui/material";
+import confetti from "canvas-confetti";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import HeartLoader from "../HeartLoader/HeartLoader";
 import HeartConnector from "./Heart/HeartConnector.js";
 import AnswersApiService from "../../services/answers-api-service";
-import DistancesApiService from "../../services/distances-api-service";
-
-import { useEffect, useState } from "react";
+import "./quiz.css";
 
 export default function Quiz({
   fetchNewQuestionsAction,
@@ -48,10 +42,7 @@ export default function Quiz({
     clearQuestionsArrayAction();
     clearQuestionsIndexAction();
     updateQuoteAction();
-    
     fetchNewQuestionsAction();
-
-    
   };
 
   const isFinished = questions.length && questionIndex === questions.length;
@@ -63,21 +54,22 @@ export default function Quiz({
     }
     if (isFinished) {
       confetti();
-      if (answersArray.length) {
-        AnswersApiService.postAnswers(answersArray);
-        postDistancesAction(userId);
-        fetchNewSuggestionsAction(userId);
 
+      async function postAnswersPostDistancesGetSuggestions(answersArray, userId) {
+        await AnswersApiService.postAnswers(answersArray);
+        await postDistancesAction(userId);
+        await fetchNewSuggestionsAction(userId);
+      }
+      if (answersArray.length) {
+        postAnswersPostDistancesGetSuggestions(answersArray, userId)
         clearAnswersArray();
       }
-
-      console.log("you should remove questions once play again");
     }
   }, [fetchNewQuestionsAction, questions, answersArray, clearAnswersArray, isFinished]);
 
   return (
     <div className="quiz-container">
-      
+
       {isLoading ? (<><HeartLoader /> {!isFinished ?(<div>Loading questions</div>) : <div>Loading distances</div>}</>) : (<ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />)}
       {!isFinished ? (
         <BasicQuestion
@@ -91,12 +83,14 @@ export default function Quiz({
         />
       ) : isLoading ? null : (
         <>
+	        <p>New suggestions were found for you!</p>
+          <p>Press the big heart!</p>
           <HeartConnector
             quote={quote}
             fetchNewSuggestionsAction={fetchNewSuggestionsAction}
             userId={userId}
             setPlayAgainClicked={setPlayAgainClicked}
-            
+
           />
           <div className="play_again_btn">
             <Button variant="contained" onClick={() => playAgainHandler()}>

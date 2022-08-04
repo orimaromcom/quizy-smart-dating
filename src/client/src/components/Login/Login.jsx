@@ -2,7 +2,6 @@ import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useCallback, useState } from "react";
-// import UserApiService from "../../services/user-api-service";
 import jwt_decode from "jwt-decode";
 import "./Login.css";
 
@@ -14,7 +13,6 @@ export default function Login({
 }) {
   const navigate = useNavigate();
   useEffect(() => {
-    console.log('profile', profile);
     if (profile && profile.id) {
       updatePageButtonAction("quiz")
       navigate("/quiz");
@@ -28,26 +26,9 @@ export default function Login({
 
   useEffect(() => {
     if (profile && profile.email && !profile.id) {
-      console.log('updateProfileActions');
-      console.log('email', email, 'picture', picture, 'name', name);
       updateProfileAction({
         ...profile, email: email, picture: picture, userName: name
-        //   email: email,
-        //   userName: name,
-        //   age: null,
-        //   phone: null,
-        //   location: null,
-        //   picture: picture,
-        //   gender: "choose",
-        //   preferences: {
-        //     relation_type: "friends",
-        //     gender: "any",
-        //     minAge: 25,
-        //     maxAge: 55,
-        // },
       });
-      console.log('UserApiService.setTriviaStatistics(email)');
-//      UserApiService.setTriviaStatistics(email);
     }
   })
 

@@ -54,7 +54,6 @@ async function getAllDistances() {
 }
 
 async function getUserDistances(userId) {
-  console.log("in get user distance")
   return await Distance.findAll({
     where: {
       firstUserId: userId,
@@ -73,7 +72,6 @@ async function getSuggestionsForUser(userId) {
   const distances = await getUserDistances(userId);
   closestUser = await findSuggestion(userId, distances, 0, 1);
   farthestUser = await findSuggestion(userId, distances, distances.length - 1, -1);
-  console.log(farthestUser)
   return {closest: closestUser, farthest: farthestUser};
 }
 

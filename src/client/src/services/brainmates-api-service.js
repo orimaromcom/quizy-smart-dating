@@ -15,32 +15,15 @@ export default class BrainmatesApiService {
 
   static async postUserLike(userLikeBody){
     try {
-      const response =  await fetch(`/brainmates/like/`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userLikeBody),
-    });
+      const response = await axios.post(`/brainmates/like/`, {
+        ...userLikeBody
+      }, {
+        headers: headers
+      });
       return response.data;
     }
     catch (error) {
-      console.log("Error:", error.message);
-      // throw new Error(error.message);
+      throw new Error(error.message);
     }
   }
-/* }
-
-static async postUserLike(userLikeBody){
-  try {
-    const response = await axios.post({
-      url: `/brainmates/like/`,
-      body: userLikeBody,
-  });
-    return response.data;
-  }
-  catch (error) {
-    console.log("Error:", error.message);
-    // throw new Error(error.message);
-  }
-} */
-
 }

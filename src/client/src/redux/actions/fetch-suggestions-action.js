@@ -20,7 +20,6 @@ export const fetchNewSuggestionsAction = (userId) => {
     dispatch(fetchSuggestionsRequest());
     try {
       const suggestions = await SuggestionsApiService.getSuggestions(userId);
-      console.log('suggestions:', suggestions);
       dispatch(fetchSuggestionsSuccess(suggestions));
     } catch (e) {
       dispatch(fetchSuggestionsFailure(e.message));

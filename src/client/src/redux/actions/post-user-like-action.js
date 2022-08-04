@@ -9,9 +9,9 @@ const postUserLikeSuccess = () => ({
   type: actionTypes.POST_USER_LIKE_SUCCESS,
 });
 
-const postUserLikeFailure = (error) => ({
+const postUserLikeFailure = (errorMessage) => ({
   type: actionTypes.POST_USER_LIKE_FAILURE,
-  payload: error?.message ?? error,
+  payload: errorMessage,
 });
 
 export const postUserLikeAction = (
@@ -27,12 +27,10 @@ export const postUserLikeAction = (
         secondUserId: suggestedUserId,
         firstUserLikesSecondUser: currentUserDecision,
       };
-console.log(postUserLikeBody)
       await BrainmatesApiService.postUserLike(postUserLikeBody);
-
       dispatch(postUserLikeSuccess());
     } catch (e) {
-      dispatch(postUserLikeFailure(e));
+      dispatch(postUserLikeFailure(e.message));
     }
   };
 };

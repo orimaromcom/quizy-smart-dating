@@ -4,7 +4,6 @@ const clearSuggestions = () => ({
 });
 
 export const clearSuggestionsAction = () => {
-  console.log("in action")
   return async (dispatch) => {
     dispatch(clearSuggestions());
   };
