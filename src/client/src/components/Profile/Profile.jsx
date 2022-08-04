@@ -15,9 +15,7 @@ import UserApiService from "../../services/user-api-service";
 export default function Profile({
   profile,
   updateProfileAction,
-  userLogoutAction,
   showErrorAction,
-  showSuccessAction,
 }) {
   const navigate = useNavigate();
   useEffect(() => {
@@ -42,7 +40,8 @@ export default function Profile({
       }
       setTriviaStatistics(profile.id);
     }
-  }, [profile, showErrorAction]);
+    setEdit(!isDetailsFull());
+  }, [profile]);
 
   const handleChange = (event) => {
     setProfileObj({
@@ -90,11 +89,7 @@ export default function Profile({
   };
 
   const handleSave = () => {
-    const isDetailsFull = Object.keys(profileObj)
-      .map((key) => !!profileObj[key])
-      .every((field) => !!field);
-    if (isDetailsFull) {
-      showSuccessAction("Saving details")
+    if (isDetailsFull()) {
       updateProfileAction(profileObj);
       setEdit(false);
     } else {
@@ -102,14 +97,14 @@ export default function Profile({
     }
   };
 
+  const isDetailsFull = () => {
+    return Object.keys(profileObj)
+      .map((key) => !!profileObj[key])
+      .every((field) => !!field);
+  };
+
   return profile && profile.id ? (
     <div className={style.profile_container}>
-      <Button
-        className={style.logaout_btn}
-        onClick={() => userLogoutAction({})}
-      >
-        Logout
-      </Button>
       <div className={style.profile_top_container}>
         <div className={style.profile_picture_container}>
           <img
@@ -188,6 +183,7 @@ export default function Profile({
                   e.target.checked ? "romantic" : "friendly"
                 );
               }}
+              checked={profileObj.preferences.relation_type === "romantic"}
             />
             <h2>Romantic</h2>
           </span>
@@ -195,7 +191,7 @@ export default function Profile({
         <Box className={style.pref_field_container}>
           <h1>Mate Age</h1>
           <span className={style.pref_age_slider_container}>
-            <h2>{18}</h2>
+            <h2>{profileObj.preferences.minAge}</h2>
             <Slider
               disabled={!edit}
               className={style.pref_age_slider}
@@ -210,7 +206,7 @@ export default function Profile({
               min={18}
               max={55}
             />
-            <h2>{55}</h2>
+            <h2>{profileObj.preferences.maxAge}</h2>
           </span>
         </Box>
         <Box className={style.pref_field_container}>
