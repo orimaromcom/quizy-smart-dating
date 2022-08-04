@@ -23,7 +23,6 @@ const appViewReducer = (state = initialState, action) => {
       return { ...state, isLoading: true };
     }
 
-    case actionTypes.UPDATE_PROFILE_SUCCESS:
     case actionTypes.FETCH_PROFILE_SUCCESS:
     case actionTypes.FETCH_BRAINMATES_SUCCESS:
     case actionTypes.FETCH_ACHIEVEMENTS_SUCCESS:
@@ -31,6 +30,15 @@ const appViewReducer = (state = initialState, action) => {
     case actionTypes.POST_DISTANCES_SUCCESS: {
       return { ...state, isError: false, isLoading: false };
     }
+
+    case actionTypes.UPDATE_PROFILE_SUCCESS:
+      return {
+        ...state,
+        isError: false,
+        isLoading: false,
+        isSuccess: true,
+        successMessage: action.payload.SuccessMessage,
+      };
 
     case actionTypes.UPDATE_PROFILE_FAILURE:
     case actionTypes.FETCH_PROFILE_FAILURE:
@@ -43,9 +51,9 @@ const appViewReducer = (state = initialState, action) => {
       let errorMessage = action.payload;
       console.log(`Error with ${action.type}`);
       if (action.payload === "Request failed with status code 404") {
-        errorMessage = "Not found"
+        errorMessage = "Not found";
       } else if (action.payload === "Request failed with status code 500") {
-        errorMessage = "Server problems"
+        errorMessage = "Server problems";
       }
       return {
         ...state,
