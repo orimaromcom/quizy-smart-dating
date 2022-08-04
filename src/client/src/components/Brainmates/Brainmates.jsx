@@ -26,7 +26,7 @@ export default function Brainmates({
       await fetchBrainmatesAction(userId);
     }
     updateBrainmates(userId);
-  }, [userId]);
+  }, [fetchBrainmatesAction, userId]);
 
   return suggestionsOrBrainmates === "brainmates" ? (
     <div className="brain-mates-container">

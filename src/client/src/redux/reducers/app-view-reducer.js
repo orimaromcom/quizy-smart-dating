@@ -51,7 +51,7 @@ const appViewReducer = (state = initialState, action) => {
       };
     }
 
-    case actionTypes.UPDATE_PROFILE_SUCCESS:
+    case actionTypes.UPDATE_PROFILE_SUCCESS: {
       return {
         ...state,
         isError: false,
@@ -60,6 +60,7 @@ const appViewReducer = (state = initialState, action) => {
         successMessage: action.payload.SuccessMessage,
         loadingMessage: "Loading...",
       };
+    }
 
     case actionTypes.UPDATE_PROFILE_FAILURE:
     case actionTypes.FETCH_PROFILE_FAILURE:
