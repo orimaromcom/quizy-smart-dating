@@ -2,7 +2,7 @@ import actionTypes from "../actions/constants";
 
 const initialState = {
   suggestions: {},
-  suggestionDistance: "brainmates",
+  suggestionsOrBrainmates: "brainmates",
 };
 const suggestionsEntitiesReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -23,7 +23,7 @@ const suggestionsEntitiesReducer = (state = initialState, action) => {
     case actionTypes.UPDATE_SUGGESTION_DISTANCE:
       return {
         ...state,
-        suggestionDistance: action.payload,
+        suggestionsOrBrainmates: action.payload,
       };
 
     default:

@@ -1,72 +1,45 @@
-import style from "./suggestions.module.scss";
-import SuggestionsCard from "./SuggestionsCard/SuggestionsCard";
+import { useEffect, useCallback } from "react";
 import { Button } from "@mui/material";
-import { useEffect } from "react";
+import confetti from "canvas-confetti";
+import SuggestionsCard from "./SuggestionsCard/SuggestionsCard";
 import HeartLoader from "../../HeartLoader/HeartLoader";
 import loveMomentSound from "../../../assets/sounds/loveMomentSound.mp3";
+import style from "./suggestions.module.scss";
+
 
 export default function Suggestions({
   suggestions,
-  suggestionDistance,
-
-  updateSuggestionDistanceAction,
+  suggestionsOrBrainmates,
+  updateSuggestionsOrBrainmatesAction,
   isLoading,
   userId,
-  fetchNewSuggestionsAction,
   postUserLikeAction,
   fetchBrainmatesAction,
 }) {
   const audio = new Audio(loveMomentSound);
   audio.loop = true;
 
-  useEffect(() => {
-    if (!Object.keys(suggestions).length) {
-      fetchNewSuggestionsAction(userId);
+  const decisionHandler = async (decision, suggestedUser) => {
+    console.log('suggestedUser:', suggestedUser);
+    const currentUserLikesSuggestedUser = decision === "✔️";
+    if (currentUserLikesSuggestedUser && suggestedUser.likeBack) {
+      // audio.play();
+      // audio.pause();
+      confetti();
+      console.log("We have a match!!!!!!!!");
     }
-  }, [fetchNewSuggestionsAction, suggestions]);
-
-  const DecisionHandler = (decision) => {
-    let currentUserLikeSuggestedUser = null;
-    if (decision === "✔️") {
-      currentUserLikeSuggestedUser = true;
+    postUserLikeAction(
+      userId,
+      suggestedUser.userId,
+      currentUserLikesSuggestedUser
+    );
+    if (suggestionsOrBrainmates === "closest") {
+      updateSuggestionsOrBrainmatesAction("farthest");
     } else {
-      currentUserLikeSuggestedUser = false;
+      updateSuggestionsOrBrainmatesAction("brainmates");
+      await fetchBrainmatesAction(userId);
     }
-
-    if (suggestionDistance === "closest") {
-      console.log('suggestions', suggestions);
-      if (currentUserLikeSuggestedUser && suggestions.closest.likeBack) {
-        // audio.play()
-        //audio.pause()
-        console.log("We have a match!!!!!!!!");
-      }
-      postUserLikeAction(
-        userId,
-        suggestions.closest.userId,
-        currentUserLikeSuggestedUser
-      );
-
-      fetchBrainmatesAction(userId);
-      updateSuggestionDistanceAction("farthest");
-      return;
-    } else {
-      if (currentUserLikeSuggestedUser && suggestions.farthest.likeBack) {
-        // audio.play()
-        //audio.pause()
-
-        console.log("We have a match!!!!!!!!");
-      }
-      postUserLikeAction(
-        userId,
-        suggestions.farthest.userId,
-        currentUserLikeSuggestedUser
-      );
-
-      //play again
-      fetchBrainmatesAction(userId);
-      updateSuggestionDistanceAction("brainmates");
-    }
-  };
+  }
 
   return isLoading ? (
     <>
@@ -74,28 +47,18 @@ export default function Suggestions({
     </>
   ) : (
     <div className={style.page_container}>
-      {suggestionDistance === "closest" ? (
-        <SuggestionsCard
-          userName={suggestions?.closest?.username}
-          suggestions={suggestions}
-          age={suggestions?.closest?.age}
-          bestResult={suggestions?.closest?.bestResultDescription}
-          amountOfSamePersonalAnswers={suggestions?.closest?.amountOfSamePersonalAnswers}
-          picture={suggestions?.closest?.picture}
-        />
-      ) : null}
-      {suggestionDistance === "farthest" ? (
-        <SuggestionsCard
-          userName={suggestions.farthest.username}
-          suggestions={suggestions}
-          age={suggestions.farthest.age}
-          bestResult={suggestions.farthest.bestResultDescription}
-          amountOfSamePersonalAnswers={suggestions.farthest.amountOfSamePersonalAnswers}
-          picture={suggestions.farthest.picture}
-        />
-      ) : null}
+      <SuggestionsCard
+        userName={suggestions[suggestionsOrBrainmates].username}
+        age={suggestions[suggestionsOrBrainmates].age}
+        bestResult={suggestions[suggestionsOrBrainmates].bestResultDescription}
+        amountOfSamePersonalAnswers={suggestions[suggestionsOrBrainmates].amountOfSamePersonalAnswers}
+        picture={suggestions[suggestionsOrBrainmates].picture}
+      />
       <div className={style.buttons_container}>
-        <div className={style.yes_no_btn_container} onClick={() => DecisionHandler("✔️")}>
+      {suggestions[suggestionsOrBrainmates].username}
+        <div
+          className={style.yes_no_btn_container}
+          onClick={() => decisionHandler("✔️", suggestions[suggestionsOrBrainmates])}>
           <Button variant="contained" style={{ backgroundColor: "lightBlue" }}>
             ✔️
           </Button>
@@ -103,7 +66,7 @@ export default function Suggestions({
         <div
           className={style.yes_no_btn_container}
           onClick={() => {
-            DecisionHandler("❌");
+            decisionHandler("❌", suggestions[suggestionsOrBrainmates]);
           }}
         >
           <Button variant="contained" style={{ backgroundColor: "lightBlue" }}>
@@ -114,5 +77,3 @@ export default function Suggestions({
     </div>
   );
 }
-
-
