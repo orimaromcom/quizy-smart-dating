@@ -1,0 +1,425 @@
+{
+  "response_code": 0,
+  "results": [
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Who had a 1973 hit with the song &#039;Hocus Pocus&#039;?",
+      "correct_answer": "Focus",
+      "incorrect_answers": ["Pilot", "Rush", "AC/DC"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "In the  Rossini opera, what was the name of &#039;The Barber of Seville&#039;?",
+      "correct_answer": "Figaro",
+      "incorrect_answers": ["Angelo", "Fernando", "Dave"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Which French duo had UK hits in 1998 with the songs &#039;Sexy Boy&#039;, &#039;Kelly Watch The Stars&#039; &amp; &#039;All I Need&#039;?",
+      "correct_answer": "Air",
+      "incorrect_answers": ["Fire", "Earth", "Water"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which Canadian reggae musician had a 1993 hit with the song &#039;Informer&#039;?",
+      "correct_answer": "Snow",
+      "incorrect_answers": ["Rain", "Hail", "Sleet"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Who wrote the Sinead O`Connor hit &#039;Nothing Compares 2 U&#039;?",
+      "correct_answer": "Prince",
+      "incorrect_answers": ["Michael Jackson", "Cameo", "Rick James"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Who had a US and UK number 1 hit in 1962 with the instrumental, &#039;Telstar&#039;?",
+      "correct_answer": "The Tornados",
+      "incorrect_answers": ["The Ventures", "The Spotnicks", "The Tremeloes"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "Which Elton John hit starts with the line &quot;When are you gonna come down&quot;?",
+      "correct_answer": "Goodbye Yellow Brick Road",
+      "incorrect_answers": ["Rocket Man", "Bennie and the Jets", "Crocodile Rock"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "&quot;Some people call me the space cowboy&quot; is the first line from what song?",
+      "correct_answer": "The Joker",
+      "incorrect_answers": ["Fandango", "Take The Money and Run", "Fly Like an Eagle"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Who is the lead singer of Pearl Jam?",
+      "correct_answer": "Eddie Vedder",
+      "incorrect_answers": ["Ozzy Osbourne", "Stone Gossard", "Kurt Cobain"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Who is the Pink Floyd song &quot;Shine On You Crazy Diamond&quot; written about?",
+      "correct_answer": "Syd Barrett",
+      "incorrect_answers": ["John Lennon", "David Gilmour", "Floyd"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Whose signature guitar technique is called the &quot;windmill&quot;?",
+      "correct_answer": "Pete Townshend",
+      "incorrect_answers": ["Jimmy Page", "Eddie Van Halen", "Jimi Hendrix"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Who wrote the musical composition, &quot;Rhapsody In Blue&quot;?",
+      "correct_answer": "George Gershwin",
+      "incorrect_answers": ["Irving Berlin", "Duke Ellington", "Johnny Mandel"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "Who had a 1981 hit with the song &quot;Japanese Boy&quot;?",
+      "correct_answer": "Aneka",
+      "incorrect_answers": ["Toyah", "Sandra", "Madonna"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "Which song in rapper Kanye West&#039;s album &quot;The Life of Pablo&quot; features Rihanna?",
+      "correct_answer": "Famous",
+      "incorrect_answers": ["Wolves", "Ultralight Beam", "Highlights"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "boolean",
+      "difficulty": "medium",
+      "question": "Scottish producer Calvin Harris is from the town of Dumfries, Scotland.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Finish these lyrics from the 2016 song &quot;Panda&quot; by Desiigner: &quot;I got broads in _______&quot;.",
+      "correct_answer": "Atlanta",
+      "incorrect_answers": ["Savannah", "Augusta", "Marietta"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Who is the lead singer of Silverchair?",
+      "correct_answer": "Daniel Johns",
+      "incorrect_answers": ["Ben Gillies", "Chris Joannou", "George Costanza"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Which of these is the name of an American psychedelic rock band formed in 2002 by Benjamin Goldwasser and Andrew VanWyngarden?",
+      "correct_answer": "MGMT",
+      "incorrect_answers": ["MSTRKRFT", "STRFKR", "SBTRKT"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Which one of these Rammstein songs has two official music videos?",
+      "correct_answer": "Du Riechst So Gut",
+      "incorrect_answers": ["Du Hast", "Benzin", "Mein Teil"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What was Rage Against the Machine&#039;s debut album?",
+      "correct_answer": "Rage Against the Machine",
+      "incorrect_answers": ["Evil Empire", "Bombtrack", "The Battle Of Los Angeles"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Which of these bands are NOT from Australia?",
+      "correct_answer": "The Naked and Famous",
+      "incorrect_answers": ["Cut Copy", "Empire of the Sun", "Tame Impala"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "The song &quot;Feel Good Inc.&quot; by British band Gorillaz features which hip hop group?",
+      "correct_answer": "De La Soul",
+      "incorrect_answers": ["Public Enemy", "OutKast", "Cypress Hill"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "Which year was the album &quot;Floral Shoppe&quot; by Macintosh Plus released?",
+      "correct_answer": "2011",
+      "incorrect_answers": ["2014", "2013", "2012"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "The 2016 song &quot;Starboy&quot; by Canadian singer The Weeknd features which prominent electronic artist?",
+      "correct_answer": "Daft Punk",
+      "incorrect_answers": ["deadmau5", "Disclosure", "DJ Shadow"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "boolean",
+      "difficulty": "medium",
+      "question": "&quot;Twenty One Pilots&quot; made the song &quot;The Motion&quot; featuring Sampha.",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "From which country did the song &quot;Gangnam Style&quot; originate from?",
+      "correct_answer": "South Korea",
+      "incorrect_answers": ["Japan", "North Korea", "China"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "What musician made the song &quot;Fuckin` Perfect&quot; in 2010?",
+      "correct_answer": "P!nk",
+      "incorrect_answers": ["Mitis", "Adam lambert", "Koven"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "Who designed the album cover for True Romance, an album by Estelle?",
+      "correct_answer": "Rebecca Sugar",
+      "incorrect_answers": ["Matt Burnett", "Ian Jones Quartey", "Ben Leven"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "Which album was released by Kanye West in 2013?",
+      "correct_answer": "Yeezus",
+      "incorrect_answers": [
+        "My Beautiful Dark Twisted Fantasy",
+        "The Life of Pablo",
+        "Watch the Throne"
+      ]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "boolean",
+      "difficulty": "easy",
+      "question": "A Saxophone is a brass instrument.",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Which of these bands is the oldest?",
+      "correct_answer": "Pink Floyd",
+      "incorrect_answers": ["AC/DC", "Metallica", "Red Hot Chili Peppers"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "What is the name of the song by Beyonc&eacute; and Alejandro Fern&aacute;ndez released in 2007?",
+      "correct_answer": "Amor Gitano",
+      "incorrect_answers": ["La ultima vez", "Rocket", "Hasta Dondes Estes"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which song on Daft Punk&#039;s &quot;Random Access Memories&quot; features Pharrell Williams?",
+      "correct_answer": "Get Lucky",
+      "incorrect_answers": ["Doin&#039; It Right", "Instant Crush", "The Game of Love"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "boolean",
+      "difficulty": "medium",
+      "question": "Pink Guy&#039;s debut album was &quot;Pink Season&quot;.",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "&quot;The Singing Cowboy&quot; Gene Autry is credited with the first recording for all but which classic Christmas jingle?",
+      "correct_answer": "White Christmas",
+      "incorrect_answers": [
+        "Frosty the Snowman",
+        "Rudolph the Red-Nosed Reindeer",
+        "Here Comes Santa Claus"
+      ]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Which of these songs is not on the &quot;untitled&quot; album by Led Zeppelin?",
+      "correct_answer": "Celebration Day",
+      "incorrect_answers": ["Stairway to Heaven", "Black Dog", "Rock and Roll"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which former boy-band star released hit solo single &quot;Angels&quot; in 1997?",
+      "correct_answer": "Robbie Williams",
+      "incorrect_answers": ["Justin Timberlake", "Harry Styles", "Gary Barlow"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "What is the stage name of New Zealand singer Phillipa &quot;Pip&quot; Brown?",
+      "correct_answer": "Ladyhawke",
+      "incorrect_answers": ["Lorde", "Kesha", "Anika Moa"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Which artist or group did John Lennon consider &quot;son(s) of the Beatles&quot;?",
+      "correct_answer": "Jeff Lynne&#039;s Electric Light Orchestra",
+      "incorrect_answers": ["The Rolling Stones", "Pink Floyd", "The Who"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which of the following songs did Elton John perform following Princess Diane&#039;s passing?",
+      "correct_answer": "Candles in the Wind",
+      "incorrect_answers": [
+        "I Guess That&#039;s Why They Call It The Blues",
+        "Your Song",
+        "Island Girl"
+      ]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "What was the name of the cold-war singer who has a song in Grand Theft Auto IV, and a wall landmark in Moscow for his memorial?",
+      "correct_answer": "Viktor Tsoi",
+      "incorrect_answers": ["Jimi Hendrix", "Brian Jones", "Vladimir Vysotsky"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "boolean",
+      "difficulty": "hard",
+      "question": "The song Scatman&#039;s World was released after Scatman (Ski-Ba-Bop-Ba-Dop-Bop).",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "hard",
+      "question": "What is the first track on the Dave Matthews Band album &quot;Before These Crowded Streets&quot;?",
+      "correct_answer": "Pantala Naga Pampa",
+      "incorrect_answers": [
+        "Stay (Wasting Time)",
+        "Rapunzel",
+        "Don&#039;t Drink The Water"
+      ]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which punk rock band released hit songs such as &quot;Californication&quot;, &quot;Can&#039;t Stop&quot; and &quot;Under the Bridge&quot;?",
+      "correct_answer": "Red Hot Chilli Peppers",
+      "incorrect_answers": ["Green Day", "Linkin Park", "Foo Fighters"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Which member of the British pop group &quot;The Spice Girls&quot; was known as Ginger Spice?",
+      "correct_answer": "Geri Halliwell",
+      "incorrect_answers": ["Melanie Brown", "Emma Bunton", "Victoria Beckham"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Which artist curated the official soundtrack for &quot;The Hunger Games: Mockingjay - Part 1&quot;?",
+      "correct_answer": "Lorde",
+      "incorrect_answers": ["Kanye West", "Tove Lo", "Charli XCX"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "&quot;The Genius&quot; is the original and secondary name of which Wu-Tang Clan member?",
+      "correct_answer": "GZA",
+      "incorrect_answers": [
+        "Ghostface Killah",
+        "Ol&#039; Dirty Bastard",
+        "Raekwon the Chef"
+      ]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Which genre of Hip Hop does MC Frontalot rap?",
+      "correct_answer": "Nerdcore",
+      "incorrect_answers": ["Horrorcore", "Christian", "Crunk"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What is the name of Rivers Cuomo&#039;s wife?",
+      "correct_answer": "Kyoko Ito",
+      "incorrect_answers": ["Yoko Ono", "Kyary Pamyu Pamyu", "LiSA"]
+    },
+    {
+      "category": "Entertainment: Music",
+      "type": "multiple",
+      "difficulty": "medium",
+      "question": "Which European capital city gives its name to a 1981 song by Ultravox?",
+      "correct_answer": "Vienna",
+      "incorrect_answers": ["Berlin", "Paris", "Brussels"]
+    }
+  ]
+}

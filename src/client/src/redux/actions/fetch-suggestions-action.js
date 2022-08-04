@@ -16,7 +16,6 @@ const fetchSuggestionsFailure = (errorMessage) => ({
 });
 
 export const fetchNewSuggestionsAction = (userId) => {
-  console.log("In suggestions action")
   return async (dispatch) => {
     dispatch(fetchSuggestionsRequest());
     try {

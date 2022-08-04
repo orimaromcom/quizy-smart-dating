@@ -1,0 +1,425 @@
+{
+  "response_code": 0,
+  "results": [
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which of the following is not the name of a &quot;Bond Girl&quot;? ",
+      "correct_answer": "Vanessa Kensington",
+      "incorrect_answers": ["Pam Bouvier", "Mary Goodnight", "Wai Lin"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which movie released in 2016 features Superman and Batman fighting?",
+      "correct_answer": "Batman v Superman: Dawn of Justice",
+      "incorrect_answers": [
+        "Batman v Superman: Superapocalypse",
+        "Batman v Superman: Black of Knight",
+        "Batman v Superman: Knightfall"
+      ]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Daniel Radcliffe became a global star in the film industry due to his performance in which film franchise?",
+      "correct_answer": "Harry Potter",
+      "incorrect_answers": ["Ted", "Spy Kids", "Pirates of the Caribbean "]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What name did Tom Hanks give to his volleyball companion in the film `Cast Away`?",
+      "correct_answer": "Wilson",
+      "incorrect_answers": ["Friday", "Jones", "Billy"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which animated movie was first to feature a celebrity as a voice actor?",
+      "correct_answer": "Aladdin",
+      "incorrect_answers": [
+        "Toy Story",
+        "James and the Giant Peach",
+        "The Hunchback of Notre Dame"
+      ]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Who played Deputy Marshal Samuel Gerard in the 1993 film &quot;The Fugitive&quot;?",
+      "correct_answer": "Tommy Lee Jones",
+      "incorrect_answers": ["Harrison Ford", "Harvey Keitel", "Martin Landau"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Who played the female lead in the 1933 film &quot;King Kong&quot;?",
+      "correct_answer": "Fay Wray",
+      "incorrect_answers": ["Jean Harlow", "Vivien Leigh", "Mae West"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "boolean",
+      "difficulty": "easy",
+      "question": "Han Solo&#039;s co-pilot and best friend, &quot;Chewbacca&quot;, is an Ewok.",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which actress danced the twist with John Travolta in &#039;Pulp Fiction&#039;?",
+      "correct_answer": "Uma Thurman",
+      "incorrect_answers": ["Kathy Griffin", "Pam Grier", "Bridget Fonda"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Who starred in the film 1973 movie &quot;Enter The Dragon&quot;?",
+      "correct_answer": "Bruce Lee",
+      "incorrect_answers": ["Jackie Chan", "Jet Li", " Yun-Fat Chow"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "boolean",
+      "difficulty": "easy",
+      "question": "Leonardo DiCaprio won an Oscar for Best Actor in 2004&#039;s &quot;The Aviator&quot;.",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Who directed the movies &quot;Pulp Fiction&quot;, &quot;Reservoir Dogs&quot; and &quot;Django Unchained&quot;?",
+      "correct_answer": "Quentin Tarantino",
+      "incorrect_answers": ["Martin Scorcese", "Steven Spielberg", "James Cameron"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "The Queen song `A Kind Of Magic` is featured in which 1986 film?",
+      "correct_answer": "Highlander",
+      "incorrect_answers": ["Flash Gordon", "Labyrinth", "Howard the Duck"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What was the title of the first Bond movie, released in 1962?",
+      "correct_answer": "Dr. No",
+      "incorrect_answers": ["From Russia with Love", "Goldfinger", "Thunderball"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "This movie contains the quote, &quot;Nobody puts Baby in a corner.&quot;",
+      "correct_answer": "Dirty Dancing",
+      "incorrect_answers": [
+        "Three Men and a Baby",
+        "Ferris Bueller&#039;s Day Off",
+        "Pretty in Pink"
+      ]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "boolean",
+      "difficulty": "easy",
+      "question": "The 2010 film &quot;The Social Network&quot; is a biographical drama film about MySpace founder Tom Anderson.",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What is the orange and white bot&#039;s name in &quot;Star Wars: The Force Awakens&quot;?",
+      "correct_answer": "BB-8",
+      "incorrect_answers": ["BB-3", "AA-A", "R2-D2"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What was the first James Bond film?",
+      "correct_answer": "Dr. No",
+      "incorrect_answers": ["Goldfinger", "From Russia With Love", "Thunderball"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "boolean",
+      "difficulty": "easy",
+      "question": "In the original script of &quot;The Matrix&quot;, the machines used humans as additional computing power instead of batteries.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which movie includes a giant bunny-like spirit who has magic powers including growing trees?",
+      "correct_answer": "My Neighbor Totoro",
+      "incorrect_answers": ["Hop", "Rise of the Guardians", "Alice in Wonderland"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "boolean",
+      "difficulty": "easy",
+      "question": "Shaquille O&#039;Neal appeared in the 1997 film &quot;Space Jam&quot;.",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What is the oldest Disney film?",
+      "correct_answer": "Snow White and the Seven Dwarfs",
+      "incorrect_answers": ["Pinocchio", "Dumbo", "Fantasia"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "In the movie &quot;Cast Away&quot; the main protagonist&#039;s best friend while on the island is named",
+      "correct_answer": "Wilson",
+      "incorrect_answers": ["Carson", "Jackson", "Willy"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which actor plays Obi-Wan Kenobi in Star Wars Episodes I-lll?",
+      "correct_answer": "Ewan McGregor",
+      "incorrect_answers": ["Alec Guinness", "Hayden Christensen", "Liam Neeson"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "boolean",
+      "difficulty": "easy",
+      "question": "In the original Star Wars trilogy, David Prowse was the actor who physically portrayed Darth Vader.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "The 2002 film &quot;28 Days Later&quot; is mainly set in which European country?",
+      "correct_answer": "United Kingdom",
+      "incorrect_answers": ["France", "Italy", "Germany"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "boolean",
+      "difficulty": "easy",
+      "question": "In the movie The Revenant, DiCaprio&#039;s character hunts down the killer of his son.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What was the first monster to appear alongside Godzilla?",
+      "correct_answer": "Anguirus",
+      "incorrect_answers": ["King Kong", "Mothra", "King Ghidora"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "In the movie Gremlins, after what time of day should you not feed Mogwai?",
+      "correct_answer": "Midnight",
+      "incorrect_answers": ["Evening", "Morning", "Afternoon"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "boolean",
+      "difficulty": "easy",
+      "question": "George Lucas directed the entire original Star Wars trilogy.",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "When does &quot;Rogue One: A Star Wars Story&quot; take place chronologically in the series?",
+      "correct_answer": "Between Episode 3 and 4",
+      "incorrect_answers": [
+        "After Episode 6",
+        "Before Episode 1",
+        "Between Episode 4 and 5"
+      ]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "&quot;The first rule is: you don&#039;t talk about it&quot; is a reference to which movie?",
+      "correct_answer": "Fight Club",
+      "incorrect_answers": ["The Island", "Unthinkable", "American Pie"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "In the 2012 film, &quot;The Lorax&quot;, who is the antagonist?",
+      "correct_answer": "Aloysius O&#039;Hare",
+      "incorrect_answers": ["Ted Wiggins", "The Once-Ler", "Grammy Norma"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "In the 1992 film &quot;Army of Darkness&quot;, what name does Ash give to his double-barreled shotgun?",
+      "correct_answer": "Boomstick",
+      "incorrect_answers": ["Bloomstick", "Blastbranch", "2-Pump Chump"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "At the end of the 2001 film &quot;Rat Race&quot;, whose concert do the contestants crash?",
+      "correct_answer": "Smash Mouth",
+      "incorrect_answers": ["Bowling for Soup", "Sum 41", "Linkin Park"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Who plays the character of Po in the Kung Fu Panda movies?",
+      "correct_answer": "Jack Black",
+      "incorrect_answers": ["Mirana Jonnes", "McConahey Ramses", "Jim Petersson"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "In the movie &quot;Blade Runner&quot;, what is the term used for human-like androids ?",
+      "correct_answer": "Replicants",
+      "incorrect_answers": ["Cylons", "Synthetics", "Skinjobs"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "The 2016 Disney animated film &#039;Moana&#039; is based on which culture?",
+      "correct_answer": "Polynesian",
+      "incorrect_answers": ["Native American", "Japanese", "Nordic"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "In the 1995 film &quot;Balto&quot;, who are Steele&#039;s accomplices?",
+      "correct_answer": "Kaltag, Nikki, and Star",
+      "incorrect_answers": [
+        "Dusty, Kirby, and Ralph",
+        "Nuk, Yak, and Sumac",
+        "Jenna, Sylvie, and Dixie"
+      ]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What is the name of the island that &quot;Jurassic Park&quot; is built on?",
+      "correct_answer": "Isla Nublar",
+      "incorrect_answers": ["Isla Sorna", "Isla Muerta", "Isla Pena"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "For the film &quot;Raiders of The Lost Ark&quot;, what was Harrison Ford sick with during the filming of the Cairo chase?",
+      "correct_answer": "Dysentery",
+      "incorrect_answers": ["Anemia", "Constipation", "Acid Reflux "]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "In Big Hero 6, what fictional city is the Big Hero 6 from?",
+      "correct_answer": "San Fransokyo",
+      "incorrect_answers": ["San Tokyo", "Tokysisco", "Sankyo"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Where does the original Friday The 13th movie take place?",
+      "correct_answer": "Camp Crystal Lake",
+      "incorrect_answers": ["Packanack", "Higgins Haven", "Camp Forest Green"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "boolean",
+      "difficulty": "easy",
+      "question": "&quot;Foodfight!&quot; earned less than $80,000 at box office.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Who directed the Kill Bill movies?",
+      "correct_answer": "Quentin Tarantino",
+      "incorrect_answers": ["Arnold Schwarzenegger", "David Lean", "Stanley Kubrick"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "In &quot;ALF&quot;, what was ALF&#039;s real name?",
+      "correct_answer": "Gordon Shumway",
+      "incorrect_answers": ["Gordon Milipp", "Gordon Foster", "Gordon von Gam"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which of the following actors has only been in a Quentin Tarantino directed film once?",
+      "correct_answer": "John Travolta",
+      "incorrect_answers": ["Christoph Waltz", "Harvey Keitel", "Samuel L. Jackson"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Who plays Jack Burton in the movie &quot;Big Trouble in Little China?&quot;",
+      "correct_answer": "Kurt Russell",
+      "incorrect_answers": ["Patrick Swayze", "John Cusack", "Harrison Ford"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "The 1996 film &#039;Fargo&#039; is primarily set in which US state?",
+      "correct_answer": "Minnesota",
+      "incorrect_answers": ["North Dakota", "South Dakota", "Wisconsin"]
+    },
+    {
+      "category": "Entertainment: Film",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which of these films is NOT set in Los Angeles?",
+      "correct_answer": "RoboCop",
+      "incorrect_answers": ["Blade Runner", "The Terminator", "Predator 2"]
+    }
+  ]
+}

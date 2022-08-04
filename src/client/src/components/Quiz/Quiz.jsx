@@ -8,10 +8,11 @@ import { useNavigate } from "react-router-dom";
 
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
-import HeartLoader from "./HeartLoader/HeartLoader";
+import HeartLoader from "../HeartLoader/HeartLoader";
 import HeartConnector from "./Heart/HeartConnector.js";
 import AnswersApiService from "../../services/answers-api-service";
 import DistancesApiService from "../../services/distances-api-service";
+
 import { useEffect, useState } from "react";
 
 export default function Quiz({
@@ -23,12 +24,17 @@ export default function Quiz({
   questionIndex,
   incrementQuestionIndexAction,
   incrementAnswersIndexAction,
-  questionsLoading,
   clearAnswersArray,
   updateQuoteAction,
   quote,
   fetchNewSuggestionsAction,
+  clearQuestionsArrayAction,
+  clearQuestionsIndexAction,
+  isLoading,
+  postDistancesAction,
 }) {
+  const [playAgainClicked, setPlayAgainClicked] = useState(false);
+
   const navigate = useNavigate();
   useEffect(() => {
     if (!userId) {
@@ -37,11 +43,21 @@ export default function Quiz({
     }
   }, [navigate, userId]);
 
+  const playAgainHandler = () => {
+    setPlayAgainClicked(true);
+    clearQuestionsArrayAction();
+    clearQuestionsIndexAction();
+    updateQuoteAction();
+    
+    fetchNewQuestionsAction();
+
+    
+  };
+
   const isFinished = questions.length && questionIndex === questions.length;
-  const [heartClicked, setHeartClicked] = useState(false);
 
   useEffect(() => {
-    if (!questions.length) {
+    if (!questions.length && !playAgainClicked && !isLoading) {
       fetchNewQuestionsAction();
       updateQuoteAction();
     }
@@ -49,7 +65,8 @@ export default function Quiz({
       confetti();
       if (answersArray.length) {
         AnswersApiService.postAnswers(answersArray);
-        DistancesApiService.postDistances(userId);
+        postDistancesAction(userId);
+        fetchNewSuggestionsAction(userId);
 
         clearAnswersArray();
       }
@@ -60,8 +77,8 @@ export default function Quiz({
 
   return (
     <div className="quiz-container">
-      <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
-      {questionsLoading ? <HeartLoader /> : null}
+      
+      {isLoading ? (<><HeartLoader /> {!isFinished ?(<div>Loading questions</div>) : <div>Loading distances</div>}</>) : (<ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />)}
       {!isFinished ? (
         <BasicQuestion
           question={questions[questionIndex] ? questions[questionIndex] : ""}
@@ -72,16 +89,20 @@ export default function Quiz({
           incrementQuestionIndexAction={incrementQuestionIndexAction}
           questionIndex={questionIndex}
         />
-      ) : (
+      ) : isLoading ? null : (
         <>
           <HeartConnector
             quote={quote}
             fetchNewSuggestionsAction={fetchNewSuggestionsAction}
             userId={userId}
-            heartClicked={heartClicked}
-            setHeartClicked={setHeartClicked}
+            setPlayAgainClicked={setPlayAgainClicked}
+            
           />
-          <Button variant="text">Continue Playing</Button>
+          <div className="play_again_btn">
+            <Button variant="contained" onClick={() => playAgainHandler()}>
+              Play again 🏹 💑
+            </Button>
+          </div>
         </>
       )}
     </div>

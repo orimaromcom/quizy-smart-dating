@@ -6,7 +6,8 @@
 
 .text {
   flex: 0 1 auto;
-  padding: 0 5em 5em;
+  padding: 1em 1em 1em;
+  padding-bottom: 1em;
   font-size: 20px;
   text-align: center;
   font-weight: bold;
@@ -79,3 +80,4 @@
     opacity: 1;
   }
 }
+
