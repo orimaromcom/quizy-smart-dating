@@ -109,9 +109,9 @@ const AppBarComponent = ({ profile }) => {
                   <Avatar
                     alt="Remy Sharp"
                     src={profile.picture}
-                    style={{
+                    /*    style={{
                       border: "1.7px solid white",
-                    }}
+                    }} */
                   />
                 )}
               </IconButton>
