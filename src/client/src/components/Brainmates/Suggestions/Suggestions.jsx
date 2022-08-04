@@ -28,7 +28,7 @@ export default function Suggestions({
       confetti();
       console.log("We have a match!!!!!!!!");
     }
-    postUserLikeAction(
+    await postUserLikeAction(
       userId,
       suggestedUser.userId,
       currentUserLikesSuggestedUser
