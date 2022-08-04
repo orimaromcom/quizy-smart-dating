@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import {
   AppBar,
@@ -12,21 +11,20 @@ import {
   Button,
   Tooltip,
 } from "@mui/material";
-import HeartIcon from "@mui/icons-material/FavoriteTwoTone";
 import style from "./appbarcomponent.module.css";
+import { useState } from "react";
 
 const pages = ["USERSCORE"];
 
-const AppBarComponent = ({ profile }) => {
+const AppBarComponent = ({ profile, userLogoutAction }) => {
   const location = useLocation();
+
+  const [showLogOuot, setShowLogOuot] = useState(false);
 
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/*    <div className="quizy-logo-container">
-        <img src="/favicon.png" width="30px" alt="heart" className="quizy-logo"/>
-        </div> */}
           <Typography
             variant="h6"
             noWrap
@@ -55,7 +53,6 @@ const AppBarComponent = ({ profile }) => {
             ></IconButton>
           </Box>
           <div className={style.quizy_logo_container}>
-            {/*  <HeartIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
             <img
               src="/favicon.png"
               className={style.quizy_logo}
@@ -101,22 +98,39 @@ const AppBarComponent = ({ profile }) => {
               </Button>
             ))}
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton /* onClick={ handleOpenUserMenu } */ sx={{ p: 0 }}>
-                {location.pathname === "/login" ? null : (
-                  <Avatar
-                    alt="Profile picture"
-                    src={profile.picture}
-                    /*    style={{
-                      border: "1.7px solid white",
-                    }} */
-                  />
-                )}
-              </IconButton>
-            </Tooltip>
-          </Box>
+          {location.pathname === "/login" ? null : (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip
+                title={
+                  <Button
+                    variant="contained"
+                    onClick={() => {
+                      setShowLogOuot(false);
+                      userLogoutAction();
+                    }}
+                  >
+                    Logout
+                  </Button>
+                }
+                open={showLogOuot}
+                PopperProps={{
+                  popperOptions: {
+                    placement: "top",
+                  },
+                }}
+                placement="top"
+              >
+                <IconButton
+                  onClick={() => {
+                    setShowLogOuot((prev) => !prev);
+                  }}
+                  sx={{ p: 0 }}
+                >
+                  <Avatar alt="Remy Sharp" src={profile.picture} />
+                </IconButton>
+              </Tooltip>
+            </Box>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

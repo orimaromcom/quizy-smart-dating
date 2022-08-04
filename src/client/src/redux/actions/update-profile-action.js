@@ -5,9 +5,9 @@ const updatehProfileRequest = () => ({
   type: actionTypes.UPDATE_PROFILE_REQUEST,
 });
 
-const updateProfileSuccess = (Profile) => ({
+const updateProfileSuccess = (Profile, SuccessMessage) => ({
   type: actionTypes.UPDATE_PROFILE_SUCCESS,
-  payload: Profile,
+  payload: { Profile, SuccessMessage },
 });
 
 const updateProfileFailure = (errorMessage) => ({
@@ -20,7 +20,7 @@ export const updateProfileAction = (data) => {
     dispatch(updatehProfileRequest());
     try {
       const Profile = await UserApiService.updateUser(data);
-      dispatch(updateProfileSuccess(Profile));
+      dispatch(updateProfileSuccess(Profile, "Details saved successfully"));
     } catch (e) {
       dispatch(updateProfileFailure(e.message));
     }

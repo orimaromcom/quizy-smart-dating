@@ -7,10 +7,6 @@
     justify-content: space-around;
 }
 
-.logout_btn{
-    display: absolute;
-}
-
 .profile_top_container{
     display: flex;
     flex-direction: column;
