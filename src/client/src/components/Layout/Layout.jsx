@@ -6,8 +6,8 @@ import ToasterConnector from "../Toaster/toaster-connector";
 export default function Layout() {
   return (
     <>
-       <AppBar /> 
-       <ToasterConnector /> 
+      <AppBar />
+      <ToasterConnector />
       <Outlet />
       <NavbarConnector />
     </>

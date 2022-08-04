@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -12,15 +13,20 @@ import {
   Tooltip,
 } from "@mui/material";
 import HeartIcon from "@mui/icons-material/FavoriteTwoTone";
+import style from "./appbarcomponent.module.css";
 
 const pages = ["USERSCORE"];
 
-const AppBarComponent = ({profile}) => {
+const AppBarComponent = ({ profile }) => {
+  const location = useLocation();
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <HeartIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          {/*    <div className="quizy-logo-container">
+        <img src="/favicon.png" width="30px" alt="heart" className="quizy-logo"/>
+        </div> */}
           <Typography
             variant="h6"
             noWrap
@@ -28,6 +34,7 @@ const AppBarComponent = ({profile}) => {
             href="/"
             sx={{
               mr: 2,
+              ml: "-2px",
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
@@ -47,7 +54,16 @@ const AppBarComponent = ({profile}) => {
               color="inherit"
             ></IconButton>
           </Box>
-          <HeartIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <div className={style.quizy_logo_container}>
+            {/*  <HeartIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
+            <img
+              src="/favicon.png"
+              className={style.quizy_logo}
+              width="40p"
+              alt="heart"
+            />
+          </div>
+
           <Typography
             variant="h5"
             noWrap
@@ -55,6 +71,8 @@ const AppBarComponent = ({profile}) => {
             href=""
             sx={{
               mr: 2,
+              ml: "10px",
+
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
@@ -87,9 +105,15 @@ const AppBarComponent = ({profile}) => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton /* onClick={ handleOpenUserMenu } */ sx={{ p: 0 }}>
-                <Avatar
-                  alt="Remy Sharp"  src= {profile.picture}
-                />
+                {location.pathname === "/login" ? null : (
+                  <Avatar
+                    alt="Remy Sharp"
+                    src={profile.picture}
+                    /*    style={{
+                      border: "1.7px solid white",
+                    }} */
+                  />
+                )}
               </IconButton>
             </Tooltip>
           </Box>

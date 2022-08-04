@@ -65,6 +65,7 @@
 
 .profile_picture{
     border: 6px solid #e42f45;
+    /*  solid white */
     border-radius: 50%;
     max-width: 100%;
 }

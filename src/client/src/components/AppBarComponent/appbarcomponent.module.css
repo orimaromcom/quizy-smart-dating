@@ -1,0 +1,17 @@
+.MuiBottomNavigation-root {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.quizy_logo {
+  color: white;
+  border-color: white;
+}
+
+.quizy_logo_container {
+  color: white;
+  border-color: white;
+  border-radius: 1em;
+}
