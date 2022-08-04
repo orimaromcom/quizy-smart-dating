@@ -5,7 +5,6 @@ export default function SuggestionsCard({
   bestResult,
   age,
   amountOfSamePersonalAnswers,
-  suggestions = { suggestions },
   picture,
 }) {
   return (
