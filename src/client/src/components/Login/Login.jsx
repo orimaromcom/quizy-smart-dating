@@ -25,10 +25,6 @@ export default function Login({
   const [picture, setPicture] = useState("");
   const [name, setName] = useState("");
 
-  function parseJwt(token) {
-    return JSON.parse(Buffer.from(token.split(".")[1], "base64").toString());
-  }
-
   useEffect(() => {
     if (profile && profile.email && !profile.id) {
       updateProfileAction({
@@ -108,7 +104,7 @@ export default function Login({
   loginOptions = (
     <div>
       <h1>Login with google</h1>
-      {/*  {googleLogIn} */}
+       {googleLogIn}
       <br />
       <br />
       <br />
