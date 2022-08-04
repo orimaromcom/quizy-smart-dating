@@ -12,12 +12,7 @@ const mapStateToProps = (state) => {
   const userId = getProfile(state).id;
   const suggestions = getSuggestions(state);
   const suggestionsOrBrainmates = getSuggestionsDistance(state);
-  return {
-    brainmates,
-    userId,
-    suggestions,
-    suggestionsOrBrainmates,
-  };
+  return { brainmates, userId, suggestions, suggestionsOrBrainmates };
 };
 
 const mapDispatchToProps = (dispatch) => {

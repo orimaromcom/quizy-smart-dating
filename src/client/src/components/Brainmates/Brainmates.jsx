@@ -9,6 +9,7 @@ export default function Brainmates({
   fetchBrainmatesAction,
   userId,
   suggestionsOrBrainmates,
+  isLoading,
 }) {
   const navigate = useNavigate();
 
