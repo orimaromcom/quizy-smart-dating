@@ -37,17 +37,16 @@ export default function Profile({
 
   useEffect(() => {
     setProfileObj(profile);
-    console.log('profile.location', profile.location);
     if (profile && profile.id && !profile.location) {
       async function setTriviaStatistics(id) {
         try {
           await UserApiService.setTriviaStatistics(id);
-          console.log("setTriviaStatistics success");
         } catch (error) {
           showErrorAction("Problems with saving data");
         }
       }
       setTriviaStatistics(profile.id);
+      showErrorAction("Save your personal details to save your game progress");
     }
     setEdit(!isDetailsFull());
   }, [profile]);
