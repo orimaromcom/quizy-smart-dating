@@ -55,7 +55,6 @@ export default function Suggestions({
         picture={suggestions[suggestionsOrBrainmates].picture}
       />
       <div className={style.buttons_container}>
-      {suggestions[suggestionsOrBrainmates].username}
         <div
           className={style.yes_no_btn_container}
           onClick={() => decisionHandler("✔️", suggestions[suggestionsOrBrainmates])}>
