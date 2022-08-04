@@ -1,8 +1,9 @@
 import actionTypes from "./constants";
 import QuestionsApiService from "../../services/questions-api-service";
 
-const fetchQuestionsRequest = () => ({
+const fetchQuestionsRequest = (loadingMessage) => ({
   type: actionTypes.FETCH_QUESTIONS_REQUEST,
+  payload: loadingMessage,
 });
 
 const fetchQuestionsSuccess = (questions) => ({
@@ -17,7 +18,7 @@ const fetchQuestionsFailure = (errorMessage) => ({
 
 export const fetchNewQuestionsAction = () => {
   return async (dispatch) => {
-    dispatch(fetchQuestionsRequest());
+    dispatch(fetchQuestionsRequest("Loading questions..."));
     try {
       const questions = await QuestionsApiService.getQuestions();
       dispatch(fetchQuestionsSuccess(questions));

@@ -4,7 +4,6 @@ import { Button } from "@mui/material";
 import confetti from "canvas-confetti";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
-import HeartLoader from "../HeartLoader/HeartLoader";
 import HeartConnector from "./Heart/HeartConnector.js";
 import AnswersApiService from "../../services/answers-api-service";
 import "./quiz.css";
@@ -55,7 +54,10 @@ export default function Quiz({
     if (isFinished) {
       confetti();
 
-      async function postAnswersPostDistancesGetSuggestions(answersArray, userId) {
+      async function postAnswersPostDistancesGetSuggestions(
+        answersArray,
+        userId
+      ) {
         await AnswersApiService.postAnswers(answersArray);
         await postDistancesAction(userId);
         await fetchNewSuggestionsAction(userId);
@@ -65,33 +67,31 @@ export default function Quiz({
         clearAnswersArray();
       }
     }
-  }, [fetchNewQuestionsAction, questions, answersArray, clearAnswersArray, isFinished]);
+  }, [
+    fetchNewQuestionsAction,
+    questions,
+    answersArray,
+    clearAnswersArray,
+    isFinished,
+  ]);
 
   return (
     <div className="quiz-container">
-      {isLoading ? (
+      {!isFinished && !isLoading ? (
         <>
-          <HeartLoader />
-          {!isFinished ? (
-            <div>Loading questions...</div>
-          ) : (
-            <div>Loading possible matches...</div>
-          )}
+          <ProgressBar
+            progressPercentage={(questionIndex / questions.length) * 100}
+          />
+          <BasicQuestion
+            question={questions[questionIndex] ? questions[questionIndex] : ""}
+            userId={userId}
+            incrementAnswersIndexAction={incrementAnswersIndexAction}
+            answersArray={answersArray}
+            addAnswer={addAnswerAction}
+            incrementQuestionIndexAction={incrementQuestionIndexAction}
+            questionIndex={questionIndex}
+          />
         </>
-      ) : (
-        <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
-      )}
-
-      {!isFinished ? (
-        <BasicQuestion
-          question={questions[questionIndex] ? questions[questionIndex] : ""}
-          userId={userId}
-          incrementAnswersIndexAction={incrementAnswersIndexAction}
-          answersArray={answersArray}
-          addAnswer={addAnswerAction}
-          incrementQuestionIndexAction={incrementQuestionIndexAction}
-          questionIndex={questionIndex}
-        />
       ) : isLoading ? null : (
         <>
           <p>New suggestions were found for you!</p>

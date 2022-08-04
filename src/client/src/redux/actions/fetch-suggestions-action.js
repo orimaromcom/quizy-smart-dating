@@ -1,8 +1,9 @@
 import actionTypes from "./constants";
 import SuggestionsApiService from "../../services/suggestions-api-service";
 
-const fetchSuggestionsRequest = () => ({
+const fetchSuggestionsRequest = (loadingMessage) => ({
   type: actionTypes.FETCH_SUGGESTIONS_REQUEST,
+  payload: loadingMessage,
 });
 
 const fetchSuggestionsSuccess = (suggestions) => ({
@@ -12,12 +13,12 @@ const fetchSuggestionsSuccess = (suggestions) => ({
 
 const fetchSuggestionsFailure = (errorMessage) => ({
   type: actionTypes.FETCH_SUGGESTIONS_FAILURE,
-  payload: errorMessage
+  payload: errorMessage,
 });
 
 export const fetchNewSuggestionsAction = (userId) => {
   return async (dispatch) => {
-    dispatch(fetchSuggestionsRequest());
+    dispatch(fetchSuggestionsRequest("Loading possible matches..."));
     try {
       const suggestions = await SuggestionsApiService.getSuggestions(userId);
       dispatch(fetchSuggestionsSuccess(suggestions));

@@ -7,6 +7,7 @@ const initialState = {
   pageButtonValue: "login",
   isSuccess: false,
   successMessage: "Success!",
+  loadingMessage: "Loading...",
 };
 
 const appViewReducer = (state = initialState, action) => {
@@ -20,7 +21,19 @@ const appViewReducer = (state = initialState, action) => {
     case actionTypes.FETCH_PROFILE_REQUEST:
     case actionTypes.UPDATE_PROFILE_REQUEST:
     case actionTypes.POST_DISTANCES_REQUEST: {
-      return { ...state, isLoading: true };
+      return {
+        ...state,
+        isLoading: true,
+        loadingMessage: action.payload || "Loading...",
+      };
+    }
+
+    case actionTypes.USER_LOGOUT: {
+      return {
+        ...state,
+        isLoading: false,
+        loadingMessage: "Loging Out...",
+      };
     }
 
     case actionTypes.FETCH_PROFILE_SUCCESS:
@@ -28,7 +41,12 @@ const appViewReducer = (state = initialState, action) => {
     case actionTypes.FETCH_ACHIEVEMENTS_SUCCESS:
     case actionTypes.FETCH_QUESTIONS_SUCCESS:
     case actionTypes.POST_DISTANCES_SUCCESS: {
-      return { ...state, isError: false, isLoading: false };
+      return {
+        ...state,
+        isError: false,
+        isLoading: false,
+        loadingMessage: "Loading...",
+      };
     }
 
     case actionTypes.UPDATE_PROFILE_SUCCESS:
@@ -38,6 +56,7 @@ const appViewReducer = (state = initialState, action) => {
         isLoading: false,
         isSuccess: true,
         successMessage: action.payload.SuccessMessage,
+        loadingMessage: "Loading...",
       };
 
     case actionTypes.UPDATE_PROFILE_FAILURE:
@@ -60,6 +79,7 @@ const appViewReducer = (state = initialState, action) => {
         isError: true,
         errorMessage: errorMessage,
         isLoading: false,
+        loadingMessage: "Loading...",
       };
     }
 
