@@ -21,7 +21,7 @@ export default function Profile({
 }) {
   const navigate = useNavigate();
   useEffect(() => {
-    if (!profile.email) {
+    if (profile && !profile.email) {
       navigate("/login");
       return;
     }
@@ -95,7 +95,7 @@ export default function Profile({
     }
   };
 
-  return profile.id ? (
+  return profile && profile.id ? (
     <div className={style.profile_container}>
       <Button
         className={style.logaout_btn}

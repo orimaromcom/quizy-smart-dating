@@ -1,5 +1,7 @@
 const express = require('express');
 const auth = require('../../middleware/auth');
+const { validateCreateUserSchema } =  require("../../middleware/validation.js");
+
 const {
   postUserInfo,
   getUserInfo,
@@ -8,7 +10,7 @@ const {
 
 const userRouter = express.Router();
 
-userRouter.post('/', auth, postUserInfo);
+userRouter.post('/', auth, validateCreateUserSchema(), postUserInfo);
 userRouter.get('/:email', auth, getUserInfo);
 userRouter.post('/set-trivia/:id', auth, setTriviaStatistics);
 

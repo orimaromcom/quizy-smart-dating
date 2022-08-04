@@ -1,4 +1,4 @@
-const {validationResult, checkSchema} = require('express-validator');
+const { validationResult, checkSchema } = require('express-validator');
 
 function validateCreateUserSchema() {
   return validateSchema(createUserSchema);
@@ -20,16 +20,91 @@ function validateSchema(schema) {
 }
 
 const createUserSchema = {
-  text: {
+  email: {
     isString: {
-      errorMessage: "User text should be a string"
+      errorMessage: "Email should be a string"
     },
     isLength: {
-      errorMessage: 'User text should be at least 1 characters long',
-      options: { min: 1 },
+      errorMessage: 'Email should be at least 10 characters long',
+      options: { min: 10 },
     },
     in: ['body']
-  }
+  },
+  age: {
+    isInt: {
+      options: {
+        gte: 18,
+        lte: 55
+      },
+      errorMessage: "Age should be between 18 and 55"
+    },
+    optional: {
+      options: {
+        nullable: true
+      }
+    },
+    in: ['body']
+  },
+  minAge: {
+    isInt: {
+      options: {
+        gte: 18,
+        lte: 55
+      },
+      errorMessage: "Minimum age should be between 18 and 55"
+    },
+    optional: {
+      options: {
+        nullable: true
+      }
+    },
+    in: ['body.preferences'],
+  },
+  maxAge: {
+    isInt: {
+      options: {
+        gte: 18,
+        lte: 55
+      },
+      errorMessage: "Maximum age should be between 18 and 55"
+    },
+    optional: {
+      options: {
+        nullable: true
+      }
+    },
+    in: ['body.preferences'],
+  },
+  gender: {
+    isString: {
+      errorMessage: "Gender should be a string",
+    },
+    isIn: {
+      options: [['male', 'female', 'other']],
+      errorMessage: "Gender should be 'male', 'female' or 'other'",
+    },
+    optional: {
+      options: {
+        nullable: true
+      }
+    },
+    in: ['body']
+  },
+  gender: {
+    isString: {
+      errorMessage: "Gender should be a string",
+    },
+    isIn: {
+      options: [['male', 'female', 'any']],
+      errorMessage: "Mate of gender should be 'male', 'female' or 'any'",
+    },
+    optional: {
+      options: {
+        nullable: true
+      }
+    },
+    in: ['body.preferences']
+  },
 };
 
 module.exports = {
