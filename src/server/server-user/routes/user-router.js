@@ -1,4 +1,7 @@
 const express = require('express');
+const auth = require('../../middleware/auth');
+const { validateCreateUserSchema } =  require("../../middleware/validation.js");
+
 const {
   postUserInfo,
   getUserInfo,
@@ -7,8 +10,8 @@ const {
 
 const userRouter = express.Router();
 
-userRouter.post('/', postUserInfo);
-userRouter.get('/:email', getUserInfo);
-userRouter.post('/set-trivia/:id', setTriviaStatistics);
+userRouter.post('/', auth, validateCreateUserSchema(), postUserInfo);
+userRouter.get('/:email', auth, getUserInfo);
+userRouter.post('/set-trivia/:id', auth, setTriviaStatistics);
 
 module.exports = userRouter;

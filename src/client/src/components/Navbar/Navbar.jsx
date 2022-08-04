@@ -7,6 +7,7 @@ import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import PersonIcon from "@mui/icons-material/Person";
 
 export default function Navbar({ pageButtonValue, updatePageButtonAction }) {
+
   return pageButtonValue === "login" ? null : (
     <Box>
       <BottomNavigation

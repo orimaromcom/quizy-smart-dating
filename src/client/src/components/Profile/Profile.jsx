@@ -21,7 +21,7 @@ export default function Profile({
 }) {
   const navigate = useNavigate();
   useEffect(() => {
-    if (!profile.email) {
+    if (profile && !profile.email) {
       navigate("/login");
       return;
     }
@@ -32,10 +32,17 @@ export default function Profile({
 
   useEffect(() => {
     setProfileObj(profile);
-    if (profile && profile.id && !profile.gender) {
-      UserApiService.setTriviaStatistics(profile.id);
+    if (profile && profile.id && !profile.location) {
+      async function setTriviaStatistics(id) {
+        try {
+          await UserApiService.setTriviaStatistics(id);
+        } catch (error) {
+          showErrorAction("Problems with saving data");
+        }
+      }
+      setTriviaStatistics(profile.id);
     }
-  }, [profile]);
+  }, [profile, showErrorAction]);
 
   const handleChange = (event) => {
     setProfileObj({
@@ -87,15 +94,15 @@ export default function Profile({
       .map((key) => !!profileObj[key])
       .every((field) => !!field);
     if (isDetailsFull) {
+      showSuccessAction("Saving details")
       updateProfileAction(profileObj);
-      showSuccessAction("Details updated successfuly!");
       setEdit(false);
     } else {
-      showErrorAction("You miss some details");
+      showErrorAction("You missed some details");
     }
   };
 
-  return profile.id ? (
+  return profile && profile.id ? (
     <div className={style.profile_container}>
       <Button
         className={style.logaout_btn}

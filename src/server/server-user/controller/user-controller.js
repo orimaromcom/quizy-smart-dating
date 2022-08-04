@@ -1,4 +1,5 @@
 const userManager = require("../services/user-manager");
+const { ErrorIfNaN, ErrorIfNotFound } = require("../../common-errors");
 
 async function postUserInfo(req, res) {
   const responce = await userManager.postUserInfo(req.body);
@@ -8,11 +9,14 @@ async function postUserInfo(req, res) {
 async function getUserInfo(req, res) {
   const email = req.params.email;
   const userInfo = await userManager.getUserInfo(email);
+  ErrorIfNotFound(userInfo);
   res.status(200).json(userInfo);
 }
 
 async function setTriviaStatistics(req, res) {
-  const responce = await userManager.setTriviaStatistics(req.params.id);
+  let userId = Number.parseInt(req.params.id);
+  ErrorIfNaN(userId);
+  const responce = await userManager.setTriviaStatistics(userId);
   res.status(200).json(responce);
 }
 

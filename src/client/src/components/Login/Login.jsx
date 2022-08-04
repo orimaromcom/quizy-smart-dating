@@ -2,9 +2,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useCallback, useState } from "react";
-// import UserApiService from "../../services/user-api-service";
 
-// this npm library can be deleted
 import jwt_decode from "jwt-decode";
 import "./Login.css";
 
@@ -16,7 +14,6 @@ export default function Login({
 }) {
   const navigate = useNavigate();
   useEffect(() => {
-    console.log("profile", profile);
     if (profile && profile.id) {
       updatePageButtonAction("quiz");
       navigate("/quiz");
@@ -34,29 +31,12 @@ export default function Login({
 
   useEffect(() => {
     if (profile && profile.email && !profile.id) {
-      console.log("updateProfileActions");
-      console.log("email", email, "picture", picture, "name", name);
       updateProfileAction({
         ...profile,
         email: email,
         picture: picture,
         userName: name,
-        //   email: email,
-        //   userName: name,
-        //   age: null,
-        //   phone: null,
-        //   location: null,
-        //   picture: picture,
-        //   gender: "choose",
-        //   preferences: {
-        //     relation_type: "friends",
-        //     gender: "any",
-        //     minAge: 25,
-        //     maxAge: 55,
-        // },
       });
-      console.log("UserApiService.setTriviaStatistics(email)");
-      //      UserApiService.setTriviaStatistics(email);
     }
   });
 
@@ -128,7 +108,7 @@ export default function Login({
   loginOptions = (
     <div>
       <h1>Login with google</h1>
-     {/*  {googleLogIn} */}
+      {/*  {googleLogIn} */}
       <br />
       <br />
       <br />
@@ -141,7 +121,8 @@ export default function Login({
 
   return (
     <div className="login-container">
-      <h1>Welcome to Quizy Smart Dating</h1>
+      <h1>Welcome!</h1>
+      <h1 className="app-title">Quizy Smart Dating</h1>
       <p>Find your brainmate according to your interests and knowledge</p>
       <img src="/favicon.png" width="200px" alt="heart" />
       {loginOptions}
