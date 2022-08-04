@@ -5,6 +5,7 @@ import Question from "./Question/Question";
 import { useEffect, useState } from "react";
 import correctAnswerSound from "../../../assets/sounds/correctAnswerSound.mp3";
 import incorrectAnswerSound from "../../../assets/sounds/incorrectAnswerSound.wav";
+import { pop } from "../HeartParticlesAnimation/HeartParticles";
 
 export default function BasicQuestion({
   question,
@@ -31,23 +32,29 @@ export default function BasicQuestion({
       setOptions(questionsArray);
     }
   }, [question]);
+const muteOnLastQuestion = answersArray.length === 9 && isAudio
 
-  const optionHandler = (chosenOption) => {
+  const optionHandler = (chosenOption,e) => {
     let answerIsCorrect = null;
     if (question.type === "trivia") {
       if (question.correctOption === chosenOption) {
         answerIsCorrect = true;
-        if (answersArray.length < 9 && isAudio) {
+        if (!muteOnLastQuestion) {
           correctSound.play();
+          pop(e)
         }
       } else {
         answerIsCorrect = false;
-        if (answersArray.length < 9 && isAudio) {
+        if (!muteOnLastQuestion) {
           incorrectSound.play();
         }
       }
+    } else {
+      if(!muteOnLastQuestion){
+        correctSound.play();
+        pop(e)
+      }
     }
-    console.log(answersArray.length);
 
     const answerObject = {
       userId: userId,

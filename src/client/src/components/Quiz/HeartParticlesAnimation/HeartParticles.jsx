@@ -2,7 +2,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import particle from "./heart-particles.scss";
 import React, { useState } from "react";
 
-function pop(e) {
+export function pop(e) {
   let amount = 30;
   switch ("shadow") {
     case "shadow":
