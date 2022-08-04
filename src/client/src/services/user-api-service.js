@@ -38,5 +38,5 @@ export default class UserApiService {
     }
   }
 
-  
+
 }

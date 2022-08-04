@@ -16,10 +16,6 @@ import HeartIcon from "@mui/icons-material/FavoriteTwoTone";
 const pages = ["USERSCORE"];
 
 const AppBarComponent = ({profile}) => {
-/*   useEffect(() => {
-
-  }, [profile]); */
-  console.log(profile)
   return (
     <AppBar position="static">
       <Container maxWidth="xl">

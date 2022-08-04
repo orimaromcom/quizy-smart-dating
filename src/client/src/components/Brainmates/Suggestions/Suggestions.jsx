@@ -34,7 +34,7 @@ export default function Suggestions({
     }
 
     if (suggestionDistance === "closest") {
-      console.log(suggestions);
+      console.log('suggestions', suggestions);
       if (currentUserLikeSuggestedUser && suggestions.closest.likeBack) {
         // audio.play()
         //audio.pause()
@@ -61,7 +61,7 @@ export default function Suggestions({
         suggestions.farthest.userId,
         currentUserLikeSuggestedUser
       );
-     
+
       //play again
       fetchBrainmatesAction(userId);
       updateSuggestionDistanceAction("brainmates");

@@ -48,10 +48,10 @@ export default function Quiz({
     clearQuestionsArrayAction();
     clearQuestionsIndexAction();
     updateQuoteAction();
-    
+
     fetchNewQuestionsAction();
 
-    
+
   };
 
   const isFinished = questions.length && questionIndex === questions.length;
@@ -63,21 +63,22 @@ export default function Quiz({
     }
     if (isFinished) {
       confetti();
-      if (answersArray.length) {
-        AnswersApiService.postAnswers(answersArray);
-        postDistancesAction(userId);
-        fetchNewSuggestionsAction(userId);
 
+      async function postAnswersPostDistancesGetSuggestions(answersArray, userId) {
+        await AnswersApiService.postAnswers(answersArray);
+        await postDistancesAction(userId);
+        await fetchNewSuggestionsAction(userId);
+      }
+      if (answersArray.length) {
+        postAnswersPostDistancesGetSuggestions(answersArray, userId)
         clearAnswersArray();
       }
-
-      console.log("you should remove questions once play again");
     }
-  }, [fetchNewQuestionsAction, questions, answersArray, clearAnswersArray, isFinished]);
+  }, [answersArray, clearAnswersArray, fetchNewQuestionsAction, fetchNewSuggestionsAction, isFinished, isLoading, playAgainClicked, postDistancesAction, questions.length, updateQuoteAction, userId]);
 
   return (
     <div className="quiz-container">
-      
+
       {isLoading ? (<><HeartLoader /> {!isFinished ?(<div>Loading questions</div>) : <div>Loading distances</div>}</>) : (<ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />)}
       {!isFinished ? (
         <BasicQuestion
@@ -96,7 +97,7 @@ export default function Quiz({
             fetchNewSuggestionsAction={fetchNewSuggestionsAction}
             userId={userId}
             setPlayAgainClicked={setPlayAgainClicked}
-            
+
           />
           <div className="play_again_btn">
             <Button variant="contained" onClick={() => playAgainHandler()}>

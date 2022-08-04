@@ -38,6 +38,7 @@ const appViewReducer = (state = initialState, action) => {
     case actionTypes.FETCH_ACHIEVEMENTS_FAILURE:
     case actionTypes.FETCH_SUGGESTIONS_FAILURE:
     case actionTypes.POST_DISTANCES_FAILURE:
+    case actionTypes.POST_USER_LIKE_FAILURE:
     case actionTypes.FETCH_QUESTIONS_FAILURE: {
       let errorMessage = action.payload;
       if (action.payload === "Request failed with status code 404") {
