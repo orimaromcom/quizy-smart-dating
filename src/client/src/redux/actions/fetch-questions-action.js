@@ -10,9 +10,9 @@ const fetchQuestionsSuccess = (questions) => ({
   payload: questions,
 });
 
-const fetchQuestionsFailure = (error) => ({
+const fetchQuestionsFailure = (errorMessage) => ({
   type: actionTypes.FETCH_QUESTIONS_FAILURE,
-  payload: error?.message ?? error,
+  payload: errorMessage,
 });
 
 export const fetchNewQuestionsAction = () => {
@@ -20,10 +20,9 @@ export const fetchNewQuestionsAction = () => {
     dispatch(fetchQuestionsRequest());
     try {
       const questions = await QuestionsApiService.getQuestions();
-
       dispatch(fetchQuestionsSuccess(questions));
     } catch (e) {
-      dispatch(fetchQuestionsFailure(e));
+      dispatch(fetchQuestionsFailure(e.message));
     }
   };
 };

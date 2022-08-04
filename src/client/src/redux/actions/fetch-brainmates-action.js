@@ -10,8 +10,9 @@ const fetchBrainmatesSuccess = (brainmates) => ({
   payload: brainmates,
 });
 
-const fetchBrainmatesFailure = () => ({
+const fetchBrainmatesFailure = (errorMessage) => ({
   type: actionTypes.FETCH_BRAINMATES_FAILURE,
+  payload: errorMessage
 });
 
 export const fetchBrainmatesAction = (id) => {
@@ -21,7 +22,7 @@ export const fetchBrainmatesAction = (id) => {
       const Brainmates = await BrainmatesApiService.getBrainmates(id);
       dispatch(fetchBrainmatesSuccess(Brainmates));
     } catch (e) {
-      dispatch(fetchBrainmatesFailure());
+      dispatch(fetchBrainmatesFailure(e.message));
     }
   };
 };

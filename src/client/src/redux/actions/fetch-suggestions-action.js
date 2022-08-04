@@ -10,9 +10,9 @@ const fetchSuggestionsSuccess = (suggestions) => ({
   payload: suggestions,
 });
 
-const fetchSuggestionsFailure = (error) => ({
+const fetchSuggestionsFailure = (errorMessage) => ({
   type: actionTypes.FETCH_SUGGESTIONS_FAILURE,
-  payload: error?.message ?? error,
+  payload: errorMessage
 });
 
 export const fetchNewSuggestionsAction = (userId) => {
@@ -20,10 +20,10 @@ export const fetchNewSuggestionsAction = (userId) => {
     dispatch(fetchSuggestionsRequest());
     try {
       const suggestions = await SuggestionsApiService.getSuggestions(userId);
-
+      console.log('suggestions:', suggestions);
       dispatch(fetchSuggestionsSuccess(suggestions));
     } catch (e) {
-      dispatch(fetchSuggestionsFailure(e));
+      dispatch(fetchSuggestionsFailure(e.message));
     }
   };
 };

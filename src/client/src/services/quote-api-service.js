@@ -7,12 +7,9 @@ export default class QuoteApiService {
       const response = await axios.get(`/quiz/quote`, {
         headers: headers,
       });
-      const quote = response.data;
-      return quote;
+      return response.data;
     } catch (error) {
-      console.log("Error:", error.message);
-      // throw new Error(error.message);
+      throw new Error(error.message);
     }
-
   }
 }

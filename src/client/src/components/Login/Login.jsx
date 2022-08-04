@@ -125,7 +125,8 @@ export default function Login({
 
   return (
     <div className="login-container">
-      <h1>Welcome to Quizy Smart Dating</h1>
+      <h1>Welcome!</h1>
+      <h1 className="app-title">Quizy Smart Dating</h1>
       <p>Find your brainmate according to your interests and knowledge</p>
       <img src="/favicon.png" width="200px" alt="heart" />
       {loginOptions}

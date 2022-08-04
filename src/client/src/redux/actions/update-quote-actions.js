@@ -11,7 +11,8 @@ export const updateQuoteAction = () => {
     try {
       const quote = await QuoteApiService.getRandomQuote();
       dispatch(updateQuote(quote));
-
-    } catch (e) {}
+    } catch (e) {
+      console.log("Some nice quote about love was not loaded");
+    }
   };
 };

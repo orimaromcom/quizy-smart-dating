@@ -7,11 +7,9 @@ export default class AchievemntsApiService {
       const response = await axios.get(`/matching/achievements/${id}`, {
         headers: headers,
       });
-      const achievements = await response.data;
-      return achievements;
+      return response.data;
     } catch (error) {
-      console.log("Error:", error.message);
-      // throw new Error(error.message);
+      throw new Error(error.message);
     }
   }
 }
