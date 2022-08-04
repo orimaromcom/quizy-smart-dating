@@ -39,7 +39,7 @@ export default function Suggestions({
       await fetchBrainmatesAction(userId);
     }
   }
-
+  
   const goBackToBrainmatesWithDelay = (timeout) => {
     setTimeout(() => {
       updateSuggestionsOrBrainmatesAction("brainmates")
