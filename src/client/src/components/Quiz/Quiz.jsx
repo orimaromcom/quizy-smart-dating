@@ -27,6 +27,7 @@ export default function Quiz({
   clearQuestionsIndexAction,
   isLoading,
   postDistancesAction,
+  isAudio,
 }) {
   const [playAgainClicked, setPlayAgainClicked] = useState(false);
   const quizEndSound = new Audio(quizEndSoundFile);
@@ -64,7 +65,10 @@ export default function Quiz({
         postAnswersPostDistancesGetSuggestions(answersArray, userId);
         clearAnswersArray();
         confetti();
-        quizEndSound.play();
+        if(isAudio){
+          quizEndSound.play();
+        }
+       
       }
     }
   }, [fetchNewQuestionsAction, questions, answersArray, clearAnswersArray, isFinished]);
@@ -93,6 +97,7 @@ export default function Quiz({
           addAnswer={addAnswerAction}
           incrementQuestionIndexAction={incrementQuestionIndexAction}
           questionIndex={questionIndex}
+          isAudio={isAudio}
         />
       ) : isLoading ? null : (
         <>

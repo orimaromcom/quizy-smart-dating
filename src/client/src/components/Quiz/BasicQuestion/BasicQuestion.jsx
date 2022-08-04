@@ -14,6 +14,7 @@ export default function BasicQuestion({
   incrementAnswersIndexAction,
   questions,
   answersArray,
+  isAudio,
 }) {
   const [options, setOptions] = useState([]);
   const correctSound = new Audio(correctAnswerSound);
@@ -36,12 +37,12 @@ export default function BasicQuestion({
     if (question.type === "trivia") {
       if (question.correctOption === chosenOption) {
         answerIsCorrect = true;
-        if (answersArray.length < 9) {
+        if (answersArray.length < 9 && isAudio) {
           correctSound.play();
         }
       } else {
         answerIsCorrect = false;
-        if (answersArray.length < 9) {
+        if (answersArray.length < 9 && isAudio) {
           incorrectSound.play();
         }
       }

@@ -21,6 +21,7 @@ import { incrementAnswersIndexAction } from "../../redux/actions/increment-answe
 import { fetchNewSuggestionsAction } from "../../redux/actions/fetch-suggestions-action";
 import { getSuggestions } from "../../redux/selectors/suggestions-entities-selector";
 import {getIsLoading} from "../../redux/selectors/app-view-selector"
+import { getIsAudio } from "../../redux/selectors/app-view-selector";
 
 const mapStateToProps = (state) => {
   const questions = getAllQuestions(state);
@@ -29,6 +30,7 @@ const mapStateToProps = (state) => {
   const suggestions = getSuggestions(state);
   const isLoading = getIsLoading(state)
   const quote = getQuote(state);
+  const isAudio = getIsAudio(state)
 
   const userId = getProfile(state).id;
   return {
@@ -39,6 +41,7 @@ const mapStateToProps = (state) => {
     quote,
     suggestions,
     isLoading,
+    isAudio,
   };
 };
 

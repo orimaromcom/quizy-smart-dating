@@ -7,6 +7,7 @@ const initialState = {
   pageButtonValue: "login",
   isSuccess: false,
   successMessage: "Success!",
+  isAudio: true,
 };
 
 const appViewReducer = (state = initialState, action) => {
@@ -86,6 +87,12 @@ const appViewReducer = (state = initialState, action) => {
         ...state,
         pageButtonValue: action.payload,
       };
+
+      case actionTypes.TOGGLE_AUDIO:
+        return {
+          ...state,
+          isAudio: !state.isAudio
+        };
 
     default:
       return state;

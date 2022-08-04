@@ -1,4 +1,4 @@
-import SwitchButton from "./SwitchButton/SwitchButton";
+import SwitchButtonConnector from "./SwitchButton/SwitchButtonConnector";
 import * as React from "react";
 import { useLocation } from "react-router-dom";
 import {
@@ -18,7 +18,7 @@ import { useState } from "react";
 
 const pages = ["USERSCORE"];
 
-const AppBarComponent = ({ profile, userLogoutAction }) => {
+const AppBarComponent = ({ profile, userLogoutAction, isAudio }) => {
   const location = useLocation();
 
   const [showLogOuot, setShowLogOuot] = useState(false);
@@ -117,8 +117,8 @@ const AppBarComponent = ({ profile, userLogoutAction }) => {
                     {
                       <div className={style.audio_container}>
                         <span className={style.audio_switch}>
-                          <SwitchButton />
-                          <div className={style.audio_emoji}>🔉</div>
+                          <SwitchButtonConnector />
+                          <div className={style.audio_emoji}>{isAudio ? "🔉" : "🔇"}</div>
                         </span>
                       </div>
                     }

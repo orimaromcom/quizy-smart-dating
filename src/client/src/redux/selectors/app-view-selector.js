@@ -6,3 +6,4 @@ export const getErrorMessage = (state) => getAppView(state).errorMessage;
 export const getIsSuccess = (state) => getAppView(state).isSuccess;
 export const getSuccessMessage = (state) => getAppView(state).successMessage;
 export const getPageButtonValue = (state) => getAppView(state).pageButtonValue;
+export const getIsAudio = (state) => getAppView(state).isAudio

@@ -57,6 +57,8 @@ const QUIZ_ACTIONS = {
   SHOW_SUCCESS: "show_success",
 
   HIDE_TOASTER: "hide_toaster",
+
+  TOGGLE_AUDIO: "toggle_audio",
 };
 
 export default QUIZ_ACTIONS;
