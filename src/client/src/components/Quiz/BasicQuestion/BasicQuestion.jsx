@@ -36,15 +36,17 @@ export default function BasicQuestion({
     if (question.type === "trivia") {
       if (question.correctOption === chosenOption) {
         answerIsCorrect = true;
-        correctSound.play();
+        if (answersArray.length < 9) {
+          correctSound.play();
+        }
       } else {
         answerIsCorrect = false;
-        incorrectSound.play();
+        if (answersArray.length < 9) {
+          incorrectSound.play();
+        }
       }
     }
-  if (answersArray.length === 9){
-    console.log("end quiz")
-  }
+    console.log(answersArray.length);
 
     const answerObject = {
       userId: userId,
@@ -58,7 +60,6 @@ export default function BasicQuestion({
     incrementQuestionIndexAction();
 
     addAnswer(answerObject, answersArray, questions);
-   
   };
 
   return (

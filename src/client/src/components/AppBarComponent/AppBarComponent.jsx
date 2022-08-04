@@ -107,7 +107,7 @@ const AppBarComponent = ({ profile }) => {
               <IconButton /* onClick={ handleOpenUserMenu } */ sx={{ p: 0 }}>
                 {location.pathname === "/login" ? null : (
                   <Avatar
-                    alt="Remy Sharp"
+                    alt="Profile picture"
                     src={profile.picture}
                     /*    style={{
                       border: "1.7px solid white",

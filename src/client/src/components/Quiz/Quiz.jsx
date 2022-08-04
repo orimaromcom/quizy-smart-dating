@@ -8,6 +8,7 @@ import HeartLoader from "../HeartLoader/HeartLoader";
 import HeartConnector from "./Heart/HeartConnector.js";
 import AnswersApiService from "../../services/answers-api-service";
 import "./quiz.css";
+import quizEndSoundFile from "../../assets/sounds/quizEndSound.mp3";
 
 export default function Quiz({
   fetchNewQuestionsAction,
@@ -28,6 +29,7 @@ export default function Quiz({
   postDistancesAction,
 }) {
   const [playAgainClicked, setPlayAgainClicked] = useState(false);
+  const quizEndSound = new Audio(quizEndSoundFile);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -53,8 +55,6 @@ export default function Quiz({
       updateQuoteAction();
     }
     if (isFinished) {
-      confetti();
-
       async function postAnswersPostDistancesGetSuggestions(answersArray, userId) {
         await AnswersApiService.postAnswers(answersArray);
         await postDistancesAction(userId);
@@ -63,6 +63,8 @@ export default function Quiz({
       if (answersArray.length) {
         postAnswersPostDistancesGetSuggestions(answersArray, userId);
         clearAnswersArray();
+        confetti();
+        quizEndSound.play();
       }
     }
   }, [fetchNewQuestionsAction, questions, answersArray, clearAnswersArray, isFinished]);
