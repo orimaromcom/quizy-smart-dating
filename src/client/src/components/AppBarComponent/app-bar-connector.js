@@ -6,8 +6,9 @@ import { userLogoutAction } from "../../redux/actions/user-logout-action";
 import { getProfile } from "../../redux/selectors/profile-entity-selector";
 
 const mapStateToProps = (state) => {
+  const totalScore = 213;
   const profile = getProfile(state);
-  return { profile };
+  return { profile, totalScore };
 };
 
 const mapDispatchToProps = (dispatch) => {

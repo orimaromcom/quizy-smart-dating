@@ -16,41 +16,50 @@ import { useState } from "react";
 
 const pages = ["USERSCORE"];
 
-const AppBarComponent = ({ profile, userLogoutAction }) => {
+const AppBarComponent = ({ profile, userLogoutAction, totalScore }) => {
   const location = useLocation();
-
   const [showLogOuot, setShowLogOuot] = useState(false);
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              ml: "-2px",
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Quizy
-          </Typography>
+      <Container
+        maxWidth="xl"
+        style={{ display: "flex", justifyContent: "center" }}
+      >
+        <Toolbar
+          disableGutters
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            width: "100%",
+          }}
+        >
+          <Box sx={{ flexGrow: 1 }}>
+            {location.pathname === "/login" ? null : (
+              <>
+                <span>👑</span> <span>{totalScore.toString()}</span>{" "}
+              </>
+            )}
+          </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              color="inherit"
-            ></IconButton>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                ml: "-2px",
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              Quizy
+            </Typography>
           </Box>
           <div className={style.quizy_logo_container}>
             <img
@@ -60,7 +69,6 @@ const AppBarComponent = ({ profile, userLogoutAction }) => {
               alt="heart"
             />
           </div>
-
           <Typography
             variant="h5"
             noWrap
