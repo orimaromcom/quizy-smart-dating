@@ -30,7 +30,6 @@ export const postUserLikeAction = (
       await BrainmatesApiService.postUserLike(postUserLikeBody);
       dispatch(postUserLikeSuccess());
     } catch (e) {
-      console.log('ERROOOOOOR', e.message);
       dispatch(postUserLikeFailure(e.message));
     }
   };

@@ -18,7 +18,7 @@ export const postDistancesAction = (userId) => {
   return async (dispatch) => {
     dispatch(postDistancesRequest());
     try {
-     await DistancesApiService.postDistances(userId);
+      await DistancesApiService.postDistances(userId);
       dispatch(postDistancesSuccess());
     } catch (e) {
       dispatch(postDistancesFailure(e.message));

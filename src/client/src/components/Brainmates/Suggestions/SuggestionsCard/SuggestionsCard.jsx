@@ -14,8 +14,8 @@ export default function SuggestionsCard({
         <div className="suggestion-card-avatar-container">
           <img className="suggestion-card-avatar-img" src={picture} alt="mate" />
         </div>
-        <h1>{`Name : ${userName}`}</h1>
-        <h1>{`Age : ${age}`}</h1>
+        <h1>{`${userName}`}</h1>
+        <h1>{`${age} y/o`}</h1>
         <p>{bestResult}</p>
         <p>{`${amountOfSamePersonalAnswers} similar personal answers`}</p>
       </div>
