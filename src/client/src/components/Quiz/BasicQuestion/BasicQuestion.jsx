@@ -5,10 +5,6 @@ import Question from "./Question/Question";
 import { useEffect, useState } from "react";
 import correctAnswerSound from "../../../assets/sounds/correctAnswerSound.mp3";
 import incorrectAnswerSound from "../../../assets/sounds/incorrectAnswerSound.wav";
-import personalAnswerSound from "../../../assets/sounds/personalPreferenceSound.wav";
-
-//We need to add loading state
-//TODO decide what action to take once the index reaches the end of q array
 
 export default function BasicQuestion({
   question,
@@ -22,7 +18,6 @@ export default function BasicQuestion({
   const [options, setOptions] = useState([]);
   const correctSound = new Audio(correctAnswerSound);
   const incorrectSound = new Audio(incorrectAnswerSound);
- //const personalSound = new Audio(personalAnswerSound)
 
   useEffect(() => {
     let questionsArray = [];
@@ -46,9 +41,10 @@ export default function BasicQuestion({
         answerIsCorrect = false;
         incorrectSound.play();
       }
-    } else {
-      //personalSound.play();
     }
+  if (answersArray.length === 9){
+    console.log("end quiz")
+  }
 
     const answerObject = {
       userId: userId,
@@ -62,6 +58,7 @@ export default function BasicQuestion({
     incrementQuestionIndexAction();
 
     addAnswer(answerObject, answersArray, questions);
+   
   };
 
   return (

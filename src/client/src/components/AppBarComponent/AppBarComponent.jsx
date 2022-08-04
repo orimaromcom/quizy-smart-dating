@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -17,10 +18,8 @@ import style from "./appbarcomponent.module.css";
 const pages = ["USERSCORE"];
 
 const AppBarComponent = ({ profile }) => {
-  /*   useEffect(() => {
+  const location = useLocation();
 
-  }, [profile]); */
-  console.log(profile);
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -106,9 +105,15 @@ const AppBarComponent = ({ profile }) => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton /* onClick={ handleOpenUserMenu } */ sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src={profile.picture}    style={{
-             border: '3px solid white'
-          }}/>
+                {location.pathname === "/login" ? null : (
+                  <Avatar
+                    alt="Remy Sharp"
+                    src={profile.picture}
+                    style={{
+                      border: "1.7px solid white",
+                    }}
+                  />
+                )}
               </IconButton>
             </Tooltip>
           </Box>
