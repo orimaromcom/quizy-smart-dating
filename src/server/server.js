@@ -1,9 +1,10 @@
 const express = require("express");
 const { sequelize } = require("./db/models");
 const bodyParser = require("body-parser");
-const cors = require("cors");
 
-const logger = require("./middleware/logger");
+const requestLoggerMiddleware = require("./middleware/request-logger.js");
+const errorHandler = require("./middleware/error-handler.js");
+require('express-async-errors');
 
 const quizRouter = require("./server-quiz/routes/quiz-router");
 const matchingRouter = require("./server-matching/routes/matching-router");
@@ -21,7 +22,6 @@ async function test() {
 test();
 
 const app = express();
-//app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -31,7 +31,8 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use(logger);
+app.use(requestLoggerMiddleware);
+app.use(errorHandler);
 
 app.use("/matching", matchingRouter);
 

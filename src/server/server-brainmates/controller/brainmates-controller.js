@@ -1,5 +1,5 @@
 const brainmatesManager = require("../services/brainmates-manager");
-const { ErrorIfNaN, ErrorIfNotFound } = require("../../server-matching/controller/matching-controller");
+const { ErrorIfNaN, ErrorIfNotFound } = require("../../common-errors");
 
 
 async function postUserLike(req, res) {

@@ -25,7 +25,6 @@ async function getUserInfo(email) {
     },
   });
   const userInfo = {};
-
   if (user) {
     userInfo.id = user.id;
     userInfo.email = user.email;

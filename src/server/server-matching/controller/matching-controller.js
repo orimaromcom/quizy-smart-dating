@@ -1,4 +1,5 @@
 const matchingManager = require("../services/matching-manager");
+const { ErrorIfNaN, ErrorIfNotFound } = require("../../common-errors");
 
 async function getAllPersonalAnswers(req, res) {
   let personalAnswers = await matchingManager.getAllPersonalAnswers();
@@ -72,26 +73,6 @@ async function postAllUsersDistances(req, res) {
   res.status(200).json(userDistances);
 }
 
-function ErrorIfNaN(id) {
-  if (isNaN(id)) {
-    // const error = Error()
-    // error.statusCode = 400;
-    // error.message = 'Id should be a number';
-    // throw error;
-    console.log("Not found: Id should be a number");
-  }
-}
-
-function ErrorIfNotFound(item) {
-  if (!item) {
-    // const error = Error()
-    // error.statusCode = 404;
-    // error.message = 'Not found';
-    // throw error;
-    console.log("Item is not found in database");
-  }
-}
-
 module.exports = {
   getAllPersonalAnswers,
   getUserPersonalAnswers,
@@ -103,6 +84,4 @@ module.exports = {
   postUserDistances,
   postAllUsersDistances,
   getSuggestionsForUser,
-  ErrorIfNaN,
-  ErrorIfNotFound
 };
