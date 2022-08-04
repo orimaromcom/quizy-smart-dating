@@ -18,7 +18,7 @@ const fetchProfileFailure = (errorMessage) => ({
 
 export const fetchProfileAction = (email) => {
   return async (dispatch) => {
-    dispatch(fetchProfileRequest("Loading Profile..."));
+    dispatch(fetchProfileRequest("Loading..."));
     try {
       const Profile = await UserApiService.getUserByEmail(email);
       dispatch(fetchProfileSuccess(Profile));

@@ -1,7 +1,7 @@
 import Page from "../Page/Page";
 import heart_loader_style from "./heart-loader.module.scss";
 
-export default function HeartLoader({ isLoading, loadingMessage }) {
+export default function HeartLoader({ quote, loadingMessage }) {
   return (
     <Page>
       <div className={heart_loader_style.container}>
@@ -26,6 +26,10 @@ export default function HeartLoader({ isLoading, loadingMessage }) {
           </div>
         </div>
         <div className={heart_loader_style.text}>{loadingMessage}</div>
+        <div className={heart_loader_style.text}>
+          <div className={heart_loader_style.quote}>{quote?.quote}</div>
+          <div className={heart_loader_style.author}>{quote?.author}</div>
+        </div>
       </div>
     </Page>
   );
