@@ -17,7 +17,7 @@
 }
 
 .profile_picture_container{
-    overflow: hidden;   
+    overflow: hidden;
     display: flex;
     justify-content: center;
     flex-basis: 90%;
