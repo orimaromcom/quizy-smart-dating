@@ -20,6 +20,10 @@ export default function Brainmates({
     }
   }, [navigate, userId]);
 
+  // async function updateBrainmates(userId) {
+  //   await fetchBrainmatesAction(userId);
+  // }
+  // updateBrainmates(userId);
 
   useEffect(() => {
     // if (userId && !Object.keys(brainmates).length) fetchBrainmatesAction(userId);
@@ -27,7 +31,7 @@ export default function Brainmates({
     async function updateBrainmates(userId) {
       await fetchBrainmatesAction(userId);
     }
-    updateBrainmates(userId);
+    if (userId) updateBrainmates(userId);
   }, [fetchBrainmatesAction, userId]);
 
   return (

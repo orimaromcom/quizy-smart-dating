@@ -11,6 +11,7 @@ import {
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import UserApiService from "../../services/user-api-service";
+import { useCallback } from "react";
 
 export default function Profile({
   profile,
@@ -28,12 +29,20 @@ export default function Profile({
   const [edit, setEdit] = useState(false);
   const [profileObj, setProfileObj] = useState(profile);
 
+   const isDetailsFull = useCallback (() => {
+    return Object.keys(profileObj)
+      .map((key) => !!profileObj[key])
+      .every((field) => !!field);
+  }, [profileObj]);
+
   useEffect(() => {
     setProfileObj(profile);
+    console.log('profile.location', profile.location);
     if (profile && profile.id && !profile.location) {
       async function setTriviaStatistics(id) {
         try {
           await UserApiService.setTriviaStatistics(id);
+          console.log("setTriviaStatistics success");
         } catch (error) {
           showErrorAction("Problems with saving data");
         }
@@ -95,12 +104,6 @@ export default function Profile({
     } else {
       showErrorAction("You missed some details");
     }
-  };
-
-  const isDetailsFull = () => {
-    return Object.keys(profileObj)
-      .map((key) => !!profileObj[key])
-      .every((field) => !!field);
   };
 
   return profile && profile.id ? (

@@ -20,7 +20,6 @@ export default function Suggestions({
   audio.loop = true;
 
   const decisionHandler = async (decision, suggestedUser) => {
-    console.log('suggestedUser:', suggestedUser);
     const currentUserLikesSuggestedUser = decision === "✔️";
     if (currentUserLikesSuggestedUser && suggestedUser.likeBack) {
       // audio.play();
@@ -28,7 +27,7 @@ export default function Suggestions({
       confetti();
       console.log("We have a match!!!!!!!!");
     }
-    postUserLikeAction(
+    await postUserLikeAction(
       userId,
       suggestedUser.userId,
       currentUserLikesSuggestedUser
@@ -41,11 +40,18 @@ export default function Suggestions({
     }
   }
 
+  const goBackToBrainmatesWithDelay = (timeout) => {
+    setTimeout(() => {
+      updateSuggestionsOrBrainmatesAction("brainmates")
+    }, timeout);
+    return null;
+  }
+
   return isLoading ? (
     <>
       <HeartLoader /> <div>Loading suggestions</div>
     </>
-  ) : (
+  ) : ( suggestions[suggestionsOrBrainmates] ?
     <div className={style.page_container}>
       <SuggestionsCard
         userName={suggestions[suggestionsOrBrainmates].username}
@@ -55,7 +61,6 @@ export default function Suggestions({
         picture={suggestions[suggestionsOrBrainmates].picture}
       />
       <div className={style.buttons_container}>
-      {suggestions[suggestionsOrBrainmates].username}
         <div
           className={style.yes_no_btn_container}
           onClick={() => decisionHandler("✔️", suggestions[suggestionsOrBrainmates])}>
@@ -74,6 +79,10 @@ export default function Suggestions({
           </Button>
         </div>
       </div>
-    </div>
+    </div> :
+    <p>
+      Sorry, there are no suggestions for you...
+      { goBackToBrainmatesWithDelay(3000) }
+    </p>
   );
 }

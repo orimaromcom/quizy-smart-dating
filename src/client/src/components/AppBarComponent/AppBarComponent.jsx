@@ -126,7 +126,7 @@ const AppBarComponent = ({ profile, userLogoutAction }) => {
                   }}
                   sx={{ p: 0 }}
                 >
-                  <Avatar alt="Remy Sharp" src={profile.picture} />
+                  <Avatar alt="?" src={profile.picture} />
                 </IconButton>
               </Tooltip>
             </Box>
