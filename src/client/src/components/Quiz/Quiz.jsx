@@ -28,6 +28,7 @@ export default function Quiz({
   isLoading,
   postDistancesAction,
   isAudio,
+  toggleIsBrokenAction,
 }) {
   const [playAgainClicked, setPlayAgainClicked] = useState(false);
   const quizEndSound = new Audio(quizEndSoundFile);
@@ -98,6 +99,7 @@ export default function Quiz({
           incrementQuestionIndexAction={incrementQuestionIndexAction}
           questionIndex={questionIndex}
           isAudio={isAudio}
+          toggleIsBrokenAction={toggleIsBrokenAction}
         />
       ) : isLoading ? null : (
         <>

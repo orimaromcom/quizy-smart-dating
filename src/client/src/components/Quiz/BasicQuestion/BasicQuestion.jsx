@@ -16,6 +16,7 @@ export default function BasicQuestion({
   questions,
   answersArray,
   isAudio,
+  toggleIsBrokenAction,
 }) {
   const [options, setOptions] = useState([]);
   const correctSound = new Audio(correctAnswerSound);
@@ -47,6 +48,11 @@ const muteOnLastQuestion = answersArray.length === 9 && isAudio
         answerIsCorrect = false;
         if (!muteOnLastQuestion) {
           incorrectSound.play();
+          toggleIsBrokenAction();
+
+          setTimeout(function () {
+            toggleIsBrokenAction();
+          }, 1500);
         }
       }
     } else {

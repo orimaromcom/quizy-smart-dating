@@ -22,6 +22,8 @@ import { fetchNewSuggestionsAction } from "../../redux/actions/fetch-suggestions
 import { getSuggestions } from "../../redux/selectors/suggestions-entities-selector";
 import {getIsLoading} from "../../redux/selectors/app-view-selector"
 import { getIsAudio } from "../../redux/selectors/app-view-selector";
+import { getIsBroken} from "../../redux/selectors/app-view-selector"
+import { toggleIsBrokenAction } from "../../redux/actions/toggle-isbroken-action"
 
 const mapStateToProps = (state) => {
   const questions = getAllQuestions(state);
@@ -31,6 +33,7 @@ const mapStateToProps = (state) => {
   const isLoading = getIsLoading(state)
   const quote = getQuote(state);
   const isAudio = getIsAudio(state)
+  const isBroken = getIsBroken(state)
 
   const userId = getProfile(state).id;
   return {
@@ -42,6 +45,7 @@ const mapStateToProps = (state) => {
     suggestions,
     isLoading,
     isAudio,
+    isBroken,
   };
 };
 
@@ -58,6 +62,7 @@ const mapDispatchToProps = (dispatch) => {
       clearQuestionsArrayAction,
       clearQuestionsIndexAction,
       postDistancesAction,
+      toggleIsBrokenAction,
     },
     dispatch
   );

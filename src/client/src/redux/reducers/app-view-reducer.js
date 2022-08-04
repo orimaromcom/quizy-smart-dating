@@ -8,6 +8,7 @@ const initialState = {
   isSuccess: false,
   successMessage: "Success!",
   isAudio: true,
+  isBroken: false,
 };
 
 const appViewReducer = (state = initialState, action) => {
@@ -92,6 +93,12 @@ const appViewReducer = (state = initialState, action) => {
         return {
           ...state,
           isAudio: !state.isAudio
+        };
+
+        case actionTypes.TOGGLE_IS_BROKEN:
+        return {
+          ...state,
+          isBroken: !state.isBroken
         };
 
     default:

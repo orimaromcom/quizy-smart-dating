@@ -2,7 +2,7 @@ import "./progress-bar.scss";
 import { Box } from "@mui/material";
 import LinearProgress, { linearProgressClasses } from "@mui/material/LinearProgress";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import HeartParticles from "../HeartParticlesAnimation/HeartParticles";
+import HeartParticlesConnector from "../HeartParticlesAnimation/HeartParticleConnector";
 
 import { styled } from "@mui/material/styles";
 
@@ -29,7 +29,7 @@ export default function ProgressBar({ progressPercentage }) {
         height={10}
       />
     {/*   <FavoriteIcon className="heart-icon" color={"primary"} sx={{ fontSize: 70 }} /> */}
-      <HeartParticles />
+      <HeartParticlesConnector />
     </Box>
   );
 }

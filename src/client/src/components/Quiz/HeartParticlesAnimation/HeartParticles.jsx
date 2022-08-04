@@ -69,14 +69,16 @@ function removeParticle(e) {
   e.srcElement.effect.target.remove();
 }
 
-export default function HeartParticles() {
-  const [isBroken, setIsBroken] = useState(false);
-
+export default function HeartParticles({ isBroken, toggleIsBrokenAction }) {
   return (
     <div
       onClick={(e) => {
-         pop(e);
-        //setIsBroken(!isBroken);
+        //pop(e);
+        toggleIsBrokenAction();
+
+        setTimeout(function () {
+          toggleIsBrokenAction();
+        }, 1500);
       }}
     >
       <svg
