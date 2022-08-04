@@ -1,7 +1,15 @@
-.quiz-container{
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    width: 100%;
-    align-items: center;
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+  align-items: center;
+}
+
+.play_again_btn {
+   margin: 5%; 
+  width: 50%;
+   display: flex;
+  justify-content: space-around;
+  padding-bottom: 15px; 
 }

@@ -12,7 +12,7 @@ const questionsEntitiesReducer = (state = initialState, action) => {
     case actionTypes.FETCH_QUESTIONS_SUCCESS:
       return {
         ...state,
-        questions: [...state.questions, ...action.payload],
+        questions: [...action.payload],
         questionsLoading: false,
       };
 
@@ -27,6 +27,19 @@ const questionsEntitiesReducer = (state = initialState, action) => {
         ...state,
         questionIndex: state.questionIndex + 1,
       };
+
+      case actionTypes.CLEAR_QUESTION_INDEX:
+        return {
+          ...state,
+          questionIndex: 0,
+        };
+
+    
+      case actionTypes.CLEAR_QUESTIONS_ARRAY:
+        return {
+          ...state,
+          questions: [],
+        };
 
       case actionTypes.UPDATE_QUOTE:
         return {

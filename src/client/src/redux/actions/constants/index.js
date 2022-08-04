@@ -6,6 +6,11 @@ const QUIZ_ACTIONS = {
   UPDATE_QUOTE: "update_quote",
 
   INCREMENT_QUESTION_INDEX: "increment_question_index",
+  CLEAR_QUESTION_INDEX: "clear_question_index",
+  CLEAR_QUESTIONS_ARRAY: "clear_questions_array",
+
+  QUIZ_ONGOING: "quiz_ongoing",
+  QUIZ_FINISHED: "quiz_finished",
 
   INCREMENT_ANSWER_INDEX: "increment_answer_index",
   CLEAR_ANSWERS_ARRAY: "clear_answers_array",
@@ -22,6 +27,9 @@ const QUIZ_ACTIONS = {
   FETCH_SUGGESTIONS_SUCCESS: "fetch_suggestions_success",
   FETCH_SUGGESTIONS_FAILURE: "fetch_suggestions_failure",
 
+  CLEAR_SUGGESTIONS: "clear_suggestions",
+  UPDATE_SUGGESTION_DISTANCE: "update_suggestion_distance",
+
   UPDATE_PROFILE_REQUEST: "update_profile_request",
   UPDATE_PROFILE_SUCCESS: "update_profile_success",
   UPDATE_PROFILE_FAILURE: "update_profile_failure",
@@ -29,6 +37,14 @@ const QUIZ_ACTIONS = {
   FETCH_PROFILE_REQUEST: "fetch_profile_request",
   FETCH_PROFILE_SUCCESS: "fetch_profile_success",
   FETCH_PROFILE_FAILURE: "fetch_profile_failure",
+
+  POST_DISTANCES_REQUEST: "post_distances_request",
+  POST_DISTANCES_SUCCESS: "post_distances_success",
+  POST_DISTANCES_FAILURE: "post_distances_failure",
+
+  POST_USER_LIKE_REQUEST: "post_user_like_request",
+  POST_USER_LIKE_SUCCESS: "post_user_like_success",
+  POST_USER_LIKE_FAILURE: "post_user_like_failure",
 
   UPDATE_PAGE_BUTTON: "update_page_button",
 

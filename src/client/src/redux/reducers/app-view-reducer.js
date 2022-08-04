@@ -18,7 +18,8 @@ const appViewReducer = (state = initialState, action) => {
     case actionTypes.FETCH_ACHIEVEMENTS_REQUEST:
     case actionTypes.FETCH_BRAINMATES_REQUEST:
     case actionTypes.FETCH_PROFILE_REQUEST:
-    case actionTypes.UPDATE_PROFILE_REQUEST: {
+    case actionTypes.UPDATE_PROFILE_REQUEST:
+    case actionTypes.POST_DISTANCES_REQUEST: {
       return { ...state, isLoading: true };
     }
 
@@ -26,7 +27,8 @@ const appViewReducer = (state = initialState, action) => {
     case actionTypes.FETCH_PROFILE_SUCCESS:
     case actionTypes.FETCH_BRAINMATES_SUCCESS:
     case actionTypes.FETCH_ACHIEVEMENTS_SUCCESS:
-    case actionTypes.FETCH_QUESTIONS_SUCCESS: {
+    case actionTypes.FETCH_QUESTIONS_SUCCESS:
+    case actionTypes.POST_DISTANCES_SUCCESS: {
       return { ...state, isError: false, isLoading: false };
     }
 
@@ -35,6 +37,7 @@ const appViewReducer = (state = initialState, action) => {
     case actionTypes.FETCH_BRAINMATES_FAILURE:
     case actionTypes.FETCH_ACHIEVEMENTS_FAILURE:
     case actionTypes.FETCH_SUGGESTIONS_FAILURE:
+    case actionTypes.POST_DISTANCES_FAILURE:
     case actionTypes.FETCH_QUESTIONS_FAILURE: {
       let errorMessage = action.payload;
       if (action.payload === "Request failed with status code 404") {

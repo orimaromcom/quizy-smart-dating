@@ -5,24 +5,32 @@ export default function Heart({
   quote,
   fetchNewSuggestionsAction,
   userId,
-  setHeartClicked,
+  suggestionDistance,
   updatePageButtonAction,
+  updateSuggestionDistanceAction,
+  suggestions,
+  setPlayAgainClicked,
+  clearQuestionsArrayAction,
+  clearQuestionsIndexAction,
+  updateQuoteAction,
 }) {
   const navigate = useNavigate();
   const HeartCLickHandler = () => {
-    fetchNewSuggestionsAction(userId);
-    setHeartClicked(true);
+    setPlayAgainClicked(true);
+    clearQuestionsArrayAction();
+    clearQuestionsIndexAction();
+    updateQuoteAction();
+
+    updatePageButtonAction("brainmates");
+
+    updateSuggestionDistanceAction("closest");
+
     navigate("/brainmates");
-    updatePageButtonAction("brainmates")
   };
 
   return (
-    // <div></div>
     <div className={style.container}>
-      <div
-        className={style.heart_container}
-        onClick={() => HeartCLickHandler()}
-      >
+      <div className={style.heart_container} onClick={() => HeartCLickHandler()}>
         {<div className={style.heart} />}
       </div>
       <div className={style.text}>

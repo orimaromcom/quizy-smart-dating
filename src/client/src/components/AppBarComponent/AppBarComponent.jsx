@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect } from "react";
 import {
   AppBar,
   Box,
@@ -14,7 +15,11 @@ import HeartIcon from "@mui/icons-material/FavoriteTwoTone";
 
 const pages = ["USERSCORE"];
 
-const ResponsiveAppBar = () => {
+const AppBarComponent = ({profile}) => {
+/*   useEffect(() => {
+
+  }, [profile]); */
+  console.log(profile)
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -87,7 +92,7 @@ const ResponsiveAppBar = () => {
             <Tooltip title="Open settings">
               <IconButton /* onClick={ handleOpenUserMenu } */ sx={{ p: 0 }}>
                 <Avatar
-                  alt="Remy Sharp" /* src= "../../assets/images/avatar.png" */
+                  alt="Remy Sharp"  src= {profile.picture}
                 />
               </IconButton>
             </Tooltip>
@@ -97,4 +102,4 @@ const ResponsiveAppBar = () => {
     </AppBar>
   );
 };
-export default ResponsiveAppBar;
+export default AppBarComponent;
