@@ -1,4 +1,5 @@
 const express = require('express');
+const auth = require('../../middleware/auth');
 const {
   postUserLike,
   getBrainmatesForUser,
@@ -8,7 +9,7 @@ const {
 const brainmatesRouter = express.Router();
 
 brainmatesRouter.post('/like', postUserLike);
-brainmatesRouter.get('/like/:from/:to', getIsLikeFromTo);
-brainmatesRouter.get('/:id', getBrainmatesForUser);
+brainmatesRouter.get('/like/:from/:to', auth, getIsLikeFromTo);
+brainmatesRouter.get('/:id', auth, getBrainmatesForUser);
 
 module.exports = brainmatesRouter;

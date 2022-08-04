@@ -14,6 +14,12 @@ async function getUserInfo(req, res) {
 }
 
 async function setTriviaStatistics(req, res) {
+  console.log("****postUserInfo****");
+  console.log('req.headers', req.headers);
+  console.log("********");
+  console.log("****postUserInfo****");
+  console.log('req.body', req.body);
+  console.log("********");
   let userId = Number.parseInt(req.params.id);
   ErrorIfNaN(userId);
   const responce = await userManager.setTriviaStatistics(userId);

@@ -1,12 +1,15 @@
+import axios from "axios";
+import { headers } from "./headers";
+
 export default class AnswersApiService {
   static async postAnswers(answersArray) {
     try {
-      const response = await fetch(`/quiz/answers`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ answersArray: answersArray }),
+      const response = await axios.post(`/quiz/answers`, {
+        answersArray: answersArray ,
+      }, {
+        headers: headers,
       });
-      return response.data;
+      return response;
     } catch (error) {
       console.log("Error:", error.message);
       // throw new Error(error.message);
