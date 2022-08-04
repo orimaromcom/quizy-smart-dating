@@ -15,7 +15,6 @@ import UserApiService from "../../services/user-api-service";
 export default function Profile({
   profile,
   updateProfileAction,
-  userLogoutAction,
   showErrorAction,
 }) {
   const navigate = useNavigate();
@@ -106,12 +105,6 @@ export default function Profile({
 
   return profile && profile.id ? (
     <div className={style.profile_container}>
-      <Button
-        className={style.logaout_btn}
-        onClick={() => userLogoutAction({})}
-      >
-        Logout
-      </Button>
       <div className={style.profile_top_container}>
         <div className={style.profile_picture_container}>
           <img
