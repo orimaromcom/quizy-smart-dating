@@ -1,3 +1,4 @@
+import SwitchButton from "./SwitchButton/SwitchButton";
 import * as React from "react";
 import { useLocation } from "react-router-dom";
 import {
@@ -12,6 +13,7 @@ import {
   Tooltip,
 } from "@mui/material";
 import style from "./appbarcomponent.module.css";
+
 import { useState } from "react";
 
 const pages = ["USERSCORE"];
@@ -102,15 +104,25 @@ const AppBarComponent = ({ profile, userLogoutAction }) => {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip
                 title={
-                  <Button
-                    variant="contained"
-                    onClick={() => {
-                      setShowLogOuot(false);
-                      userLogoutAction();
-                    }}
-                  >
-                    Logout
-                  </Button>
+                  <>
+                    <Button
+                      variant="contained"
+                      onClick={() => {
+                        setShowLogOuot(false);
+                        userLogoutAction();
+                      }}
+                    >
+                      Logout
+                    </Button>
+                    {
+                      <div className={style.audio_container}>
+                        <span className={style.audio_switch}>
+                          <SwitchButton />
+                          <div className={style.audio_emoji}>🔉</div>
+                        </span>
+                      </div>
+                    }
+                  </>
                 }
                 open={showLogOuot}
                 PopperProps={{
