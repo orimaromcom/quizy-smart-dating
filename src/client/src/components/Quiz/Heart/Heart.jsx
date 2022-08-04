@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Heart({
   updatePageButtonAction,
-  updateSuggestionDistanceAction,
+  updateSuggestionsOrBrainmatesAction,
   setPlayAgainClicked,
   clearQuestionsArrayAction,
   clearQuestionsIndexAction,
@@ -18,7 +18,7 @@ export default function Heart({
 
     updatePageButtonAction("brainmates");
 
-    updateSuggestionDistanceAction("closest");
+    updateSuggestionsOrBrainmatesAction("closest");
 
     navigate("/brainmates");
   };

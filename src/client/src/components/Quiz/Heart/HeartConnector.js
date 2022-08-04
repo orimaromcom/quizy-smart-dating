@@ -6,14 +6,14 @@ import { clearQuestionsIndexAction } from "../../../redux/actions/clear-question
 import { updateQuoteAction } from "../../../redux/actions/update-quote-actions";
 import { fetchNewSuggestionsAction } from "../../../redux/actions/fetch-suggestions-action";
 import { updatePageButtonAction } from "../../../redux/actions/update-page-button-action";
-import { updateSuggestionDistanceAction } from "../../../redux/actions/update-suggestions-distance-value-action";
+import { updateSuggestionsOrBrainmatesAction } from "../../../redux/actions/update-suggestions-distance-value-action";
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
       fetchNewSuggestionsAction,
       updatePageButtonAction,
-      updateSuggestionDistanceAction,
+      updateSuggestionsOrBrainmatesAction,
       clearQuestionsArrayAction,
       clearQuestionsIndexAction,
       updateQuoteAction,

@@ -116,7 +116,7 @@ async function setSuggestedUserInfo(distance, likeBack) {
     suggestedUser = await getMatchingUserInfo(distance.User);
     suggestedUser.amountOfSamePersonalAnswers = distance.personalSimilarity;
     suggestedUser.closenessInTrivia = `${100 - distance.triviaDifference * 100}%`;
-    suggestedUser.likeBack = likeBack || 'pending';
+    suggestedUser.likeBack = likeBack;
   } else {
     suggestedUser = null;
   }
