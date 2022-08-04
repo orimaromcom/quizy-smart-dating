@@ -65,7 +65,7 @@ export default function Quiz({
         clearAnswersArray();
       }
     }
-  }, []);
+  }, [fetchNewQuestionsAction, questions, answersArray, clearAnswersArray, isFinished]);
 
   return (
     <div className="quiz-container">
@@ -83,7 +83,7 @@ export default function Quiz({
         />
       ) : isLoading ? null : (
         <>
-          <p>New suggestions were found for you!</p>
+	        <p>New suggestions were found for you!</p>
           <p>Press the big heart!</p>
           <HeartConnector
             quote={quote}
