@@ -15,11 +15,12 @@ export default function Login({
   const navigate = useNavigate();
   useEffect(() => {
     if (profile && profile.id) {
-      updatePageButtonAction("quiz");
-      navigate("/quiz");
+      const navigateToPage = profile.location ? "quiz" : "profile";
+      updatePageButtonAction(navigateToPage);
+      navigate(`/${navigateToPage}`);
       return;
     }
-  }, [navigate, profile]);
+  }, [navigate, profile, updatePageButtonAction]);
 
   const [email, setEmail] = useState("");
   const [picture, setPicture] = useState("");
@@ -32,6 +33,16 @@ export default function Login({
         email: email,
         picture: picture,
         userName: name,
+        age: 30,
+        phone: null,
+        location: null,
+        gender: "male",
+        preferences: {
+          relation_type: "romantic",
+          gender: "any",
+          minAge: 18,
+          maxAge: 55,
+        },
       });
     }
   });
