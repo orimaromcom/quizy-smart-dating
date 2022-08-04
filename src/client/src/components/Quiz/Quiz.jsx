@@ -19,11 +19,9 @@ export default function Quiz({
   incrementAnswersIndexAction,
   clearAnswersArray,
   updateQuoteAction,
-  quote,
   fetchNewSuggestionsAction,
   clearQuestionsArrayAction,
   clearQuestionsIndexAction,
-  isLoading,
   postDistancesAction,
 }) {
   const [playAgainClicked, setPlayAgainClicked] = useState(false);
@@ -47,13 +45,12 @@ export default function Quiz({
   const isFinished = questions.length && questionIndex === questions.length;
 
   useEffect(() => {
-    if (!questions.length && !playAgainClicked && !isLoading) {
+    if (!questions.length && !playAgainClicked) {
       fetchNewQuestionsAction();
       updateQuoteAction();
     }
     if (isFinished) {
       confetti();
-
       async function postAnswersPostDistancesGetSuggestions(
         answersArray,
         userId
@@ -77,7 +74,7 @@ export default function Quiz({
 
   return (
     <div className="quiz-container">
-      {!isFinished && !isLoading ? (
+      {!isFinished ? (
         <>
           <ProgressBar
             progressPercentage={(questionIndex / questions.length) * 100}
@@ -92,12 +89,11 @@ export default function Quiz({
             questionIndex={questionIndex}
           />
         </>
-      ) : isLoading ? null : (
+      ) : (
         <>
           <p>New suggestions were found for you!</p>
           <p>Press the big heart!</p>
           <HeartConnector
-            quote={quote}
             fetchNewSuggestionsAction={fetchNewSuggestionsAction}
             userId={userId}
             setPlayAgainClicked={setPlayAgainClicked}
