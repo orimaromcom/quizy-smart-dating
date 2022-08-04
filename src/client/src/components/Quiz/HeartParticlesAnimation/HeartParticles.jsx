@@ -75,8 +75,8 @@ export default function HeartParticles() {
   return (
     <div
       onClick={(e) => {
-        // pop(e);
-        setIsBroken(!isBroken);
+         pop(e);
+        //setIsBroken(!isBroken);
       }}
     >
       <svg
