@@ -20,6 +20,7 @@
 }
 
 #option-button-id {
-  font-size: 20px;
+  font-size: 22px;
   font-family: "Blinker", sans-serif;
+  line-height: 22px
 }
