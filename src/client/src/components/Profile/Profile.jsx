@@ -183,6 +183,7 @@ export default function Profile({
                   e.target.checked ? "romantic" : "friendly"
                 );
               }}
+              checked={profileObj.preferences.relation_type === "romantic"}
             />
             <h2>Romantic</h2>
           </span>

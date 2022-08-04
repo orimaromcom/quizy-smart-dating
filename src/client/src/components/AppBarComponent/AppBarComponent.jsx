@@ -115,9 +115,7 @@ const AppBarComponent = ({ profile, userLogoutAction }) => {
                 open={showLogOuot}
                 PopperProps={{
                   popperOptions: {
-                    modifiers: {
-                      placement: "top",
-                    },
+                    placement: "top",
                   },
                 }}
                 placement="top"
