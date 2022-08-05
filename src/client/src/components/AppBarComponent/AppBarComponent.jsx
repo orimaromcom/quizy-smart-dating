@@ -30,7 +30,8 @@ const AppBarComponent = ({ profile, userLogoutAction, totalScore }) => {
         disableGutters
         style={{
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent:
+            location.pathname === "/login" ? "center" : "space-around",
           width: "95%",
         }}
       >

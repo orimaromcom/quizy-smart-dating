@@ -11,6 +11,7 @@ export default function Login({
   fetchProfileAction,
   updateProfileAction,
   updatePageButtonAction,
+  fetchAchievementsAction,
 }) {
   const navigate = useNavigate();
   useEffect(() => {
@@ -59,6 +60,11 @@ export default function Login({
     },
     [fetchProfileAction]
   );
+
+  useEffect(() => {
+    if (profile && profile.location && profile.id)
+      fetchAchievementsAction(profile.id);
+  }, [profile]);
 
   const googleLogIn = (
     <GoogleLogin

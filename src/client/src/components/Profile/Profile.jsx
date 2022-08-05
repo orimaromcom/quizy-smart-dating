@@ -29,7 +29,7 @@ export default function Profile({
   const [edit, setEdit] = useState(false);
   const [profileObj, setProfileObj] = useState(profile);
 
-   const isDetailsFull = useCallback (() => {
+  const isDetailsFull = useCallback(() => {
     return Object.keys(profileObj)
       .map((key) => !!profileObj[key])
       .every((field) => !!field);
