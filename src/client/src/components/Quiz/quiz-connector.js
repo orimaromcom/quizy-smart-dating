@@ -4,7 +4,6 @@ import Quiz from "./Quiz";
 import {
   getAllQuestions,
   getQuestionIndex,
-  getQuestionsLoading,
   getQuote,
 } from "../../redux/selectors/questions-entities-selectors";
 import { getProfile } from "../../redux/selectors/profile-entity-selector";
@@ -21,7 +20,6 @@ import { postAnswersAction } from "../../redux/actions/post-answers-action";
 import { incrementAnswersIndexAction } from "../../redux/actions/increment-answers-index-action";
 import { fetchNewSuggestionsAction } from "../../redux/actions/fetch-suggestions-action";
 import { getSuggestions } from "../../redux/selectors/suggestions-entities-selector";
-import { getIsLoading } from "../../redux/selectors/app-view-selector";
 import { incrementScoreAction } from "../../redux/actions/app-view-action";
 
 const mapStateToProps = (state) => {
@@ -29,7 +27,6 @@ const mapStateToProps = (state) => {
   const questionIndex = getQuestionIndex(state);
   const answersArray = getAllAnswers(state);
   const suggestions = getSuggestions(state);
-  const isLoading = getIsLoading(state);
   const quote = getQuote(state);
 
   const userId = getProfile(state).id;
@@ -38,9 +35,8 @@ const mapStateToProps = (state) => {
     userId,
     answersArray,
     questionIndex,
-    quote,
     suggestions,
-    isLoading,
+    quote,
   };
 };
 
