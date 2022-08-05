@@ -42,6 +42,10 @@ const QUIZ_ACTIONS = {
   POST_DISTANCES_SUCCESS: "post_distances_success",
   POST_DISTANCES_FAILURE: "post_distances_failure",
 
+  POST_ANSWERS_REQUEST: "post_answers_request",
+  POST_ANSWERS_SUCCESS: "post_answers_success",
+  POST_ANSWERS_FAILURE: "post_answers_failure",
+
   POST_USER_LIKE_REQUEST: "post_user_like_request",
   POST_USER_LIKE_SUCCESS: "post_user_like_success",
   POST_USER_LIKE_FAILURE: "post_user_like_failure",

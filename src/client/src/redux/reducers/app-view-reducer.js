@@ -46,6 +46,7 @@ const appViewReducer = (state = initialState, action) => {
     case actionTypes.FETCH_ACHIEVEMENTS_FAILURE:
     case actionTypes.FETCH_SUGGESTIONS_FAILURE:
     case actionTypes.POST_DISTANCES_FAILURE:
+    case actionTypes.POST_ANSWERS_FAILURE:
     case actionTypes.POST_USER_LIKE_FAILURE:
     case actionTypes.FETCH_QUESTIONS_FAILURE: {
       let errorMessage = action.payload;
