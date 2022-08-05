@@ -46,6 +46,10 @@ const QUIZ_ACTIONS = {
   POST_ANSWERS_SUCCESS: "post_answers_success",
   POST_ANSWERS_FAILURE: "post_answers_failure",
 
+  SET_TRIVIA_REQUEST: "set_trivia_request",
+  SET_TRIVIA_SUCCESS: "set_trivia_success",
+  SET_TRIVIA_FAILURE: "set_trivia_failure",
+
   POST_USER_LIKE_REQUEST: "post_user_like_request",
   POST_USER_LIKE_SUCCESS: "post_user_like_success",
   POST_USER_LIKE_FAILURE: "post_user_like_failure",

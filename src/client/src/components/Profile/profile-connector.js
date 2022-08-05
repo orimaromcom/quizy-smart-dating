@@ -5,6 +5,7 @@ import { fetchProfileAction } from "../../redux/actions/fetch-profile-action";
 import { updateProfileAction } from "../../redux/actions/update-profile-action";
 import { getProfile } from "../../redux/selectors/profile-entity-selector";
 import { showErrorAction } from "../../redux/actions/app-view-action";
+import { setTriviaAction } from "../../redux/actions/set-trivia-action"
 
 const mapStateToProps = (state) => {
   const profile = getProfile(state);
@@ -17,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
       fetchProfileAction,
       updateProfileAction,
       showErrorAction,
+      setTriviaAction
     },
     dispatch
   );
