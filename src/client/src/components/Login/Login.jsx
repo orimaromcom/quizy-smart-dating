@@ -11,15 +11,17 @@ export default function Login({
   fetchProfileAction,
   updateProfileAction,
   updatePageButtonAction,
+  fetchAchievementsAction,
 }) {
   const navigate = useNavigate();
   useEffect(() => {
     if (profile && profile.id) {
-      updatePageButtonAction("quiz");
-      navigate("/quiz");
+      const navigateToPage = profile.location ? "quiz" : "profile";
+      updatePageButtonAction(navigateToPage);
+      navigate(`/${navigateToPage}`);
       return;
     }
-  }, [navigate, profile]);
+  }, [navigate, profile, updatePageButtonAction]);
 
   const [email, setEmail] = useState("");
   const [picture, setPicture] = useState("");
@@ -32,13 +34,25 @@ export default function Login({
         email: email,
         picture: picture,
         userName: name,
+        age: 30,
+        phone: null,
+        location: null,
+        gender: "male",
+        preferences: {
+          relation_type: "romantic",
+          gender: "any",
+          minAge: 18,
+          maxAge: 55,
+        },
       });
     }
   });
 
   const getGoogleLoginData = useCallback(
     async (credentialResponse) => {
-      const { email, picture, name } = jwt_decode(credentialResponse.credential);
+      const { email, picture, name } = jwt_decode(
+        credentialResponse.credential
+      );
       setEmail(email);
       setPicture(picture);
       setName(name);
@@ -46,6 +60,11 @@ export default function Login({
     },
     [fetchProfileAction]
   );
+
+  useEffect(() => {
+    if (profile && profile.location && profile.id)
+      fetchAchievementsAction(profile.id);
+  }, [profile]);
 
   const googleLogIn = (
     <GoogleLogin
@@ -104,7 +123,7 @@ export default function Login({
   loginOptions = (
     <div>
       <h1>Login with google</h1>
-       {googleLogIn}
+      {googleLogIn}
       <br />
       <br />
       <br />

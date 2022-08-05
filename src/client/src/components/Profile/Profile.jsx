@@ -11,11 +11,13 @@ import {
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import UserApiService from "../../services/user-api-service";
+import { useCallback } from "react";
 
 export default function Profile({
   profile,
   updateProfileAction,
   showErrorAction,
+  setTriviaAction
 }) {
   const navigate = useNavigate();
   useEffect(() => {
@@ -28,17 +30,20 @@ export default function Profile({
   const [edit, setEdit] = useState(false);
   const [profileObj, setProfileObj] = useState(profile);
 
+  const isDetailsFull = useCallback(() => {
+    return Object.keys(profileObj)
+      .map((key) => !!profileObj[key])
+      .every((field) => !!field);
+  }, [profileObj]);
+
   useEffect(() => {
     setProfileObj(profile);
     if (profile && profile.id && !profile.location) {
       async function setTriviaStatistics(id) {
-        try {
-          await UserApiService.setTriviaStatistics(id);
-        } catch (error) {
-          showErrorAction("Problems with saving data");
-        }
+        await setTriviaAction(id);
       }
       setTriviaStatistics(profile.id);
+      showErrorAction("Save your personal details to save your game progress");
     }
     setEdit(!isDetailsFull());
   }, [profile]);
@@ -95,12 +100,6 @@ export default function Profile({
     } else {
       showErrorAction("You missed some details");
     }
-  };
-
-  const isDetailsFull = () => {
-    return Object.keys(profileObj)
-      .map((key) => !!profileObj[key])
-      .every((field) => !!field);
   };
 
   return profile && profile.id ? (

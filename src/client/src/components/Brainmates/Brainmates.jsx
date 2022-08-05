@@ -26,7 +26,7 @@ export default function Brainmates({
     async function updateBrainmates(userId) {
       await fetchBrainmatesAction(userId);
     }
-    updateBrainmates(userId);
+    if (userId) updateBrainmates(userId);
   }, [fetchBrainmatesAction, userId]);
 
   return suggestionsOrBrainmates === "brainmates" ? (

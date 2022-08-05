@@ -5,7 +5,6 @@ import confetti from "canvas-confetti";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import HeartConnector from "./Heart/HeartConnector.js";
-import AnswersApiService from "../../services/answers-api-service";
 import "./quiz.css";
 
 export default function Quiz({
@@ -23,6 +22,9 @@ export default function Quiz({
   clearQuestionsArrayAction,
   clearQuestionsIndexAction,
   postDistancesAction,
+  incrementScoreAction,
+  postAnswersAction,
+  quote,
 }) {
   const [playAgainClicked, setPlayAgainClicked] = useState(false);
 
@@ -55,7 +57,7 @@ export default function Quiz({
         answersArray,
         userId
       ) {
-        await AnswersApiService.postAnswers(answersArray);
+        await postAnswersAction(answersArray);
         await postDistancesAction(userId);
         await fetchNewSuggestionsAction(userId);
       }
@@ -89,6 +91,22 @@ export default function Quiz({
             questionIndex={questionIndex}
           />
         </>
+      ) : (
+        <ProgressBar
+          progressPercentage={(questionIndex / questions.length) * 100}
+        />
+      )}
+      {!isFinished ? (
+        <BasicQuestion
+          question={questions[questionIndex] ? questions[questionIndex] : ""}
+          userId={userId}
+          incrementAnswersIndexAction={incrementAnswersIndexAction}
+          answersArray={answersArray}
+          addAnswer={addAnswerAction}
+          incrementQuestionIndexAction={incrementQuestionIndexAction}
+          questionIndex={questionIndex}
+          incrementScoreAction={incrementScoreAction}
+        />
       ) : (
         <>
           <p>New suggestions were found for you!</p>

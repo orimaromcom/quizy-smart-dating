@@ -7,7 +7,7 @@ const initialState = {
   pageButtonValue: "login",
   isSuccess: false,
   successMessage: "Success!",
-  loadingMessage: "Loading...",
+  totalScore: 0,
 };
 
 const appViewReducer = (state = initialState, action) => {
@@ -25,7 +25,6 @@ const appViewReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        loadingMessage: action.payload || "Loading...",
       };
     }
 
@@ -33,13 +32,11 @@ const appViewReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        loadingMessage: "Loging Out...",
       };
     }
 
     case actionTypes.FETCH_PROFILE_SUCCESS:
     case actionTypes.FETCH_BRAINMATES_SUCCESS:
-    case actionTypes.FETCH_ACHIEVEMENTS_SUCCESS:
     case actionTypes.FETCH_QUESTIONS_SUCCESS:
     case actionTypes.POST_DISTANCES_SUCCESS:
     case actionTypes.FETCH_SUGGESTIONS_SUCCESS: {
@@ -47,7 +44,6 @@ const appViewReducer = (state = initialState, action) => {
         ...state,
         isError: false,
         isLoading: false,
-        loadingMessage: "Loading...",
       };
     }
 
@@ -58,7 +54,6 @@ const appViewReducer = (state = initialState, action) => {
         isLoading: false,
         isSuccess: true,
         successMessage: action.payload.SuccessMessage,
-        loadingMessage: "Loading...",
       };
     }
 
@@ -68,10 +63,11 @@ const appViewReducer = (state = initialState, action) => {
     case actionTypes.FETCH_ACHIEVEMENTS_FAILURE:
     case actionTypes.FETCH_SUGGESTIONS_FAILURE:
     case actionTypes.POST_DISTANCES_FAILURE:
+    case actionTypes.POST_ANSWERS_FAILURE:
+    case actionTypes.SET_TRIVIA_FAILURE:
     case actionTypes.POST_USER_LIKE_FAILURE:
     case actionTypes.FETCH_QUESTIONS_FAILURE: {
       let errorMessage = action.payload;
-      console.log(`Error with ${action.type}`);
       if (action.payload === "Request failed with status code 404") {
         errorMessage = "Not found";
       } else if (action.payload === "Request failed with status code 500") {
@@ -82,7 +78,6 @@ const appViewReducer = (state = initialState, action) => {
         isError: true,
         errorMessage: errorMessage,
         isLoading: false,
-        loadingMessage: "Loading...",
       };
     }
 
@@ -108,6 +103,20 @@ const appViewReducer = (state = initialState, action) => {
       return {
         ...state,
         pageButtonValue: action.payload,
+      };
+
+    case actionTypes.FETCH_ACHIEVEMENTS_SUCCESS:
+      return {
+        ...state,
+        isError: false,
+        isLoading: false,
+        totalScore: action.payload.totalScore,
+      };
+
+    case actionTypes.INCREMENT_SCORE:
+      return {
+        ...state,
+        totalScore: state.totalScore + 1,
       };
 
     default:
