@@ -16,7 +16,8 @@ const mapStateToProps = (state) => {
   const suggestionsOrBrainmates = getSuggestionsDistance(state);
   const isLoading = getIsLoading(state);
   const userId = getProfile(state).id;
-  return { suggestions, suggestionsOrBrainmates, isLoading, userId };
+  const userPicture = getProfile(state).picture;
+  return { suggestions, suggestionsOrBrainmates, isLoading, userId, userPicture };
 };
 
 const mapDispatchToProps = (dispatch) => {
