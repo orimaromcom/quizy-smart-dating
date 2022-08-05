@@ -5,9 +5,9 @@ const fetchAchievementsRequest = () => ({
   type: actionTypes.FETCH_ACHIEVEMENTS_REQUEST,
 });
 
-const fetchAchievementsSuccess = (achievements, totalScore) => ({
+const fetchAchievementsSuccess = (achievements) => ({
   type: actionTypes.FETCH_ACHIEVEMENTS_SUCCESS,
-  payload: { achievements, totalScore },
+  payload: achievements,
 });
 
 const fetchAchievementsFailure = (errorMessage) => ({
@@ -20,10 +20,7 @@ export const fetchAchievementsAction = (id) => {
     dispatch(fetchAchievementsRequest());
     try {
       const achievements = await AchievementsApiService.getAchievements(id);
-      const totalScore = Object.keys(achievements.categories)
-        .map((achievement) => achievements.categories[achievement].correct)
-        .reduce((sum, num) => sum + num, 0);
-      dispatch(fetchAchievementsSuccess(achievements.categories, totalScore));
+      dispatch(fetchAchievementsSuccess(achievements.categories));
     } catch (e) {
       dispatch(fetchAchievementsFailure(e.message));
     }

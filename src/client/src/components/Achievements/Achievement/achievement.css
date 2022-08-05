@@ -4,20 +4,18 @@
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  width: 90%;
+  width: 80%;
   border-radius: 20px;
   padding: 10px;
   max-height: 10%
 }
 
 .achievement-chip{
-  width: 30%;
-  min-width: 115px;
+  min-width: 30%;
 }
 
 .achievement-pie{
-width: 25%;
-max-width: 100px;
+width: 100px;
 }
 
 .achievement-text{

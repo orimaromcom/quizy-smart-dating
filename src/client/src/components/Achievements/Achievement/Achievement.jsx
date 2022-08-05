@@ -6,7 +6,7 @@ import ComputerIcon from "@mui/icons-material/Computer";
 import StarIcon from "@mui/icons-material/Star";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
-import { PieChart } from "react-minimal-pie-chart";
+import { PieChart } from 'react-minimal-pie-chart';
 
 export default function Achievement({ title, score }) {
   const renderIcon = () => {
@@ -33,26 +33,21 @@ export default function Achievement({ title, score }) {
     <div className="achievement-container">
       <Chip className="achievement-chip" label={title} icon={renderIcon()} />
       <div className="achievement-text">
-        <p>{Math.round((score.correct / score.answers) * 100) || 0}% correct</p>
-        <p>
-          ({score.correct} out of {score.answers})
-        </p>
+        <p>{Math.round(score.correct/score.answers * 100) || 0}% correct</p>
+        <p>({score.correct} out of {score.answers})</p>
       </div>
       <div className="achievement-pie">
         <PieChart
-          data={[
-            { title: "Correct", value: score.correct, color: "#e42f45" },
-            {
-              title: "Incorrect",
-              value: score.answers - score.correct,
-              color: "#CCCCCC",
-            },
-          ]}
-          viewBoxSize={[200, 100]}
-          center={[100, 50]}
-          startAngle={180}
-        />
+            data={[
+              { title: 'Correct', value: score.correct, color: '#e42f45' },
+              { title: 'Incorrect', value: score.answers - score.correct, color: '#CCCCCC' },
+            ]}
+            viewBoxSize={[200, 100]}
+            center = {[100, 50]}
+            startAngle = {180}
+          />
       </div>
+
     </div>
   );
 }
