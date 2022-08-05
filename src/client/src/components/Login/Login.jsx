@@ -53,6 +53,7 @@ export default function Login({
       onError={() => {
         console.log("Google login failed");
       }}
+      useOneTap
     />
   );
 
@@ -104,7 +105,7 @@ export default function Login({
   loginOptions = (
     <div>
       <h1>Login with google</h1>
-      {/*  {googleLogIn} */}
+      {googleLogIn}
       <br />
       <br />
       <br />

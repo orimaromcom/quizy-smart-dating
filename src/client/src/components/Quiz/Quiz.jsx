@@ -59,8 +59,8 @@ export default function Quiz({
     if (isFinished) {
       async function postAnswersPostDistancesGetSuggestions(answersArray, userId) {
         await AnswersApiService.postAnswers(answersArray);
-        await postDistancesAction(userId);
-        await fetchNewSuggestionsAction(userId);
+        //await postDistancesAction(userId);
+        //await fetchNewSuggestionsAction(userId);
       }
       if (answersArray.length) {
         postAnswersPostDistancesGetSuggestions(answersArray, userId);

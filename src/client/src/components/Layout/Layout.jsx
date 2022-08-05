@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import ToasterConnector from "../Toaster/toaster-connector";
 
 export default function Layout() {
+ 
   return (
     <>
       <AppBar />
