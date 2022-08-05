@@ -1,7 +1,6 @@
 import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { useCallback, useState } from "react";
+import { useEffect, useCallback, useState } from "react";
 
 import jwt_decode from "jwt-decode";
 import "./Login.css";
