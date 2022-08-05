@@ -14,53 +14,38 @@ import {
 import style from "./appbarcomponent.module.css";
 import { useState } from "react";
 
-const pages = ["USERSCORE"];
-
 const AppBarComponent = ({ profile, userLogoutAction, totalScore }) => {
   const location = useLocation();
   const [showLogOuot, setShowLogOuot] = useState(false);
 
   return (
-    <AppBar position="static">
-      <Container
-        maxWidth="xl"
-        style={{ display: "flex", justifyContent: "center" }}
+    <AppBar
+      position="static"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Toolbar
+        disableGutters
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          width: "95%",
+        }}
       >
-        <Toolbar
-          disableGutters
-          style={{
-            display: "flex",
-            justifyContent: "space-around",
-            width: "100%",
-          }}
-        >
-          <Box sx={{ flexGrow: 1 }}>
-            {location.pathname === "/login" ? null : (
-              <>
-                <span>👑</span> <span>{totalScore.toString()}</span>{" "}
-              </>
-            )}
-          </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 2,
-                ml: "-2px",
-                display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              Quizy
-            </Typography>
-          </Box>
+        <Box sx={{ display: "flex", flexDirection: "row" }}>
+          {location.pathname === "/login" ? null : (
+            <div>
+              <Typography variant="h6" sx={{ fontFamily: "monospace" }}>
+                👑
+                {totalScore.toString()}
+              </Typography>
+            </div>
+          )}
+        </Box>
+        <Box sx={{ display: "flex" }}>
           <div className={style.quizy_logo_container}>
             <img
               src="/favicon.png"
@@ -72,8 +57,6 @@ const AppBarComponent = ({ profile, userLogoutAction, totalScore }) => {
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href=""
             sx={{
               mr: 2,
               ml: "10px",
@@ -89,58 +72,41 @@ const AppBarComponent = ({ profile, userLogoutAction, totalScore }) => {
           >
             Quizy
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                sx={{
-                  my: 2,
-                  color: "white",
-                  display: "block",
-                  fontFamily: "monospace",
-                  fontWeight: 700,
-                  fontSize: "1.5rem",
-                }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-          {location.pathname === "/login" ? null : (
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip
-                title={
-                  <Button
-                    variant="contained"
-                    onClick={() => {
-                      setShowLogOuot(false);
-                      userLogoutAction();
-                    }}
-                  >
-                    Logout
-                  </Button>
-                }
-                open={showLogOuot}
-                PopperProps={{
-                  popperOptions: {
-                    placement: "top",
-                  },
-                }}
-                placement="top"
-              >
-                <IconButton
+        </Box>
+        {location.pathname === "/login" ? null : (
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip
+              title={
+                <Button
+                  variant="contained"
                   onClick={() => {
-                    setShowLogOuot((prev) => !prev);
+                    setShowLogOuot(false);
+                    userLogoutAction();
                   }}
-                  sx={{ p: 0 }}
                 >
-                  <Avatar alt="?" src={profile.picture} />
-                </IconButton>
-              </Tooltip>
-            </Box>
-          )}
-        </Toolbar>
-      </Container>
+                  Logout
+                </Button>
+              }
+              open={showLogOuot}
+              PopperProps={{
+                popperOptions: {
+                  placement: "top",
+                },
+              }}
+              placement="top"
+            >
+              <IconButton
+                onClick={() => {
+                  setShowLogOuot((prev) => !prev);
+                }}
+                sx={{ p: 0 }}
+              >
+                <Avatar alt="?" src={profile.picture} />
+              </IconButton>
+            </Tooltip>
+          </Box>
+        )}
+      </Toolbar>
     </AppBar>
   );
 };
