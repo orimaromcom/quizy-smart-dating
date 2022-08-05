@@ -52,9 +52,9 @@ function changeQuestionsStructure(triviaQuestions) {
 }
 
 function shuffleOptions(optionsArray) {
-  for (const i = optionsArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const temp = optionsArray[i];
+  for (let i = optionsArray.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    let temp = optionsArray[i];
     optionsArray[i] = optionsArray[j];
     optionsArray[j] = temp;
   }
