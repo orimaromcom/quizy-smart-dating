@@ -17,6 +17,7 @@ export default function Profile({
   profile,
   updateProfileAction,
   showErrorAction,
+  setTriviaAction
 }) {
   const navigate = useNavigate();
   useEffect(() => {
@@ -39,11 +40,7 @@ export default function Profile({
     setProfileObj(profile);
     if (profile && profile.id && !profile.location) {
       async function setTriviaStatistics(id) {
-        try {
-          await UserApiService.setTriviaStatistics(id);
-        } catch (error) {
-          showErrorAction("Problems with saving data");
-        }
+        await setTriviaAction(id);
       }
       setTriviaStatistics(profile.id);
       showErrorAction("Save your personal details to save your game progress");

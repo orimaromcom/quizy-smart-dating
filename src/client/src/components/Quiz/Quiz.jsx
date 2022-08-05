@@ -6,7 +6,6 @@ import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import HeartLoader from "../HeartLoader/HeartLoader";
 import HeartConnector from "./Heart/HeartConnector.js";
-import AnswersApiService from "../../services/answers-api-service";
 import "./quiz.css";
 
 export default function Quiz({
@@ -27,6 +26,7 @@ export default function Quiz({
   isLoading,
   postDistancesAction,
   incrementScoreAction,
+  postAnswersAction,
 }) {
   const [playAgainClicked, setPlayAgainClicked] = useState(false);
 
@@ -60,7 +60,7 @@ export default function Quiz({
         answersArray,
         userId
       ) {
-        await AnswersApiService.postAnswers(answersArray);
+        await postAnswersAction(answersArray);
         await postDistancesAction(userId);
         await fetchNewSuggestionsAction(userId);
       }
