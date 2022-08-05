@@ -14,6 +14,7 @@ export default function BasicQuestion({
   incrementAnswersIndexAction,
   questions,
   answersArray,
+  incrementScoreAction,
 }) {
   const [options, setOptions] = useState([]);
   const correctSound = new Audio(correctAnswerSound);
@@ -25,7 +26,11 @@ export default function BasicQuestion({
     if (question.option1) {
       questionsArray = [question.option1, question.option2];
       if (question.option3 && question.option4 !== null) {
-        questionsArray = [...questionsArray, question.option3, question.option4];
+        questionsArray = [
+          ...questionsArray,
+          question.option3,
+          question.option4,
+        ];
       }
       setOptions(questionsArray);
     }
@@ -36,15 +41,16 @@ export default function BasicQuestion({
     if (question.type === "trivia") {
       if (question.correctOption === chosenOption) {
         answerIsCorrect = true;
+        incrementScoreAction();
         correctSound.play();
       } else {
         answerIsCorrect = false;
         incorrectSound.play();
       }
     }
-  if (answersArray.length === 9){
-    console.log("end quiz")
-  }
+    if (answersArray.length === 9) {
+      console.log("end quiz");
+    }
 
     const answerObject = {
       userId: userId,
@@ -58,7 +64,6 @@ export default function BasicQuestion({
     incrementQuestionIndexAction();
 
     addAnswer(answerObject, answersArray, questions);
-   
   };
 
   return (

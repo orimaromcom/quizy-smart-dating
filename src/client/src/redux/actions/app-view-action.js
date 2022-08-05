@@ -31,3 +31,13 @@ export const hideToasterAction = () => {
     dispatch(hideToaster());
   };
 };
+
+const incrementScore = () => ({
+  type: actionTypes.INCREMENT_SCORE,
+});
+
+export const incrementScoreAction = () => {
+  return async (dispatch) => {
+    dispatch(incrementScore());
+  };
+};
