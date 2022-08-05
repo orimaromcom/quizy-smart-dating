@@ -37,6 +37,4 @@ export default class UserApiService {
       throw new Error(error.message);
     }
   }
-
-
 }
