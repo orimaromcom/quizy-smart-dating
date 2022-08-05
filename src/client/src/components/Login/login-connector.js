@@ -5,6 +5,7 @@ import { getProfile } from "../../redux/selectors/profile-entity-selector";
 import { fetchProfileAction } from "../../redux/actions/fetch-profile-action";
 import { updateProfileAction } from "../../redux/actions/update-profile-action";
 import { updatePageButtonAction } from "../../redux/actions/update-page-button-action";
+import { fetchAchievementsAction } from "../../redux/actions/fetch-achievements-action";
 
 const mapStateToProps = (state) => {
   const profile = getProfile(state);
@@ -17,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
       fetchProfileAction,
       updateProfileAction,
       updatePageButtonAction,
+      fetchAchievementsAction,
     },
     dispatch
   );

@@ -25,7 +25,8 @@ export default function Quiz({
   clearQuestionsIndexAction,
   isLoading,
   postDistancesAction,
-  postAnswersAction
+  incrementScoreAction,
+  postAnswersAction,
 }) {
   const [playAgainClicked, setPlayAgainClicked] = useState(false);
 
@@ -55,7 +56,10 @@ export default function Quiz({
     if (isFinished) {
       confetti();
 
-      async function postAnswersPostDistancesGetSuggestions(answersArray, userId) {
+      async function postAnswersPostDistancesGetSuggestions(
+        answersArray,
+        userId
+      ) {
         await postAnswersAction(answersArray);
         await postDistancesAction(userId);
         await fetchNewSuggestionsAction(userId);
@@ -65,7 +69,13 @@ export default function Quiz({
         clearAnswersArray();
       }
     }
-  }, [fetchNewQuestionsAction, questions, answersArray, clearAnswersArray, isFinished]);
+  }, [
+    fetchNewQuestionsAction,
+    questions,
+    answersArray,
+    clearAnswersArray,
+    isFinished,
+  ]);
 
   return (
     <div className="quiz-container">
@@ -79,7 +89,9 @@ export default function Quiz({
           )}
         </>
       ) : (
-        <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
+        <ProgressBar
+          progressPercentage={(questionIndex / questions.length) * 100}
+        />
       )}
 
       {!isFinished ? (
@@ -91,6 +103,7 @@ export default function Quiz({
           addAnswer={addAnswerAction}
           incrementQuestionIndexAction={incrementQuestionIndexAction}
           questionIndex={questionIndex}
+          incrementScoreAction={incrementScoreAction}
         />
       ) : isLoading ? null : (
         <>
