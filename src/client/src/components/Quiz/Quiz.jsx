@@ -50,8 +50,9 @@ export default function Quiz({
   useEffect(() => {
     if (!questions.length && !playAgainClicked) {
       (async function () {
-        await fetchNewQuestionsAction();
-        await updateQuoteAction();
+        // await fetchNewQuestionsAction();
+        // await updateQuoteAction();
+        Promise.all([fetchNewQuestionsAction(), updateQuoteAction()])
       })();
     }
     if (isFinished) {
@@ -60,9 +61,16 @@ export default function Quiz({
         answersArray,
         userId
       ) {
-        await postAnswersAction(answersArray);
-        await postDistancesAction(userId);
-        await fetchNewSuggestionsAction(userId);
+        (async function () {
+          Promise.all([
+            postAnswersAction(answersArray),
+            postDistancesAction(userId),
+            fetchNewSuggestionsAction(userId)
+          ])
+          // await postAnswersAction(answersArray);
+          // await postDistancesAction(userId);
+          // await fetchNewSuggestionsAction(userId);
+        })();
       }
       if (answersArray.length) {
         postAnswersPostDistancesGetSuggestions(answersArray, userId);
