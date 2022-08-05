@@ -15,13 +15,11 @@ const appViewReducer = (state = initialState, action) => {
     case actionTypes.HIDE_TOASTER:
       return { ...state, isError: false, isSuccess: false };
 
-    case actionTypes.FETCH_QUESTIONS_REQUEST:
-    case actionTypes.FETCH_ACHIEVEMENTS_REQUEST:
-    case actionTypes.FETCH_BRAINMATES_REQUEST:
-    case actionTypes.FETCH_PROFILE_REQUEST:
+    // case actionTypes.FETCH_BRAINMATES_REQUEST:
+    // case actionTypes.FETCH_ACHIEVEMENTS_REQUEST:
+    // case actionTypes.FETCH_SUGGESTIONS_REQUEST:
     case actionTypes.UPDATE_PROFILE_REQUEST:
-    case actionTypes.POST_DISTANCES_REQUEST:
-    case actionTypes.FETCH_SUGGESTIONS_REQUEST: {
+    case actionTypes.FETCH_QUESTIONS_REQUEST: {
       return {
         ...state,
         isLoading: true,

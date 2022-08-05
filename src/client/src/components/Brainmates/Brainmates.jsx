@@ -20,13 +20,10 @@ export default function Brainmates({
   }, [navigate, userId]);
 
   useEffect(() => {
-    // if (userId && !Object.keys(brainmates).length) fetchBrainmatesAction(userId);
-    // always, because maybe someone liked or disliked you:
     async function updateBrainmates(userId) {
       await fetchBrainmatesAction(userId);
     }
     if (userId) updateBrainmates(userId);
-    console.log("now");
   }, []);
 
   return suggestionsOrBrainmates === "brainmates" ? (

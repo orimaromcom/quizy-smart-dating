@@ -25,6 +25,7 @@ export default function Quiz({
   incrementScoreAction,
   postAnswersAction,
   quote,
+  suggestions,
 }) {
   const [playAgainClicked, setPlayAgainClicked] = useState(false);
 
@@ -48,8 +49,10 @@ export default function Quiz({
 
   useEffect(() => {
     if (!questions.length && !playAgainClicked) {
-      fetchNewQuestionsAction();
-      updateQuoteAction();
+      (async function () {
+        await fetchNewQuestionsAction();
+        await updateQuoteAction();
+      })();
     }
     if (isFinished) {
       confetti();
@@ -94,12 +97,11 @@ export default function Quiz({
         </>
       ) : (
         <>
-          <p>New suggestions were found for you!</p>
-          <p>Press the big heart!</p>
           <HeartConnector
             fetchNewSuggestionsAction={fetchNewSuggestionsAction}
             userId={userId}
             setPlayAgainClicked={setPlayAgainClicked}
+            quote={quote}
           />
           <div className="play_again_btn">
             <Button variant="contained" onClick={() => playAgainHandler()}>

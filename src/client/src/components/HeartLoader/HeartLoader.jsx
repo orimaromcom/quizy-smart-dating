@@ -1,7 +1,7 @@
 import Page from "../Page/Page";
 import heart_loader_style from "./heart-loader.module.scss";
 
-export default function HeartLoader() {
+export default function HeartLoader({ quote, loadingMessage }) {
   return (
     <Page>
       <div className={heart_loader_style.container}>

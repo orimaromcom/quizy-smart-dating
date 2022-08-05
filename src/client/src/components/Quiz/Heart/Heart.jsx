@@ -8,6 +8,7 @@ export default function Heart({
   clearQuestionsArrayAction,
   clearQuestionsIndexAction,
   updateQuoteAction,
+  quote,
 }) {
   const navigate = useNavigate();
   const HeartCLickHandler = () => {
@@ -25,11 +26,18 @@ export default function Heart({
 
   return (
     <div className={style.container}>
+      <h1 className={style.text}>
+        Press the big heart to see if there are new suggestions for you!
+      </h1>
       <div
         className={style.heart_container}
         onClick={() => HeartCLickHandler()}
       >
         {<div className={style.heart} />}
+      </div>
+      <div className={style.text}>
+        <div className={style.quote}>{quote?.quote}</div>
+        <div className={style.author}>{quote?.author}</div>
       </div>
     </div>
   );
