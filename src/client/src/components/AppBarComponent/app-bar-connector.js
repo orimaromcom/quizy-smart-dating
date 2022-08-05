@@ -3,12 +3,11 @@ import { bindActionCreators } from "redux";
 import AppBarComponent from "./AppBarComponent";
 import { userLogoutAction } from "../../redux/actions/user-logout-action";
 import { getProfile } from "../../redux/selectors/profile-entity-selector";
-// import { getCorrectAnswers } from "../../redux/selectors/answers-entities-selector";
+import { getTotalScore } from "../../redux/selectors/app-view-selector";
 
 const mapStateToProps = (state) => {
-  // const totalScore = getCorrectAnswers();
-  const totalScore = 219;
   const profile = getProfile(state);
+  const totalScore = getTotalScore(state);
   return { profile, totalScore };
 };
 

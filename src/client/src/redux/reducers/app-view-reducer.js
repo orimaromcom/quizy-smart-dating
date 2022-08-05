@@ -7,6 +7,7 @@ const initialState = {
   pageButtonValue: "login",
   isSuccess: false,
   successMessage: "Success!",
+  totalScore: 0,
 };
 
 const appViewReducer = (state = initialState, action) => {
@@ -85,6 +86,12 @@ const appViewReducer = (state = initialState, action) => {
       return {
         ...state,
         pageButtonValue: action.payload,
+      };
+
+    case actionTypes.INCREMENT_SCORE:
+      return {
+        ...state,
+        totalScore: state.totalScore + 1,
       };
 
     default:

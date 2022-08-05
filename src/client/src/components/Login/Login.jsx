@@ -49,7 +49,9 @@ export default function Login({
 
   const getGoogleLoginData = useCallback(
     async (credentialResponse) => {
-      const { email, picture, name } = jwt_decode(credentialResponse.credential);
+      const { email, picture, name } = jwt_decode(
+        credentialResponse.credential
+      );
       setEmail(email);
       setPicture(picture);
       setName(name);
@@ -115,7 +117,7 @@ export default function Login({
   loginOptions = (
     <div>
       <h1>Login with google</h1>
-       {googleLogIn}
+      {googleLogIn}
       <br />
       <br />
       <br />
