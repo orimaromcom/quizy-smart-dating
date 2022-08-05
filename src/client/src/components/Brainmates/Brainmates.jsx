@@ -45,6 +45,7 @@ export default function Brainmates({
                   phoneNumber={current.phoneNumber}
                   age={current.age}
                   location={current.location}
+                  gender={current.gender}
                 />
               );
             })
@@ -58,6 +59,7 @@ export default function Brainmates({
                   status={"pending"}
                   userName={current.username}
                   achievements={current.bestResultDescription}
+                  gender={current.gender}
                 />
               );
             })
