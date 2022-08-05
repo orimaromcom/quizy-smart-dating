@@ -4,7 +4,6 @@ import { Button } from "@mui/material";
 import confetti from "canvas-confetti";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
-import HeartLoader from "../HeartLoader/HeartLoader";
 import HeartConnector from "./Heart/HeartConnector.js";
 import "./quiz.css";
 
@@ -19,14 +18,14 @@ export default function Quiz({
   incrementAnswersIndexAction,
   clearAnswersArray,
   updateQuoteAction,
-  quote,
   fetchNewSuggestionsAction,
   clearQuestionsArrayAction,
   clearQuestionsIndexAction,
-  isLoading,
   postDistancesAction,
   incrementScoreAction,
   postAnswersAction,
+  quote,
+  suggestions,
 }) {
   const [playAgainClicked, setPlayAgainClicked] = useState(false);
 
@@ -49,13 +48,14 @@ export default function Quiz({
   const isFinished = questions.length && questionIndex === questions.length;
 
   useEffect(() => {
-    if (!questions.length && !playAgainClicked && !isLoading) {
-      fetchNewQuestionsAction();
-      updateQuoteAction();
+    if (!questions.length && !playAgainClicked) {
+      (async function () {
+        await fetchNewQuestionsAction();
+        await updateQuoteAction();
+      })();
     }
     if (isFinished) {
       confetti();
-
       async function postAnswersPostDistancesGetSuggestions(
         answersArray,
         userId
@@ -79,41 +79,29 @@ export default function Quiz({
 
   return (
     <div className="quiz-container">
-      {isLoading ? (
+      {!isFinished ? (
         <>
-          <HeartLoader />
-          {!isFinished ? (
-            <div>Loading questions...</div>
-          ) : (
-            <div>Loading possible matches...</div>
-          )}
+          <ProgressBar
+            progressPercentage={(questionIndex / questions.length) * 100}
+          />
+          <BasicQuestion
+            question={questions[questionIndex] ? questions[questionIndex] : ""}
+            userId={userId}
+            incrementAnswersIndexAction={incrementAnswersIndexAction}
+            answersArray={answersArray}
+            addAnswer={addAnswerAction}
+            incrementQuestionIndexAction={incrementQuestionIndexAction}
+            questionIndex={questionIndex}
+            incrementScoreAction={incrementScoreAction}
+          />
         </>
       ) : (
-        <ProgressBar
-          progressPercentage={(questionIndex / questions.length) * 100}
-        />
-      )}
-
-      {!isFinished ? (
-        <BasicQuestion
-          question={questions[questionIndex] ? questions[questionIndex] : ""}
-          userId={userId}
-          incrementAnswersIndexAction={incrementAnswersIndexAction}
-          answersArray={answersArray}
-          addAnswer={addAnswerAction}
-          incrementQuestionIndexAction={incrementQuestionIndexAction}
-          questionIndex={questionIndex}
-          incrementScoreAction={incrementScoreAction}
-        />
-      ) : isLoading ? null : (
         <>
-          <p>New suggestions were found for you!</p>
-          <p>Press the big heart!</p>
           <HeartConnector
-            quote={quote}
             fetchNewSuggestionsAction={fetchNewSuggestionsAction}
             userId={userId}
             setPlayAgainClicked={setPlayAgainClicked}
+            quote={quote}
           />
           <div className="play_again_btn">
             <Button variant="contained" onClick={() => playAgainHandler()}>

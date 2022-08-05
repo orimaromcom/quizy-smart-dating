@@ -6,7 +6,6 @@ import HeartLoader from "../../HeartLoader/HeartLoader";
 import loveMomentSound from "../../../assets/sounds/loveMomentSound.mp3";
 import style from "./suggestions.module.scss";
 
-
 export default function Suggestions({
   suggestions,
   suggestionsOrBrainmates,
@@ -38,32 +37,37 @@ export default function Suggestions({
       updateSuggestionsOrBrainmatesAction("brainmates");
       await fetchBrainmatesAction(userId);
     }
-  }
-  
+  };
+
   const goBackToBrainmatesWithDelay = (timeout) => {
     setTimeout(() => {
-      updateSuggestionsOrBrainmatesAction("brainmates")
+      updateSuggestionsOrBrainmatesAction("brainmates");
     }, timeout);
     return null;
-  }
+  };
 
   return isLoading ? (
     <>
       <HeartLoader /> <div>Loading suggestions</div>
     </>
-  ) : ( suggestions[suggestionsOrBrainmates] ?
+  ) : suggestions[suggestionsOrBrainmates] ? (
     <div className={style.page_container}>
       <SuggestionsCard
         userName={suggestions[suggestionsOrBrainmates].username}
         age={suggestions[suggestionsOrBrainmates].age}
         bestResult={suggestions[suggestionsOrBrainmates].bestResultDescription}
-        amountOfSamePersonalAnswers={suggestions[suggestionsOrBrainmates].amountOfSamePersonalAnswers}
+        amountOfSamePersonalAnswers={
+          suggestions[suggestionsOrBrainmates].amountOfSamePersonalAnswers
+        }
         picture={suggestions[suggestionsOrBrainmates].picture}
       />
       <div className={style.buttons_container}>
         <div
           className={style.yes_no_btn_container}
-          onClick={() => decisionHandler("✔️", suggestions[suggestionsOrBrainmates])}>
+          onClick={() =>
+            decisionHandler("✔️", suggestions[suggestionsOrBrainmates])
+          }
+        >
           <Button variant="contained" style={{ backgroundColor: "lightBlue" }}>
             ✔️
           </Button>
@@ -79,10 +83,11 @@ export default function Suggestions({
           </Button>
         </div>
       </div>
-    </div> :
+    </div>
+  ) : (
     <p>
       Sorry, there are no suggestions for you...
-      { goBackToBrainmatesWithDelay(3000) }
+      {goBackToBrainmatesWithDelay(3000)}
     </p>
   );
 }

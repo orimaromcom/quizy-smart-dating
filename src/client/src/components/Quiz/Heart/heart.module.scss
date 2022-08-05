@@ -4,24 +4,6 @@
   height: 100%;
 }
 
-.text {
-  flex: 0 1 auto;
-  padding: 1em 1em 1em;
-  padding-bottom: 1em;
-  font-size: 20px;
-  text-align: center;
-  font-weight: bold;
-
-  .quote {
-    font-style: italic;
-  }
-
-  .author {
-    padding-top: 5px;
-    font-weight: normal;
-  }
-}
-
 .heart_container {
   flex: 1 0 auto;
   display: flex;
@@ -81,3 +63,20 @@
   }
 }
 
+.text {
+  flex: 0 1 auto;
+  padding: 1em 1em 1em;
+  padding-bottom: 1em;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+
+  .quote {
+    font-style: italic;
+  }
+
+  .author {
+    padding-top: 5px;
+    font-weight: normal;
+  }
+}

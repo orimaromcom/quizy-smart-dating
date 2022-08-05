@@ -12,7 +12,7 @@ const fetchSuggestionsSuccess = (suggestions) => ({
 
 const fetchSuggestionsFailure = (errorMessage) => ({
   type: actionTypes.FETCH_SUGGESTIONS_FAILURE,
-  payload: errorMessage
+  payload: errorMessage,
 });
 
 export const fetchNewSuggestionsAction = (userId) => {

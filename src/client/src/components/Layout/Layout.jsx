@@ -1,11 +1,12 @@
+import NavbarConnector from "../Navbar/navbar-connector";
+import AppBarConnector from "../AppBarComponent/app-bar-connector";
+import HeartLoader from "../HeartLoader/HeartLoader";
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import NavbarConnector from "../Navbar/navbar-connector";
-import AppBarConnector from "../AppBarComponent/app-bar-connector";
 import ToasterConnector from "../Toaster/toaster-connector";
 
-export default function Layout() {
+export default function Layout({ isLoading }) {
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
@@ -17,7 +18,7 @@ export default function Layout() {
     <>
       <AppBarConnector />
       <ToasterConnector />
-      <Outlet />
+      {isLoading ? <HeartLoader /> : <Outlet />}
       <NavbarConnector />
     </>
   );
