@@ -9,7 +9,6 @@ export default function Brainmates({
   fetchBrainmatesAction,
   userId,
   suggestionsOrBrainmates,
-  isLoading,
 }) {
   const navigate = useNavigate();
 
@@ -20,67 +19,56 @@ export default function Brainmates({
     }
   }, [navigate, userId]);
 
-  // async function updateBrainmates(userId) {
-  //   await fetchBrainmatesAction(userId);
-  // }
-  // updateBrainmates(userId);
-
   useEffect(() => {
-    // if (userId && !Object.keys(brainmates).length) fetchBrainmatesAction(userId);
-    // always, because maybe someone liked or disliked you:
     async function updateBrainmates(userId) {
       await fetchBrainmatesAction(userId);
     }
     if (userId) updateBrainmates(userId);
-  }, [fetchBrainmatesAction, userId]);
+  }, []);
 
-  return (
-    (suggestionsOrBrainmates === "brainmates"  ? (
-      <div className="brain-mates-container">
-        {brainmates.likeBack
-          ? Object.keys(brainmates.likeBack).map((brainmate, i) => {
-              const current = brainmates.likeBack[brainmate];
-              return (
-                <MateCard
-                  key={`match ${i}`}
-                  status={"match"}
-                  userName={current.username}
-                  imgSrc={current.picture}
-                  achievements={current.bestResultDescription}
-                  phoneNumber={current.phoneNumber}
-                  age={current.age}
-                  location={current.location}
-                  gender={current.gender}
-                />
-              );
-            })
-          : null}
-        {brainmates.pending
-          ? Object.keys(brainmates.pending).map((brainmate, i) => {
-              const current = brainmates.pending[brainmate];
-              return (
-                <MateCard
-                  key={`pending` + i}
-                  status={"pending"}
-                  userName={current.username}
-                  achievements={current.bestResultDescription}
-                  gender={current.gender}
-                />
-              );
-            })
-          : null}
-        {brainmates.likeBack &&
-          brainmates.likeBack.length === 0 &&
-          brainmates.pending &&
-          brainmates.pending.length === 0 && (
-            <p>You do not have any brainmates yet. Play the quiz first!</p>
-          )}
-        {brainmates.pending && (
-          <p>You see more info about your brainmates when they like you back</p>
+  return suggestionsOrBrainmates === "brainmates" ? (
+    <div className="brain-mates-container">
+      {brainmates.likeBack
+        ? Object.keys(brainmates.likeBack).map((brainmate, i) => {
+            const current = brainmates.likeBack[brainmate];
+            return (
+              <MateCard
+                key={`match ${i}`}
+                status={"match"}
+                userName={current.username}
+                imgSrc={current.picture}
+                achievements={current.bestResultDescription}
+                phoneNumber={current.phoneNumber}
+                age={current.age}
+                location={current.location}
+              />
+            );
+          })
+        : null}
+      {brainmates.pending
+        ? Object.keys(brainmates.pending).map((brainmate, i) => {
+            const current = brainmates.pending[brainmate];
+            return (
+              <MateCard
+                key={`pending` + i}
+                status={"pending"}
+                userName={current.username}
+                achievements={current.bestResultDescription}
+              />
+            );
+          })
+        : null}
+      {brainmates.likeBack &&
+        brainmates.likeBack.length === 0 &&
+        brainmates.pending &&
+        brainmates.pending.length === 0 && (
+          <p>You do not have any brainmates yet. Play the quiz first!</p>
         )}
-      </div>
-    ) : (
-      <SuggestionsConnector />
-    ))
+      {brainmates.pending && (
+        <p>You see more info about your brainmates when they like you back</p>
+      )}
+    </div>
+  ) : (
+    <SuggestionsConnector />
   );
 }

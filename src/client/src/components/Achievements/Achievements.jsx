@@ -17,9 +17,9 @@ export default function Achievements({
   }, [navigate, userId]);
 
   useEffect(() => {
-    if (userId)
-    fetchAchievementsAction(userId);
-  }, [fetchAchievementsAction, userId]);
+    if (!Object.keys(achievements).length && userId)
+      fetchAchievementsAction(userId);
+  }, [userId, achievements]);
 
   if (Object.keys(achievements).length > 0) {
     return (

@@ -2,17 +2,13 @@ import style from "./heart.module.scss";
 import { useNavigate } from "react-router-dom";
 
 export default function Heart({
-  quote,
-  fetchNewSuggestionsAction,
-  userId,
-  suggestionsOrBrainmates,
   updatePageButtonAction,
   updateSuggestionsOrBrainmatesAction,
-  suggestions,
   setPlayAgainClicked,
   clearQuestionsArrayAction,
   clearQuestionsIndexAction,
   updateQuoteAction,
+  quote,
 }) {
   const navigate = useNavigate();
   const HeartCLickHandler = () => {
@@ -30,7 +26,13 @@ export default function Heart({
 
   return (
     <div className={style.container}>
-      <div className={style.heart_container} onClick={() => HeartCLickHandler()}>
+      <h1 className={style.text}>
+        Press the big heart to see if there are new suggestions for you!
+      </h1>
+      <div
+        className={style.heart_container}
+        onClick={() => HeartCLickHandler()}
+      >
         {<div className={style.heart} />}
       </div>
       <div className={style.text}>
