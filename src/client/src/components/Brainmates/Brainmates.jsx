@@ -2,7 +2,7 @@ import "./brainmates.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MateCard from "./MateCard/MateCard";
-import SuggestionsConnector from "./Suggestions/SuggestionsConnector";
+import SuggestionsConnector from "./Suggestions/suggestions-connector";
 
 export default function Brainmates({
   brainmates,

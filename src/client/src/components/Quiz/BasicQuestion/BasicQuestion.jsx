@@ -48,10 +48,6 @@ export default function BasicQuestion({
         incorrectSound.play();
       }
     }
-    if (answersArray.length === 9) {
-      console.log("end quiz");
-    }
-
     const answerObject = {
       userId: userId,
       type: question.type,

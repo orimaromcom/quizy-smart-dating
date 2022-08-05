@@ -4,9 +4,6 @@ const { ErrorIfNaN, ErrorIfNotFound } = require("../../common-errors");
 
 async function postUserLike(req, res) {
   const { firstUserId, secondUserId, firstUserLikesSecondUser } = req.body;
-  console.log("--------------");
-  console.log('req.body', req.body);
-  console.log("--------------");
   ErrorIfNaN(firstUserId);
   ErrorIfNaN(secondUserId);
   const responce = await brainmatesManager.postUserLike(firstUserId, secondUserId, firstUserLikesSecondUser);
