@@ -62,8 +62,11 @@ export default function Login({
   );
 
   useEffect(() => {
-    if (profile && profile.location && profile.id)
-      fetchAchievementsAction(profile.id);
+    async function fetchAchievements(profile) {
+      if (profile && profile.location && profile.id)
+        await fetchAchievementsAction(profile.id);
+    }
+    fetchAchievements(profile);
   }, [profile]);
 
   const googleLogIn = (
