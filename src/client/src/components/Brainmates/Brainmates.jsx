@@ -2,7 +2,7 @@ import "./brainmates.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MateCard from "./MateCard/MateCard";
-import SuggestionsConnector from "./Suggestions/SuggestionsConnector";
+import SuggestionsConnector from "./Suggestions/suggestions-connector";
 
 export default function Brainmates({
   brainmates,
@@ -50,6 +50,7 @@ export default function Brainmates({
                   phoneNumber={current.phoneNumber}
                   age={current.age}
                   location={current.location}
+                  gender={current.gender}
                 />
               );
             })
@@ -63,6 +64,7 @@ export default function Brainmates({
                   status={"pending"}
                   userName={current.username}
                   achievements={current.bestResultDescription}
+                  gender={current.gender}
                 />
               );
             })
