@@ -7,6 +7,7 @@ const initialState = {
   pageButtonValue: "login",
   isSuccess: false,
   successMessage: "Success!",
+  totalScore: 0,
 };
 
 const appViewReducer = (state = initialState, action) => {
@@ -25,7 +26,6 @@ const appViewReducer = (state = initialState, action) => {
 
     case actionTypes.FETCH_PROFILE_SUCCESS:
     case actionTypes.FETCH_BRAINMATES_SUCCESS:
-    case actionTypes.FETCH_ACHIEVEMENTS_SUCCESS:
     case actionTypes.FETCH_QUESTIONS_SUCCESS:
     case actionTypes.POST_DISTANCES_SUCCESS: {
       return { ...state, isError: false, isLoading: false };
@@ -86,6 +86,20 @@ const appViewReducer = (state = initialState, action) => {
       return {
         ...state,
         pageButtonValue: action.payload,
+      };
+
+    case actionTypes.FETCH_ACHIEVEMENTS_SUCCESS:
+      return {
+        ...state,
+        isError: false,
+        isLoading: false,
+        totalScore: action.payload.totalScore,
+      };
+
+    case actionTypes.INCREMENT_SCORE:
+      return {
+        ...state,
+        totalScore: state.totalScore + 1,
       };
 
     default:

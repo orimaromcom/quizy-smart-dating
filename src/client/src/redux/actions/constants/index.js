@@ -65,6 +65,8 @@ const QUIZ_ACTIONS = {
   SHOW_SUCCESS: "show_success",
 
   HIDE_TOASTER: "hide_toaster",
+
+  INCREMENT_SCORE: "increment_score",
 };
 
 export default QUIZ_ACTIONS;
