@@ -42,6 +42,14 @@ const QUIZ_ACTIONS = {
   POST_DISTANCES_SUCCESS: "post_distances_success",
   POST_DISTANCES_FAILURE: "post_distances_failure",
 
+  POST_ANSWERS_REQUEST: "post_answers_request",
+  POST_ANSWERS_SUCCESS: "post_answers_success",
+  POST_ANSWERS_FAILURE: "post_answers_failure",
+
+  SET_TRIVIA_REQUEST: "set_trivia_request",
+  SET_TRIVIA_SUCCESS: "set_trivia_success",
+  SET_TRIVIA_FAILURE: "set_trivia_failure",
+
   POST_USER_LIKE_REQUEST: "post_user_like_request",
   POST_USER_LIKE_SUCCESS: "post_user_like_success",
   POST_USER_LIKE_FAILURE: "post_user_like_failure",
@@ -60,7 +68,9 @@ const QUIZ_ACTIONS = {
 
   TOGGLE_AUDIO: "toggle_audio",
 
-  TOGGLE_IS_BROKEN:"toggle_is_broken",
+  TOGGLE_IS_BROKEN: "toggle_is_broken",
+
+  INCREMENT_SCORE: "increment_score",
 };
 
 export default QUIZ_ACTIONS;

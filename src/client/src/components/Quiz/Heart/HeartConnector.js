@@ -8,18 +8,18 @@ import { updateQuoteAction } from "../../../redux/actions/update-quote-actions";
 
 import { fetchNewSuggestionsAction } from "../../../redux/actions/fetch-suggestions-action";
 import { updatePageButtonAction } from "../../../redux/actions/update-page-button-action";
-import { updateSuggestionDistanceAction } from "../../../redux/actions/update-suggestions-distance-value-action";
+import { updateSuggestionsOrBrainmatesAction } from "../../../redux/actions/update-suggestions-distance-value-action";
 import { getSuggestionsDistance } from "../../../redux/selectors/suggestions-entities-selector";
 import { getSuggestions } from "../../../redux/selectors/suggestions-entities-selector";
 
 const mapStateToProps = (state) => {
   const quote = getQuote(state);
-  const suggestionDistance = getSuggestionsDistance(state);
+  const suggestionsOrBrainmates = getSuggestionsDistance(state);
   const suggestions = getSuggestions(state);
 
   return {
     quote,
-    suggestionDistance,
+    suggestionsOrBrainmates,
     suggestions,
   };
 };
@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => {
     {
       fetchNewSuggestionsAction,
       updatePageButtonAction,
-      updateSuggestionDistanceAction,
+      updateSuggestionsOrBrainmatesAction,
       clearQuestionsArrayAction,
       clearQuestionsIndexAction,
       updateQuoteAction,

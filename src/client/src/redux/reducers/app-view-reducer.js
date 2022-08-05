@@ -9,6 +9,8 @@ const initialState = {
   successMessage: "Success!",
   isAudio: true,
   isBroken: false,
+  totalScore: 0,
+
 };
 
 const appViewReducer = (state = initialState, action) => {
@@ -27,7 +29,6 @@ const appViewReducer = (state = initialState, action) => {
 
     case actionTypes.FETCH_PROFILE_SUCCESS:
     case actionTypes.FETCH_BRAINMATES_SUCCESS:
-    case actionTypes.FETCH_ACHIEVEMENTS_SUCCESS:
     case actionTypes.FETCH_QUESTIONS_SUCCESS:
     case actionTypes.POST_DISTANCES_SUCCESS: {
       return { ...state, isError: false, isLoading: false };
@@ -48,10 +49,11 @@ const appViewReducer = (state = initialState, action) => {
     case actionTypes.FETCH_ACHIEVEMENTS_FAILURE:
     case actionTypes.FETCH_SUGGESTIONS_FAILURE:
     case actionTypes.POST_DISTANCES_FAILURE:
+    case actionTypes.POST_ANSWERS_FAILURE:
+    case actionTypes.SET_TRIVIA_FAILURE:
     case actionTypes.POST_USER_LIKE_FAILURE:
     case actionTypes.FETCH_QUESTIONS_FAILURE: {
       let errorMessage = action.payload;
-      console.log(`Error with ${action.type}`);
       if (action.payload === "Request failed with status code 404") {
         errorMessage = "Not found";
       } else if (action.payload === "Request failed with status code 500") {
@@ -100,6 +102,20 @@ const appViewReducer = (state = initialState, action) => {
           ...state,
           isBroken: !state.isBroken
         };
+    case actionTypes.FETCH_ACHIEVEMENTS_SUCCESS:
+      return {
+        ...state,
+        isError: false,
+        isLoading: false,
+        totalScore: action.payload.totalScore,
+      };
+
+    case actionTypes.INCREMENT_SCORE:
+      return {
+        ...state,
+        totalScore: state.totalScore + 1,
+      };
+
 
     default:
       return state;

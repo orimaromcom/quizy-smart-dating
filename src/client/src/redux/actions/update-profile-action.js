@@ -20,7 +20,7 @@ export const updateProfileAction = (data) => {
     dispatch(updatehProfileRequest());
     try {
       const Profile = await UserApiService.updateUser(data);
-      dispatch(updateProfileSuccess(Profile, "Details saved successfully"));
+      dispatch(updateProfileSuccess(Profile, "Saving details"));
     } catch (e) {
       dispatch(updateProfileFailure(e.message));
     }

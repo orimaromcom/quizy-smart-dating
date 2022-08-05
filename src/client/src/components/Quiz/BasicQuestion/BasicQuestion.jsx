@@ -15,8 +15,11 @@ export default function BasicQuestion({
   incrementAnswersIndexAction,
   questions,
   answersArray,
+
   isAudio,
   toggleIsBrokenAction,
+
+  incrementScoreAction,
 }) {
   const [options, setOptions] = useState([]);
   const correctSound = new Audio(correctAnswerSound);
@@ -33,17 +36,20 @@ export default function BasicQuestion({
       setOptions(questionsArray);
     }
   }, [question]);
-const muteOnLastQuestion = answersArray.length === 9 && isAudio
+  const muteOnLastQuestion = answersArray.length === 9 && isAudio;
 
-  const optionHandler = (chosenOption,e) => {
+  const optionHandler = (chosenOption, e) => {
     let answerIsCorrect = null;
     if (question.type === "trivia") {
       if (question.correctOption === chosenOption) {
         answerIsCorrect = true;
+
         if (!muteOnLastQuestion) {
           correctSound.play();
-          pop(e)
+          pop(e);
         }
+
+        incrementScoreAction();
       } else {
         answerIsCorrect = false;
         if (!muteOnLastQuestion) {
@@ -56,9 +62,9 @@ const muteOnLastQuestion = answersArray.length === 9 && isAudio
         }
       }
     } else {
-      if(!muteOnLastQuestion){
+      if (!muteOnLastQuestion) {
         correctSound.play();
-        pop(e)
+        pop(e);
       }
     }
 

@@ -11,8 +11,7 @@ export default class AnswersApiService {
       });
       return response;
     } catch (error) {
-      // throw new Error(error.message);
-      console.log('Anwers were not saved', error.message);
+      throw new Error(error.message);
     }
   }
 }

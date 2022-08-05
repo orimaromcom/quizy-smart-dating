@@ -1,5 +1,5 @@
-import SwitchButtonConnector from "./SwitchButton/SwitchButtonConnector";
 import * as React from "react";
+import SwitchButtonConnector from "./SwitchButton/SwitchButtonConnector";
 import { useLocation } from "react-router-dom";
 import {
   AppBar,
@@ -7,53 +7,45 @@ import {
   Toolbar,
   IconButton,
   Typography,
-  Container,
   Avatar,
   Button,
   Tooltip,
 } from "@mui/material";
 import style from "./appbarcomponent.module.css";
-
 import { useState } from "react";
 
-const pages = ["USERSCORE"];
-
-const AppBarComponent = ({ profile, userLogoutAction, isAudio }) => {
+const AppBarComponent = ({ profile, userLogoutAction, totalScore, isAudio }) => {
   const location = useLocation();
-
   const [showLogOuot, setShowLogOuot] = useState(false);
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              ml: "-2px",
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Quizy
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              color="inherit"
-            ></IconButton>
-          </Box>
+    <AppBar
+      position="static"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Toolbar
+        disableGutters
+        style={{
+          display: "flex",
+          justifyContent: location.pathname === "/login" ? "center" : "space-around",
+          width: "95%",
+        }}
+      >
+        <Box sx={{ display: "flex", flexDirection: "row" }}>
+          {location.pathname === "/login" ? null : (
+            <div>
+              <Typography variant="h6" sx={{ fontFamily: "monospace" }}>
+                👑
+                {totalScore.toString()}
+              </Typography>
+            </div>
+          )}
+        </Box>
+        <Box sx={{ display: "flex" }}>
           <div className={style.quizy_logo_container}>
             <img
               src="/favicon.png"
@@ -62,12 +54,9 @@ const AppBarComponent = ({ profile, userLogoutAction, isAudio }) => {
               alt="heart"
             />
           </div>
-
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href=""
             sx={{
               mr: 2,
               ml: "10px",
@@ -83,68 +72,50 @@ const AppBarComponent = ({ profile, userLogoutAction, isAudio }) => {
           >
             Quizy
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                sx={{
-                  my: 2,
-                  color: "white",
-                  display: "block",
-                  fontFamily: "monospace",
-                  fontWeight: 700,
-                  fontSize: "1.5rem",
+        </Box>
+        {location.pathname === "/login" ? null : (
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip
+              title={
+                <>
+                  {" "}
+                  <Button
+                    variant="contained"
+                    onClick={() => {
+                      setShowLogOuot(false);
+                      userLogoutAction();
+                    }}
+                  >
+                    Logout
+                  </Button>
+                  <div className={style.audio_container}>
+                    <span className={style.audio_switch}>
+                      <SwitchButtonConnector />
+                      <div className={style.audio_emoji}>{isAudio ? "🔉" : "🔇"}</div>
+                    </span>
+                  </div>
+                </>
+              }
+              open={showLogOuot}
+              PopperProps={{
+                popperOptions: {
+                  placement: "top",
+                },
+              }}
+              placement="top"
+            >
+              <IconButton
+                onClick={() => {
+                  setShowLogOuot((prev) => !prev);
                 }}
+                sx={{ p: 0 }}
               >
-                {page}
-              </Button>
-            ))}
+                <Avatar alt="?" src={profile.picture} />
+              </IconButton>
+            </Tooltip>
           </Box>
-          {location.pathname === "/login" ? null : (
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip
-                title={
-                  <>
-                    <Button
-                      variant="contained"
-                      onClick={() => {
-                        setShowLogOuot(false);
-                        userLogoutAction();
-                      }}
-                    >
-                      Logout
-                    </Button>
-                    {
-                      <div className={style.audio_container}>
-                        <span className={style.audio_switch}>
-                          <SwitchButtonConnector />
-                          <div className={style.audio_emoji}>{isAudio ? "🔉" : "🔇"}</div>
-                        </span>
-                      </div>
-                    }
-                  </>
-                }
-                open={showLogOuot}
-                PopperProps={{
-                  popperOptions: {
-                    placement: "top",
-                  },
-                }}
-                placement="top"
-              >
-                <IconButton
-                  onClick={() => {
-                    setShowLogOuot((prev) => !prev);
-                  }}
-                  sx={{ p: 0 }}
-                >
-                  <Avatar alt="Remy Sharp" src={profile.picture} />
-                </IconButton>
-              </Tooltip>
-            </Box>
-          )}
-        </Toolbar>
-      </Container>
+        )}
+      </Toolbar>
     </AppBar>
   );
 };

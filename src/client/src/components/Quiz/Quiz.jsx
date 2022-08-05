@@ -6,7 +6,6 @@ import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import HeartLoader from "../HeartLoader/HeartLoader";
 import HeartConnector from "./Heart/HeartConnector.js";
-import AnswersApiService from "../../services/answers-api-service";
 import "./quiz.css";
 import quizEndSoundFile from "../../assets/sounds/quizEndSound.mp3";
 
@@ -29,6 +28,9 @@ export default function Quiz({
   postDistancesAction,
   isAudio,
   toggleIsBrokenAction,
+  incrementScoreAction,
+  postAnswersAction,
+
 }) {
   const [playAgainClicked, setPlayAgainClicked] = useState(false);
   const quizEndSound = new Audio(quizEndSoundFile);
@@ -52,15 +54,22 @@ export default function Quiz({
   const isFinished = questions.length && questionIndex === questions.length;
 
   useEffect(() => {
-    if (!questions.length && !playAgainClicked && !isLoading) {
+    if (!questions.length && !playAgainClicked /* && !isLoading */) {
       fetchNewQuestionsAction();
       updateQuoteAction();
     }
     if (isFinished) {
-      async function postAnswersPostDistancesGetSuggestions(answersArray, userId) {
-        await AnswersApiService.postAnswers(answersArray);
-        //await postDistancesAction(userId);
-        //await fetchNewSuggestionsAction(userId);
+
+      confetti();
+
+      async function postAnswersPostDistancesGetSuggestions(
+        answersArray,
+        userId
+      ) {
+        await postAnswersAction(answersArray);
+        await postDistancesAction(userId);
+        await fetchNewSuggestionsAction(userId);
+
       }
       if (answersArray.length) {
         postAnswersPostDistancesGetSuggestions(answersArray, userId);
@@ -72,21 +81,29 @@ export default function Quiz({
        
       }
     }
-  }, [fetchNewQuestionsAction, questions, answersArray, clearAnswersArray, isFinished]);
+  }, [
+    fetchNewQuestionsAction,
+    questions,
+    answersArray,
+    clearAnswersArray,
+    isFinished,
+  ]);
 
   return (
     <div className="quiz-container">
       {isLoading ? (
         <>
           <HeartLoader />
-          {!isFinished ? (
+       {/*    {!isFinished ? (
             <div>Loading questions...</div>
           ) : (
             <div>Loading possible matches...</div>
-          )}
+          )} */}
         </>
       ) : (
-        <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
+        <ProgressBar
+          progressPercentage={(questionIndex / questions.length) * 100}
+        />
       )}
 
       {!isFinished ? (
@@ -100,6 +117,8 @@ export default function Quiz({
           questionIndex={questionIndex}
           isAudio={isAudio}
           toggleIsBrokenAction={toggleIsBrokenAction}
+          incrementScoreAction={incrementScoreAction}
+
         />
       ) : isLoading ? null : (
         <>

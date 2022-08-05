@@ -8,7 +8,7 @@ export default function Brainmates({
   brainmates,
   fetchBrainmatesAction,
   userId,
-  suggestionDistance,
+  suggestionsOrBrainmates,
   isLoading,
 }) {
   const navigate = useNavigate();
@@ -21,17 +21,22 @@ export default function Brainmates({
   }, [navigate, userId]);
 
   useEffect(() => {
-    if (userId && !Object.keys(brainmates).length) fetchBrainmatesAction(userId);
-  }, []);
+    // if (userId && !Object.keys(brainmates).length) fetchBrainmatesAction(userId);
+    // always, because maybe someone liked or disliked you:
+    async function updateBrainmates(userId) {
+      await fetchBrainmatesAction(userId);
+    }
+    if (userId) updateBrainmates(userId);
+  }, [fetchBrainmatesAction, userId]);
 
-  return suggestionDistance === "brainmates" ? (
+  return suggestionsOrBrainmates === "brainmates" ? (
     <div className="brain-mates-container">
       {brainmates.likeBack
         ? Object.keys(brainmates.likeBack).map((brainmate, i) => {
             const current = brainmates.likeBack[brainmate];
             return (
               <MateCard
-                key={`match` + i}
+                key={`match ${i}`}
                 status={"match"}
                 userName={current.username}
                 imgSrc={current.picture}

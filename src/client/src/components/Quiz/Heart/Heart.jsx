@@ -5,9 +5,9 @@ export default function Heart({
   quote,
   fetchNewSuggestionsAction,
   userId,
-  suggestionDistance,
+  suggestionsOrBrainmates,
   updatePageButtonAction,
-  updateSuggestionDistanceAction,
+  updateSuggestionsOrBrainmatesAction,
   suggestions,
   setPlayAgainClicked,
   clearQuestionsArrayAction,
@@ -23,7 +23,7 @@ export default function Heart({
 
     updatePageButtonAction("brainmates");
 
-    updateSuggestionDistanceAction("closest");
+    updateSuggestionsOrBrainmatesAction("closest");
 
     navigate("/brainmates");
   };
