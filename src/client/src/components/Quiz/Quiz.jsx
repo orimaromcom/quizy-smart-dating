@@ -89,24 +89,9 @@ export default function Quiz({
             addAnswer={addAnswerAction}
             incrementQuestionIndexAction={incrementQuestionIndexAction}
             questionIndex={questionIndex}
+            incrementScoreAction={incrementScoreAction}
           />
         </>
-      ) : (
-        <ProgressBar
-          progressPercentage={(questionIndex / questions.length) * 100}
-        />
-      )}
-      {!isFinished ? (
-        <BasicQuestion
-          question={questions[questionIndex] ? questions[questionIndex] : ""}
-          userId={userId}
-          incrementAnswersIndexAction={incrementAnswersIndexAction}
-          answersArray={answersArray}
-          addAnswer={addAnswerAction}
-          incrementQuestionIndexAction={incrementQuestionIndexAction}
-          questionIndex={questionIndex}
-          incrementScoreAction={incrementScoreAction}
-        />
       ) : (
         <>
           <p>New suggestions were found for you!</p>

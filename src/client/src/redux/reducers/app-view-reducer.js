@@ -28,13 +28,6 @@ const appViewReducer = (state = initialState, action) => {
       };
     }
 
-    case actionTypes.USER_LOGOUT: {
-      return {
-        ...state,
-        isLoading: false,
-      };
-    }
-
     case actionTypes.FETCH_PROFILE_SUCCESS:
     case actionTypes.FETCH_BRAINMATES_SUCCESS:
     case actionTypes.FETCH_QUESTIONS_SUCCESS:
@@ -42,7 +35,6 @@ const appViewReducer = (state = initialState, action) => {
     case actionTypes.FETCH_SUGGESTIONS_SUCCESS: {
       return {
         ...state,
-        isError: false,
         isLoading: false,
       };
     }

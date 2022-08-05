@@ -1,9 +1,8 @@
 import actionTypes from "./constants";
 import AchievementsApiService from "../../services/achievemnts-api-service";
 
-const fetchAchievementsRequest = (loadingMessage) => ({
+const fetchAchievementsRequest = () => ({
   type: actionTypes.FETCH_ACHIEVEMENTS_REQUEST,
-  payload: loadingMessage,
 });
 
 const fetchAchievementsSuccess = (achievements, totalScore) => ({
@@ -18,7 +17,7 @@ const fetchAchievementsFailure = (errorMessage) => ({
 
 export const fetchAchievementsAction = (id) => {
   return async (dispatch) => {
-    dispatch(fetchAchievementsRequest("Loading Your Achievemnt..."));
+    dispatch(fetchAchievementsRequest());
     try {
       const achievements = await AchievementsApiService.getAchievements(id);
       const totalScore = Object.keys(achievements.categories)

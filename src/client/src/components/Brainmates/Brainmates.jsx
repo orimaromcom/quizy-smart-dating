@@ -9,7 +9,6 @@ export default function Brainmates({
   fetchBrainmatesAction,
   userId,
   suggestionsOrBrainmates,
-  isLoading,
 }) {
   const navigate = useNavigate();
 
@@ -27,7 +26,8 @@ export default function Brainmates({
       await fetchBrainmatesAction(userId);
     }
     if (userId) updateBrainmates(userId);
-  }, [fetchBrainmatesAction, userId]);
+    console.log("now");
+  }, []);
 
   return suggestionsOrBrainmates === "brainmates" ? (
     <div className="brain-mates-container">

@@ -1,9 +1,8 @@
 import actionTypes from "./constants";
 import UserApiService from "../../services/user-api-service";
 
-const fetchProfileRequest = (loadingMessage) => ({
+const fetchProfileRequest = () => ({
   type: actionTypes.FETCH_PROFILE_REQUEST,
-  payload: loadingMessage,
 });
 
 const fetchProfileSuccess = (Profile) => ({
@@ -18,7 +17,7 @@ const fetchProfileFailure = (errorMessage) => ({
 
 export const fetchProfileAction = (email) => {
   return async (dispatch) => {
-    dispatch(fetchProfileRequest("Loading..."));
+    dispatch(fetchProfileRequest());
     try {
       const Profile = await UserApiService.getUserByEmail(email);
       dispatch(fetchProfileSuccess(Profile));

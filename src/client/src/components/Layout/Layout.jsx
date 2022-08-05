@@ -6,7 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import ToasterConnector from "../Toaster/toaster-connector";
 
-export default function Layout() {
+export default function Layout({ isLoading }) {
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
