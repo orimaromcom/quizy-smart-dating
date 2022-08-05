@@ -70,8 +70,8 @@ async function getUserDistances(userId) {
 
 async function getSuggestionsForUser(userId) {
   const distances = await getUserDistances(userId);
-  closestUser = await findSuggestion(userId, distances, 0, 1);
-  farthestUser = await findSuggestion(userId, distances, distances.length - 1, -1);
+  const closestUser = await findSuggestion(userId, distances, 0, 1);
+  const farthestUser = await findSuggestion(userId, distances, distances.length - 1, -1);
   return {closest: closestUser, farthest: farthestUser};
 }
 
@@ -112,6 +112,7 @@ async function checkLikes(firstUserId, secondUserId) {
 }
 
 async function setSuggestedUserInfo(distance, likeBack) {
+  let suggestedUser;
   if (distance) {
     suggestedUser = await getMatchingUserInfo(distance.User);
     suggestedUser.amountOfSamePersonalAnswers = distance.personalSimilarity;
@@ -133,9 +134,9 @@ async function getMatchingUserInfo(matchingUser) {
     age: matchingUser.age,
     location: matchingUser.location,
   }
-  triviaInfo = [];
+  let triviaInfo = [];
   const triviaAnswers = await getUserTriviaAnswers(matchingUser.id);
-  triviaAccuracy = calculateTriviaAccuracy(triviaAnswers);
+  let triviaAccuracy = calculateTriviaAccuracy(triviaAnswers);
   TOPICS.forEach((topic, i) => {
     triviaInfo.push([Math.round(triviaAccuracy[i] * 100), topic]);
   });
@@ -149,7 +150,7 @@ async function getMatchingUserInfo(matchingUser) {
 async function postAllUsersDistances() {
   const allUsers = await User.findAll();
   const responses = [];
-  for (user of allUsers) {
+  for (const user of allUsers) {
     try {
       responses.push(await postUserDistances(user.id));
     } catch (error) {
@@ -163,7 +164,7 @@ async function postUserDistances(userId) {
   const currentUser = await User.findOne({ where: { id: userId } });
   const otherUsers = await User.findAll({ where: { id: {[Sequelize.Op.not]:userId} } });
   const distances = []
-  for (anotherUser of otherUsers) {
+  for (const anotherUser of otherUsers) {
     const {triviaDifference, personalSimilarity} = await calculateDictance(currentUser, anotherUser);
     const distance = await Distance.upsert({
       firstUserId: currentUser.id,
@@ -239,7 +240,7 @@ function calculateTriviaAccuracy(userTriviaAnswers) {
 async function calculatePersonalSimilarity(firstUserId, secondUserId) {
   let personalSimilarity = 0;
   const firstUserPersonalAnswers = await getUserPersonalAnswers(firstUserId);
-  for (firstUserAnswer of firstUserPersonalAnswers) {
+  for (const firstUserAnswer of firstUserPersonalAnswers) {
     const secondUserAnswer = await getUserPersonalAnswerToQuestion(secondUserId, firstUserAnswer.questionId)
     if (secondUserAnswer && secondUserAnswer.dataValues.chosenOption === firstUserAnswer.chosenOption) {
       personalSimilarity += 1;
