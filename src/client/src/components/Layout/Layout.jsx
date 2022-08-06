@@ -14,6 +14,7 @@ export default function Layout({ isLoading }) {
       navigate("/quiz");
     }
   }, []);
+
   return (
     <>
       <AppBarConnector />

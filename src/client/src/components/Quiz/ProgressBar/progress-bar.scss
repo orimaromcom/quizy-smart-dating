@@ -12,9 +12,11 @@
   width: 90%;
 }
 
-svg.heart-icon {
+.heart-icon {
   height: 1em;
 }
+
+
 
 .heart-icon {
   path.heart {
@@ -32,7 +34,7 @@ svg.heart-icon {
   border-radius: 50%;
   margin: 10px;
 
-  box-shadow: 0 0 0 0 rgba(245, 0, 87, 0.4);
+  //box-shadow: 0 0 0 0 rgba(245, 0, 87, 0.4);
   transform: scale(10);
   animation: pulse 1.5s infinite;
 }

@@ -7,7 +7,10 @@ const initialState = {
   pageButtonValue: "login",
   isSuccess: false,
   successMessage: "Success!",
+  isAudio: false,
+  isBroken: false,
   totalScore: 0,
+
 };
 
 const appViewReducer = (state = initialState, action) => {
@@ -97,6 +100,17 @@ const appViewReducer = (state = initialState, action) => {
         pageButtonValue: action.payload,
       };
 
+      case actionTypes.TOGGLE_AUDIO:
+        return {
+          ...state,
+          isAudio: !state.isAudio
+        };
+
+        case actionTypes.TOGGLE_IS_BROKEN:
+        return {
+          ...state,
+          isBroken: !state.isBroken
+        };
     case actionTypes.FETCH_ACHIEVEMENTS_SUCCESS:
       return {
         ...state,
@@ -110,6 +124,7 @@ const appViewReducer = (state = initialState, action) => {
         ...state,
         totalScore: state.totalScore + 1,
       };
+
 
     default:
       return state;

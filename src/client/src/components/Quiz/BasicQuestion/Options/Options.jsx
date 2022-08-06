@@ -12,7 +12,7 @@ export default function Options({ options, optionHandler, question }) {
               text={decode(option)}
               key={index}
               question={question}
-              onClick={() => optionHandler(decode(option))}
+              onClick={(e) => optionHandler(decode(option),e)}
             />
           );
       })}

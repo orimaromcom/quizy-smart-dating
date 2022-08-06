@@ -15,3 +15,14 @@
   border-color: white;
   border-radius: 1em;
 }
+
+.audio_switch {
+  display: flex;
+  font-size: 1.5rem;
+  align-items: center;
+}
+
+.audio_emoji{
+  margin-top: 20px;;
+}
+
