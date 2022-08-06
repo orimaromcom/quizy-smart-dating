@@ -54,10 +54,10 @@ export default function BasicQuestion({
         answerIsCorrect = false;
         if (!muteOnLastQuestion) {
           incorrectSound.play();
-          toggleIsBrokenAction();
+         // toggleIsBrokenAction();
 
           setTimeout(function () {
-            toggleIsBrokenAction();
+          //  toggleIsBrokenAction();
           }, 1500);
         }
       }

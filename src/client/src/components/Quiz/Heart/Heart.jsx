@@ -26,6 +26,11 @@ export default function Heart({
 
   return (
     <div className={style.container}>
+           <h1 className={style.text}>
+        Press the big heart to see if there are new suggestions for you!
+      </h1>
+     
+      
  <svg id={style.heart_button} onClick={() => HeartCLickHandler()}
         className="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium heart-icon css-u42cxr-MuiSvgIcon-root"
         focusable="false"

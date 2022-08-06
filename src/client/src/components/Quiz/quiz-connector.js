@@ -43,7 +43,6 @@ const mapStateToProps = (state) => {
     answersArray,
     questionIndex,
     suggestions,
-    isLoading,
     isAudio,
     isBroken,
     quote,
