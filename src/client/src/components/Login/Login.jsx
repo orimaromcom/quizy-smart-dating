@@ -50,9 +50,7 @@ export default function Login({
 
   const getGoogleLoginData = useCallback(
     async (credentialResponse) => {
-      const { email, picture, name } = jwt_decode(
-        credentialResponse.credential
-      );
+      const { email, picture, name } = jwt_decode(credentialResponse.credential);
       setEmail(email);
       setPicture(picture);
       setName(name);
@@ -62,8 +60,11 @@ export default function Login({
   );
 
   useEffect(() => {
-    if (profile && profile.location && profile.id)
-      fetchAchievementsAction(profile.id);
+    async function fetchAchievements(profile) {
+      if (profile && profile.location && profile.id)
+        await fetchAchievementsAction(profile.id);
+    }
+    fetchAchievements(profile);
   }, [profile]);
 
   const googleLogIn = (

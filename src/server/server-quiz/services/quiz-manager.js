@@ -106,13 +106,11 @@ async function postPersonalAnswer(requestBodyFromClient) {
   const userId = requestBodyFromClient.userId;
   const questionId = requestBodyFromClient.questionId;
   const chosenOption = requestBodyFromClient.chosenOption;
-  await PersonalAnswer.upsert(
-    {
-      userId: userId,
-      questionId: questionId,
-      chosenOption: chosenOption,
-    },
-  );
+  await PersonalAnswer.upsert({
+    userId: userId,
+    questionId: questionId,
+    chosenOption: chosenOption,
+  });
 }
 
 module.exports = {
