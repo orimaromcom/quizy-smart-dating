@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     flex-basis: 20%;
+    align-items: center;
 }
 
 .question-text{
