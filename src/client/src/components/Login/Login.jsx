@@ -1,7 +1,6 @@
-import { GoogleLogin } from "@react-oauth/google";
-import { useNavigate } from "react-router-dom";
 import { useEffect, useCallback, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import "./Login.css";
 
@@ -72,7 +71,6 @@ export default function Login({
       onError={() => {
         console.log("Google login failed");
       }}
-      useOneTap
     />
   );
 

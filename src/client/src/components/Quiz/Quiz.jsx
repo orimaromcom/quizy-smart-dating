@@ -5,8 +5,8 @@ import confetti from "canvas-confetti";
 import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import HeartConnector from "./Heart/HeartConnector.js";
-import "./quiz.css";
 import quizEndSoundFile from "../../assets/sounds/quizEndSound.mp3";
+import "./quiz.css";
 
 export default function Quiz({
   fetchNewQuestionsAction,
@@ -28,7 +28,6 @@ export default function Quiz({
   incrementScoreAction,
   postAnswersAction,
   quote,
-  suggestions,
 }) {
   const [playAgainClicked, setPlayAgainClicked] = useState(false);
   const quizEndSound = new Audio(quizEndSoundFile);

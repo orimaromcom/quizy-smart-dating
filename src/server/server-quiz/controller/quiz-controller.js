@@ -9,7 +9,7 @@ async function getAllQuestions(req, res) {
   } catch {
     res
       .status(500)
-      .json({ msg: "Oops... Something went wrong. Cannot get questions at server. :(" });
+      .json({ msg: "Cannot get questions from server" });
   }
 }
 
@@ -21,7 +21,6 @@ async function getRandomQuote(req, res) {
 
 async function postAnswer(req, res) {
   const answersArray = req.body.answersArray;
-
   const answerFromServer = await quizManager.postAnswer(answersArray);
   res.status(200).json(answerFromServer);
 }

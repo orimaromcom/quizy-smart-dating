@@ -1,7 +1,7 @@
-import "./achievements.css";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Achievement from "./Achievement/Achievement";
+import "./achievements.css";
 
 export default function Achievements({
   achievements,

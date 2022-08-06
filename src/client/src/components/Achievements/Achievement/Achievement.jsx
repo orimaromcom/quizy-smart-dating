@@ -1,4 +1,4 @@
-import "./achievement.css";
+import { PieChart } from "react-minimal-pie-chart";
 import { Chip } from "@mui/material";
 import MovieCreationIcon from "@mui/icons-material/MovieCreation";
 import SportsBasketballIcon from "@mui/icons-material/SportsBasketball";
@@ -7,7 +7,7 @@ import StarIcon from "@mui/icons-material/Star";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
-import { PieChart } from "react-minimal-pie-chart";
+import "./achievement.css";
 
 export default function Achievement({ title, score }) {
   const renderChip = () => {

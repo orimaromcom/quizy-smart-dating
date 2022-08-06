@@ -1,6 +1,4 @@
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import particle from "./heart-particles.scss";
-import React, { useState } from "react";
+import React from "react";
 
 export function pop(e) {
   let amount = 30;
@@ -10,14 +8,11 @@ export function pop(e) {
       amount = 60;
       break;
   }
-  // Quick check if user clicked the button using a keyboard
   if (e.clientX === 0 && e.clientY === 0) {
     const bbox = e.target.getBoundingClientRect();
     const x = bbox.left + bbox.width / 2;
     const y = bbox.top + bbox.height / 2;
     for (let i = 0; i < 30; i++) {
-      // We call the function createParticle 30 times
-      // We pass the coordinates of the button for x & y values
       createParticle(x, y, e.target.dataset.type);
     }
   } else {
@@ -73,9 +68,7 @@ export default function HeartParticles({ isBroken, toggleIsBrokenAction }) {
   return (
     <div
       onClick={(e) => {
-        //pop(e);
         toggleIsBrokenAction();
-
         setTimeout(function () {
           toggleIsBrokenAction();
         }, 1500);

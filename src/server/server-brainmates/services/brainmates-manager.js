@@ -1,6 +1,5 @@
 const { Like, User } = require('../../db/models');
 const { getMatchingUserInfo } = require ('../../server-matching/services/matching-manager')
-const Sequelize = require('sequelize');
 
 async function postUserLike(firstUserId, secondUserId, firstUserLikesSecondUser) {
   const result = await Like.upsert({
@@ -39,11 +38,13 @@ async function getBrainmatesForUser(userId) {
       case 'pending':
         brainmateInfo.phoneNumber = '*********';
         pending.push(brainmateInfo);
-
         break;
       case 'dislikeBack':
         brainmateInfo.phoneNumber = '*********';
         dislikeBack.push(brainmateInfo);
+        break;
+
+      default:
         break;
     }
   }

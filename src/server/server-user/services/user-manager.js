@@ -1,5 +1,4 @@
 const { User, TriviaAnswer} = require("../../db/models");
-const Sequelize = require("sequelize");
 
 async function postUserInfo(userInfo) {
   const result = await User.upsert({

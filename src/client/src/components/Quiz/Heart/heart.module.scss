@@ -4,17 +4,13 @@
   height: 100%;
 }
 
-
 .quote {
-
   padding: 1em 1em 1em;
   padding-bottom: 1em;
   font-size: 20px;
   text-align: center;
   font-weight: bold;
   font-style: italic;
-
-
 }
 
 .text {
@@ -26,7 +22,6 @@
   font-weight: bold;
 }
 
-
 .author {
   flex: 0 1 auto;
   padding-top: 5px;
@@ -37,14 +32,8 @@
 .heart_container {
   flex: 1 0 auto;
   display: flex;
-
   border-radius: 50%;
   animation: pulse 2s linear infinite;
-  /*    box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box; */
-
-
 }
 
 .heart {
@@ -52,18 +41,14 @@
   background-color: #e42f45;
   height: 100px;
   width: 100px;
-  /* Animation */
   animation: pulse 2s linear infinite;
   cursor: pointer;
   border-radius: 5%;
-
 }
 
 .heart::after {
-  /* background:blue; */
   background: inherit;
   border-radius: 50%;
-  /* To make circle */
   content: "";
   position: absolute;
   top: -50%;
@@ -73,15 +58,12 @@
 }
 
 .heart::before {
-  /*  background:green; */
   background: inherit;
   border-radius: 50%;
-  /* To make circle */
   content: "";
   position: absolute;
   top: 0;
   right: -50%;
-  /* Inherit properties of parent */
   height: 100px;
   width: 100px;
 }
@@ -90,21 +72,14 @@
   0% {
     transform: rotate(-22.5deg) scale(1);
     opacity: 0;
-    //box-shadow: 0 0 0 0 rgb(228,	47	,69, 0.1);
-    //border: 10px solid rgb(228,	47	,69, 0.1);  
-
   }
 
   50% {
     transform: rotate(-22.5deg) scale(1.2);
     opacity: 1;
-    // box-shadow: 0 0 0 10px rgba(	228	,47	,69, 0.2);
-    //border: 5px solid rgba(215, 92, 106, 0.1);
   }
 
   100% {
-    // box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
-    //border: 10px solid rgb(228,	47	,69, 0.1);  
     transform: rotate(-22.5deg) scale(1);
     opacity: 1;
   }

@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import LoginPage from "./routes/LoginPage";
 import QuizPage from "./routes/QuizPage";
 import BrainmatesPage from "./routes/BrainmatesPage";
 import AchievementsPage from "./routes/AchievementsPage";
 import ProfilePage from "./routes/ProfilePage";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import "monday-ui-react-core/dist/main.css";
 import LayoutConnector from "./components/Layout/layout-connector";
+import "monday-ui-react-core/dist/main.css";
 
 const theme = createTheme({
   palette: {

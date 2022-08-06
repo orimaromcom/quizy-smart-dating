@@ -1,7 +1,7 @@
+const iquotes = require("iquotes");
 const urlArray = require("../clients/api-constants");
 const { PersonalQuestion, TriviaAnswer, PersonalAnswer } = require("../../db/models");
 const triviaClient = require("../clients/trivia-client");
-const iquotes = require("iquotes");
 
 async function getAllQuestions() {
   const personalQuestions = await PersonalQuestion.findAll();
@@ -68,7 +68,6 @@ async function postAnswer(answersArray) {
       postPersonalAnswer(answer);
     }
   }
-
   return answersArray;
 }
 

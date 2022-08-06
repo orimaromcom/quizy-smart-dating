@@ -2,8 +2,9 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Achievements from "./Achievements";
 import { getProfile } from "../../redux/selectors/profile-entity-selector";
-import { fetchAchievementsAction } from "../../redux/actions/fetch-achievements-action";
 import { getAllAchievements } from "../../redux/selectors/achievements-entities-selector";
+import { fetchAchievementsAction } from "../../redux/actions/fetch-achievements-action";
+
 const mapStateToProps = (state) => {
   const achievements = getAllAchievements(state);
   const userId = getProfile(state).id;
