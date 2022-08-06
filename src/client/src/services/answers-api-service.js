@@ -4,7 +4,7 @@ import { headers } from "./headers";
 export default class AnswersApiService {
   static async postAnswers(answersArray) {
     try {
-      const response = await axios.post(`/api/quiz/answers`, {
+      const response = await axios.post(`/quiz/answers`, {
         answersArray: answersArray ,
       }, {
         headers: headers,

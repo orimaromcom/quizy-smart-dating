@@ -4,7 +4,7 @@ import { headers } from "./headers";
 export default class BrainmatesApiService {
   static async getBrainmates(id) {
     try {
-      const response = await axios.get(`/api/brainmates/${id}`,{
+      const response = await axios.get(`/brainmates/${id}`,{
         headers: headers
       });
       return response.data;
@@ -15,7 +15,7 @@ export default class BrainmatesApiService {
 
   static async postUserLike(userLikeBody){
     try {
-      const response = await axios.post(`/api/brainmates/like/`, {
+      const response = await axios.post(`/brainmates/like/`, {
         ...userLikeBody
       }, {
         headers: headers

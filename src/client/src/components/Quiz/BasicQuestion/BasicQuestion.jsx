@@ -35,6 +35,7 @@ export default function BasicQuestion({
   }, [question]);
 
   const optionHandler = (chosenOption, e) => {
+    console.log(isAudio);
     let answerIsCorrect = null;
     if (question.type === "trivia") {
       if (question.correctOption === chosenOption) {

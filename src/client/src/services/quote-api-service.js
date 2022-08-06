@@ -4,7 +4,7 @@ import { headers } from "./headers";
 export default class QuoteApiService {
   static async getRandomQuote() {
     try {
-      const response = await axios.get(`/api/quiz/quote`, {
+      const response = await axios.get(`/quiz/quote`, {
         headers: headers,
       });
       return response.data;
