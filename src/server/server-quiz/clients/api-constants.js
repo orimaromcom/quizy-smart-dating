@@ -1,4 +1,3 @@
-const URL_EXAMPLE = "https://opentdb.com/api.php?amount=10&category=26&difficulty=easy";
 const baseUrl = "https://opentdb.com";
 const API_QUERY = "/api.php?";
 const AMOUNT_OF_QUESTIONS = "amount=1";

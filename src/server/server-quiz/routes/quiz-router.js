@@ -10,9 +10,7 @@ const {
 const quizRouter = express.Router();
 
 quizRouter.get("/questions", auth, getAllQuestions);
-
 quizRouter.get("/quote", auth, getRandomQuote);
-
 quizRouter.post("/answers", auth, postAnswer);
 
 module.exports = quizRouter;

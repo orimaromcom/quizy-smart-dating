@@ -1,4 +1,5 @@
 # API
+Endpoints are protected with auth (baerer token).
 ## GET
 ---
 - getUserInfo
@@ -49,6 +50,14 @@
     - If "dislikeBack" we can not show the failed brainmate at all.
     - If "pending" we can show the card blurred or with *********** instead of phoneNumber.
 -----
+- getAllQuestions
+  - `/quiz/questions`
+  - **array of 10 objects**: shuffeled questions (4 personal and 6 trivia — 1 for each topic) with question, type (trivia/personal), topic, option1, ..., option4, correctOption (null for personal)
+------
+- getRandomQuote
+  - `/quiz/quote`
+  - **object** with quote, author and category (love)
+-----
 ## POST
 -----
 - postUserInfo
@@ -69,7 +78,7 @@
         "minAge": number,
         "maxAge": number
     }
-}
+  }
   ```
 ------
 - postUserDistances
@@ -88,5 +97,19 @@
     "firstUserId": number,
     "secondUserId": number,
     "firstUserLikesSecondUser": boolean
+  }
+  ```
+-----
+- postAnswer
+  - `quiz/answers`
+  - body: array of answers where each answer has the following structure:
+  ```
+  {
+    userId: number
+    type: "personal"/"trivia"
+    chosenOption: text
+    isCorrect: boolean (null for personal)
+    questionId: number
+    topic: text
   }
   ```

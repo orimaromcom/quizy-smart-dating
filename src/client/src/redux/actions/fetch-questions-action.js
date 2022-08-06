@@ -16,7 +16,6 @@ const fetchQuestionsFailure = (errorMessage) => ({
 });
 
 export const fetchNewQuestionsAction = () => {
-  console.log('fetchQuestionsRequest');
   return async (dispatch) => {
     dispatch(fetchQuestionsRequest());
     try {

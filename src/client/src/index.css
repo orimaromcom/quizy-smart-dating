@@ -10,8 +10,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -21,7 +21,6 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-
 
 body{
 	height: 100vh;
@@ -35,10 +34,3 @@ body{
   flex-direction: column;
   overflow: hidden;
 }
-
-/* :root{
-	--blue: #7ca0e5;
-	--dark-blue: #2f2342;
-	--red: #e42f45;
-	--dark-red: #b42b3f;
-} */

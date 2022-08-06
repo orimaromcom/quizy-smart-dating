@@ -34,8 +34,6 @@ app.get("/", (req, res) => {
 app.use(requestLoggerMiddleware);
 app.use(errorHandler);
 
-app.use("/matching", matchingRouter);
-
 app.use("/quiz", quizRouter);
 app.use("/matching", matchingRouter);
 app.use("/brainmates", brainmatesRouter);

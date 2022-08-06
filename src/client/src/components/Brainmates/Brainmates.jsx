@@ -1,5 +1,5 @@
 import "./brainmates.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MateCard from "./MateCard/MateCard";
 import SuggestionsConnector from "./Suggestions/suggestions-connector";

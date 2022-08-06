@@ -1,5 +1,5 @@
-import "./question.css";
 import { decode } from "html-entities";
+import "./question.css";
 
 export default function Question({ text }) {
   return (

@@ -125,7 +125,6 @@ const appViewReducer = (state = initialState, action) => {
         totalScore: state.totalScore + 1,
       };
 
-
     default:
       return state;
   }

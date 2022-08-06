@@ -14,6 +14,7 @@ async function getUserPersonalAnswers(userId) {
     }
   });
 }
+
 async function getUserPersonalAnswerToQuestion(userId, questionId) {
   return await PersonalAnswer.findOne({
     where: {

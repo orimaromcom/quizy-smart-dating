@@ -2,10 +2,10 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Brainmates from "./Brainmates";
 import { getProfile } from "../../redux/selectors/profile-entity-selector";
-import { fetchBrainmatesAction } from "../../redux/actions/fetch-brainmates-action";
 import { getAllBrainmates } from "../../redux/selectors/brainmates-entities-selector";
 import { getSuggestions } from "../../redux/selectors/suggestions-entities-selector";
 import { getSuggestionsDistance } from "../../redux/selectors/suggestions-entities-selector";
+import { fetchBrainmatesAction } from "../../redux/actions/fetch-brainmates-action";
 
 const mapStateToProps = (state) => {
   let brainmates = getAllBrainmates(state);

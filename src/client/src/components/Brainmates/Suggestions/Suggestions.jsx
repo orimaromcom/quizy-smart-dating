@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Button } from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import confetti from "canvas-confetti";
 import SuggestionsCard from "./SuggestionsCard/SuggestionsCard";
 import HeartLoader from "../../HeartLoader/HeartLoader";
 import loveMomentSound from "../../../assets/sounds/loveMomentSound.mp3";
 import style from "./suggestions.module.scss";
-import ClearIcon from "@mui/icons-material/Clear";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 
 export default function Suggestions({
   suggestions,

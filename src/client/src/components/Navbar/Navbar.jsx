@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
-import "./navbar.css";
-import { useState } from "react";
 import { Box, BottomNavigation, BottomNavigationAction } from "@mui/material";
 import PsychologyIcon from "@mui/icons-material/InterestsTwoTone";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import PersonIcon from "@mui/icons-material/Person";
+import "./navbar.css";
 
 export default function Navbar({ pageButtonValue, updatePageButtonAction }) {
-const [buttonColor, setButtonColor] = useState("green")
   return pageButtonValue === "login" ? null : (
     <Box>
       <BottomNavigation
@@ -17,7 +15,6 @@ const [buttonColor, setButtonColor] = useState("green")
         onChange={(event, newValue) => {
           updatePageButtonAction(newValue);
         }}
-        
       >
         <BottomNavigationAction
           id="Mui-selected-quiz"
@@ -32,15 +29,6 @@ const [buttonColor, setButtonColor] = useState("green")
           value="brainmates"
           to="/brainmates"
           icon={<FavoriteIcon sx={{ fontSize: 45,   }} />}
-         
-          /*  sx={{
-            my: 2,
-           
-            display: "block",
-            fontFamily: "monospace",
-            fontWeight: 700,
-            fontSize: "1.5rem",
-          }} */
         />
         <BottomNavigationAction
           id="Mui-selected-achievements"

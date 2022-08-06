@@ -6,7 +6,6 @@ import { toggleIsBrokenAction } from "../../../redux/actions/toggle-isbroken-act
 
 const mapStateToProps = (state) => {
   const isBroken = getIsBroken(state);
-
   return {
     isBroken,
   };

@@ -1,9 +1,7 @@
-import style from "./profile.module.css";
-import { Box, TextField, Slider, Switch, Button, Select, MenuItem } from "@mui/material";
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import UserApiService from "../../services/user-api-service";
-import { useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { Box, TextField, Slider, Switch, Button, Select, MenuItem } from "@mui/material";
+import style from "./profile.module.css";
 
 
 export default function Profile({

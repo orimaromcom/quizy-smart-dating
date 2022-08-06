@@ -1,11 +1,10 @@
-import "./basic-question.css";
+import { useEffect, useState } from "react";
 import Options from "./Options/Options";
 import Question from "./Question/Question";
-
-import { useEffect, useState } from "react";
 import correctAnswerSound from "../../../assets/sounds/correctAnswerSound.mp3";
 import incorrectAnswerSound from "../../../assets/sounds/incorrectAnswerSound.wav";
 import { pop } from "../HeartParticlesAnimation/HeartParticles";
+import "./basic-question.css";
 
 export default function BasicQuestion({
   question,
@@ -15,10 +14,8 @@ export default function BasicQuestion({
   incrementAnswersIndexAction,
   questions,
   answersArray,
-
   isAudio,
   toggleIsBrokenAction,
-
   incrementScoreAction,
 }) {
   const [options, setOptions] = useState([]);
@@ -36,7 +33,6 @@ export default function BasicQuestion({
       setOptions(questionsArray);
     }
   }, [question]);
-  const muteOnLastQuestion = answersArray.length === 9 && !isAudio;
 
   const optionHandler = (chosenOption, e) => {
     console.log(isAudio);
@@ -50,7 +46,6 @@ export default function BasicQuestion({
             correctSound.play();
           }
         }
-
         incrementScoreAction();
       } else {
         answerIsCorrect = false;
@@ -68,7 +63,7 @@ export default function BasicQuestion({
     } else {
       pop(e);
       if (isAudio) {
-        correctSound.play();   
+        correctSound.play();
       }
     }
 
