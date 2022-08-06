@@ -33,7 +33,6 @@ export default function Suggestions({
         setIsMatch(false);
         await nextStep();
       }, 3000);
-      console.log("We have a match!");
     } else {
       await nextStep();
     }

@@ -4,7 +4,7 @@ import { headers } from "./headers";
 export default class QuestionsApiService {
   static async getQuestions() {
     try {
-      const response = await axios.get(`/quiz/questions`, {
+      const response = await axios.get(`/api/quiz/questions`, {
         headers: headers
       });
       return response.data;

@@ -4,7 +4,7 @@ import { headers } from "./headers";
 export default class UserApiService {
   static async updateUser(userData) {
     try {
-      await axios.post(`/user`, {
+      await axios.post(`/api/user`, {
         ...userData,
       }, {
         headers: headers,
@@ -17,7 +17,7 @@ export default class UserApiService {
 
   static async getUserByEmail(email) {
     try {
-      const response = await axios.get(`/user/${email}`, {
+      const response = await axios.get(`/api/user/${email}`, {
         headers: headers
       });
       return response.data;
@@ -28,7 +28,7 @@ export default class UserApiService {
 
   static async setTriviaStatistics(id){
     try {
-      const response = await axios.post(`/user/set-trivia/${id}`, {}, {
+      const response = await axios.post(`/api/user/set-trivia/${id}`, {}, {
         headers: headers
       });
       return response.data;
