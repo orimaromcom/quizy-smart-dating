@@ -87,7 +87,9 @@ export default function Login({
         setPass("");
       } else {
         setTestEmail("");
-        await fetchProfileAction(testUserEmail);
+        if (testUserEmail.length >= 10) {
+          await fetchProfileAction(testUserEmail);
+        }
       }
     },
     [testEmail, pass, fetchProfileAction]
