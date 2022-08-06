@@ -28,6 +28,7 @@ export default function Quiz({
   incrementScoreAction,
   postAnswersAction,
   quote,
+  fetchAchievementsAction
 }) {
   const [playAgainClicked, setPlayAgainClicked] = useState(false);
   const quizEndSound = new Audio(quizEndSoundFile);
@@ -61,6 +62,7 @@ export default function Quiz({
       confetti();
       async function postAnswersPostDistancesGetSuggestions(answersArray, userId) {
         await postAnswersAction(answersArray);
+        await fetchAchievementsAction(userId);
         await postDistancesAction(userId);
         await fetchNewSuggestionsAction(userId);
       }

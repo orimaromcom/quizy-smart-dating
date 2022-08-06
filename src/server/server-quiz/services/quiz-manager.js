@@ -63,9 +63,9 @@ function shuffleOptions(optionsArray) {
 async function postAnswer(answersArray) {
   for (const answer of answersArray) {
     if (answer.type === "trivia") {
-      postTriviaAnswer(answer);
+      await postTriviaAnswer(answer);
     } else {
-      postPersonalAnswer(answer);
+      await postPersonalAnswer(answer);
     }
   }
   return answersArray;

@@ -3,9 +3,9 @@ import thunkMiddleware from "redux-thunk";
 import allReducers from "./reducers";
 
 const logger = (store) => (next) => (action) => {
-  // console.log("Dispatching", action);
+  console.log("Dispatching", action);
   let result = next(action);
-  // console.log("Next state", store.getState());
+  console.log("Next state", store.getState());
   return result;
 };
 

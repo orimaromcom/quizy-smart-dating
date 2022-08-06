@@ -19,6 +19,7 @@ import { postDistancesAction } from "../../redux/actions/post-distances-action";
 import { postAnswersAction } from "../../redux/actions/post-answers-action";
 import { incrementAnswersIndexAction } from "../../redux/actions/increment-answers-index-action";
 import { fetchNewSuggestionsAction } from "../../redux/actions/fetch-suggestions-action";
+import { fetchAchievementsAction } from "../../redux/actions/fetch-achievements-action";
 
 const mapStateToProps = (state) => {
   const questions = getAllQuestions(state);
@@ -58,6 +59,7 @@ const mapDispatchToProps = (dispatch) => {
       toggleIsBrokenAction,
       incrementScoreAction,
       postAnswersAction,
+      fetchAchievementsAction
     },
     dispatch
   );
