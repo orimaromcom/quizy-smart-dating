@@ -6,18 +6,32 @@ export default function SuggestionsCard({
   bestResult,
   age,
   amountOfSamePersonalAnswers,
-  gender
+  gender,
 }) {
   return (
-    <div className={`suggestion-card `}>
+    <div className={`suggestion-card`}>
       <div className="suggestion-card-content">
-        <div className="suggestion-card-avatar-container">
-          <img className="suggestion-card-avatar-img" src={getAvatarByGender(gender)} alt="mate" />
+        <div className="card-top">
+          <div className="suggestion-card-avatar-container">
+            <img
+              className="suggestion-card-avatar-img"
+              src={getAvatarByGender(gender)}
+              alt="mate"
+            />
+          </div>
+          <h1>{`${userName}`}</h1>
+          <h2>{`${age} y/o`}</h2>
         </div>
-        <h1>{`${userName}`}</h1>
-        <h1>{`${age} y/o`}</h1>
-        <p>{bestResult}</p>
-        <p>{`${amountOfSamePersonalAnswers} similar personal answers`}</p>
+        <div className="mate-achievement">
+          <span>
+            <p>🏆</p>
+            <p>{bestResult}</p>
+          </span>
+          <span>
+            <p>💛</p>
+            <p>{`${amountOfSamePersonalAnswers} similar personal answers`}</p>
+          </span>
+        </div>
       </div>
     </div>
   );
