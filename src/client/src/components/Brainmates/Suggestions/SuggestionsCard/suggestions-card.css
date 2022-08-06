@@ -3,19 +3,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid gray;
+  padding: 2%;
   border-radius: 8px;
   background-color: white;
-  width: 80%;
-
+  position: relative;
+  box-shadow: 0 0 20px 10px pink;
+  height: 60%;
+  width: 90%;
 }
 
 .suggestion-card-avatar-container {
   display: flex;
   justify-content: center;
   align-items: center;
- 
- 
 }
 
 .suggestion-card-avatar-img {
@@ -28,26 +28,40 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  /* justify-content: space-between; */
- 
-  /* flex-wrap: wrap; */
+  justify-content: space-around;
+  width: 95%;
 }
 
-.suggestion-card-content h1 {
+.suggestion-card-content > div {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mate-achievement > span{
+  display: flex;
+  align-items:center;
+}
+
+.mate-achievement > span > p{
+  margin: 3% 2%;
+  text-align: left;
+  font-size: 1.15rem;
+}
+
+.suggestion-card-content h1, .suggestion-card-content h2 {
   font-size: 1.5rem;
- 
 }
 
-.suggestion-card-content h1,
-.suggestion-card-content h2,
-.suggestion-card-content h3,
-.suggestion-card-content p {
+.suggestion-card-content {
   text-align: center;
 }
 
 .suggestion-card-content p {
   font-size: 1.1rem;
 }
+
 
 
 

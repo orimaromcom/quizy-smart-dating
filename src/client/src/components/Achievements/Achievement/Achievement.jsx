@@ -15,37 +15,37 @@ export default function Achievement({ title, score }) {
       case "Film":
         return {
           icon: <MovieCreationIcon style={{ color: "#111111" }} />,
-          color: "error",
+          colors: ["error", "#d32f2f"],
         };
       case "Sports":
         return {
           icon: <SportsBasketballIcon style={{ color: "#ff9100" }} />,
-          color: "success",
+          colors: ["success", "#388e3c"],
         };
       case "Computers":
         return {
           icon: <ComputerIcon style={{ color: "#1c54b2" }} />,
-          color: "warning",
+          colors: ["warning", "#f57c00"],
         };
       case "Celebrities":
         return {
           icon: <StarIcon style={{ color: "#ffea00" }} />,
-          color: "info",
+          colors: ["info", "#0288d1"],
         };
       case "History":
         return {
           icon: <AccountBalanceIcon style={{ color: "#a1887f" }} />,
-          color: "primary",
+          colors: ["primary", "#e42f45"],
         };
       case "Music":
         return {
           icon: <MusicNoteIcon style={{ color: "#e91e63" }} />,
-          color: "secondary",
+          colors: ["secondary", "#fdd835"],
         };
       default:
         return {
           icon: <EmojiEventsIcon />,
-          color: "primary",
+          colors: ["primary", "#fffff"],
         };
     }
   };
@@ -61,7 +61,7 @@ export default function Achievement({ title, score }) {
           justifyContent: "flex-start",
           boxShadow: `2px 2px 3px gray`,
         }}
-        color={renderChip().color}
+        color={renderChip().colors[0]}
       />
       <div className="achievement-text">
         <p className="precent">
@@ -74,7 +74,11 @@ export default function Achievement({ title, score }) {
       <div className="achievement-pie">
         <PieChart
           data={[
-            { title: "Correct", value: score.correct, color: "#e42f45" },
+            {
+              title: "Correct",
+              value: score.correct,
+              color: renderChip().colors[1],
+            },
             {
               title: "Incorrect",
               value: score.answers - score.correct,

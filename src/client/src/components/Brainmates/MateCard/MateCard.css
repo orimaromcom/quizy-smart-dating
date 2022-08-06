@@ -6,11 +6,11 @@
     flex-basis: 40%;
     margin: 2%;
     padding: 2% ;
-    border: 1px solid gray;
     border-radius: 8px;
     background-color: white;
     width: 40%;
-    height: 35%;
+    height: 30%;
+    position: relative;
 }
 
 .card-avatar-container{
@@ -29,9 +29,7 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    /* justify-content: space-between; */
     max-width: 100%;
-    /* flex-wrap: wrap; */
 }
 
 .card-content h1{
@@ -47,6 +45,17 @@
     font-size: 1.1rem;
 }
 
+.match-tag{
+    background-color: #d96895;
+    color: antiquewhite;
+    padding: 3px 5px;
+    border-radius: 5px;
+    display: block;
+    position: absolute;
+    top:-3px;
+    left: -7px;
+}
+
 .match{
     box-shadow: 2px 2px 4px gray;
 }
@@ -55,12 +64,21 @@
     box-shadow: none;
 }
 
-/* .open .flip{
-    animation: flipOutY;
-    animation-duration: 2s;
+.open{
+    box-shadow: none;
+    background-color: #f9cfe0;
+    box-shadow: 2px 2px 4px gray inset;
 }
 
-.open{
-    animation: flipInY;
-    animation-duration: 2s;
-} */
+.open .card-content {
+    font-weight: 600;
+}
+
+.card-content h1{
+    font-weight: 500;
+}
+
+.open .card-content{
+    display: flex;
+    justify-content: space-around;
+}
