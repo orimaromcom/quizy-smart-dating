@@ -30,7 +30,8 @@ export default function Suggestions({
       suggestedUser.userId,
       currentUserLikesSuggestedUser
     );
-
+console.log(decision)
+console.log(suggestedUser.likeBack)
     if (currentUserLikesSuggestedUser && suggestedUser.likeBack) {
       confetti();
       setIsMatch(true);
@@ -90,32 +91,32 @@ export default function Suggestions({
         gender={suggestions[suggestionsOrBrainmates].gender}
       />
       <div className={style.buttons_container}>
-        <div className={style.yes_no_btn_container}>
+        <div className={style.yes_no_btn_container} onClick={(e) => {
+              decisionHandler(
+                false,
+                suggestions[suggestionsOrBrainmates]
+              );
+            }}>
           <Button
             variant="contained"
             color={"primary"}
             value={false}
-            onClick={(e) => {
-              decisionHandler(
-                e.target.value,
-                suggestions[suggestionsOrBrainmates]
-              );
-            }}
+            
           >
             <ClearIcon fontSize="large" />
           </Button>
         </div>
-        <div className={style.yes_no_btn_container}>
+        <div className={style.yes_no_btn_container}  onClick={(e) =>
+              decisionHandler(
+                true,
+                suggestions[suggestionsOrBrainmates]
+              )
+            }>
           <Button
             variant="contained"
             style={{ backgroundColor: "#4caf50" }}
             value={true}
-            onClick={(e) =>
-              decisionHandler(
-                e.target.value,
-                suggestions[suggestionsOrBrainmates]
-              )
-            }
+           
           >
             <FavoriteBorderOutlinedIcon fontSize="large" />
           </Button>
