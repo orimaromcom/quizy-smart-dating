@@ -6,6 +6,7 @@ import BasicQuestion from "./BasicQuestion/BasicQuestion";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import HeartConnector from "./Heart/HeartConnector.js";
 import "./quiz.css";
+import quizEndSoundFile from "../../assets/sounds/quizEndSound.mp3";
 
 export default function Quiz({
   fetchNewQuestionsAction,
@@ -22,12 +23,15 @@ export default function Quiz({
   clearQuestionsArrayAction,
   clearQuestionsIndexAction,
   postDistancesAction,
+  isAudio,
+  toggleIsBrokenAction,
   incrementScoreAction,
   postAnswersAction,
   quote,
   suggestions,
 }) {
   const [playAgainClicked, setPlayAgainClicked] = useState(false);
+  const quizEndSound = new Audio(quizEndSoundFile);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -56,10 +60,7 @@ export default function Quiz({
     }
     if (isFinished) {
       confetti();
-      async function postAnswersPostDistancesGetSuggestions(
-        answersArray,
-        userId
-      ) {
+      async function postAnswersPostDistancesGetSuggestions(answersArray, userId) {
         await postAnswersAction(answersArray);
         await postDistancesAction(userId);
         await fetchNewSuggestionsAction(userId);
@@ -67,23 +68,19 @@ export default function Quiz({
       if (answersArray.length) {
         postAnswersPostDistancesGetSuggestions(answersArray, userId);
         clearAnswersArray();
+        confetti();
+        if (isAudio) {
+          quizEndSound.play();
+        }
       }
     }
-  }, [
-    fetchNewQuestionsAction,
-    questions,
-    answersArray,
-    clearAnswersArray,
-    isFinished,
-  ]);
+  }, [fetchNewQuestionsAction, questions, answersArray, clearAnswersArray, isFinished]);
 
   return (
     <div className="quiz-container">
       {!isFinished ? (
         <>
-          <ProgressBar
-            progressPercentage={(questionIndex / questions.length) * 100}
-          />
+          <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
           <BasicQuestion
             question={questions[questionIndex] ? questions[questionIndex] : ""}
             userId={userId}
@@ -93,6 +90,8 @@ export default function Quiz({
             incrementQuestionIndexAction={incrementQuestionIndexAction}
             questionIndex={questionIndex}
             incrementScoreAction={incrementScoreAction}
+            isAudio={isAudio}
+            toggleIsBrokenAction={toggleIsBrokenAction}
           />
         </>
       ) : (

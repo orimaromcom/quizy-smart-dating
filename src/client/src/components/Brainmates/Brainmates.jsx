@@ -42,6 +42,7 @@ export default function Brainmates({
                 age={current.age}
                 location={current.location}
                 gender={current.gender}
+
               />
             );
           })
@@ -56,6 +57,7 @@ export default function Brainmates({
                 userName={current.username}
                 achievements={current.bestResultDescription}
                 gender={current.gender}
+
               />
             );
           })

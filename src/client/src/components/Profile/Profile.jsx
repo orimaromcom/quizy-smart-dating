@@ -1,17 +1,10 @@
 import style from "./profile.module.css";
-import {
-  Box,
-  TextField,
-  Slider,
-  Switch,
-  Button,
-  Select,
-  MenuItem,
-} from "@mui/material";
+import { Box, TextField, Slider, Switch, Button, Select, MenuItem } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import UserApiService from "../../services/user-api-service";
 import { useCallback } from "react";
+
 
 export default function Profile({
   profile,
@@ -19,6 +12,7 @@ export default function Profile({
   showErrorAction,
   setTriviaAction
 }) {
+
   const navigate = useNavigate();
   useEffect(() => {
     if (profile && !profile.email) {
@@ -178,9 +172,7 @@ export default function Profile({
               color="primary"
               disabled={!edit}
               onChange={(e) => {
-                handleRelationsChange(
-                  e.target.checked ? "romantic" : "friendly"
-                );
+                handleRelationsChange(e.target.checked ? "romantic" : "friendly");
               }}
               checked={profileObj.preferences.relation_type === "romantic"}
             />
@@ -195,10 +187,7 @@ export default function Profile({
               disabled={!edit}
               className={style.pref_age_slider}
               value={
-                [
-                  profileObj.preferences.minAge,
-                  profileObj.preferences.maxAge,
-                ] || [20, 45]
+                [profileObj.preferences.minAge, profileObj.preferences.maxAge] || [20, 45]
               }
               onChange={handlePreferencesAgeRangeChange}
               valueLabelDisplay="auto"

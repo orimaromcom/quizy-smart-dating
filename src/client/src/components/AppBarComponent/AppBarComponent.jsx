@@ -1,4 +1,5 @@
 import * as React from "react";
+import SwitchButtonConnector from "./SwitchButton/SwitchButtonConnector";
 import { useLocation } from "react-router-dom";
 import {
   AppBar,
@@ -13,7 +14,7 @@ import {
 import style from "./appbarcomponent.module.css";
 import { useState } from "react";
 
-const AppBarComponent = ({ profile, userLogoutAction, totalScore }) => {
+const AppBarComponent = ({ profile, userLogoutAction, totalScore, isAudio }) => {
   const location = useLocation();
   const [showLogOuot, setShowLogOuot] = useState(false);
 
@@ -30,8 +31,7 @@ const AppBarComponent = ({ profile, userLogoutAction, totalScore }) => {
         disableGutters
         style={{
           display: "flex",
-          justifyContent:
-            location.pathname === "/login" ? "center" : "space-around",
+          justifyContent: location.pathname === "/login" ? "center" : "space-around",
           width: "95%",
         }}
       >
@@ -77,15 +77,24 @@ const AppBarComponent = ({ profile, userLogoutAction, totalScore }) => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip
               title={
-                <Button
-                  variant="contained"
-                  onClick={() => {
-                    setShowLogOuot(false);
-                    userLogoutAction();
-                  }}
-                >
-                  Logout
-                </Button>
+                <>
+                  {" "}
+                  <Button
+                    variant="contained"
+                    onClick={() => {
+                      setShowLogOuot(false);
+                      userLogoutAction();
+                    }}
+                  >
+                    Logout
+                  </Button>
+                  <div className={style.audio_container}>
+                    <span className={style.audio_switch}>
+                      <SwitchButtonConnector />
+                      <div className={style.audio_emoji}>{isAudio ? "🔉" : "🔇"}</div>
+                    </span>
+                  </div>
+                </>
               }
               open={showLogOuot}
               PopperProps={{

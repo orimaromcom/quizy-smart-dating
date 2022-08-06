@@ -49,9 +49,7 @@ export default function Login({
 
   const getGoogleLoginData = useCallback(
     async (credentialResponse) => {
-      const { email, picture, name } = jwt_decode(
-        credentialResponse.credential
-      );
+      const { email, picture, name } = jwt_decode(credentialResponse.credential);
       setEmail(email);
       setPicture(picture);
       setName(name);
@@ -74,6 +72,7 @@ export default function Login({
       onError={() => {
         console.log("Google login failed");
       }}
+      useOneTap
     />
   );
 

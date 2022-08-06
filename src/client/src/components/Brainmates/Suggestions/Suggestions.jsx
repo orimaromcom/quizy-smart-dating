@@ -23,7 +23,6 @@ export default function Suggestions({
 
   const decisionHandler = async (decision, suggestedUser) => {
     const currentUserLikesSuggestedUser = decision === "✔️";
-
     await postUserLikeAction(
       userId,
       suggestedUser.userId,
@@ -46,6 +45,7 @@ export default function Suggestions({
   }
 
   const nextStep = async () => {
+
     if (suggestionsOrBrainmates === "closest") {
       updateSuggestionsOrBrainmatesAction("farthest");
     } else {
@@ -81,6 +81,7 @@ export default function Suggestions({
           suggestions[suggestionsOrBrainmates].amountOfSamePersonalAnswers
         }
         gender={suggestions[suggestionsOrBrainmates].gender}
+
       />
       <div className={style.buttons_container}>
         <div

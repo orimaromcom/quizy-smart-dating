@@ -2,7 +2,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import particle from "./heart-particles.scss";
 import React, { useState } from "react";
 
-function pop(e) {
+export function pop(e) {
   let amount = 30;
   switch ("shadow") {
     case "shadow":
@@ -69,14 +69,16 @@ function removeParticle(e) {
   e.srcElement.effect.target.remove();
 }
 
-export default function HeartParticles() {
-  const [isBroken, setIsBroken] = useState(false);
-
+export default function HeartParticles({ isBroken, toggleIsBrokenAction }) {
   return (
     <div
       onClick={(e) => {
-         pop(e);
-        //setIsBroken(!isBroken);
+        //pop(e);
+        toggleIsBrokenAction();
+
+        setTimeout(function () {
+          toggleIsBrokenAction();
+        }, 1500);
       }}
     >
       <svg

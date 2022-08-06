@@ -5,6 +5,7 @@ import Question from "./Question/Question";
 import { useEffect, useState } from "react";
 import correctAnswerSound from "../../../assets/sounds/correctAnswerSound.mp3";
 import incorrectAnswerSound from "../../../assets/sounds/incorrectAnswerSound.wav";
+import { pop } from "../HeartParticlesAnimation/HeartParticles";
 
 export default function BasicQuestion({
   question,
@@ -14,6 +15,10 @@ export default function BasicQuestion({
   incrementAnswersIndexAction,
   questions,
   answersArray,
+
+  isAudio,
+  toggleIsBrokenAction,
+
   incrementScoreAction,
 }) {
   const [options, setOptions] = useState([]);
@@ -26,29 +31,46 @@ export default function BasicQuestion({
     if (question.option1) {
       questionsArray = [question.option1, question.option2];
       if (question.option3 && question.option4 !== null) {
-        questionsArray = [
-          ...questionsArray,
-          question.option3,
-          question.option4,
-        ];
+        questionsArray = [...questionsArray, question.option3, question.option4];
       }
       setOptions(questionsArray);
     }
   }, [question]);
+  const muteOnLastQuestion = answersArray.length === 9 && !isAudio;
 
-  const optionHandler = (chosenOption) => {
+  const optionHandler = (chosenOption, e) => {
+    console.log(isAudio);
     let answerIsCorrect = null;
     if (question.type === "trivia") {
       if (question.correctOption === chosenOption) {
         answerIsCorrect = true;
+        pop(e);
+        if (isAudio) {
+          if (answersArray.length < 9) {
+            correctSound.play();
+          }
+        }
+
         incrementScoreAction();
-        correctSound.play();
       } else {
         answerIsCorrect = false;
-        incorrectSound.play();
+        toggleIsBrokenAction();
+
+        setTimeout(function () {
+          toggleIsBrokenAction();
+        }, 1500);
+        if (isAudio) {
+          if (answersArray.length < 9) {
+            incorrectSound.play();
+          }
+        }
+      }
+    } else {
+      pop(e);
+      if (isAudio) {
+        correctSound.play();   
       }
     }
-
 
     const answerObject = {
       userId: userId,

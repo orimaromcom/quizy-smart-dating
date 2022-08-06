@@ -20,7 +20,12 @@ import { postAnswersAction } from "../../redux/actions/post-answers-action";
 import { incrementAnswersIndexAction } from "../../redux/actions/increment-answers-index-action";
 import { fetchNewSuggestionsAction } from "../../redux/actions/fetch-suggestions-action";
 import { getSuggestions } from "../../redux/selectors/suggestions-entities-selector";
+import {getIsLoading} from "../../redux/selectors/app-view-selector"
+import { getIsAudio } from "../../redux/selectors/app-view-selector";
+import { getIsBroken} from "../../redux/selectors/app-view-selector"
+import { toggleIsBrokenAction } from "../../redux/actions/toggle-isbroken-action"
 import { incrementScoreAction } from "../../redux/actions/app-view-action";
+
 
 const mapStateToProps = (state) => {
   const questions = getAllQuestions(state);
@@ -28,6 +33,8 @@ const mapStateToProps = (state) => {
   const answersArray = getAllAnswers(state);
   const suggestions = getSuggestions(state);
   const quote = getQuote(state);
+  const isAudio = getIsAudio(state)
+  const isBroken = getIsBroken(state)
 
   const userId = getProfile(state).id;
   return {
@@ -36,7 +43,10 @@ const mapStateToProps = (state) => {
     answersArray,
     questionIndex,
     suggestions,
+    isAudio,
+    isBroken,
     quote,
+
   };
 };
 
@@ -53,8 +63,10 @@ const mapDispatchToProps = (dispatch) => {
       clearQuestionsArrayAction,
       clearQuestionsIndexAction,
       postDistancesAction,
+      toggleIsBrokenAction,
       incrementScoreAction,
       postAnswersAction,
+
     },
     dispatch
   );
