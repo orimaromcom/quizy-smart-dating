@@ -91,6 +91,7 @@ export default function Quiz({
             questionIndex={questionIndex}
             incrementScoreAction={incrementScoreAction}
             isAudio={isAudio}
+            toggleIsBrokenAction={toggleIsBrokenAction}
           />
         </>
       ) : (

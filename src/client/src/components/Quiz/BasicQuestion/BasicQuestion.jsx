@@ -39,34 +39,36 @@ export default function BasicQuestion({
   const muteOnLastQuestion = answersArray.length === 9 && !isAudio;
 
   const optionHandler = (chosenOption, e) => {
-    console.log(isAudio)
+    console.log(isAudio);
     let answerIsCorrect = null;
     if (question.type === "trivia") {
       if (question.correctOption === chosenOption) {
         answerIsCorrect = true;
-
+        pop(e);
         if (isAudio) {
-          correctSound.play();
-          pop(e);
+          if (answersArray.length < 9) {
+            correctSound.play();
+          }
         }
 
         incrementScoreAction();
       } else {
         answerIsCorrect = false;
-        if (isAudio) {
-          console.log(isAudio)
-          incorrectSound.play();
-         // toggleIsBrokenAction();
+        toggleIsBrokenAction();
 
-          setTimeout(function () {
-          //  toggleIsBrokenAction();
-          }, 1500);
+        setTimeout(function () {
+          toggleIsBrokenAction();
+        }, 1500);
+        if (isAudio) {
+          if (answersArray.length < 9) {
+            incorrectSound.play();
+          }
         }
       }
     } else {
+      pop(e);
       if (isAudio) {
-        correctSound.play();
-        pop(e);
+        correctSound.play();   
       }
     }
 
