@@ -2,17 +2,13 @@ import style from "./heart.module.scss";
 import { useNavigate } from "react-router-dom";
 
 export default function Heart({
-  quote,
-  fetchNewSuggestionsAction,
-  userId,
-  suggestionsOrBrainmates,
   updatePageButtonAction,
   updateSuggestionsOrBrainmatesAction,
-  suggestions,
   setPlayAgainClicked,
   clearQuestionsArrayAction,
   clearQuestionsIndexAction,
   updateQuoteAction,
+  quote,
 }) {
   const navigate = useNavigate();
   const HeartCLickHandler = () => {
@@ -30,13 +26,6 @@ export default function Heart({
 
   return (
     <div className={style.container}>
-    {/*   <div className={style.heart_container} onClick={() => HeartCLickHandler()}>
-        {<div className={style.heart} />}
-      </div>
-      <div className={style.text}>
-        <div className={style.quote}>{quote?.quote}</div>
-        <div className={style.author}>{quote?.author}</div>
-      </div> */}
  <svg id={style.heart_button} onClick={() => HeartCLickHandler()}
         className="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium heart-icon css-u42cxr-MuiSvgIcon-root"
         focusable="false"

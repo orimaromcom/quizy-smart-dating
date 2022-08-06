@@ -2,7 +2,7 @@ const { User, TriviaAnswer} = require("../../db/models");
 const Sequelize = require("sequelize");
 
 async function postUserInfo(userInfo) {
-  result = await User.upsert({
+  const result = await User.upsert({
     email: userInfo.email,
     username: userInfo.userName,
     photo: userInfo.picture,
@@ -60,7 +60,7 @@ async function getUserInfo(email) {
 }
 
 async function setTriviaStatistics(id) {
-  result = await TriviaAnswer.upsert({
+  const result = await TriviaAnswer.upsert({
     userId: id,
     FilmCorrectAnswers: 0,
     FilmQuestionsAnswered: 0,

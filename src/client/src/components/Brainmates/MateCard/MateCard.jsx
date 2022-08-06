@@ -1,6 +1,6 @@
 import "./MateCard.css";
-import mateAvatar from "../../../images/avatar_img.png";
 import { useState } from "react";
+import { getAvatarByGender } from "../get-avatar-by-gender";
 
 export default function MateCard({
   status,
@@ -10,9 +10,9 @@ export default function MateCard({
   phoneNumber,
   age,
   location,
+  gender
 }) {
   const [reveal, setReveal] = useState(false);
-
   const renderCardFront = () => (
     <div
       className={`mate-card ` + status}
@@ -27,7 +27,7 @@ export default function MateCard({
       <div className="card-avatar-container">
         <img
           className="card-avatar-img"
-          src={status === "match" ? imgSrc : mateAvatar}
+          src={status === "match" ? imgSrc : getAvatarByGender(gender)}
           alt="mate"
         />
       </div>

@@ -18,23 +18,31 @@ const appViewReducer = (state = initialState, action) => {
     case actionTypes.HIDE_TOASTER:
       return { ...state, isError: false, isSuccess: false };
 
-    case actionTypes.FETCH_QUESTIONS_REQUEST:
-    case actionTypes.FETCH_ACHIEVEMENTS_REQUEST:
-    case actionTypes.FETCH_BRAINMATES_REQUEST:
-    case actionTypes.FETCH_PROFILE_REQUEST:
+    // case actionTypes.FETCH_BRAINMATES_REQUEST:
+    // case actionTypes.FETCH_ACHIEVEMENTS_REQUEST:
+    case actionTypes.FETCH_SUGGESTIONS_REQUEST:
+    case actionTypes.POST_DISTANCES_FAILURE:
+    case actionTypes.POST_ANSWERS_REQUEST:
     case actionTypes.UPDATE_PROFILE_REQUEST:
-    case actionTypes.POST_DISTANCES_REQUEST: {
-      return { ...state, isLoading: true };
+    case actionTypes.FETCH_QUESTIONS_REQUEST: {
+      return {
+        ...state,
+        isLoading: true,
+      };
     }
 
     case actionTypes.FETCH_PROFILE_SUCCESS:
     case actionTypes.FETCH_BRAINMATES_SUCCESS:
     case actionTypes.FETCH_QUESTIONS_SUCCESS:
-    case actionTypes.POST_DISTANCES_SUCCESS: {
-      return { ...state, isError: false, isLoading: false };
+    case actionTypes.POST_DISTANCES_SUCCESS:
+    case actionTypes.FETCH_SUGGESTIONS_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+      };
     }
 
-    case actionTypes.UPDATE_PROFILE_SUCCESS:
+    case actionTypes.UPDATE_PROFILE_SUCCESS: {
       return {
         ...state,
         isError: false,
@@ -42,6 +50,7 @@ const appViewReducer = (state = initialState, action) => {
         isSuccess: true,
         successMessage: action.payload.SuccessMessage,
       };
+    }
 
     case actionTypes.UPDATE_PROFILE_FAILURE:
     case actionTypes.FETCH_PROFILE_FAILURE:

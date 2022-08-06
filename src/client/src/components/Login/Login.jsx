@@ -1,7 +1,6 @@
 import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { useCallback, useState } from "react";
+import { useEffect, useCallback, useState } from "react";
 
 import jwt_decode from "jwt-decode";
 import "./Login.css";
@@ -16,7 +15,7 @@ export default function Login({
   const navigate = useNavigate();
   useEffect(() => {
     if (profile && profile.id) {
-      const navigateToPage = profile.location ? "quiz" : "profile";
+      const navigateToPage = "profile";
       updatePageButtonAction(navigateToPage);
       navigate(`/${navigateToPage}`);
       return;

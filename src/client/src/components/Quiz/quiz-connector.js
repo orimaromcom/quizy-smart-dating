@@ -4,7 +4,6 @@ import Quiz from "./Quiz";
 import {
   getAllQuestions,
   getQuestionIndex,
-  getQuestionsLoading,
   getQuote,
 } from "../../redux/selectors/questions-entities-selectors";
 import { getProfile } from "../../redux/selectors/profile-entity-selector";
@@ -33,7 +32,6 @@ const mapStateToProps = (state) => {
   const questionIndex = getQuestionIndex(state);
   const answersArray = getAllAnswers(state);
   const suggestions = getSuggestions(state);
-  const isLoading = getIsLoading(state);
   const quote = getQuote(state);
   const isAudio = getIsAudio(state)
   const isBroken = getIsBroken(state)
@@ -44,11 +42,12 @@ const mapStateToProps = (state) => {
     userId,
     answersArray,
     questionIndex,
-    quote,
     suggestions,
     isLoading,
     isAudio,
     isBroken,
+    quote,
+
   };
 };
 

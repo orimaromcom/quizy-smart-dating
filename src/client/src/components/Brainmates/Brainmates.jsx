@@ -2,14 +2,13 @@ import "./brainmates.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MateCard from "./MateCard/MateCard";
-import SuggestionsConnector from "./Suggestions/SuggestionsConnector";
+import SuggestionsConnector from "./Suggestions/suggestions-connector";
 
 export default function Brainmates({
   brainmates,
   fetchBrainmatesAction,
   userId,
   suggestionsOrBrainmates,
-  isLoading,
 }) {
   const navigate = useNavigate();
 
@@ -21,13 +20,11 @@ export default function Brainmates({
   }, [navigate, userId]);
 
   useEffect(() => {
-    // if (userId && !Object.keys(brainmates).length) fetchBrainmatesAction(userId);
-    // always, because maybe someone liked or disliked you:
     async function updateBrainmates(userId) {
       await fetchBrainmatesAction(userId);
     }
     if (userId) updateBrainmates(userId);
-  }, [fetchBrainmatesAction, userId]);
+  }, []);
 
   return suggestionsOrBrainmates === "brainmates" ? (
     <div className="brain-mates-container">
@@ -44,6 +41,8 @@ export default function Brainmates({
                 phoneNumber={current.phoneNumber}
                 age={current.age}
                 location={current.location}
+                gender={current.gender}
+
               />
             );
           })
@@ -57,6 +56,8 @@ export default function Brainmates({
                 status={"pending"}
                 userName={current.username}
                 achievements={current.bestResultDescription}
+                gender={current.gender}
+
               />
             );
           })

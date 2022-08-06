@@ -12,7 +12,7 @@ const fetchBrainmatesSuccess = (brainmates) => ({
 
 const fetchBrainmatesFailure = (errorMessage) => ({
   type: actionTypes.FETCH_BRAINMATES_FAILURE,
-  payload: errorMessage
+  payload: errorMessage,
 });
 
 export const fetchBrainmatesAction = (id) => {

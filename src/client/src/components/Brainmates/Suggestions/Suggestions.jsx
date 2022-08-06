@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react";
+import { useState } from "react";
 import { Button } from "@mui/material";
 import confetti from "canvas-confetti";
 import SuggestionsCard from "./SuggestionsCard/SuggestionsCard";
@@ -12,21 +12,40 @@ export default function Suggestions({
   updateSuggestionsOrBrainmatesAction,
   isLoading,
   userId,
+  userPicture,
   postUserLikeAction,
   fetchBrainmatesAction,
 }) {
   const audio = new Audio(loveMomentSound);
   audio.loop = true;
 
+  const [isMatch, setIsMatch] = useState(false);
+
   const decisionHandler = async (decision, suggestedUser) => {
     const currentUserLikesSuggestedUser = decision === "✔️";
+    await postUserLikeAction(
+      userId,
+      suggestedUser.userId,
+      currentUserLikesSuggestedUser
+    );
+
     if (currentUserLikesSuggestedUser && suggestedUser.likeBack) {
       // audio.play();
       // audio.pause();
       confetti();
-      console.log("We have a match!!!!!!!!");
+      setIsMatch(true);
+      setTimeout(async () => {
+        setIsMatch(false);
+        await nextStep();
+      }, 3000);
+      console.log("We have a match!");
+    } else {
+      await nextStep();
     }
-    await postUserLikeAction(userId, suggestedUser.userId, currentUserLikesSuggestedUser);
+  }
+
+  const nextStep = async () => {
+
     if (suggestionsOrBrainmates === "closest") {
       updateSuggestionsOrBrainmatesAction("farthest");
     } else {
@@ -48,6 +67,12 @@ export default function Suggestions({
     </>
   ) : suggestions[suggestionsOrBrainmates] ? (
     <div className={style.page_container}>
+      { isMatch &&
+        <div className="suggestion-card-avatar-container">
+          <img className="suggestion-card-avatar-img" src={suggestions[suggestionsOrBrainmates].picture} alt="mate" />
+          <img className="suggestion-card-avatar-img" src={userPicture} alt="you" />
+        </div>
+      }
       <SuggestionsCard
         userName={suggestions[suggestionsOrBrainmates].username}
         age={suggestions[suggestionsOrBrainmates].age}
@@ -55,12 +80,15 @@ export default function Suggestions({
         amountOfSamePersonalAnswers={
           suggestions[suggestionsOrBrainmates].amountOfSamePersonalAnswers
         }
-        picture={suggestions[suggestionsOrBrainmates].picture}
+        gender={suggestions[suggestionsOrBrainmates].gender}
+
       />
       <div className={style.buttons_container}>
         <div
           className={style.yes_no_btn_container}
-          onClick={() => decisionHandler("✔️", suggestions[suggestionsOrBrainmates])}
+          onClick={() =>
+            decisionHandler("✔️", suggestions[suggestionsOrBrainmates])
+          }
         >
           <Button variant="contained" style={{ backgroundColor: "lightBlue" }}>
             ✔️

@@ -6,35 +6,68 @@ import ComputerIcon from "@mui/icons-material/Computer";
 import StarIcon from "@mui/icons-material/Star";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import { PieChart } from "react-minimal-pie-chart";
 
 export default function Achievement({ title, score }) {
-  const renderIcon = () => {
+  const renderChip = () => {
     switch (title) {
       case "Film":
-        return <MovieCreationIcon />;
+        return {
+          icon: <MovieCreationIcon style={{ color: "#111111" }} />,
+          color: "error",
+        };
       case "Sports":
-        return <SportsBasketballIcon />;
+        return {
+          icon: <SportsBasketballIcon style={{ color: "#ff9100" }} />,
+          color: "success",
+        };
       case "Computers":
-        return <ComputerIcon />;
+        return {
+          icon: <ComputerIcon style={{ color: "#1c54b2" }} />,
+          color: "warning",
+        };
       case "Celebrities":
-        return <StarIcon />;
+        return {
+          icon: <StarIcon style={{ color: "#ffea00" }} />,
+          color: "info",
+        };
       case "History":
-        return <AccountBalanceIcon />;
+        return {
+          icon: <AccountBalanceIcon style={{ color: "#a1887f" }} />,
+          color: "primary",
+        };
       case "Music":
-        return <MusicNoteIcon />;
-
+        return {
+          icon: <MusicNoteIcon style={{ color: "#e91e63" }} />,
+          color: "secondary",
+        };
       default:
-        return <MovieCreationIcon />;
+        return {
+          icon: <EmojiEventsIcon />,
+          color: "primary",
+        };
     }
   };
 
   return (
     <div className="achievement-container">
-      <Chip className="achievement-chip" label={title} icon={renderIcon()} />
+      <Chip
+        className="achievement-chip"
+        label={title}
+        icon={renderChip().icon}
+        style={{
+          display: "flex",
+          justifyContent: "flex-start",
+          boxShadow: `2px 2px 3px gray`,
+        }}
+        color={renderChip().color}
+      />
       <div className="achievement-text">
-        <p>{Math.round((score.correct / score.answers) * 100) || 0}% correct</p>
-        <p>
+        <p className="precent">
+          {Math.round((score.correct / score.answers) * 100) || 0}% correct
+        </p>
+        <p className="number">
           ({score.correct} out of {score.answers})
         </p>
       </div>

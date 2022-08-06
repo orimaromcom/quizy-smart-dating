@@ -3,7 +3,7 @@ const { getMatchingUserInfo } = require ('../../server-matching/services/matchin
 const Sequelize = require('sequelize');
 
 async function postUserLike(firstUserId, secondUserId, firstUserLikesSecondUser) {
-  result = await Like.upsert({
+  const result = await Like.upsert({
     firstUserId: firstUserId,
     secondUserId: secondUserId,
     firstUserLikesSecondUser: firstUserLikesSecondUser
@@ -22,7 +22,7 @@ async function getBrainmatesForUser(userId) {
     },
     include: User
   });
-  for (like of likes) {
+  for (const like of likes) {
     const brainmate = like.User;
     const brainmateInfo = await getMatchingUserInfo(brainmate);
     try {

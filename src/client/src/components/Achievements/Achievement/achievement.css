@@ -12,16 +12,28 @@
 
 .achievement-chip{
   width: 30%;
-  min-width: 115px;
+  min-width: 130px;
+}
+
+.achievement-chip > span {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 1rem;
 }
 
 .achievement-pie{
-width: 25%;
-max-width: 100px;
+  width: 25%;
+  max-width: 100px;
 }
 
 .achievement-text{
-display: flex;
-flex-direction: column;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  margin-left: 15px;
+}
+
+.achievement-text .precent{
+  font-weight: 600;
 }
