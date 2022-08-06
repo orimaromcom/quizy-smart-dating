@@ -5,7 +5,7 @@ const fetchAchievementsRequest = () => ({
   type: actionTypes.FETCH_ACHIEVEMENTS_REQUEST,
 });
 
-const fetchAchievementsSuccess = (achievements, totalScore) => ({
+export const fetchAchievementsSuccess = (achievements, totalScore) => ({
   type: actionTypes.FETCH_ACHIEVEMENTS_SUCCESS,
   payload: { achievements, totalScore },
 });
