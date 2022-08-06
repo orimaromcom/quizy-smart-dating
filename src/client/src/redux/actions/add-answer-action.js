@@ -1,5 +1,5 @@
 import actionTypes from "./constants";
-const addAnswer = (answer) => ({
+export const addAnswer = (answer) => ({
   type: actionTypes.ADD_ANSWER,
   payload: answer,
 });

@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders achievement correctly 1`] = `
+<div
+  className="achievement-container"
+>
+  <div
+    className="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorError MuiChip-filledError achievement-chip css-13vwgur-MuiChip-root"
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    style={
+      Object {
+        "boxShadow": "2px 2px 3px gray",
+        "display": "flex",
+        "justifyContent": "flex-start",
+      }
+    }
+  >
+    <svg
+      aria-hidden={true}
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorError css-i4bv87-MuiSvgIcon-root"
+      data-testid="MovieCreationIcon"
+      focusable="false"
+      style={
+        Object {
+          "color": "#111111",
+        }
+      }
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="m18 4 2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"
+      />
+    </svg>
+    <span
+      className="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+    >
+      Film
+    </span>
+  </div>
+  <div
+    className="achievement-text"
+  >
+    <p
+      className="precent"
+    >
+      80
+      % correct
+    </p>
+    <p
+      className="number"
+    >
+      (
+      8
+       out of 
+      10
+      )
+    </p>
+  </div>
+  <div
+    className="achievement-pie"
+  >
+    <svg
+      height="100%"
+      viewBox="0 0 200 100"
+      width="100%"
+    >
+      <path
+        d="M 75 50 A 25 25 0 1 1 92.27457514062633 73.77641290737884"
+        fill="none"
+        stroke="#d32f2f"
+        strokeWidth={50}
+        style={Object {}}
+      >
+        <title>
+          Correct
+        </title>
+      </path>
+      <path
+        d="M 92.27457514062633 73.77641290737884 A 25 25 0 0 1 75 50.00000000000001"
+        fill="none"
+        stroke="#CCCCCC"
+        strokeWidth={50}
+        style={Object {}}
+      >
+        <title>
+          Incorrect
+        </title>
+      </path>
+    </svg>
+  </div>
+</div>
+`;
