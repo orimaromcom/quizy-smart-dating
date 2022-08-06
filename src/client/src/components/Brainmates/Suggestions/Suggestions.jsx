@@ -25,13 +25,7 @@ export default function Suggestions({
 
   const decisionHandler = async (decision, suggestedUser) => {
     const currentUserLikesSuggestedUser = decision;
-    await postUserLikeAction(
-      userId,
-      suggestedUser.userId,
-      currentUserLikesSuggestedUser
-    );
-console.log(decision)
-console.log(suggestedUser.likeBack)
+    await postUserLikeAction(userId, suggestedUser.userId, currentUserLikesSuggestedUser);
     if (currentUserLikesSuggestedUser && suggestedUser.likeBack) {
       confetti();
       setIsMatch(true);
@@ -74,11 +68,7 @@ console.log(suggestedUser.likeBack)
             src={suggestions[suggestionsOrBrainmates].picture}
             alt="mate"
           />
-          <img
-            className="suggestion-card-avatar-img"
-            src={userPicture}
-            alt="you"
-          />
+          <img className="suggestion-card-avatar-img" src={userPicture} alt="you" />
         </div>
       )}
       <SuggestionsCard
@@ -91,33 +81,21 @@ console.log(suggestedUser.likeBack)
         gender={suggestions[suggestionsOrBrainmates].gender}
       />
       <div className={style.buttons_container}>
-        <div className={style.yes_no_btn_container} onClick={(e) => {
-              decisionHandler(
-                false,
-                suggestions[suggestionsOrBrainmates]
-              );
-            }}>
-          <Button
-            variant="contained"
-            color={"primary"}
-            value={false}
-            
-          >
+        <div
+          className={style.yes_no_btn_container}
+          onClick={(e) => {
+            decisionHandler(false, suggestions[suggestionsOrBrainmates]);
+          }}
+        >
+          <Button variant="contained" color={"primary"} value={false}>
             <ClearIcon fontSize="large" />
           </Button>
         </div>
-        <div className={style.yes_no_btn_container}  onClick={(e) =>
-              decisionHandler(
-                true,
-                suggestions[suggestionsOrBrainmates]
-              )
-            }>
-          <Button
-            variant="contained"
-            style={{ backgroundColor: "#4caf50" }}
-            value={true}
-           
-          >
+        <div
+          className={style.yes_no_btn_container}
+          onClick={(e) => decisionHandler(true, suggestions[suggestionsOrBrainmates])}
+        >
+          <Button variant="contained" style={{ backgroundColor: "#4caf50" }} value={true}>
             <FavoriteBorderOutlinedIcon fontSize="large" />
           </Button>
         </div>
