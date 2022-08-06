@@ -7,7 +7,7 @@ const initialState = {
   pageButtonValue: "login",
   isSuccess: false,
   successMessage: "Success!",
-  isAudio: true,
+  isAudio: false,
   isBroken: false,
   totalScore: 0,
 

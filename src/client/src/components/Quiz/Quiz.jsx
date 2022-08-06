@@ -57,45 +57,30 @@ export default function Quiz({
         await fetchNewQuestionsAction();
         await updateQuoteAction();
       })();
-
     }
     if (isFinished) {
-
       confetti();
-      async function postAnswersPostDistancesGetSuggestions(
-        answersArray,
-        userId
-      ) {
+      async function postAnswersPostDistancesGetSuggestions(answersArray, userId) {
         await postAnswersAction(answersArray);
         await postDistancesAction(userId);
         await fetchNewSuggestionsAction(userId);
-
       }
       if (answersArray.length) {
         postAnswersPostDistancesGetSuggestions(answersArray, userId);
         clearAnswersArray();
         confetti();
-        if(isAudio){
+        if (isAudio) {
           quizEndSound.play();
         }
-       
       }
     }
-  }, [
-    fetchNewQuestionsAction,
-    questions,
-    answersArray,
-    clearAnswersArray,
-    isFinished,
-  ]);
+  }, [fetchNewQuestionsAction, questions, answersArray, clearAnswersArray, isFinished]);
 
   return (
     <div className="quiz-container">
       {!isFinished ? (
         <>
-          <ProgressBar
-            progressPercentage={(questionIndex / questions.length) * 100}
-          />
+          <ProgressBar progressPercentage={(questionIndex / questions.length) * 100} />
           <BasicQuestion
             question={questions[questionIndex] ? questions[questionIndex] : ""}
             userId={userId}
@@ -105,6 +90,7 @@ export default function Quiz({
             incrementQuestionIndexAction={incrementQuestionIndexAction}
             questionIndex={questionIndex}
             incrementScoreAction={incrementScoreAction}
+            isAudio={isAudio}
           />
         </>
       ) : (
