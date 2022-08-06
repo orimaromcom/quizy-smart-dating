@@ -10,7 +10,7 @@ export default function MateCard({
   phoneNumber,
   age,
   location,
-  gender
+  gender,
 }) {
   const [reveal, setReveal] = useState(false);
   const renderCardFront = () => (
@@ -24,6 +24,7 @@ export default function MateCard({
           : null
       }
     >
+      {status === "match" ? <div className="match-tag">MATCH</div> : null}
       <div className="card-avatar-container">
         <img
           className="card-avatar-img"
@@ -40,20 +41,27 @@ export default function MateCard({
 
   const renderCardBack = () => (
     <div
-      className={`mate-card match open `}
+      className={`mate-card match open`}
       color={"secondary"}
       onClick={() => {
         setReveal(false);
       }}
     >
+      {status === "match" ? <div className="match-tag">MATCH</div> : null}
       <div className="card-avatar-container">
         <img className="card-avatar-img" src={imgSrc} alt="mate" />
       </div>
       <div className="card-content">
         <h1>{userName}</h1>
-        <h2>{age} y/o</h2>
-        <h2> from {location}</h2>
-        <h3>{phoneNumber}</h3>
+        <h2>
+          <span>{age}</span> Years Old
+        </h2>
+        <h2>
+          from <span>{location}</span>
+        </h2>
+        <h3>
+          <span>{phoneNumber}</span>
+        </h3>
       </div>
     </div>
   );
