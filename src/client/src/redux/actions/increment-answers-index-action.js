@@ -1,6 +1,6 @@
 import actionTypes from "./constants";
 
-const incrementAnswersIndex = () => ({
+export const incrementAnswersIndex = () => ({
   type: actionTypes.INCREMENT_ANSWER_INDEX,
 });
 
