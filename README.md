@@ -1,5 +1,7 @@
 # Quizy Smart Dating
 
+Live app: [https://quizy-smart-dating.herokuapp.com/](https://quizy-smart-dating.herokuapp.com/)
+
 Welcome to Quizy Smart Dating! :)
 
 The goal of this app is to match people according to their interests and knowledge.
