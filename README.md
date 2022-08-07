@@ -4,6 +4,8 @@ Welcome to Quizy Smart Dating! :)
 
 The goal of this app is to match people according to their interests and knowledge.
 
+[![DEMO](https://img.youtube.com/vi/wLQVGUw8hUY/0.jpg)](https://www.youtube.com/watch?v=wLQVGUw8hUY)
+
 ## The main flow:
 1. The user answers 10 questions:
     - 6 knowledge questions from different categories (Film, Sports, Computers, Celebrities, History, Music),
