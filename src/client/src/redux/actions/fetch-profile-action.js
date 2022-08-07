@@ -5,7 +5,7 @@ const fetchProfileRequest = () => ({
   type: actionTypes.FETCH_PROFILE_REQUEST,
 });
 
-const fetchProfileSuccess = (Profile) => ({
+export const fetchProfileSuccess = (Profile) => ({
   type: actionTypes.FETCH_PROFILE_SUCCESS,
   payload: Profile,
 });

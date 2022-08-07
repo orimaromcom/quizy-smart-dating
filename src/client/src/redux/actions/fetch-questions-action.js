@@ -5,7 +5,7 @@ const fetchQuestionsRequest = () => ({
   type: actionTypes.FETCH_QUESTIONS_REQUEST,
 });
 
-const fetchQuestionsSuccess = (questions) => ({
+export const fetchQuestionsSuccess = (questions) => ({
   type: actionTypes.FETCH_QUESTIONS_SUCCESS,
   payload: questions,
 });

@@ -1,12 +1,12 @@
 import actionTypes from "./constants";
 
-const updateSuggestionsOrBrainmates = (distance) => ({
-  type: actionTypes.UPDATE_SUGGESTION_DISTANCE,
-  payload: distance,
+export const updateSuggestionsOrBrainmates = (suggestionsOrBrainmates) => ({
+  type: actionTypes.UPDATE_SUGGESTION_OR_BRAINMATES,
+  payload: suggestionsOrBrainmates,
 });
 
-export const updateSuggestionsOrBrainmatesAction = (distance) => {
+export const updateSuggestionsOrBrainmatesAction = (suggestionsOrBrainmates) => {
   return async (dispatch) => {
-    dispatch(updateSuggestionsOrBrainmates(distance));
+    dispatch(updateSuggestionsOrBrainmates(suggestionsOrBrainmates));
   };
 };

@@ -1,5 +1,6 @@
 import actionTypes from "./constants";
-const clearQuestionsArray = () => ({
+
+export const clearQuestionsArray = () => ({
   type: actionTypes.CLEAR_QUESTIONS_ARRAY,
 });
 

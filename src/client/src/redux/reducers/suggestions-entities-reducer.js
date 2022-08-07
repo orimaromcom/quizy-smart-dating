@@ -15,12 +15,10 @@ const suggestionsEntitiesReducer = (state = initialState, action) => {
     case actionTypes.CLEAR_SUGGESTIONS:
       return {
         ...state,
-        suggestions: Object.keys(state.suggestions).forEach((key) => {
-          delete state.suggestions[key];
-        }),
+        suggestions: {},
       };
 
-    case actionTypes.UPDATE_SUGGESTION_DISTANCE:
+    case actionTypes.UPDATE_SUGGESTION_OR_BRAINMATES:
       return {
         ...state,
         suggestionsOrBrainmates: action.payload,

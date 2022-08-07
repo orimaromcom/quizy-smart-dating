@@ -1,5 +1,6 @@
 import actionTypes from "./constants";
-const clearQuestionsIndex = () => ({
+
+export const clearQuestionsIndex = () => ({
   type: actionTypes.CLEAR_QUESTION_INDEX,
 });
 

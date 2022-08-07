@@ -1,5 +1,6 @@
 import actionTypes from "./constants";
-const clearSuggestions = () => ({
+
+export const clearSuggestions = () => ({
   type: actionTypes.CLEAR_SUGGESTIONS,
 });
 

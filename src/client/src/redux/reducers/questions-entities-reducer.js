@@ -34,7 +34,6 @@ const questionsEntitiesReducer = (state = initialState, action) => {
           questionIndex: 0,
         };
 
-    
       case actionTypes.CLEAR_QUESTIONS_ARRAY:
         return {
           ...state,

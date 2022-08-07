@@ -17,7 +17,7 @@ export default function Quiz({
   questionIndex,
   incrementQuestionIndexAction,
   incrementAnswersIndexAction,
-  clearAnswersArray,
+  clearAnswersArrayAction,
   updateQuoteAction,
   fetchNewSuggestionsAction,
   clearQuestionsArrayAction,
@@ -68,14 +68,14 @@ export default function Quiz({
       }
       if (answersArray.length) {
         postAnswersPostDistancesGetSuggestions(answersArray, userId);
-        clearAnswersArray();
+        clearAnswersArrayAction();
         confetti();
         if (isAudio) {
           quizEndSound.play();
         }
       }
     }
-  }, [fetchNewQuestionsAction, questions, answersArray, clearAnswersArray, isFinished]);
+  }, [fetchNewQuestionsAction, questions, answersArray, clearAnswersArrayAction, isFinished]);
 
   return (
     <div className="quiz-container">
