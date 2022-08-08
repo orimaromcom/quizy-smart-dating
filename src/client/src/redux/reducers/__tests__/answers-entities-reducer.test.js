@@ -8,7 +8,7 @@ const newAnswer = {
   type: "personal",
   chosenOption: "Yes",
   isCorrect: true,
-  answerId: 1,
+  questionId: 1,
   topic: null
 }
 
