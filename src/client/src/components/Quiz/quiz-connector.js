@@ -10,7 +10,7 @@ import { toggleIsBrokenAction } from "../../redux/actions/toggle-isbroken-action
 import { incrementScoreAction } from "../../redux/actions/app-view-action";
 import { fetchNewQuestionsAction } from "../../redux/actions/fetch-questions-action";
 import { updateQuoteAction } from "../../redux/actions/update-quote-actions";
-import { clearAnswersArray } from "../../redux/actions/clear-answers-array";
+import { clearAnswersArrayAction } from "../../redux/actions/clear-answers-array";
 import { clearQuestionsArrayAction } from "../../redux/actions/clear-questions-array";
 import { clearQuestionsIndexAction } from "../../redux/actions/clear-questions-index";
 import { incrementQuestionIndexAction } from "../../redux/actions/increment-questions-index-actions";
@@ -50,7 +50,7 @@ const mapDispatchToProps = (dispatch) => {
       addAnswerAction,
       incrementQuestionIndexAction,
       incrementAnswersIndexAction,
-      clearAnswersArray,
+      clearAnswersArrayAction,
       updateQuoteAction,
       fetchNewSuggestionsAction,
       clearQuestionsArrayAction,

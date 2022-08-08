@@ -5,7 +5,7 @@ const updatehProfileRequest = () => ({
   type: actionTypes.UPDATE_PROFILE_REQUEST,
 });
 
-const updateProfileSuccess = (Profile, SuccessMessage) => ({
+export const updateProfileSuccess = (Profile, SuccessMessage) => ({
   type: actionTypes.UPDATE_PROFILE_SUCCESS,
   payload: { Profile, SuccessMessage },
 });

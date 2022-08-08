@@ -28,7 +28,7 @@ const QUIZ_ACTIONS = {
   FETCH_SUGGESTIONS_FAILURE: "fetch_suggestions_failure",
 
   CLEAR_SUGGESTIONS: "clear_suggestions",
-  UPDATE_SUGGESTION_DISTANCE: "update_suggestion_distance",
+  UPDATE_SUGGESTION_OR_BRAINMATES: "update_suggestion_or_brainmates",
 
   UPDATE_PROFILE_REQUEST: "update_profile_request",
   UPDATE_PROFILE_SUCCESS: "update_profile_success",

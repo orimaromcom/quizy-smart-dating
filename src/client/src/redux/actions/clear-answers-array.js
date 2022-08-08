@@ -1,10 +1,11 @@
 import actionTypes from "./constants";
-const clearAnswersArrayAction = () => ({
+
+export const clearAnswersArray = () => ({
   type: actionTypes.CLEAR_ANSWERS_ARRAY,
 });
 
-export const clearAnswersArray = () => {
+export const clearAnswersArrayAction = () => {
     return async (dispatch) => {
-      dispatch(clearAnswersArrayAction());
+      dispatch(clearAnswersArray());
     };
   };

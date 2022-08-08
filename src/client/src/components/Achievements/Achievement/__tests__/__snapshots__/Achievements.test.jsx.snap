@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders achievement correctly 1`] = `
+exports[`Achievement component renders achievement correctly 1`] = `
 <div
   className="achievement-container"
 >

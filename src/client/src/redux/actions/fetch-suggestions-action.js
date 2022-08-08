@@ -5,7 +5,7 @@ const fetchSuggestionsRequest = () => ({
   type: actionTypes.FETCH_SUGGESTIONS_REQUEST,
 });
 
-const fetchSuggestionsSuccess = (suggestions) => ({
+export const fetchSuggestionsSuccess = (suggestions) => ({
   type: actionTypes.FETCH_SUGGESTIONS_SUCCESS,
   payload: suggestions,
 });

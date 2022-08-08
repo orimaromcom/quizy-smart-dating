@@ -1,7 +1,7 @@
 import actionTypes from "./constants";
 import QuoteApiService from "../../services/quote-api-service";
 
-const updateQuote = (quote) => ({
+export const updateQuote = (quote) => ({
   type: actionTypes.UPDATE_QUOTE,
   payload: quote,
 });

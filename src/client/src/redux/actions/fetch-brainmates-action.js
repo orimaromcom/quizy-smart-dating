@@ -5,7 +5,7 @@ const fetchBrainmatesRequest = () => ({
   type: actionTypes.FETCH_BRAINMATES_REQUEST,
 });
 
-const fetchBrainmatesSuccess = (brainmates) => ({
+export const fetchBrainmatesSuccess = (brainmates) => ({
   type: actionTypes.FETCH_BRAINMATES_SUCCESS,
   payload: brainmates,
 });

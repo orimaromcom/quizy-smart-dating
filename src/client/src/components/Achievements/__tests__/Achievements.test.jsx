@@ -1,8 +1,8 @@
 import { BrowserRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
-import Achievements from "../Achievements";
 import { Provider } from "react-redux";
 import { store } from "../../../redux/store";
+import Achievements from "../Achievements";
 
 const achievements = {
   "userId": 2,
@@ -34,8 +34,8 @@ const achievements = {
   }
 }
 
-describe("TodosList", () => {
-  test("should render achievements correctly", () => {
+describe("Achievements", () => {
+  test("should show achievements correctly", () => {
     render(
       <Provider store={store}>
         <BrowserRouter>
@@ -44,10 +44,14 @@ describe("TodosList", () => {
       </Provider>
     );
 
-    const percent = screen.getByText(`20% correct`);
-    expect(percent).toBeInTheDocument();
-    const outOf = screen.getByText(`(2 out of 10)`);
-    expect(outOf).toBeInTheDocument();
-
+    Object.keys(achievements.categories).forEach(category => {
+      const categorieName = screen.getByText(category);
+      expect(categorieName).toBeInTheDocument();
+      const score = achievements.categories[category];
+      const outOf = screen.getByText(`(${score.correct} out of ${score.answers})`);
+      expect(outOf).toBeInTheDocument();
+      const percent = screen.getByText(`${Math.round((score.correct / score.answers) * 100) || 0}% correct`);
+      expect(percent).toBeInTheDocument();
+    });
   });
 });
