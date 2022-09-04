@@ -4,7 +4,9 @@ Live app: [https://quizy-smart-dating.herokuapp.com/](https://quizy-smart-dating
 
 The goal of this app is to match people according to their interests and knowledge.
 
+  
 https://user-images.githubusercontent.com/66553796/188303641-be1cd3d5-3777-4777-849b-de2b97429cbf.mp4
+
 
 ## The main flow:
 1. The user answers 10 questions:
